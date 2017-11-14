@@ -22,7 +22,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 1
+## Introduction to deep learning
 
 ### What is a (Neural Network) NN?
 
@@ -72,7 +72,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ​
 
-## Chapter 2
+## Neural Networks Basics
 
 ### Binary classification
 
@@ -293,7 +293,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 3
+## Shallow neural networks
 
 ### Neural Networks Overview 
 
@@ -512,7 +512,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - 0.01 is alright for 1 hidden neurons, but if the NN is deep this number can be changed but it will always be a small number.
 
-## Chapter 4
+## Deep Neural Networks
 
 ### Deep L-layer neural network
 

@@ -23,7 +23,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 1
+## Practical aspects of Deep Learning
 
 ### Train / Dev / Test sets
 
@@ -284,7 +284,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 2
+## Optimization algorithms
 
 ### Mini-batch gradient descent
 
@@ -508,7 +508,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 3
+## Hyperparameter tuning, Batch Normalization and Programming Frameworks
 
 ### Tuning process
 

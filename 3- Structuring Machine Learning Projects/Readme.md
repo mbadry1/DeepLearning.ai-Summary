@@ -26,7 +26,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 1
+## ML Strategy 1
 
 ### Why ML Strategy
 
@@ -198,7 +198,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 2
+## ML Strategy 2
 
 ### Carrying out error analysis
 

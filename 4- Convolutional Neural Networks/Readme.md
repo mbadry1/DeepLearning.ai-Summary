@@ -1,4 +1,4 @@
-# Structuring Machine Learning Projects
+# Convolutional Neural Networks
 
 This is the forth course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](deeplearning.ai). The course is taught by Andrew Ng.
 
@@ -22,7 +22,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 
 
-## Chapter 1
+## Foundations of CNNs
 
 ### Computer vision
 
@@ -264,11 +264,166 @@ Here are the course summary as its given on the course [link](https://www.course
 - Putting it all together:
   - ![](Images/04.png)
 
-## Chapter 2
+## Deep convolutional models: case studies
 
-## Chapter 3
+### Why look at case studies?
 
-## Chapter 4
+- We learned about Conv layer, pooling layer, and fully connected layers. It turns out that computer vision researchers spent the past few years on how to put these layers together.
+- To get some intuitions you have to see the examples that has been made.
+- Some neural networks architecture that works well in some tasks can also work well in other tasks.
+- Here are some classical CNN networks:
+  - **LeNet-5**
+  - **AlexNet**
+  - **VGG**
+- The best CNN architecture that won the last ImageNet competation is called **ResNet** and it has 152 layers!
+- There are also an architecture called **Inception** that was made by Google that are very useful to learn and apply to your tasks.
+- Reading and trying the mentioned models can boost you and give you a lot of ideas to solve your task.
+
+### Classic networks
+
+- In this section we will talk about classic networks which are **LeNet-5**, **AlexNet**, and **VGG**.
+
+- **LeNet-5**
+
+  - The goal for this model was to identify handwritten digits in a `32x32x1` gray image. Here are the drawing of it:
+  - ![](Images/05.png)
+  - This model was published in 1998. The last layer wasn't using softmax back then.
+  - It has 60k parameters.
+  - The dimensions of the image decreases as the number of channels increases.
+  - `Conv ==> Pool ==> Conv ==> Pool ==> FC ==> FC ==> softmax` this type of arrangement is quite common.
+  - The activation function used in the paper was Sigmoid and Tanh. Modern implementation uses RELU in most of the cases.
+  - [LeCun et al., 1998. Gradient-based learning applied to document recognition]
+
+- **AlexNet**
+
+  - Named after Alex Krizhevsky who was the first author of this paper. The other authors includes Jeoffery Hinton.
+
+  - The goal for the model was the ImageNet challenge which classifies images into 1000 classes. Here are the drawing of the model:
+
+  - ![](Images/06.png)
+
+  - Summary:
+
+    - ```
+      Conv => Max-pool => Conv => Max-pool => Conv => Conv => Conv => Max-pool ==> Flatten ==> FC ==> FC ==> Softmax
+      ```
+
+  - Similar to LeNet-5 but bigger.
+
+  - Has 60 Million parameter compared to 60k parameter of LeNet-5.
+
+  - It used the RELU activation function.
+
+  - The original paper contains Multiple GPUs and Local Response normalization (RN).
+
+    - Multiple GPUs was used because the GPUs was so fast back then.
+    - Researchers proved that Local Response normalization doesn't help much so for now don't bother yourself for understanding or implementing it. 
+
+  - This paper convinced the computer vision researchers that deep learning is so important.
+
+  - [Krizhevsky et al., 2012. ImageNet classification with deep convolutional neural networks]
+
+- **VGG-16**
+
+  - A modification for AlexNet.
+  - Instead of having a lot of hyperparameters lets have some simpler network.
+  - Focus on having only these blocks:
+    - CONV = 3×3 filter, s = 1, same  
+    - MAX-POOL = 2×2 , s = 2
+  - Here are the architecture:
+    - ![](Images/07.png)
+  - This network is large even by modern standards. It has around 138 million parameters.
+    - Most of the parameters are in the fully connected layers.
+  - It has a total memory of 96MB per image for only forward propagation!
+    - Most memory are in the earlier layers.
+  - Number of filters increases from 64 to 128 to 256 to 512. 512 was made twice.
+  - Pooling was the only one who is responsible for shrinking the dimensions.
+  - There are another version called **VGG-19** which is a bigger version. But most people uses the VGG-16 instead of the VGG-19 because it does the same.
+  - VGG paper is attractive it tries to make some rules regarding using CNNs.
+  - [Simonyan & Zisserman 2015. Very deep convolutional networks for large-scale image recognition]
+
+### Residual Networks (ResNets)
+
+- Very, very deep NNs are difficult to train because of vanishing and exploding gradients problems.
+- In this section we will learn about skip connection which makes you take the activation from one layer and suddenly feed it to another layer even much deeper in NN which allows you to train large NNs even with layers greater than 100.
+- **Residual block**
+  - ResNets are built out of some Residual blocks.
+  - ![](Images/08.png)
+  - They add a shortcut/skip connection before the second activation.
+  - The authors of this block find that you can train a deeper NNs using stacking this block.
+  - [He et al., 2015. Deep residual networks for image recognition]
+- **Residual Network**
+  - Are a NN that consists of some Residual blocks.
+  - ![](Images/09.png)
+  - These networks can go deeper without hurting the performance. In the normal NN - Plain networks - the theory tell us that if we go deeper we will get a better solution to our problem, but because of the vanishing and exploding gradients problems the performance of the network suffers as it goes deeper. Thanks to Residual Network we can go deeper as we want now.
+  - ![](Images/10.png)
+  - On the left is the normal NN and on the right are the ResNet. As you can see the performance of ResNet increases as the network goes deeper.
+  - In some cases going deeper won't effect the performance and that depends on the problem on your hand.
+  - Some people are trying to train 1000 layer now which isn't used in practice. 
+  - [He et al., 2015. Deep residual networks for image recognition]
+
+### Why ResNets work
+
+- Lets see some example that illustrates why resNet work.
+
+  - We have a big NN as the following:
+
+    - ```        
+             --------
+      X --> | Big NN | --> a[l]
+             --------
+      ```
+
+  - Lets add two layers to this network as a residual block:
+
+    - ```
+             --------         -------------------------
+            |        |       |						|
+      X --> | Big NN | --> a[l] --> Layer1 --> Layer2 --> a[l+2]
+            |        |
+             --------
+      ```
+
+  - Suppose we are using RELU activations.
+
+  - Then:
+
+    - ```
+      a[l+2] = g( z[l+2] + a[l] )
+      	   = g( W[l+2] a[l+1] + b[l+2] + a[l] )
+      ```
+
+  - Then if we are using L2 regularization for example, `W[l+2]` will be zero. Lets say that `b[l+2]` will be zero too.
+
+  - Then `a[l+2] = g( a[l] ) = a[l]` with no negative values.
+
+  - This show that identity function is easy for a residual block to learn. And that why it can train deeper NNs.
+
+  - Also that the two layers we added doesn't hurt the performance of big NN we made.
+
+  - Hint: dimensions of z[l+2] and a[l] have to be the same in resNets. In case they have different dimensions what we put a matrix parameters (Which can be learned or fixed)
+
+    - `a[l+2] = g( z[l+2] + ws * a[l] ) # The added Ws should make the dimentions equal`
+    - ws also can be a zero padding.
+
+- Lets take a look at ResNet on images.
+
+  - Here are the architecture of **ResNet-34**:
+  - ![](Images/11.png)
+  - All the 3x3 Conv are same Convs.
+  - Keep it simple in design of the network.
+  - spatial size /2 => # filters x2
+  - No FC layers, No dropout is used.
+  - The dotted lines has change in dimensions. To solve then they down-sample the input by 2 and then pad zeros to match the two dimensions. There's another trick which is called bottleneck which we will explore later.
+
+- Useful concept (**Spectrum of Depth**):
+
+  - ![](Images/12.png)
+  - Taken from [icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf](icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
+
+## Object detection
+
+## Special applications: Face recognition & Neural style transfer
 
 
 These Notes was made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
