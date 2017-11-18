@@ -108,12 +108,24 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Strided convolution
 
 - Strided convolution is another piece that are used in CNNs.
+
 - We will call stride `S`
+
 - When we are making the convolution operation we used `S` to tell us the number of pixels we will jump when we are convolving filter/kernel. The last examples we described S was 1.
+
 - Now the general rule are:
-  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/2+1,(n+2p-f)/2+1` matrix. 
-- In case `(n+2p-f)/2+1` is fraction we can take **floor** of this value.
+  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s+1,(n+2p-f)/s+1` matrix. 
+
+- In case `(n+2p-f)/s+1` is fraction we can take **floor** of this value.
+
 - In math textbooks the conv operation is filpping the filter before using it. What we were doing is called cross-correlation operation but the state of art of deep learning is using this as conv operation.
+
+- Same convolutions is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
+
+  ```
+  p = (n*s - n + f - s) / 2
+  When s = 1 ==> P = (f-1) / 2
+  ```
 
 ### Convolutions over volumes
 
@@ -572,6 +584,39 @@ Here are the course summary as its given on the course [link](https://www.course
 ## Object detection
 
 ## Special applications: Face recognition & Neural style transfer
+
+## Extras
+
+### Keras
+
+- Keras is a high-level neural networks API (programming framework), written in Python and capable of running on top of several lower-level frameworks including TensorFlow, Theano, and CNTK.
+- Keras was developed to enable deep learning engineers to build and experiment with different models very quickly.
+- Just as TensorFlow is a higher-level framework than Python, Keras is an even higher-level framework and provides additional abstractions.
+- Keras will work fine for many common models.
+- Layers in Keras:
+  - Dense (Fully connected layers).
+    - A linear function followed by a non linear function.
+  - Convolutional layer.
+  - Pooling layer.
+  - Normalisation layer.
+    - A batch normalization layer.
+  - Flatten layer
+    - Flatten a matrix into vector.
+  - Activation layer
+    - Different activations include: relu, tanh, sigmoid, and softmax.
+- To train and test a model in Keras there are four steps:
+  1. Create the model.
+  2. Compile the model by calling `model.compile(optimizer = "...", loss = "...", metrics = ["accuracy"])`
+  3. Train the model on train data by calling `model.fit(x = ..., y = ..., epochs = ..., batch_size = ...)`
+  4. Test the model on test data by calling `model.evaluate(x = ..., y = ...)`
+- Summarize of step in Keras: Create->Compile->Fit/Train->Evaluate/Test
+- `Model.summary()` gives a lot of useful informations regarding your model including each layers inputs, outputs, and number of parameters at each layer.
+- To choose the Keras backend you should go to `$HOME/.keras/keras.json` and change the file to the desired backend like Theano or Tensorflow.
+
+
+
+
+
 
 
 These Notes was made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
