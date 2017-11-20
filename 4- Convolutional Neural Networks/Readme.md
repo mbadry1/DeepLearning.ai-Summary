@@ -116,7 +116,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Now the general rule are:
   -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s+1,(n+2p-f)/s+1` matrix. 
 
-- In case `(n+2p-f)/s+1` is fraction we can take **floor** of this value.
+- In case `(n+2p-f)/s + 1` is fraction we can take **floor** of this value.
 
 - In math textbooks the conv operation is filpping the filter before using it. What we were doing is called cross-correlation operation but the state of art of deep learning is using this as conv operation.
 
@@ -414,17 +414,29 @@ Here are the course summary as its given on the course [link](https://www.course
 - Lets take a look at ResNet on images.
 
   - Here are the architecture of **ResNet-34**:
-  - ![](Images/11.png)
+  - ![](Images/resNet.jpg)
   - All the 3x3 Conv are same Convs.
   - Keep it simple in design of the network.
   - spatial size /2 => # filters x2
   - No FC layers, No dropout is used.
-  - The dotted lines has change in dimensions. To solve then they down-sample the input by 2 and then pad zeros to match the two dimensions. There's another trick which is called bottleneck which we will explore later.
+  - Two main types of blocks are used in a ResNet, depending mainly on whether the input/output dimensions are same or different. You are going to implement both of them.
+  - The dotted lines is the case when the dimensions are different. To solve then they down-sample the input by 2 and then pad zeros to match the two dimensions. There's another trick which is called bottleneck which we will explore later.
 
 - Useful concept (**Spectrum of Depth**):
 
   - ![](Images/12.png)
   - Taken from [icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf](icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
+
+- Residual blocks types:
+
+  - Identity block:
+    - ![](Images/16.png)
+    - Hint the conv is followed by a batch norm `BN` before `RELU`. Dimensions here are same.
+    - This skip is over 2 layers. The skip connection can jump n connections where n>2
+    - This drawing represents [Keras](https://keras.io/) layers.
+  - The convolutional block:
+    - ![](Images/17.png)
+    - The conv can be bottleneck 1 x 1 conv
 
 ### Network in Network and 1×1 convolutions
 
@@ -612,6 +624,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Summarize of step in Keras: Create->Compile->Fit/Train->Evaluate/Test
 - `Model.summary()` gives a lot of useful informations regarding your model including each layers inputs, outputs, and number of parameters at each layer.
 - To choose the Keras backend you should go to `$HOME/.keras/keras.json` and change the file to the desired backend like Theano or Tensorflow.
+- After you create the model you can run it in a tensorflow session without compiling, training, and testing capabilities.
 
 
 
