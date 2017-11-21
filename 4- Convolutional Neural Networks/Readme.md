@@ -625,6 +625,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - `Model.summary()` gives a lot of useful informations regarding your model including each layers inputs, outputs, and number of parameters at each layer.
 - To choose the Keras backend you should go to `$HOME/.keras/keras.json` and change the file to the desired backend like Theano or Tensorflow.
 - After you create the model you can run it in a tensorflow session without compiling, training, and testing capabilities.
+- You can save your model with `model_save` and load your model using `model_load ` This will save your whole trained model to disk with the trained weights.
 
 
 
