@@ -53,7 +53,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - If your model is overfitting then it has a "high variance"
   - Your model will be alright if you balance the Bias / Variance
   - For more:
-    - ![](Images\01-_Bias_-_Variance.png)
+    - ![](Images/01-_Bias_-_Variance.png)
 - Another idea to get the bias /  variance if you don't have a 2D plotting mechanism:
   - High variance (overfitting) for example:
     - Training error: 1%
@@ -174,7 +174,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - In this technique we plot the training data and the Dev data cost together. In some steps the Dev data cost will stay still.
   - We will pick the point at which the training data graph and Dev data graph are best at.
   - We will take these parameters as the best parameters.
-    - ![](Images\02-_Early_stopping.png)
+    - ![](images/02-_Early_stopping.png)
   - This technique is not recommended because it makes us think about something else more than optimize W's and b's.
   - But its advantage is that you don't need to modify a Hyperparameter like in Regularization.
 - **Model Ensembles**:
@@ -251,7 +251,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - There is an implementation called gradient check which tells if your implementation of back prob. is right.
 - There's a numerical way to calculate the derivative
-  - ![](Images\03-_Numerical_approximation_of_gradients.png)
+  - ![](images/03-_Numerical_approximation_of_gradients.png)
 - This checking is so helpful at finding the errors in your back prob. algorithm but its slower than gradient descent.
 - Implementation of this is so simple.
 - Gradient checking:
@@ -317,7 +317,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Understanding mini-batch gradient descent
 
 - In mini batch algorithm, the cost won't go down with each step as batch algorithm do. It could contain some ups and downs but at whole it has to go down.
-  - ![](Images\04-_batch_vs_mini_batch_cost.png)
+  - ![](images/04-_batch_vs_mini_batch_cost.png)
 - Choosing mini-batch size
   - If (`mini batch size = m`)     ==>    Batch gradient descent
     - If (`mini batch size = 1`)  ==>    Stochastic gradient descent
@@ -358,7 +358,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - If we plot this it will represent averages.
 - Another imagery example:
-  - ![](Images\Nasdaq1_small.png)
+  - ![](images/Nasdaq1_small.png)
   - Taken from: [investopedia.com](investopedia.com)
 - General equation
 
@@ -375,7 +375,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Understanding exponentially weighted averages
 
 - Intuitions:
-  - ![](Images\05-_exponentially_weighted_averages_intuitions.png)
+  - ![](images/05-_exponentially_weighted_averages_intuitions.png)
 - We can implement this algorithm with more accurate results if we make a moving window. But the code is more efficient and faster using the exponentially weighted averages algorithm.
 
 - Algorithm is so simple:
@@ -442,7 +442,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - This algorithm will make the cost function move on the vertical direction slow and the horizontal direction fast.
-  - ![](Images\06-_RMSprop.png)
+  - ![](images/06-_RMSprop.png)
 
 - Ensure that `SdW` is not zero by adding a small value to it epsilon
    `W = W - learning_rate * dW/(sqrt(SdW) + epsilon)`
@@ -578,7 +578,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Fitting Batch Normalization into a neural network
 
 - Using batch norm in 3 hidden layers NN:
-  - ![](Images\bn.png)
+  - ![](images/bn.png)
 - Our NN parameters will be:
   - `W[1]`, `b[1]`, `W[2]`, `b[2]`, `W[3]`, `b[3]`, `beta[1]`, `alpha[1]`, `beta[2]`, `alpha[2]`, `beta[3]`, `alpha[3]`
 - If you are using a deep learning framework, You won't have to implement batch norm yourself.
@@ -670,7 +670,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - Example:
-  - ![](Images\07-_softmax.png)
+  - ![](images/07-_softmax.png)
 
 ### Deep learning frameworks
 
