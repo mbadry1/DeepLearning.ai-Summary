@@ -136,7 +136,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - We compare to human-level performance because a lot of deep learning algorithms in the recent days are a lot better than human level.
 - After an algorithm reaches the human level performance it doesn't get better much.
-  - ![01- Why human-level performance](Images\01-_Why_human-level_performance.png)
+  - ![01- Why human-level performance](Images/01-_Why_human-level_performance.png)
 - You won't surpass an error that's called "Bayes optimal error"
 - There aren't much error range between human-level error and Bayes optimal error.
 - Humans are quite good at lot of tasks. So long as Machine learning is worse than humans, you can:
