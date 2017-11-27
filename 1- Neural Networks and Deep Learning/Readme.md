@@ -28,12 +28,12 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Single neuron == linear regression
 - Simple NN graph:
-  - ![](Images/Others/atypical_ann.jpg)
+  - ![](Images/Others/01.jpg)
   - Image taken from [tutorialspoint.com](tutorialspoint.com)
 - RELU stands for rectified linear unit is the most popular activation function right now that makes deep NNs train faster now.
 - Hidden layers predicts connection between inputs automatically, thats what deep learning is good at.
 - Deep NN consists of more hidden layers (Deeper layers)
-  - ![](Images/Others/deep_neural_network.png)
+  - ![](Images/Others/02.png)
   - Image taken from [opennn.net](opennn.net)
 - Each Input will be connected to the hidden layer and the NN will decide the connections.
 - Supervised learning means we have the (X,Y) and we need to get the function that maps X to Y.
@@ -54,7 +54,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Deep learning is taking off for 3 reasons:
   1. Data:
      - Using this image we can conclude:
-       - ![](images/01-_scale_drives_deep_learning_progress.png)
+       - ![](images/01.png)
      - For small data NN can perform as Linear regression or SVM (Support vector machine)
      - For big data a small NN is better that SVM
      - For big data a big NN is better that a medium NN is better that small NN.
@@ -77,7 +77,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Binary classification
 
 - Mainly he is talking about how to do a logistic regression to make a binary classifier.
-  - ![log](Images/Others/log.png)
+  - ![log](Images/Others/03.png)
   - Image taken from [3.bp.blogspot.com](http://3.bp.blogspot.com)
 - He talked about an example of knowing if the current image contains a cat or not.
 - Here are some notations:
@@ -151,7 +151,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Computation graph
 
 - Its a graph that organizes the computation from left to right.
-  - ![](Images/02-_Computation_graph.png)
+  - ![](Images/02.png)
 
 ### Derivatives with a Computation Graph
 
@@ -159,14 +159,14 @@ Here are the course summary as its given on the course [link](https://www.course
   If `x -> y -> z`          (x effect y and y effects z)
   Then `d(z)/d(x) = d(z)/d(y) * d(y)/d(x)`
 - The video illustrates a big example.
-  - ![](Images/03-_Computation_derivative.png)
+  - ![](Images/03.png)
 - We compute the derivatives on a graph from right to left and it will be a lot more easier.
 - `dvar` means the derivatives of a final output variable with respect to various intermediate quantities.
 
 ### Logistic Regression Gradient Descent
 
 - In the video he discussed the derivatives of gradient decent example for one sample with two features `x1` and `x2`.
-  - ![](Images/04-_Logistic_Regression_Gradient_Descent_for_one_var.png)
+  - ![](Images/04.png)
 
 ### Gradient Descent on m Examples
 
@@ -183,7 +183,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - So we have:
-  - ![](Images/9-_LogReg.png)
+  - ![](Images/09.png)
 
 - Then from right to left we will calculate derivations compared to the result:
 
@@ -330,7 +330,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Computing a Neural Network's Output
 
 - Equations of Hidden layers:
-  - ![](Images/05-_Computing_a_Neural_Network's_Output.png)
+  - ![](Images/05.png)
 - Here are some informations about the last image:
   - `noOfHiddenNeurons = 4`
   - `Nx = 3`
@@ -489,7 +489,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - How we derived the 6 equations of the back propagation:
-  - ![](Images/06-_Backpropagation_intuition.png)
+  - ![](Images/06.png)
 
 ### Random Initialization
 
@@ -569,15 +569,15 @@ Here are the course summary as its given on the course [link](https://www.course
   - Audio ==> Low level sound features like (sss,bb) ==> Phonemes ==> Words ==> Sentences
 - Neural Researchers thinks that deep neural networks thinks like brains (Simple ==> Complex)
 - Circuit theory and deep learning:
-  - ![](Images/07-_Circuit_theory.png)
+  - ![](Images/07.png)
 - When starting on an application don't start directly by dozens of hidden layers. Try the simplest solutions (L Regression) then try the parameters then try the shallow neural network and so on.
 
 ### Building blocks of deep neural networks
 
 - Forward and back propagation for a layer l:
-  - ![Untitled](Images/Untitled.png)
+  - ![Untitled](Images/10.png)
 - Deep NN blocks:
-  - ![](Images/08-_deep_nn_blocks.png)
+  - ![](Images/08.png)
 
 ### Forward and Backward Propagation
 
