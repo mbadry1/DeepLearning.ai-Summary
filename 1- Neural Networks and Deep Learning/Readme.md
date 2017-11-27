@@ -53,8 +53,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Deep learning is taking off for 3 reasons:
   1. Data:
-     - Using this image we can conclude:
-       - ![](images/01.png)
+     - Using this image we can conclude
+       - ![](images/11.png)
      - For small data NN can perform as Linear regression or SVM (Support vector machine)
      - For big data a small NN is better that SVM
      - For big data a big NN is better that a medium NN is better that small NN.
