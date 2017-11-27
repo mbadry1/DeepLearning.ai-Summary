@@ -150,8 +150,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Computation graph
 
-- Its a graph that organizes the computation from left to right.
-  - ![](Images/02.png)
+- Its a graph that organizes the computation from left to right.,
+  - ![](Images/11.png)
 
 ### Derivatives with a Computation Graph
 
