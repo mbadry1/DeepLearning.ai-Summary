@@ -23,7 +23,7 @@ This is the forth course of the deep learning specialization at [Coursera](https
       * [Classic networks](#classic-networks)
       * [Residual Networks (ResNets)](#residual-networks-resnets)
       * [Why ResNets work](#why-resnets-work)
-      * [Network in Network and 1�1 convolutions](#network-in-network-and-11-convolutions)
+      * [Network in Network and 1�1 convolutions](#network-in-network-and-1-X-1-convolutions)
       * [Inception network motivation](#inception-network-motivation)
       * [Inception network (GoogleNet)](#inception-network-googlenet)
       * [Using Open-Source Implementation](#using-open-source-implementation)
@@ -490,11 +490,11 @@ Here are the course summary as its given on the course [link](https://www.course
     - ![](Images/17.png)
     - The conv can be bottleneck 1 x 1 conv
 
-### Network in Network and 1×1 convolutions
+### Network in Network and 1 X 1 convolutions
 
 - A 1 x 1 convolution  - We also call it Network in Network- is so useful in many CNN models.
 
-- What does a 1 × 1 convolution do? Isn't it just multiplying by a number?
+- What does a 1 X 1 convolution do? Isn't it just multiplying by a number?
 
   - Lets first consider an example:
     - Input: `6x6x1`
@@ -518,7 +518,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Replace fully connected layers with 1 x 1 convolutions as Yann LeCun believes they are the same.
 
-  - > “fully-connected layers”. There are only convolution layers with 1x1 convolution kernels and a full connection table. – [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143) 
+  - > In Convolutional Nets, there is no such thing as "fully-connected layers". There are only convolution layers with 1x1 convolution kernels and a full connection table. [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143) 
 
 - [Lin et al., 2013. Network in network]
 
@@ -541,7 +541,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - Which equals: `28 * 28 * 32 * 5 * 5 * 192 = 120 Mil` 
     - 120 Mil multiply operation still a problem in the modern day computers.
   - Using a 1 x 1 convolution we can reduce 120 mil to just 12 mil. Lets see how.
-- Using 1×1 convolution to reduce computational cost:
+- Using 1 X 1 convolution to reduce computational cost:
   - The new architecture are:
     - X0 shape is (28, 28, 192)
     - We then apply 16 (1 x 1 Convolution)
