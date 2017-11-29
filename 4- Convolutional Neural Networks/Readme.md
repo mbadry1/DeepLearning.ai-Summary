@@ -1082,16 +1082,18 @@ Here are the course summary as its given on the course [link](https://www.course
 #### What is face recognition?
 
 - Face recognition system identifies a persons face. It can work on both images or videos.
-- Liveness detection within a video face recognition system prevents the network from identifying a hard coded picture in an image. It can be learned by supervised deep learning using a dataset for live human and in-live human.
+- **<u>Liveness detection</u>** within a video face recognition system prevents the network from identifying a real  picture in an image. It can be learned by supervised deep learning using a dataset for live human and in-live human and sequence learning.
 - Face verification vs. face recognition:
   - Verification:
     - Input image, name/ID. (1 : 1)
     - Output whether the input image is that of the claimed person.
+    - "is this the claimed person?"
   - Recognition:
     - Has a database of K persons
     - Get an input image
     - Output ID if the image is any of the K persons (or “not recognized”)
-- We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9%) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given a K persons. 
+    - "who is this person?"
+- We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given a K persons. 
 
 #### One Shot Learning
 
@@ -1107,7 +1109,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 #### Siamese Network
 
-- Siamese network is the deep learning network that will implement the similarity function we talked about in the previous section.
+- We will implement the similarity function using a type of NNs called Siamease Network in which we can pass multiple inputs to the two or more networks with the same architecture and parameters.
 - Siamese network architecture are as the following:
   - ![](Images/35.png)
   - We make 2 identical conv nets which encodes an input image into a vector. In the above image the vector shape is (128, )
@@ -1117,6 +1119,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 #### Triplet Loss
 
+- Triplet Loss is one of the loss functions we can use to solve the similarity distance in a Siamese network.
 - Our learning objective in the triplet loss function is to get the distance between an **Anchor** image and a **positive** or a **negative** image.
   - Positive means same person, while negative means different person.
 - The triplet name came from that we are comparing an anchor A with a positive P and a negative N image.
@@ -1125,7 +1128,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - `||f(A) - f(P)||2  <= ||f(A) - f(N)||2`
   - Then
   - `||f(A) - f(P)||2  - ||f(A) - f(N)||2 <= 0`
-  - To make sure the NN won't get an output of zeros:
+  - To make sure the NN won't get an output of zeros easily:
   - `||f(A) - f(P)||2  - ||f(A) - f(N)||2 <= -alpha`
     - Alpha is a small number. Sometimes its called the margin.
   - Then
@@ -1133,8 +1136,8 @@ Here are the course summary as its given on the course [link](https://www.course
 - Final Loss function:
   - Given 3 images (A, P, N)
   - `L(A, P, N) = max (||f(A) - f(P)||2  - ||f(A) - f(N)||2 + alpha , 0)`
-  - `J = Sum((A[i], P[i], N[i]) , i)`
-- You need multiple images of the same person in your dataset. Then get some triplets out of your dataset.
+  - `J = Sum((A[i], P[i], N[i]) , i)` for all triplets of images.
+- You need multiple images of the same person in your dataset. Then get some triplets out of your dataset. Dataset should be big enough.
 - Choosing the triplets A, P, N:
   - During training if A, P, N are chosen randomly (Subjet to A and P are the same and A and N aren't the same) then one of the problems this constrain is easily satisfied 
     - `d(A, P) + alpha <= d (A, N)` 
@@ -1146,7 +1149,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - Find more at the paper.
 - Details are in this paper [[Schroff et al.,2015, FaceNet: A unified embedding for face recognition and clustering]](https://arxiv.org/abs/1503.03832)
 - Commercial recognition systems are trained on a large datasets like 10/100 million images.
-- There are a lot of pretrained models and parameters online.
+- There are a lot of pretrained models and parameters online for face recognition.
 
 #### Face Verification and Binary Classification
 
@@ -1162,7 +1165,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Pre-compute all the images that you are using as a comparison to the vector f(x(j))
   - When a new image that needs to be compared, get its vector f(x(i)) then put it with all the pre computed vectors and pass it to the sigmoid function.
 - This version works quite as well as the triplet loss function.
-- Available implementations for face recognition using deep learning:
+- Available implementations for face recognition using deep learning includes:
   - [Openface](https://cmusatyalab.github.io/openface/)
   - [FaceNet](https://github.com/davidsandberg/facenet)
   - [DeepFace](https://github.com/RiweiChen/DeepFace)
@@ -1175,6 +1178,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Neural style transfer takes a content image `C` and a style image `S` and generates the content image `G` with the style of style image.
 - ![](Images/37.png)
 - In order to implement this you need to look at the features extracted by the Conv net at the shallower and deeper layers.
+- It uses a previously trained convolutional network like VGG, and builds on top of that. The idea of using a network trained on a different task and applying it to a new task is called transfer learning.
 
 #### What are deep ConvNets learning?
 
@@ -1182,20 +1186,20 @@ Here are the course summary as its given on the course [link](https://www.course
   - Given this AlexNet like Conv net:
     - ![](Images/38.png)
   - Pick a unit in layer l. Find the nine image patches that maximize the unit’s activation. 
-    - Notice that a hidden unit in layer one will see relatively small portion of NN, so if you plotted it it will match a small image.
+    - Notice that a hidden unit in layer one will see relatively small portion of NN, so if you plotted it it will match a small image in the shallower layers while it will get larger image in deeper layers.
   - Repeat for other units and layers.
   - It turns out that layer 1 are learning the low level representations like colors and edges.
 - You will find out that each layer are learning more complex representations.
   - ![](Images/39.png)
 - The first layer was created using the weights of the first layer. Other images are generated using the receptive field in the image that triggered the neuron to be max.
-- A good explanation on how to get receptive field:
+- [[Zeiler and Fergus., 2013, Visualizing and understanding convolutional networks]](https://arxiv.org/abs/1311.2901)
+- A good explanation on how to get **receptive field** given a layer:
   - ![](Images/receptiveField.png)
   - From [A guide to receptive field arithmetic for Convolutional Neural Networks](https://medium.com/@nikasa1889/a-guide-to-receptive-field-arithmetic-for-convolutional-neural-networks-e0f514068807)
-- [[Zeiler and Fergus., 2013, Visualizing and understanding convolutional networks]](https://arxiv.org/abs/1311.2901)
 
 #### Cost Function
 
-- We will define a cost function for the generated image to measure how good is the generated image.
+- We will define a cost function for the generated image that measures how good it is.
 - Give a content image C, a style image S, and a generated image G:
   - `J(G) = alpha * J(C,G) + beta * J(S,G)`
   - `J(C, G)` measures how similar is the generated image to the Content image.
@@ -1217,7 +1221,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - In the previous section we showed that we need a cost function for the content image and the style image to measure how similar is them to each other.
 - Say you use hidden layer 𝑙 to compute content cost. 
   - If we choose 𝑙 to be small (like layer 1), we will force the network to get similar output to the original content image.
-  - In practice 𝑙 is not to shallow and not too deep.
+  - In practice 𝑙 is not to shallow and not too deep but in the middle.
 - Use pre-trained ConvNet. (E.g., VGG network)
 - Let `𝑎(c)[l]` and `𝑎(G)[l]` be the activation of layer 𝑙 on the images.
 - If `𝑎(c)[l]` and `𝑎(G)[l]` are similar then they will have the same content
@@ -1238,14 +1242,31 @@ Here are the course summary as its given on the course [link](https://www.course
 - Style matrix (Gram matrix):
   - Let `a(l)[i, j, k]` be the activation at l with `(i=H, j=W, k=C)`
   - Also `G(l)(s)` is matrix of shape `nc(l) x nc(l)`
+    - We call this matrix style matrix or Gram matrix.
     - In this matrix each cell will tell us how correlated is a channel to another channel.
   - To populate the matrix we use these equations to compute style matrix of the style image and the generated image.
     - ![](Images/43.png)
     - As it appears its the sum of the multiplication of each member in the matrix.
+- To compute gram matrix efficiently:
+  - Reshape activation from H X W X C to HW X C
+  - Name the reshaped activation F.
+  - `G[l] = F * F.T`
 - Finally the cost function will be as following:
   - `J(S, G) at layer l = (1/ 2 * H * W * C) || G(l)(s) - G(l)(G) ||`
 - And if you have used it from some layers
   - `J(S, G) = Sum (lamda[l]*J(S, G)[l], for all layers)`
+- Steps to be made if you want to create a tensorflow model for neural style transfer:
+  1. Create an Interactive Session.
+  2. Load the content image.
+  3. Load the style image
+  4. Randomly initialize the image to be generated
+  5. Load the VGG16 model
+  6. Build the TensorFlow graph:
+     - Run the content image through the VGG16 model and compute the content cost
+     - Run the style image through the VGG16 model and compute the style cost
+     - Compute the total cost
+     - Define the optimizer and the learning rate
+  7. Initialize the TensorFlow graph and run it for a large number of iterations, updating the generated image at every step.
 
 #### 1D and 3D Generalizations
 
