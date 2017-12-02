@@ -362,8 +362,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   Y = [1	?	1	..]
-  	[0	0	1	..]
-  	[?	1	?	..]
+      [0	0	1	..]
+      [?	1	?	..]
   ```
 
   - And in this case it will do good with the missing data. but the loss function will be different:
