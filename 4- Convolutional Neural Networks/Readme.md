@@ -1112,7 +1112,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Faster R-CNN:
     - Use convolutional network to propose regions.
     - [[Ren et. al, 2016. Faster R-CNN: Towards real-time object detection with region proposal networks]](https://arxiv.org/abs/1506.01497)
-  - Mast R-CNN:
+  - Mask R-CNN:
     - https://arxiv.org/abs/1703.06870
 
 - Most of the implementation of faster R-CNN are still slower than YOLO.
@@ -1259,8 +1259,8 @@ Here are the course summary as its given on the course [link](https://www.course
   - alpha and beta are relative weighting to the similarity and these are hyperparameters.
 - Find the generated image G:
   1. Initiate G randomly
-     - For example G: 100×100×3
-  2. Use gradient descent to minimize `𝐽(𝐺)`
+     - For example G: 100 X 100 X 3
+  2. Use gradient descent to minimize `J(G)`
      - `G = G - dG`  We compute the gradient image and use gradient decent to minimize the cost function.
 - The iterations might be as following image:
   - To Generate this:
@@ -1271,13 +1271,13 @@ Here are the course summary as its given on the course [link](https://www.course
 #### Content Cost Function
 
 - In the previous section we showed that we need a cost function for the content image and the style image to measure how similar is them to each other.
-- Say you use hidden layer 𝑙 to compute content cost. 
-  - If we choose 𝑙 to be small (like layer 1), we will force the network to get similar output to the original content image.
-  - In practice 𝑙 is not to shallow and not too deep but in the middle.
+- Say you use hidden layer `l` to compute content cost. 
+  - If we choose `l` to be small (like layer 1), we will force the network to get similar output to the original content image.
+  - In practice `l` is not to shallow and not too deep but in the middle.
 - Use pre-trained ConvNet. (E.g., VGG network)
-- Let `𝑎(c)[l]` and `𝑎(G)[l]` be the activation of layer 𝑙 on the images.
-- If `𝑎(c)[l]` and `𝑎(G)[l]` are similar then they will have the same content
-  - `J(C, G) at a layer l = 1/2 || 𝑎(c)[l] - 𝑎(c)[G] ||2`
+- Let `a(c)[l]` and `a(G)[l]` be the activation of layer `l` on the images.
+- If `a(c)[l]` and `a�(G)[l]` are similar then they will have the same content
+  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a��(c)[G] ||2`
 
 #### Style Cost Function
 
@@ -1365,10 +1365,11 @@ Here are the course summary as its given on the course [link](https://www.course
   1. Create the model.
   2. Compile the model by calling `model.compile(optimizer = "...", loss = "...", metrics = ["accuracy"])`
   3. Train the model on train data by calling `model.fit(x = ..., y = ..., epochs = ..., batch_size = ...)`
+     - You can add a validation set while training too.
   4. Test the model on test data by calling `model.evaluate(x = ..., y = ...)`
 - Summarize of step in Keras: Create->Compile->Fit/Train->Evaluate/Test
 - `Model.summary()` gives a lot of useful informations regarding your model including each layers inputs, outputs, and number of parameters at each layer.
-- To choose the Keras backend you should go to `$HOME/.keras/keras.json` and change the file to the desired backend like Theano or Tensorflow.
+- To choose the Keras backend you should go to `$HOME/.keras/keras.json` and change the file to the desired backend like Theano or Tensorflow or whatever backend you want.
 - After you create the model you can run it in a tensorflow session without compiling, training, and testing capabilities.
 - You can save your model with `model_save` and load your model using `model_load ` This will save your whole trained model to disk with the trained weights.
 
