@@ -322,7 +322,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Two main advantages of Convs are:
   - Parameter sharing.
-    - A feature detector (such as a vertical edge detector) that’s useful in one part of the image is probably useful in another part of the image.
+    - A feature detector (such as a vertical edge detector) that's useful in one part of the image is probably useful in another part of the image.
   - sparsity of connections.
     - In each layer, each output value depends only on a small number of inputs which makes it translation invariance.
 - Putting it all together:
@@ -356,7 +356,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - The dimensions of the image decreases as the number of channels increases.
   - `Conv ==> Pool ==> Conv ==> Pool ==> FC ==> FC ==> softmax` this type of arrangement is quite common.
   - The activation function used in the paper was Sigmoid and Tanh. Modern implementation uses RELU in most of the cases.
-  - [LeCun et al., 1998. Gradient-based learning applied to document recognition]
+  - [[LeCun et al., 1998. Gradient-based learning applied to document recognition]](http://ieeexplore.ieee.org/document/726791/?reload=true)
 
 - **AlexNet**
 
@@ -385,15 +385,15 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - This paper convinced the computer vision researchers that deep learning is so important.
 
-  - [Krizhevsky et al., 2012. ImageNet classification with deep convolutional neural networks]
+  - [[Krizhevsky et al., 2012. ImageNet classification with deep convolutional neural networks]](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
 
 - **VGG-16**
 
   - A modification for AlexNet.
   - Instead of having a lot of hyperparameters lets have some simpler network.
   - Focus on having only these blocks:
-    - CONV = 3×3 filter, s = 1, same  
-    - MAX-POOL = 2×2 , s = 2
+    - CONV = 3 X 3 filter, s = 1, same  
+    - MAX-POOL = 2 X 2 , s = 2
   - Here are the architecture:
     - ![](Images/07.png)
   - This network is large even by modern standards. It has around 138 million parameters.
@@ -404,7 +404,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Pooling was the only one who is responsible for shrinking the dimensions.
   - There are another version called **VGG-19** which is a bigger version. But most people uses the VGG-16 instead of the VGG-19 because it does the same.
   - VGG paper is attractive it tries to make some rules regarding using CNNs.
-  - [Simonyan & Zisserman 2015. Very deep convolutional networks for large-scale image recognition]
+  - [[Simonyan & Zisserman 2015. Very deep convolutional networks for large-scale image recognition]](https://arxiv.org/abs/1409.1556)
 
 ### Residual Networks (ResNets)
 
@@ -415,7 +415,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/08.png)
   - They add a shortcut/skip connection before the second activation.
   - The authors of this block find that you can train a deeper NNs using stacking this block.
-  - [He et al., 2015. Deep residual networks for image recognition]
+  - [[He et al., 2015. Deep residual networks for image recognition]](https://arxiv.org/abs/1512.03385)
 - **Residual Network**
   - Are a NN that consists of some Residual blocks.
   - ![](Images/09.png)
@@ -520,7 +520,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - > In Convolutional Nets, there is no such thing as "fully-connected layers". There are only convolution layers with 1x1 convolution kernels and a full connection table. [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143) 
 
-- [Lin et al., 2013. Network in network]
+- [[Lin et al., 2013. Network in network]](https://arxiv.org/abs/1312.4400)
 
 ### Inception network motivation
 
@@ -531,7 +531,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Hint that max-pool are same here.
   - Input to the inception module are 28 x 28 x 192 and the output are 28 x 28 x 256
   - We have done all the Convs and pools we might want and will let the NN learn and decide which it want to use most.
-  - [Szegedy et al. 2014. Going deeper with convolutions]
+  - [[Szegedy et al. 2014. Going deeper with convolutions]](https://arxiv.org/abs/1409.4842)
 - The problem of computational cost in Inception model:
   - If we have just focused on a 5 x 5 Conv that we have done in the last example.
   - There are 32 same filters of 5 x 5, and the input are 28 x 28 x 192.
@@ -567,7 +567,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Some times a Max-Pool block is used before the inception module to reduce the dimensions of the inputs.
 - There are a 3 Sofmax branches at different positions to push the network toward its goal. and helps to ensure that the intermediate features are good enough to the network to learn and it turns out that softmax0 and sofmax1 gives regularization effect.
 - Since the development of the Inception module, the authors and the others have built another versions of this network. Like inception v2, v3, and v4. Also there are a network that has used the inception module and the ResNet together.
-- [Szegedy et al., 2014, Going Deeper with Convolutions]
+- [[Szegedy et al., 2014, Going Deeper with Convolutions]](https://arxiv.org/abs/1409.4842)
 
 ### Using Open-Source Implementation
 
@@ -663,7 +663,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - Given an image we want to detect all the object in the image that belong to a specific classes and give their location. An image can contain more than one object with different classes.
     - ![](Images/ObjectDetection.png)
   - **Semantic Segmentation**:
-    - We want to Label each pixel in the image with a category label. Semantic Segmentation Don’t differentiate instances, only care about pixels. It detects no objects just pixels.
+    - We want to Label each pixel in the image with a category label. Semantic Segmentation Don't differentiate instances, only care about pixels. It detects no objects just pixels.
     - If there are two objects of the same class is intersected, we won't be able to separate them.
     - ![](Images/SemanticSegmentation.png)
   - **Instance Segmentation**
@@ -724,7 +724,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ```
     L(y',y) = {
       			(y1'-y1)^2 + (y2'-y2)^2 + ...           if y1 = 1
-      			(y1'-y1)^2								if y1 = 0
+      			(y1'-y1)^2						if y1 = 0
     		}
     ```
 
@@ -842,10 +842,10 @@ Here are the course summary as its given on the course [link](https://www.course
 - Non-max suppression algorithm:
   1. Lets assume that we are targeting one class as an output.
   2. Y shape should be `[Pc, bx, by, bh, hw]` Where Pc is the probability if that object occurs.
-  3. Discard all boxes with `Pc ≤ 0.6`  
+  3. Discard all boxes with `Pc < 0.6`  
   4. While there are any remaining boxes:
      1. Pick the box with the largest Pc Output that as a prediction.
-     2. Discard any remaining box with `IoU ≥0.5` with the box output in the previous step.
+     2. Discard any remaining box with `IoU < 0.5` with the box output in the previous step.
 - If there are multiple classes/object types `c` you want to detect, you should run the Non-max suppression `c` times.
 
 ### Anchor Boxes
@@ -859,8 +859,8 @@ Here are the course summary as its given on the course [link](https://www.course
   - Y = `[Pc, bx, by, bh, bw, c1, c2, c3, Pc, bx, by, bh, bw, c1, c2, c3]`  We simply have repeated  the one anchor Y.
   - The two anchor boxes you choose should be known as a shape:
     - ![](Images/28.png)
-- So Previously, each object in training image is assigned to grid cell that contains that object’s midpoint.
-- With two anchor boxes, Each object in training image is assigned to grid cell that contains object’s midpoint and anchor box for the grid cell with <u>highest IoU</u>. You have to check where your object should be based on its rectangle closest to which anchor box.
+- So Previously, each object in training image is assigned to grid cell that contains that object's midpoint.
+- With two anchor boxes, Each object in training image is assigned to grid cell that contains object's midpoint and anchor box for the grid cell with <u>highest IoU</u>. You have to check where your object should be based on its rectangle closest to which anchor box.
 - Example of data:
   - ![](Images/29.png)
   - Where the car was near the anchor 2 than anchor 1.
@@ -1143,7 +1143,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Recognition:
     - Has a database of K persons
     - Get an input image
-    - Output ID if the image is any of the K persons (or “not recognized”)
+    - Output ID if the image is any of the K persons (or not recognized)
     - "who is this person?"
 - We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given a K persons. 
 
@@ -1237,7 +1237,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Visualizing what a deep network is learning:
   - Given this AlexNet like Conv net:
     - ![](Images/38.png)
-  - Pick a unit in layer l. Find the nine image patches that maximize the unit’s activation. 
+  - Pick a unit in layer l. Find the nine image patches that maximize the unit's activation. 
     - Notice that a hidden unit in layer one will see relatively small portion of NN, so if you plotted it it will match a small image in the shallower layers while it will get larger image in deeper layers.
   - Repeat for other units and layers.
   - It turns out that layer 1 are learning the low level representations like colors and edges.
@@ -1276,13 +1276,13 @@ Here are the course summary as its given on the course [link](https://www.course
   - In practice `l` is not to shallow and not too deep but in the middle.
 - Use pre-trained ConvNet. (E.g., VGG network)
 - Let `a(c)[l]` and `a(G)[l]` be the activation of layer `l` on the images.
-- If `a(c)[l]` and `a�(G)[l]` are similar then they will have the same content
-  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a��(c)[G] ||2`
+- If `a(c)[l]` and `a(G)[l]` are similar then they will have the same content
+  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a(c)[G] ||2`
 
 #### Style Cost Function
 
 - Meaning of the ***style*** of an image:
-  - Say you are using layer 𝑙’s activation to measure ***style***.
+  - Say you are using layer l's activation to measure ***style***.
   - Define style as correlation between **activations** across **channels**. 
     - That means given an activation like this:
       - ![](Images/42.png)
