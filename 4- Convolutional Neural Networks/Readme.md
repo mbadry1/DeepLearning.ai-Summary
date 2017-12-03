@@ -557,6 +557,8 @@ Here are the course summary as its given on the course [link](https://www.course
 - It turns out that the 1 x 1 Conv won't hurt the performance.
 - **Inception module**, dimensions reduction version:
   - ![](Images/14.png)
+- Example of inception model in Keras:
+  - ![](Images/inception_block1a.png)
 
 ### Inception network (GoogleNet)
 
