@@ -62,8 +62,13 @@ Here are the course summary as its given on the course [link](https://www.course
     - X: "Harry Potter and Hermoine Granger invented a new spell."
     - Y:   1   1   0   1   1   0   0   0   0
     - Both elements has a shape of 9. 1 means its a name, while 0 means its not a name.
-  - We will index the first word by X<sup><1></sup>
-  - ​
+  - We will index the first element of X by X<sup><1></sup>, the second X<sup><2></sup> and so on.
+    - X<sup><1></sup> = Harry
+    - X<sup><2></sup> = Potter
+  - Similarly, we will index the first element of Y by Y<sup><1></sup>, the second Y<sup><2></sup> and so on.
+    - Y<sup><1></sup> = 1
+    - Y<sup><2></sup> = 1
+  - X<sup>t</sup> and Y<sup>t</sup> will get an element by index t.
 
 ### Recurrent Neural Network Model
 - ​
