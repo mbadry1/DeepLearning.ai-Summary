@@ -82,13 +82,30 @@ Here are the course summary as its given on the course [link](https://www.course
       - The sorting here is by alphabetic order.
   - Vocabulary sizes in modern applications are from 30,000 to 50,000. 100,000 is not uncommon. Some of the bigger companies uses a million.
   - To build vocabulary list, you can read all the text you have and get m words with the most occurrence, or search online for m most occurrence words.
-  - <u>The next step</u> is to create a one hot encoding sequence for each word in your dataset given the vocabulary you have created.
+  - <u>The next step</u> is to create a one **hot encoding sequence** for each word in your dataset given the vocabulary you have created.
   - While converting, what if you meet a word thats not in your dictionary?
     - Well you can add a token in the vocabulary `<UNK>` which stands for unknown text and use its index in filling your one hot vector.
   - Full example can be found here:
     - ![](Images/01.png)
 
 ### Recurrent Neural Network Model
+- Why not a standard network for sequence problems? There are two problems:
+  - Inputs, outputs can be different lengths in different examples!
+    - This can be solved in normal NNs by paddings with the maximum lengths but its not a good solution.
+  - Doesn't share features learned across different positions of text/sequence.
+    - Using a feature sharing like in CNNs can significantly reduce the number of parameters in your model. Thats what we will do in RNNs.
+- Recurrent neural networks doesn't have the two mentioned problems.
+- Lets build a RNN that solves **name entity recognition** task:
+  - ![](Images/02.png)
+  - In this problem T<sub>x</sub> = T<sub>y</sub>. In other problems where they aren't equal, the RNN architecture may be different.
+  - a<sup><0></sub> is usually initialized with zeros, but some others may initialize it randomly in some cases.
+  - There are three weight matrices here: W<sub>ax</sub>, W<sub>aa</sub>, and W<sub>ya</sub> with shapes:
+    - W<sub>ax</sub>: (NoOfHiddenNeurons, n<sub>x</sub>)
+    - W<sub>aa</sub>: (NoOfHiddenNeurons, NoOfHiddenNeurons)
+    - W<sub>ax</sub>: (n<sub>y</sub>, NoOfHiddenNeurons)
+- A lot of papers and books write the same architecture this way:
+  - ![](Images/03.png)
+  - Its harder to interpreter. Its easier to roll this drawings to the unrolled version we have descried.
 - ​
 ### Backpropagation through time
 - ​
