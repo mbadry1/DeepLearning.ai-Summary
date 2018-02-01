@@ -71,9 +71,22 @@ Here are the course summary as its given on the course [link](https://www.course
 - X<sup><t></sup> gets an element by index t.
 - T<sub>x</sub> is the size of the input sequence and T<sub>y</sub> is the size of the output sequence.
   - T<sub>x</sub> = T<sub>y</sub> = 9 in the last example although they can be different in other problems than name entity one.
-- X<sup>(i)<t></sup> is the element t of the sequence i in the training.
-- T<sub>x</sub> <sup>(i)</sup> is the size of the input sequence i.  It can be different across the sets.
-- ​
+- X<sup>(i)<t></sup> is the element t of the sequence i in the training. Similarly for Y
+- T<sub>x</sub> <sup>(i)</sup> is the size of the input sequence i.  It can be different across the sets. Similarly for Y
+- **Representing words**:
+  - We will now work in this course with **NLP** which stands for nature language processing. One of the challenges of NLP is how can we represent a word?
+  - <u>The first thing</u> we need a **vocabulary** list that contains all the words in our target sets.
+    - Example:
+      - [a ... And   ... Harry ... Potter ... Zulu ]
+      - Each word will have a unique index that it can be represented with.
+      - The sorting here is by alphabetic order.
+  - Vocabulary sizes in modern applications are from 30,000 to 50,000. 100,000 is not uncommon. Some of the bigger companies uses a million.
+  - To build vocabulary list, you can read all the text you have and get m words with the most occurrence, or search online for m most occurrence words.
+  - <u>The next step</u> is to create a one hot encoding sequence for each word in your dataset given the vocabulary you have created.
+  - While converting, what if you meet a word thats not in your dictionary?
+    - Well you can add a token in the vocabulary `<UNK>` which stands for unknown text and use its index in filling your one hot vector.
+  - Full example can be found here:
+    - ![](Images/01.png)
 
 ### Recurrent Neural Network Model
 - ​
