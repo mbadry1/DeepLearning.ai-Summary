@@ -1,6 +1,6 @@
 # Neural Networks and Deep Learning
 
-This is the first course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](deeplearning.ai). The course is taught by Andrew Ng.
+This is the first course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
 ## Table of contents
 
@@ -65,6 +65,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ## Introduction to deep learning
 
+> Be able to explain the major trends driving the rise of deep learning, and understand where and how it is applied today.
+
 ### What is a (Neural Network) NN?
 
 - Single neuron == linear regression
@@ -114,6 +116,8 @@ Here are the course summary as its given on the course [link](https://www.course
   ​
 
 ## Neural Networks Basics
+
+> Learn to set up a machine learning problem with a neural network mindset. Learn to use vectorization to speed up your models.
 
 ### Binary classification
 
@@ -333,8 +337,9 @@ Here are the course summary as its given on the course [link](https://www.course
 - [Pieter Abbeel](https://www2.eecs.berkeley.edu/Faculty/Homepages/abbeel.html) is one of the best in deep reinforcement learning.
 
 
-
 ## Shallow neural networks
+
+> Learn to build a neural network with one hidden layer, using forward propagation and backpropagation.
 
 ### Neural Networks Overview 
 
@@ -554,6 +559,8 @@ Here are the course summary as its given on the course [link](https://www.course
 - 0.01 is alright for 1 hidden neurons, but if the NN is deep this number can be changed but it will always be a small number.
 
 ## Deep Neural Networks
+
+> Understand the key computations underlying deep learning, use them to build and train deep neural networks, and apply it to computer vision.
 
 ### Deep L-layer neural network
 
