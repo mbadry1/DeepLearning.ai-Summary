@@ -71,7 +71,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - X<sup><t></sup> gets an element by index t.
 - T<sub>x</sub> is the size of the input sequence and T<sub>y</sub> is the size of the output sequence.
   - T<sub>x</sub> = T<sub>y</sub> = 9 in the last example although they can be different in other problems than name entity one.
-- X<sup>(i)<t></sup> is the element t of the sequence i in the training. Similarly for Y
+- X<sub>(i)<t></sub><sup><t></sup> is the element t of the sequence i in the training. Similarly for Y
 - T<sub>x</sub> <sup>(i)</sup> is the size of the input sequence i.  It can be different across the sets. Similarly for Y
 - **Representing words**:
   - We will now work in this course with **NLP** which stands for nature language processing. One of the challenges of NLP is how can we represent a word?
@@ -118,13 +118,74 @@ Here are the course summary as its given on the course [link](https://www.course
   - w<sub>a</sub> shape: (NoOfHiddenNeurons, NoOfHiddenNeurons + n<sub>x</sub>)
   - [a<sup><t-1></sup>, x<sup>t</sup>] shape: (NoOfHiddenNeurons + n<sub>x</sub>, 1)
 ### Backpropagation through time
-- ​
+- Lets see how backpropagation works with the RNN architecture we have developed.
+- Often, Deep learning frameworks do backpropagation automatically for you. But its useful to know how it works especially in RNNs.
+- Here is the graph:
+  - ![](Images/06.png)
+  - Where w<sup>a</sup>, b<sup>a</sup>, w<sup>y</sup>, and b<sup>y</sup> are shared across each element in a sequence.
+- We will use the cross entropy loss function:
+  - ![](Images/07.png)
+  - Where the first equation is the loss for one element and the loss for the whole sequence is given by the summation over all the calculated values.
+- Graph with losses:
+  - ![](Images/08.png)
+- The backpropagation here is called **backpropagation through time** because of the passed activation `a` from one sequence element to another.
 ### Different types of RNNs
-- ​
+- So far we have seen only one RNN architecture in which T<sub>x</sub> equals T<sub>Y</sub> always. In some other problems, they may not equal so we need different architectures.
+- The ideas in this section was inspired by Andrej Karpathy [blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). Mainly this image has all types:
+  - ![](Images/09.jpg)
+- The architecture we have descried before is called **Many to Many**.
+- In sentiment analysis problem, X is a text while Y is an integer that rangers from 1 to 5. The RNN architecture for that is **Many to One** as in Andrej Karpathy image.
+  - ![](Images/10.png)
+- A **One to Many** architecture application would be music generation.
+  - ![](Images/11.png)
+  - Note that starting the second layer we are feeding the generated output back to the network.
+- There are another interesting architecture in **Many To Many**. Applications like machine translation inputs and outputs sequences have different lengths in most of the cases. So an alternative Many To Many architecture that fits the translation would be as follows:
+  - ![](Images/12.png)
+  - There are an encoder and a decoder in the architecture. The encoder encodes the input sequence into one matrix and feed it to the decoder to generate the outputs. Encoder and decoder have different weight matrices.
+- There are another architecture which is the **attention** architecture which we will talk about in chapter 3.
 ### Language model and sequence generation
-- ​
+- RNNs do very well in language model problems. In this section we will build a language model using RNNs.
+- **What is a language model**
+  - Lets say we are solving a speech recognition problem and some one says a sentence that can be interpreted into to two sentences:
+    - The apple and **pair** salad
+    - The apple and **pear** salad
+  - **Pair** and **pear** sounds exactly the same, so how would a speech recognition application choose from the two.
+  - Thats where the language models comes. It gives a probability for the two sentences and the application decides the best based on this probability.
+- The job of a language model is given any sentence give a probability of that sentence. Also what is the next sentence probability given a sentence.
+- **How to build language modeling with RNNs?**
+  - The first thing it to get a **training set**: Large corpus of target language text.
+  - Then tokenize this training set by getting the vocabulary and then one-hot each word.
+  - Put an end of sentence token `<EOS>` with the vocabulary and include it with each converted sentence. Also like we have mentioned before use the token `<UNK>` for the unknown words.
+- Given the sentence "Cats average 15 hours of sleep a day. `<EOS>`"
+  - In training time we will use this:
+    - ![](Images/13.png)
+    - We pass to 0 vector - One hot -  to the first layer.
+  - The loss function is defined by cross entropy loss:
+    - ![](Images/14.png)
+    - `i`  is for all elements in the training set.
+- To use this model:
+  1.  For predicting the chance of **next word**, we feed the sentence to the RNN and then get the final y<sup>^<t></sup> hot vector and sort it by maximum probability.
+  2. For taking the **probability of a sentence**, we compute this:
+     - p(y<sup><1></sup>, y<sup><2></sup>, y<sup><3></sup>) = p(y<sup><1></sup>) * p(y<sup><2></sup> | y<sup><1></sup>) * p(y<sup><3></sup> | y<sup><1></sup>, y<sup><2></sup>)
+     - This is simply feeding the sentence to the RNN and multiply the probability for the given word in all the output hot encoded.
 ### Sampling novel sequences
-- ​
+- After a sequence model is trained on a language model, to check what the model has learned you can apply it on a sample novel sequence.
+- Lets see the steps of how we can sample a novel sequence from a trained sequence language model:
+  1. Given this model:
+     - ![](Images/15.png)
+  2. We first pass a<sup><0></sup> = zeros vector, and x<sup><1></sup> = zeros vector.
+  3. Then we choose a prediction from y<sup>^<1></sup> using random distribution. For example it could be "The".
+     - In Numpy this can be made using: `numpy.random.choice`
+     - This is the line where you get a random sentences each time you run a novel sequence.
+  4. We pass the last predicted word with the calculated  a<sup><1></sup>
+  5. We keep doing 3 & 4 steps for a fixed length or until we get the `<EOS>` token.
+  6. You can reject any `<UNK>` token if you mind finding it in you output.
+- So far we have build a word level language model. A **character** level language model also can be made.
+- In the character level language model the vocabulary will contain `[a-zA-Z0-9]`, space, and some special characters.
+- Cons of character level language model compared to the word level language model:
+  - There will be no `<UNK>` token.
+  - It can deal with any word.
+- But main disadvantage you will have a larger sequences! and also more computationally expensive and harder to train.
 ### Vanishing gradients with RNNs
 - ​
 ### Gated Recurrent Unit (GRU)
