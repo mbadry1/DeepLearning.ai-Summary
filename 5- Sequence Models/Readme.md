@@ -273,7 +273,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
   - In the equation this makes C<sup><t></sup> = C<sup><t-1></sup> in a lot of cases.
 - Shapes:
-  - a<sup><t></sup> shape is (NoOfHiddenNeurons + n<sub>x</sub>, 1)
+  - a<sup>\<t></sup> shape is (NoOfHiddenNeurons + n<sub>x</sub>, 1)
   - c<sup><t></sup> is the same as a<sup><t></sup>
   - c<sup>~<t></sup> is the same as a<sup><t></sup>
   - u<sup><t></sup> is also the same dimensions of a<sup><t></sup>
