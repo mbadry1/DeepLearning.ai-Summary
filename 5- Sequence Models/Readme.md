@@ -267,7 +267,18 @@ Here are the course summary as its given on the course [link](https://www.course
       | ...     | 0                          | newVal          |
       | was     | 1 (I dont need it anymore) | newerVal        |
       | full    | ..                         | ..              |
-- ​
+- Drawing for the GRUs
+  - ![](Images/19.png)
+  - Drawings like in http://colah.github.io/posts/2015-08-Understanding-LSTMs/ is so popular and makes it easier to understand GRUs and LSTMs. But Andrew Ng finds its better to look at the equations.
+- Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
+  - In the equation this makes C<sup><t></sup> = C<sup><t-1></sup> in a lot of cases.
+- Shapes:
+  - a<sup><t></sup> shape is (NoOfHiddenNeurons + n<sub>x</sub>, 1)
+  - C<sup><t></sup> is the same as a<sup><t></sup>
+  - C<sup>~<t></sup> is the same as a<sup><t></sup>
+  - U<sup><t></sup> is also the same dimensions of a<sup><t></sup>
+- The multiplication in the equations are element wise multiplication.
+- What has been descried so var is the Simplified GRU unit. Lets now describe the full one.
 
 ### Long Short Term Memory (LSTM)
 
