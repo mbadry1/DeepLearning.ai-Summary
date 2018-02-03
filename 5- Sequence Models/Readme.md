@@ -103,6 +103,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - W<sub>ax</sub>: (NoOfHiddenNeurons, n<sub>x</sub>)
     - W<sub>aa</sub>: (NoOfHiddenNeurons, NoOfHiddenNeurons)
     - W<sub>ax</sub>: (n<sub>y</sub>, NoOfHiddenNeurons)
+- The weight matrix W<sub>aa</sub> is the memory the RNN is trying to maintain from the previous layers.
 - A lot of papers and books write the same architecture this way:
   - ![](Images/03.png)
   - Its harder to interpreter. Its easier to roll this drawings to the unrolled version we have descried.
@@ -165,7 +166,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - `i`  is for all elements in the training set.
 - To use this model:
   1.  For predicting the chance of **next word**, we feed the sentence to the RNN and then get the final y<sup>^<t></sup> hot vector and sort it by maximum probability.
-  2. For taking the **probability of a sentence**, we compute this:
+  2.  For taking the **probability of a sentence**, we compute this:
      - p(y<sup><1></sup>, y<sup><2></sup>, y<sup><3></sup>) = p(y<sup><1></sup>) * p(y<sup><2></sup> | y<sup><1></sup>) * p(y<sup><3></sup> | y<sup><1></sup>, y<sup><2></sup>)
      - This is simply feeding the sentence to the RNN and multiply the probability for the given word in all the output hot encoded.
 ### Sampling novel sequences
@@ -187,10 +188,89 @@ Here are the course summary as its given on the course [link](https://www.course
   - It can deal with any word.
 - But main disadvantage you will have a larger sequences! and also more computationally expensive and harder to train.
 ### Vanishing gradients with RNNs
-- ​
+- One of the problems with naive RNNs that it runs into **vanishing gradient** problems.
+
+- An RNN that process a sequence data with the size of 10,000 time sets, has 10,000 deep layer! which is so hard to optimize.
+
+- To address the problem lets take an example. Suppose we are working with language modeling problem and there are two sequences that it tries to learn:
+
+  - "The **cat**, which already ate ........................, **was** full"
+  - "The **cats**, which already ate ........................, **were** full"
+  - The dots represents many words
+
+- What we need to learn here that "was" came with "cat" and that "were" came with "cats". The naive RNN will find it hard to get this relation.
+
+- As we have discussed in Deep neural networks, deeper networks are luckily to get into the vanishing gradient problem. In deep nets to compute the weights of the earlier layers you have to compute all the weights after these weights which causes the gradient to vanish. That also happens with RNNs with a long sequence size.
+
+  - ![](Images/16.png)
+  - For computing the word "Was", we need to compute the gradient for everything behind. Multiply by  fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
+  - There for half of your weights may not be updated properly!
+
+- In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't be identify the singular/plural words so that it give it the right grammar word.
+
+- The conclusion is that RNNs aren't good in **long term dependencies**.
+
+- > In theory, RNNs are absolutely capable of handling such “long-term dependencies.” A human could carefully pick parameters for them to solve toy problems of this form. Sadly, in practice, RNNs don’t seem to be able to learn them. http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
+- Vanishing gradients is tends to be the bigger problems with RNNs than the Exploding gradients problem. We will discuss how to solve it in the next sections.
+
+- Exploding gradients can be easily seen when your weight values become `NAN` . So one of the ways solve exploding gradient is to apply **gradient clipping** means if your gradient is more than a threshold deal with the gradient as a fixed value. 
+
+- **Extra**:
+
+  - Solution for the Exploding gradient problem:
+    - Truncated back propagation.
+      - Not to update all the weights in the way back.
+      - Not optimal. You won't update all the weights.
+    - Gradient clipping.
+  - Solution for the Vanishing gradient problem:
+    - Weight initialization.
+      - Like he initialization.
+    - Echo state networks.
+    - Use LSTM/GRU networks.
+      - Most popular.
+      - We will discuss it next.
 ### Gated Recurrent Unit (GRU)
+- GRU is an RNN type that can help solve the vanishing gradient problem and can remember the long term dependencies.
+
+- The basic RNN unit can be visualized to be like this:
+
+  - ![](Images/17.png)
+
+- We will represent the GRU with a similar drawings.
+
+- Each layer in **GRUs**  has a new variable `C` which is the memory cell. It can tell to wether memorize a something or not.
+
+- In GRUs, C<sup><t></sup> = a<sup><t></sup>
+
+- Equations of the GRUs:
+
+  - ![](Images/18.png)
+  - The update gate is between 0 and 1
+    - To understand GRUs imagine that the update gate is either 0 or 1 most of the time.
+  - So we update the memory cell based on the update cell and the previous cell.
+
+- Lets take the cat sentence example and apply it to understand this equations:
+
+  - Sentence: "The **cat**, which already ate ........................, **was** full"
+
+  - We will suppose that U is 0 or 1 and is a bit that tells us if a singular word needs to be memorized.
+
+  - Splitting the words and get values of C and U at each place:
+
+    - | Word    | Update gate(U)             | Cell memory (C) |
+      | ------- | -------------------------- | --------------- |
+      | The     | 0                          | val             |
+      | cat     | 1                          | newVal          |
+      | which   | 0                          | newVal          |
+      | already | 0                          | newVal          |
+      | ...     | 0                          | newVal          |
+      | was     | 1 (I dont need it anymore) | newerVal        |
+      | full    | ..                         | ..              |
 - ​
+
 ### Long Short Term Memory (LSTM)
+
 - ​
 ### Bidirectional RNN
 - ​
