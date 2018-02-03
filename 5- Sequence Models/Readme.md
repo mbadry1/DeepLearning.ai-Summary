@@ -274,9 +274,9 @@ Here are the course summary as its given on the course [link](https://www.course
   - In the equation this makes C<sup><t></sup> = C<sup><t-1></sup> in a lot of cases.
 - Shapes:
   - a<sup><t></sup> shape is (NoOfHiddenNeurons + n<sub>x</sub>, 1)
-  - C<sup><t></sup> is the same as a<sup><t></sup>
-  - C<sup>~<t></sup> is the same as a<sup><t></sup>
-  - U<sup><t></sup> is also the same dimensions of a<sup><t></sup>
+  - c<sup><t></sup> is the same as a<sup><t></sup>
+  - c<sup>~<t></sup> is the same as a<sup><t></sup>
+  - u<sup><t></sup> is also the same dimensions of a<sup><t></sup>
 - The multiplication in the equations are element wise multiplication.
 - What has been descried so var is the Simplified GRU unit. Lets now describe the full one.
 
