@@ -68,10 +68,10 @@ Here are the course summary as its given on the course [link](https://www.course
 - Similarly, we will index the first element of Y by Y<sup><1></sup>, the second Y<sup><2></sup> and so on.
   - Y<sup><1></sup> = 1
   - Y<sup><2></sup> = 1
-- X<sup><t></sup> gets an element by index t.
+- X<sup>\<t></sup> gets an element by index t.
 - T<sub>x</sub> is the size of the input sequence and T<sub>y</sub> is the size of the output sequence.
   - T<sub>x</sub> = T<sub>y</sub> = 9 in the last example although they can be different in other problems than name entity one.
-- X<sub>(i)<t></sub><sup><t></sup> is the element t of the sequence i in the training. Similarly for Y
+- X<sub>(i)\<t></sub><sup>\<t></sup> is the element t of the sequence i in the training. Similarly for Y
 - T<sub>x</sub> <sup>(i)</sup> is the size of the input sequence i.  It can be different across the sets. Similarly for Y
 - **Representing words**:
   - We will now work in this course with **NLP** which stands for nature language processing. One of the challenges of NLP is how can we represent a word?
@@ -165,7 +165,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - ![](Images/14.png)
     - `i`  is for all elements in the training set.
 - To use this model:
-  1.  For predicting the chance of **next word**, we feed the sentence to the RNN and then get the final y<sup>^<t></sup> hot vector and sort it by maximum probability.
+  1.  For predicting the chance of **next word**, we feed the sentence to the RNN and then get the final y<sup>^\<t></sup> hot vector and sort it by maximum probability.
   2.  For taking the **probability of a sentence**, we compute this:
      - p(y<sup><1></sup>, y<sup><2></sup>, y<sup><3></sup>) = p(y<sup><1></sup>) * p(y<sup><2></sup> | y<sup><1></sup>) * p(y<sup><3></sup> | y<sup><1></sup>, y<sup><2></sup>)
      - This is simply feeding the sentence to the RNN and multiply the probability for the given word in all the output hot encoded.
@@ -241,7 +241,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Each layer in **GRUs**  has a new variable `C` which is the memory cell. It can tell to wether memorize a something or not.
 
-- In GRUs, C<sup><t></sup> = a<sup><t></sup>
+- In GRUs, C<sup>\<t></sup> = a<sup>\<t></sup>
 
 - Equations of the GRUs:
 
@@ -271,12 +271,12 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/19.png)
   - Drawings like in http://colah.github.io/posts/2015-08-Understanding-LSTMs/ is so popular and makes it easier to understand GRUs and LSTMs. But Andrew Ng finds its better to look at the equations.
 - Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
-  - In the equation this makes C<sup><t></sup> = C<sup><t-1></sup> in a lot of cases.
+  - In the equation this makes C<sup>\<t></sup> = C<sup>\<t-1></sup> in a lot of cases.
 - Shapes:
   - a<sup>\<t></sup> shape is (NoOfHiddenNeurons + n<sub>x</sub>, 1)
-  - c<sup><t></sup> is the same as a<sup><t></sup>
-  - c<sup>~<t></sup> is the same as a<sup><t></sup>
-  - u<sup><t></sup> is also the same dimensions of a<sup><t></sup>
+  - c<sup>\<t></sup> is the same as a<sup>\<t></sup>
+  - c<sup>~\<t></sup> is the same as a<sup>\<t></sup>
+  - u<sup>\<t></sup> is also the same dimensions of a<sup>\<t></sup>
 - The multiplication in the equations are element wise multiplication.
 - What has been descried so var is the Simplified GRU unit. Lets now describe the full one.
 
