@@ -273,20 +273,52 @@ Here are the course summary as its given on the course [link](https://www.course
 - Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
   - In the equation this makes C<sup>\<t></sup> = C<sup>\<t-1></sup> in a lot of cases.
 - Shapes:
-  - a<sup>\<t></sup> shape is (NoOfHiddenNeurons + n<sub>x</sub>, 1)
+  - a<sup>\<t></sup> shape is (NoOfHiddenNeurons, 1)
   - c<sup>\<t></sup> is the same as a<sup>\<t></sup>
   - c<sup>~\<t></sup> is the same as a<sup>\<t></sup>
   - u<sup>\<t></sup> is also the same dimensions of a<sup>\<t></sup>
 - The multiplication in the equations are element wise multiplication.
-- What has been descried so var is the Simplified GRU unit. Lets now describe the full one.
+- What has been descried so var is the Simplified GRU unit. Lets now describe the full one:
+  - The full GRU contains a new gate that is used with to calculate the candidate C. The gate tells you how relevance is C<sup>\<t-1></sup> to C<sup>\<t></sup>
+  - Equations:
+    - ![](Images/20.png)
+  - Shapes are the same
+- So why we use these architectures, why don't we change them, how we know they will work, why not add another gate, why not use the simpler GRU instead of the full GRU; well researchers has experimented over years all the various types of these architectures with many many different versions and also addressing the vanishing gradient problem. They have found that full GRUs are one of the best RNN architectures  to be used for many different problems. You can make your design but put in mind that GRUs and LSTMs are standards.
 
 ### Long Short Term Memory (LSTM)
 
-- ​
+- Other unit that can make you do long term dependences is an LSTM unit and its more powerful and general than GRUs.
+- In LSTMs , C<sup>\<t></sup> != a<sup>\<t></sup>
+- Here are the equations of an LSTM unit:
+  - ![](Images/21.png)
+- In GRUs we have an update gate `U`, a relevance gate `r`, and a candidate cell variables C<sup>~\<t></sup> while in LSTMs we have an update gate `U` - Sometimes its called Input gate I -, a forget gate `F`, an output gate `O`, and a candidate cell variables C<sup>~\<t></sup>
+- Drawings - which is inspired from http://colah.github.io/posts/2015-08-Understanding-LSTMs/ -: 
+  - ![](Images/22.png)
+- Some Variants on LSTMs includes:
+  - LSTM with **peephole connections**.
+    - The normal LSTM with C<sup>\<t-1></sup> included with every gate.
+- There isn't a universal superior in choosing between LSTMs and its variants. Some win and some problems and some don't. One of the advantages of GRUs is that its simpler and can be used to build much bigger network but the LSTM is more powerful and general as we said.
 ### Bidirectional RNN
-- ​
+- There are still some ideas to make a powerful sequence model. One of them is bidirectional RNNs and another is Deep RNNs.
+- As we saw before, here are an example on Name entity recognition:
+  - ![](Images/23.png)
+- The name Teddy cannot be learned from **He** and **said**, but can be learned from **bears**.
+- BRNNs fixes this issue.
+- Here are BRNNs architecture:
+  - ![](Images/24.png)
+- Hint that BRNNs are **acyclic graph**!
+- The forward propagation goes from left to right, and from right to left. It learns from both sides.
+- To make predictions we use y<sup>^\<t><sup> by using the two activations that comes from left and right.
+- The blocks here can be any RNN block including the basic RNNs, LSTMs, or GRUs.
+- For a lot of NLP or text processing problems, a BRNN with LSTM appears to be commonly used.
+- The disadvantage of BRNNs that you need the entire sequence before you can process it. For example in live speech recognition if you used BRNNs you will need to wait for the person who speaks to stop to take the entire sequence and then make your predictions.
 ### Deep RNNs
-- 
+
+- In a lot of cases the standard one layer RNNs will solve your problem. But in some problems its useful to stack some RNN layers to make a deeper network.
+- For example, a deep RNN with 3 layers would look like this:
+  - ![](Images/25.png)
+- In feed forward deep nets we can have till 100 or 200 layer and this would be a so big network. In deep RNNs stacking 3 layers is considered deep and already expensive.
+- In some cases you might see a deep network that are connected after recurrent cell.
 
 
 ## Natural Language Processing & Word Embeddings
