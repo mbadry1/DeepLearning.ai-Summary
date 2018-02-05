@@ -1,8 +1,10 @@
+**<u>This page is just a draft right now.</u>**
+
+
+
 # Sequence Models
 
 This is the fifth and final course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [deeplearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
-
-**<u>This page is just a draft right now.</u>**
 
 ## Table of contents
 [TOC]
@@ -216,6 +218,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Exploding gradients can be easily seen when your weight values become `NAN` . So one of the ways solve exploding gradient is to apply **gradient clipping** means if your gradient is more than a threshold deal with the gradient as a fixed value. 
 
+  - ![](Images/26.png)
+
 - **Extra**:
 
   - Solution for the Exploding gradient problem:
@@ -334,10 +338,33 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Introduction to Word Embeddings
 
 #### Word Representation
-- ​
+- NLP has been revolutionized by deep learning and especially be RNNs and deep RNNs.
+- Word embeddings is a way of representing words. It lets your algorithm automatically understand the analogies between words like "king" and "queen".
+- So var we have defined our language by a vocabulary. Then represented our words with one hot vector that represent the word in the vocabulary.
+  - An image example would be:
+    - ![](Images/27.png)
+  - We will use the annotation **O** <sub>idx</sub> for any word that is represented with one hot like in the image.
+  - One of  the weaknesses of this representation is that it treats a word as a thing that itself and it doesn't allow an algorithm to generalize across words.
+    - For example: "I want a glass of **orange** ______" , a model should predict the next word as **Juice**.
+    - A similar example "I want a glass of **apple** ______" , a model won't easily predict **juice** here if it doesn't trained on it. And if so the two examples aren't related although orange and apple are similar.
+  - Inner product between any hot encoding word is zero. Also the distances between them are the same.
+- So, won't it be nice if instead of a one-hot presentation we can instead learn a featurized representation with each of these words: Man, Woman, King, Queen, Apple, and orange?
+  - ![](Images/28.png)
+  - Each word will have a 300 feature float point number for example.
+  - Each word column will be 300 dimensional vector which will be the representation.
+  - We will use the notation **e**<sub>5391</sub> to describe Man word features vector.
+  - Now if we went to the examples we descried again:
+    -  "I want a glass of **orange** ______" 
+    -  I want a glass of **apple** ______
+  - Orange and apple now shares a lot of similar features which makes it easier for an algorithm to generalize between them.
+  - We call this representation **Word embeddings**.
+- To visualize word embeddings we use t-SNE algorithm to reduce the features to 2 dimensions which makes it easy to visualize. 
+  - ![](Images/29.png)
+  - You will get a sense that more related words distance are smaller than other distances.
+- The **word embeddings** came from that we need to embed a unique vector inside an n dimensions.
 
 #### Using word embeddings
-- ​
+- Lets see how we can take the feature representation we have extracted from each word and apply it in Name entity recognition problem.
 
 #### Properties of word embeddings
 - ​
@@ -415,4 +442,4 @@ Here are the course summary as its given on the course [link](https://www.course
 
 <br><br>
 <br><br>
-These Notes was made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2018
+These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2018
