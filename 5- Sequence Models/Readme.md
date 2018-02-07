@@ -586,7 +586,42 @@ Here are the course summary as its given on the course [link](https://www.course
   - Also it will generalize even if words aren't in your dataset, for example the sentencte "Completely **<u>absent of</u>** good taste, good service, and good ambience" will be the same as the trained word!
 
 #### Debiasing word embeddings
-- 
+- We want to make sure that our word embeddings free from undesirable forms of bias, such as gender bias, ethnicity bias and so on.
+- A horrifying result on a trained word embeddings in the context of Analogies:
+  - Man : Computer_programmer as Woman : **Homemaker**
+  - Father : Doctor as Mother : **Nurse**
+- Word embeddings can reflect gender, ethnicity, age, sexual orientation, and other biases of text used to train the model.
+- Learning algorithms by general is making an important decisions! and it mustn't be biased.
+- Andrew thinks we actually have better ideas for quickly reducing the bias in AI than for quickly reducing the bias in the human race, although it still needs a lot of work to be done.
+- Addressing bias in word embeddings steps:
+  - Idea is by paper: https://arxiv.org/abs/1607.06520
+  - Given this learned embeddings: 
+    - ![](Images/48.png)
+  - We need to solve the **gender bias** here. The steps we will discuss can help solve any bias problem but we are focusing here on gender bias.
+  - Here are the steps:
+    1. Identify the direction:
+       - Calculate the difference between:
+         - e<sub>he</sub> - e<sub>she</sub>
+         - e<sub>male</sub> - e<sub>female</sub>
+         - ....
+       - Choose some k differences and average them.
+       - This will help you find this:
+         - ![](Images/49.png)
+       - By that we have found the bias direction which is 1D vector and the non-bias vector which is 299D vector.
+    2. Neutralize: For every word that is not definitional, project to get rid of bias.
+       - Babysitter and doctor needs to be neutral so we project them on nonbias with the direction of the bias:
+         - ![](Images/50.png)
+         - After that they will be equal in the term of gender.
+         - To do this the authors of the paper trained a classifier to tell the words that needs to be  neutralized or not.
+    3. Equalize pairs
+       - We want each pair to have difference only in gender. Like:
+         - Grandfather - Grandmother
+         - He - Sh
+         - Boy - Girl
+       - We want to do this because the distance between grandfather and babysitter is bigger than babysitter and grandmother:
+         - ![](Images/51.png)
+       - To do that, we move grandfather and grandmother to a point where they will be in the middle of the non-bias axis.
+       - There are some words you need to do this for in your steps. The size of these words are relatively small.
 
 
 ## Sequence models & Attention mechanism
