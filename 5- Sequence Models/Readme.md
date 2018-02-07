@@ -474,7 +474,33 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - We want to learn this to get our word embeddings model.
 
-- ​
+- Word2Vec model:
+
+  - Vocabulary size = 10,000 word
+  - Lets say that the context word are `c` and the target word are `t`
+  - We want to learn `c` to `t`
+  - we get e<sub>c</sub> by `E`. o<sub>c</sub>
+  - We then use a softmax layer to get `P(t|c)` which is y<sup>^</sup>
+  - Also we will use the cross-entropy loss function.
+  - This model is called skip-grams model.
+
+- The last model has a problem with the softmax classifier:
+
+  - ![](Images/39.png)
+  - Here we are summing 10,000 numbers which corresponds to the number of words in our vocabulary.
+  - If this number is larger say 1 million, the computation will become so slow.
+
+- The solution for the past problem is to use "**Hierarchical softmax classifier**" which works as a tree classifier.
+
+  - ![](Images/40.png)
+
+- In practice the hierarchical softmax classifier doesn't use a balanced tree like the drawn one. Common words are in the top and less common are in the bottom.
+
+- How to sample the context c?
+
+  - One way is to choose the context by random from your corpus.
+  - If you have done it that way, there will be frequent words like "the, of, a, and, to, .." that can dominate other words like "orange, apple, Mahmoud,..."
+  - So in practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the none common words.
 
 #### Negative Sampling
 - ​
