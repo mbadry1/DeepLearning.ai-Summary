@@ -365,12 +365,61 @@ Here are the course summary as its given on the course [link](https://www.course
 
 #### Using word embeddings
 - Lets see how we can take the feature representation we have extracted from each word and apply it in Name entity recognition problem.
+- Given this example - From named entity recognition - :
+  - ![](Images/30.png)
+- **Sally Johnson** is a persons name.
+- After training on this sentence the model should find out that the sentence "**Robert Lin** is an *apple* farmer" contains Robert Lin as a name, as apple and orange has near representations.
+- Now if you have tested your model with this sentence "**Mahmoud Badry** is a *durian* cultivator" the network should learn the name even if it hasn't seen the word *durian* before. Thats the power of word representations.
+- The algorithms that are used to learn **word embeddings** can exterminate billions of unlabeled text - for example 100 billion- words and learn the representation from them.
+- Transfer learning and word embeddings:
+  1. Learn word embeddings from large text corpus. say 100 billion word
+     - Or download pre-trained embedding online.
+  2. Transfer embeddings to new task with smaller training set. say 100k word.
+  3. Optimal: Continue to finetune the word embeddings with new data.
+     - This can be done if your smaller training set are big enough.
+- Also one of the advantages of using word embeddings is that it reduces the size of the input!
+  - 10,000 one hot compared to 300 features vector.
+- Word embeddings has an interesting relationship to the face recognition task:
+  - ![](Images/31.png)
+  - In this problem we encode each face into a vector and then check how similar is these vectors.
+  - The word **encode** and **embeddings** has a similar meaning here.
+  - In the word embeddings task, we are getting a vector say from e<sub>1</sub> to e<sub>300</sub> for each word in our vocabulary. We will discuss the algorithm in the next sections.
 
 #### Properties of word embeddings
-- ​
+- One of the most fascinating properties of word embeddings is that they can also help with analogy reasoning. Analogy reasoning is one of the most important applications of NLP.
+- Analogies example:
+  - Given this word embeddings table:
+    - ![](Images/32.png)
+  - Can we conclude this relation:
+    - Man ==> Woman
+    - King ==> ??
+  - Lets subtract e<sub>Man</sub> from e<sub>Woman</sub>. This will equal the vector `[-2  0  0  0]`
+  - Similar e<sub>King</sub> - e<sub>Queen</sub> = `[-2  0  0  0]`
+  - So the difference is about the gender in both.
+    - ![](Images/33.png)
+    - This vector represents the gender.
+    - This drawing is 2D visualization of the 4D vector that has been extracted by t-SNE algorithm. It was drawing for just clarification! Don't rely on t-SNE algorithm in finding parallels.
+  - So we can reformulate the problem to finding:
+    - e<sub>Man</sub> - e<sub>Woman</sub> ≈ e<sub>King</sub> - e<sub>??</sub>
+  - It can also represented mathematically by:
+    - ![](Images/34.png)
+  - It turns out that e<sub>Queen</sub> is the best solution here that gets the the similar vector.
+- Cosine similarity:
+  - Equation:
+    - ![](Images/35.png)
+    - The top part represents the inner product of `u` and `v` vectors. That will be large if the vectors are so similar.
+  - We can use this equation to calculate the similarities between word embeddings and on the analogy problem where `u` = e<sub>w</sub> and `v` = e<sub>king</sub> - e<sub>man</sub> + e<sub>woman</sub>
 
 #### Embedding matrix
-- ​
+- When you implement an algorithm to learn a word embedding, what you end up learning is an **<u>embedding matrix</u>**.
+- Lets take an example:
+  - Suppose we are using 10,000 words as our vocabulary.
+  - The algorithm should extract a matrix `E` of the shape (300, 10,000) in case we are extracting 300 features. (300, 10,001) if we have `<UNK>` token.
+    - ![](Images/36.png)
+  - If O<sub>6257</sub> is the one hot encoding of the word **orange**, then `E`. O<sub>6257</sub> equals e<sub>6257</sub> which shape is (300, 1)
+  - Generally `E`. O<sub>j</sub>  = e<sub>j</sub>
+- In the next sections you will see that we first initialize `E` randomly and then try to learn all the parameters of this matrix.
+- In practice its not efficient to use a dot multiplication when you are trying to extract the embeddings of a specific word, instead we will use slicing to slice a specific column. In keras there are a embedding layer that extracts this column with no multiplications!
 
 ### Learning Word Embeddings: Word2vec & GloVe
 
