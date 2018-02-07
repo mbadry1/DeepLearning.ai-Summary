@@ -424,9 +424,56 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Learning Word Embeddings: Word2vec & GloVe
 
 #### Learning word embeddings
-- ​
+- Lets start learning some algorithms that learns the word embeddings.
+- At start, word embeddings algorithms - with deep learning - were complex but then it started to be simpler and simpler.
+- We will start by learning the complex examples to make more sense.
+- **<u>Neural language model</u>**:
+  - Lets start by example:
+    - ![](Images/37.png)
+  - We want to build a language model so that we can predict the next word.
+  - So we use this neural network to learn the language model
+    - ![](Images/38.png)
+    - We get e<sub>j</sub> by `E`. o<sub>j</sub>
+    - NN layer has parameters `W1` and `b1` while softmax layer has parameters `W2` and `b2`
+    - Input dimension is (300*6, 1) if we the window size is 6.
+    - Here we are optimizing `E` matrix and layers parameters. We need to maximize the likelihood in our training set.
+  - This model was build on 2003 and tends to work very well to get the embeddings.
+- In the last example we took a window of 6 words that fall behind the word that we want to predict. There are other choices when we are trying to learn word embeddings.
+  - Suppose we have the example: "I want a glass of orange **juice** to go along with my cereal"
+  - To learn juice, Choices of **Context** are:
+    1. Last 4 words.
+       - We use a window of last 4 words - 4 is the best -, "<u>a glass of orange</u>" and try to predict the next word from it.
+    2. 4 words on the left and on the right.
+       - "<u>a glass of orange</u>" and "<u>to go along with</u>"
+    3. Last 1 word.
+       - "<u>orange</u>"
+    4. Nearby 1 word.
+       - "<u>glass</u>" word is near juice
+       - The idea of **skip grams** model. 
+       - The idea is so simpler and works remarkably well.
+       - We will talk about this in the next section.
 
 #### Word2Vec
+- Before presenting Word2Vec, lets talk about **Skip-grams**:
+
+  - For example if we have the sentence: "I want a glass of orange juice to go along with my cereal"
+
+  - We will choose Context and target.
+
+  - The target is choose randomly based on a window with a specific size.
+
+  - | Context | Target | How far |
+    | ------- | ------ | ------- |
+    | orange  | juice  | +1      |
+    | orange  | glass  | -2      |
+    | orange  | my     | +6      |
+
+    We have converted the problem into a supervised problem.
+
+  - This is not an easy learning problem because within -10/+10 words for example is hard.
+
+  - We want to learn this to get our word embeddings model.
+
 - ​
 
 #### Negative Sampling
