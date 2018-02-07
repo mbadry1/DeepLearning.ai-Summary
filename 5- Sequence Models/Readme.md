@@ -503,15 +503,87 @@ Here are the course summary as its given on the course [link](https://www.course
   - So in practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the none common words.
 
 #### Negative Sampling
-- ​
+- Negative sampling allows you to do something similar to the Skip-Gram model, but with a much more efficient learning algorithm. We will create a different learning problem
+
+- Given this example:
+
+  - "I want a glass of orange juice to go along with my cereal"
+
+- The sampling will look like this:
+
+- | Context | Word  | target |
+  | ------- | ----- | ------ |
+  | orange  | juice | 1      |
+  | orange  | king  | 0      |
+  | orange  | book  | 0      |
+  | orange  | the   | 0      |
+  | orange  | of    | 0      |
+
+  We get positive example by using the same skip-grams technique, a fixed window that goes around.
+
+- To generate a negative example, we pick a word randomly from the vocabulary.
+
+- Notice that we got "of" although it was appeared in the same sentence.
+
+- So the steps to generate the samples are:
+
+  1. Pick a positive context
+  2. Pick a k negative contexts from the dictionary.
+
+- K is recommended to be from 5 to 20 in small datasets. For larger ones 2 to 5.
+
+- We will have a k negative examples to 1 positive ones in the data we are collecting.
+
+- Now lets define the model that will learn this supervised learning problem:
+
+  - Lets say that the context word are `c` and the word are `t` and `y` is the target.
+  - We will apply the simple logistic regression model.
+  - ![](Images/41.png)
+  - The logistic regression model can be drawn like this:
+  - ![](Images/42.png)
+  - So we are like having 10,000 binary classification problem, and we only train k+1 classifier of them in each iteration.
+
+- Now how to select negative samples:
+
+  - We can sample according to empirical frequencies in words corpus which means according to how often different words appears. But the problem with that is that we will have more frequent words like the, of, and..
+  - The best is to sample with this equation - According to authors - :
+    - ![](Images/43.png)
 
 #### GloVe word vectors
-- ​
+- GloVe is another algorithm for learning the word embeddings, Its the simplest of them.
+- This is not used much as word2vec or gram models, but it has some enthusiasts because of its simplicity.
+- GloVe stands for Global vectors for word presentation.
+- Given this example:
+  - "I want a glass of orange juice to go along with my cereal"
+- We will choose a context and a target from the choices we have mentioned in the previous sections.
+- Then we will calculate this for every pair, X<sub>ct</sub> = # times `t` appears in context of `c`
+- X<sub>ct</sub> = X<sub>tc</sub> if we choose a window pairs, but they will not equal if we choose the previous words for example. In GloVe they use a window which means they are equal
+- The model is defined like this:
+  - ![](Images/44.png)
+- f(x) is given to help with the log 0 problem. Also it gives a weights for some words. For stop words like this, is, the it gives it a low weight, also for words that doesn't occur so much.
+- ceta and e are symmetric which helps getting the final word embedding. 
+- Conclusion on word embeddings:
+  - If this is your first try, you should try to download a pretrained model that has been made and actually works best.
+  - If you have enough data, you can try to implement one of the available algorithms.
+  - A final note that you can't guarantee that the axis used to represent the features will be well-aligned with what might be easily humanly interpretable axis like gender, and royal, and age.
 
 ### Applications using Word Embeddings
 
 #### Sentiment Classification
-- ​
+- As we have discussed before, Sentiment classification is the process of finding if a text has a positive or a negative review. Its so useful in NLP and is used in so many applications. An example would be:
+  - ![](Images/45.png)
+- One of the challenges with it, is that you might haven't a huge labeled training data for it, but using word embeddings can help getting rid of this.
+- The common dataset sizes varies from 10,000 to 100,000 words.
+- A simple sentiment classification model would be like this:
+  - ![](Images/46.png)
+  - The embedding matrix may have been trained on say 100 billion words.
+  - Number of features given a word is 300.
+  - We can use **sum** or **average** given all the words then pass it to a softmax classifier. That makes this classifier works for short or long sentences.
+- One of the problems with this simple model is that it ignores words order! for example "Completely lacking in **good** taste, **good** service, and **good** ambience" has the word good 3 times but its a negative review!
+- A better model uses an RNN for solving this problem:
+  - ![](Images/47.png)
+  - And so if you train this algorithm, you end up with a pretty decent sentiment classification algorithm.
+  - Also it will generalize even if words aren't in your dataset, for example the sentencte "Completely **<u>absent of</u>** good taste, good service, and good ambience" will be the same as the trained word!
 
 #### Debiasing word embeddings
 - 
