@@ -407,6 +407,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Cosine similarity:
   - Equation:
     - ![](Images/35.png)
+    - $$\text{CosineSimilarity(u, v)} = \frac {u . v} {||u||_2 ||v||_2} = cos(\theta)$$
     - The top part represents the inner product of `u` and `v` vectors. That will be large if the vectors are so similar.
   - We can use this equation to calculate the similarities between word embeddings and on the analogy problem where `u` = e<sub>w</sub> and `v` = e<sub>king</sub> - e<sub>man</sub> + e<sub>woman</sub>
 
@@ -565,6 +566,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Conclusion on word embeddings:
   - If this is your first try, you should try to download a pretrained model that has been made and actually works best.
   - If you have enough data, you can try to implement one of the available algorithms.
+  - Because word embeddings are very computationally expensive to train, most ML practitioners will load a pre-trained set of embeddings.
   - A final note that you can't guarantee that the axis used to represent the features will be well-aligned with what might be easily humanly interpretable axis like gender, and royal, and age.
 
 ### Applications using Word Embeddings
@@ -631,9 +633,34 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Various sequence to sequence architectures
 
 #### Basic Models
-- ​
+- In this section we will learn about sequence to sequence - Many to Many -  models that are useful in various applications includes machine translation and speech recognition.
+- Lets start by the basic model:
+  - Given this machine translation problem in which X is a French sequence and Y is an English sequence.
+    - ![](Images/52.png)
+  - Our architecture will include **encoder** and **decoder**.
+  - The encoder is built with RNNs - LSTM or GRU are included - and takes the input sequence and then outputs a vector that should represent the whole input.
+  - After that the decoder network, are also built with RNNs and outputs the output sequence using the vector that has been built by the encoder.
+  - ![](Images/53.png)
+  - These ideas are from these papers:
+    - [[Sutskever](https://arxiv.org/abs/1409.3215) et al., 2014. Sequence to sequence learning with neural networks]
+    - [[Cho et](https://arxiv.org/abs/1406.1078) al., 2014. Learning phrase representations using RNN encoder-decoder for statistical machine translation]
+- With an architecture similar to the one previously mentioned works for image captioning problem:
+  - In this problem X is an image, while Y is a sentence.
+  - The model architecture image:
+    - ![](Images/54.png)
+  - The architecture uses a CNN pretrained AlexNet as an encoder for the image, and the decoder is an RNN.
+  - The ideas are from these papers (They share similar ideas):
+    - [[Maoet](https://arxiv.org/abs/1412.6632). al., 2014. Deep captioning with multimodal recurrent neural networks]
+    - [[Vinyalset](https://arxiv.org/abs/1411.4555). al., 2014. Show and tell: Neural image caption generator]
+    - [[Karpathy](https://cs.stanford.edu/people/karpathy/cvpr2015.pdf) and Li, 2015. Deep visual-semantic alignments for generating imagedescriptions]
 
 #### Picking the most likely sentence
+- There are some similarities between the language model we have learned previously, and the machine translation model we have just discussed, but there are some differences as well.
+- The language model we have learned as so similar to the decoder of the machined translation model, except for a<sup>0</sup>
+  - ![](Images/55.png)
+- The problems formations also are different:
+  - In language model: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup>)
+  - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | y<sup>\<x></sup>, ....x<sup>\<Tx></sup>)
 - ​
 
 #### Beam Search
