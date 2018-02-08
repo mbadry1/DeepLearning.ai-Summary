@@ -661,13 +661,39 @@ Here are the course summary as its given on the course [link](https://www.course
 - The problems formations also are different:
   - In language model: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup>)
   - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | y<sup>\<x></sup>, ....x<sup>\<Tx></sup>)
-- ​
+- What we don't want in machine translation model, is not to sample the output at random. This may provide some choices as an output. Sometimes you may sample a bad output.
+  - Example: 
+    - X = "Jane visite l’Afrique en septembre."
+    - Y may be:
+      - Jane is visiting Africa in September.
+      - Jane is going to be visiting Africa in September.
+      - In September, Jane will visit Africa.
+- So we need to get the best output, this can be take by the equation:
+  - ![](Images/56.png)
+- The most common algorithm is the beam search, which we will explain in the next section.
+- Why not use greedy search? Why not get the best choices each time?
+  - It turns out that this approach doesn't really work!
+  - Lets explain it with an example:
+    - The best output for the example we talked about is "Jane is visiting Africa in September."
+    - Suppose that you when you are choosing with greedy approach, the first two words were "Jane is", the word that may come after that will be "going" as "going" is the most common word that comes after "Noun is" so the result may look like this: "Jane is going to be visiting Africa in September." and that isn't the best/optimal solution.
+- So what is better than greedy approach, is trying to get an approximate solution, that will try to maximize the output.
 
 #### Beam Search
-- ​
+- Beam search is the most widely used algorithm to get the best output sequence.
+- To illustrate the algorithm we will be stick with the example from the previous section. We need Y = "Jane is visiting Africa in September."
+- The algorithm has a parameter `B`  which is the beam width. Lets take `B = 3` which means the algorithm will get 3 outputs at a time.
+- For the first step you will get ["in", "jane", "september"] words that are the best candidates.
+- Then for each word in the first output, get B words from the 3 where the best are the result of multiplying both probabilities. Se we will have then ["In September", "jane is", "jane visit"]. Notice that we automatically ignored September.
+- Repeat the same process and get the best B words for ["September", "is", "visit"]  and so so.
+- In this algorithm, keep only B instances of your network.
+- If `B = 1` this will become the greedy search.
 
 #### Refinements to Beam Search
-- ​
+- In the previous section we have discussed the basic beam search. In this section we will try to do some refinements to it to work even better.
+- In beam search we are trying to optimize:
+  - ![](Images/56.png)
+- And to do that we multiply:
+  - P(y<sup>\<1></sup> | x) * P(y<sup>\<2></sup> | x, y<sup>\<1></sup>) * ..... P(y<sup>\<t></sup> | x, y<sup>\<y(t-1)></sup>)
 
 #### Error analysis in beam search
 - ​
