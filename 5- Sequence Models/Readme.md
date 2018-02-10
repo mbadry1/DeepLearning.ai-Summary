@@ -1,13 +1,55 @@
-**<u>This page is just a draft right now.</u>**
-
-
-
 # Sequence Models
 
 This is the fifth and final course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [deeplearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
 ## Table of contents
-[TOC]
+* [Sequence Models](#sequence-models)
+   * [Table of contents](#table-of-contents)
+   * [Course summary](#course-summary)
+   * [Recurrent Neural Networks](#recurrent-neural-networks)
+      * [Why sequence models](#why-sequence-models)
+      * [Notation](#notation)
+      * [Recurrent Neural Network Model](#recurrent-neural-network-model)
+      * [Backpropagation through time](#backpropagation-through-time)
+      * [Different types of RNNs](#different-types-of-rnns)
+      * [Language model and sequence generation](#language-model-and-sequence-generation)
+      * [Sampling novel sequences](#sampling-novel-sequences)
+      * [Vanishing gradients with RNNs](#vanishing-gradients-with-rnns)
+      * [Gated Recurrent Unit (GRU)](#gated-recurrent-unit-gru)
+      * [Long Short Term Memory (LSTM)](#long-short-term-memory-lstm)
+      * [Bidirectional RNN](#bidirectional-rnn)
+      * [Deep RNNs](#deep-rnns)
+      * [Back propagation with RNNs](#back-propagation-with-rnns)
+   * [Natural Language Processing &amp; Word Embeddings](#natural-language-processing--word-embeddings)
+      * [Introduction to Word Embeddings](#introduction-to-word-embeddings)
+         * [Word Representation](#word-representation)
+         * [Using word embeddings](#using-word-embeddings)
+         * [Properties of word embeddings](#properties-of-word-embeddings)
+         * [Embedding matrix](#embedding-matrix)
+      * [Learning Word Embeddings: Word2vec &amp; GloVe](#learning-word-embeddings-word2vec--glove)
+         * [Learning word embeddings](#learning-word-embeddings)
+         * [Word2Vec](#word2vec)
+         * [Negative Sampling](#negative-sampling)
+         * [GloVe word vectors](#glove-word-vectors)
+      * [Applications using Word Embeddings](#applications-using-word-embeddings)
+         * [Sentiment Classification](#sentiment-classification)
+         * [Debiasing word embeddings](#debiasing-word-embeddings)
+   * [Sequence models &amp; Attention mechanism](#sequence-models--attention-mechanism)
+      * [Various sequence to sequence architectures](#various-sequence-to-sequence-architectures)
+         * [Basic Models](#basic-models)
+         * [Picking the most likely sentence](#picking-the-most-likely-sentence)
+         * [Beam Search](#beam-search)
+         * [Refinements to Beam Search](#refinements-to-beam-search)
+         * [Error analysis in beam search](#error-analysis-in-beam-search)
+         * [BLEU Score](#bleu-score)
+         * [Attention Model Intuition](#attention-model-intuition)
+         * [Attention Model](#attention-model)
+      * [Speech recognition - Audio data](#speech-recognition---audio-data)
+         * [Speech recognition](#speech-recognition)
+         * [Trigger Word Detection](#trigger-word-detection)
+   * [Extras](#extras)
+      * [Machine translation attention model (From notebooks)](#machine-translation-attention-model-from-notebooks)
+
 
 ## Course summary
 Here are the course summary as its given on the course [link](https://www.coursera.org/learn/nlp-sequence-models):
@@ -915,7 +957,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/83.png)
   - There are two separate LSTMs in this model. Because the one at the bottom of the picture is a Bi-directional LSTM and comes *before* the attention mechanism, we will call it *pre-attention* Bi-LSTM. The LSTM at the top of the diagram comes *after* the attention mechanism, so we will call it the *post-attention* LSTM. The pre-attention Bi-LSTM goes through $T_x$ time steps; the post-attention LSTM goes through $T_y$ time steps. 
   - The post-attention LSTM passes $s^{\langle t \rangle}, c^{\langle t \rangle}$ from one time step to the next. In the lecture videos, we were using only a basic RNN for the post-activation sequence model, so the state captured by the RNN output activations $s^{\langle t\rangle}$. But since we are using an LSTM here, the LSTM has both the output activation $s^{\langle t\rangle}$ and the hidden cell state $c^{\langle t\rangle}$. However, unlike previous text generation examples (such as Dinosaurus in week 1), in this model the post-activation LSTM at time $t$ does will not take the specific generated $y^{\langle t-1 \rangle}$ as input; it only takes $s^{\langle t\rangle}$ and $c^{\langle t\rangle}$ as input. We have designed the model this way, because (unlike language generation where adjacent characters are highly correlated) there isn't as strong a dependency between the previous character and the next character in a YYYY-MM-DD date. 
--  What one "Attention" step does to calculate the attention variables $\alpha^{\langle t, t' \rangle}$, which are used to compute the context variable $context^{\langle t \rangle}$ for each timestep in the output ($t=1, \ldots, T_y$). 
+- What one "Attention" step does to calculate the attention variables $\alpha^{\langle t, t' \rangle}$, which are used to compute the context variable $context^{\langle t \rangle}$ for each timestep in the output ($t=1, \ldots, T_y$). 
   - ![](Images/84.png)
   - The diagram uses a `RepeatVector` node to copy $s^{\langle t-1 \rangle}$'s value $T_x$ times, and then `Concatenation` to concatenate $s^{\langle t-1 \rangle}$ and $a^{\langle t \rangle}$ to compute $e^{\langle t, t'}$, which is then passed through a softmax to compute $\alpha^{\langle t, t' \rangle}$. 
 
