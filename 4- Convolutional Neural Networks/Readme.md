@@ -1,4 +1,4 @@
-# Convolutional Neural Networks
+﻿# Convolutional Neural Networks
 
 This is the forth course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
@@ -23,7 +23,7 @@ This is the forth course of the deep learning specialization at [Coursera](https
       * [Classic networks](#classic-networks)
       * [Residual Networks (ResNets)](#residual-networks-resnets)
       * [Why ResNets work](#why-resnets-work)
-      * [Network in Network and 1�1 convolutions](#network-in-network-and-1-X-1-convolutions)
+      * [Network in Network and 1×1 convolutions](#network-in-network-and-1-X-1-convolutions)
       * [Inception network motivation](#inception-network-motivation)
       * [Inception network (GoogleNet)](#inception-network-googlenet)
       * [Using Open-Source Implementation](#using-open-source-implementation)
