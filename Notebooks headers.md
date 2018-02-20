@@ -4,7 +4,37 @@ In this document, i present the whole notebook assignments headers of [deeplearn
 
 ## Table of contents
 
-[TOC]
+* [Notebooks headers](#notebooks-headers)
+   * [Table of contents](#table-of-contents)
+   * [Neural Networks and Deep Learning](#neural-networks-and-deep-learning)
+      * [Python Basics with Numpy (optional assignment)](#python-basics-with-numpy-optional-assignment)
+      * [Logistic Regression with a Neural Network mindset](#logistic-regression-with-a-neural-network-mindset)
+      * [Planar data classification with one hidden layer](#planar-data-classification-with-one-hidden-layer)
+      * [Building your Deep Neural Network: Step by Step](#building-your-deep-neural-network-step-by-step)
+      * [Deep Neural Network for Image Classification: Application](#deep-neural-network-for-image-classification-application)
+   * [Improving Deep Neural Networks](#improving-deep-neural-networks)
+      * [Initialization](#initialization)
+      * [Regularization](#regularization)
+      * [TensorFlow Tutorial](#tensorflow-tutorial)
+      * [Optimization Methods](#optimization-methods)
+      * [Gradient Checking](#gradient-checking)
+   * [Structuring Machine Learning Projects](#structuring-machine-learning-projects)
+   * [Convolutional Neural Networks](#convolutional-neural-networks)
+      * [Convolutional Neural Networks: Step by Step](#convolutional-neural-networks-step-by-step)
+      * [Convolutional Neural Networks: Application](#convolutional-neural-networks-application)
+      * [Keras tutorial - the Happy House](#keras-tutorial---the-happy-house)
+      * [Residual Networks](#residual-networks)
+      * [Deep Learning &amp; Art: Neural Style Transfer](#deep-learning--art-neural-style-transfer)
+      * [Autonomous driving - Car detection](#autonomous-driving---car-detection)
+   * [Sequence Models](#sequence-models)
+      * [Building a recurrent neural network - step by step](#building-a-recurrent-neural-network---step-by-step)
+      * [Dinosaur Island -- Character-level language model](#dinosaur-island----character-level-language-model)
+      * [Jazz improvisation with LSTM](#jazz-improvisation-with-lstm)
+      * [Emojify](#emojify)
+      * [Word Vector Representation](#word-vector-representation)
+      * [Machine Translation (Neural Machine Translation)](#machine-translation-neural-machine-translation)
+      * [Trigger word detection](#trigger-word-detection)
+
 
 ## Neural Networks and Deep Learning
 
