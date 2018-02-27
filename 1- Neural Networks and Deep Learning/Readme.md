@@ -287,12 +287,12 @@ Here are the course summary as its given on the course [link](https://www.course
 - As an input we have a matrix `X` and its `[Nx, m]` and a matrix `Y` and its `[Ny, m]`.
 - We will then compute at instance `[z1,z2...zm] = W' * X + [b,b,...b]`. This can be written in python as:
 
-    Z = np.dot(W.T,X) + b    #Vectorization Then broadcasting, Z shape is (1, m)
+    		Z = np.dot(W.T,X) + b    #Vectorization Then broadcasting, Z shape is (1, m)
     		A = 1 / 1 + np.exp(-Z)   #Vectorization, A shape is (1, m)
 
 - Vectorizing Logistic Regression's Gradient Output:
 
-   dz = A - Y   #Vectorization, dz shape is (1, m)
+   	dz = A - Y   #Vectorization, dz shape is (1, m)
    	dw = np.dot(X,dz.T)/m 	#Vectorization, dw shape is (Nx, 1)
    	db = dz.sum()/m 	#Vectorization, dz shape is (1, 1)
 
@@ -452,7 +452,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - If we removed the activation function from our algorithm that can be called linear activation function.
 - Linear activation function will output linear activations
-  - What ever hidden layers you add, the activation will be always linear like logistic regression (So its useless in a lot of complex problems)
+  - Whatever hidden layers you add, the activation will be always linear like logistic regression (So its useless in a lot of complex problems)
 - You might use this in one place, If the output is real numbers, you can use linear activation function in the output layer.
 
 ### Derivatives of activation functions
@@ -646,13 +646,13 @@ Here are the course summary as its given on the course [link](https://www.course
   dW[l] = (dZ[l]A[l-1].T) / m
   db[l] = sum(dZ[l])/m                # Dont forget axis=1, keepdims=True
   dA[l-1] = w[l].T * dZ[1]            # The multiplication here are a dot product.
-  Output dA[l-1], dW[1], db[1]
+  Output dA[l-1], dW[l], db[l]
   ```
 
 - If we have used our loss function then:
 
   ```
-  dA[L] = sum(-(y/a) + ((1-y)/(1-a)))
+  dA[L] = (-(y/a) + ((1-y)/(1-a)))
   ```
 
 ### Parameters vs Hyperparameters
