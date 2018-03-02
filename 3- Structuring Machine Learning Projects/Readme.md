@@ -176,7 +176,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![01- Why human-level performance](Images/01-_Why_human-level_performance.png)
 - You won't surpass an error that's called "Bayes optimal error"
 - There aren't much error range between human-level error and Bayes optimal error.
-- Humans are quite good at lot of tasks. So long as Machine learning is worse than humans, you can:
+- Humans are quite good at lot of tasks. So as long as Machine learning is worse than humans, you can:
   - Get labeled data from humans.
   - Gain insight from manual error analysis. (Why did a person get it right?)
   - Better analysis of bias/variance
