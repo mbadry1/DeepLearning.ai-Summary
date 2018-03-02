@@ -87,8 +87,19 @@ Here are the course summary as its given on the course [link](https://www.course
 - Its better and faster to set a Single number evaluation metric to your project before you start it.
 - Difference between precision and recall (In cat classification example):
   - Suppose we run the classifier on 10 images which are 5 cats and 5 non-cats. The classifier identifies that there are 4 cats. but he identified 1 wrong cat.
+
+  - Confusion matrix:
+
+    - |             | Cat  | Non-Cat |
+      | ----------- | ---- | ------- |
+      | **Cat**     | 3    | 2       |
+      | **Non-Cat** | 1    | 4       |
+
   - **Precision**: percentage of true cats in the recognized result. per = 3/4
+
   - **Recall**: percentage of true recognition in the whole dataset. rec = 3/5
+
+  - **Accuracy**= 3/10
 - Using a precision/recall for evaluation is good in a lot of cases they doesn't tell you which is better. Ex:
 
   | Classifier | Precision | Recall |
