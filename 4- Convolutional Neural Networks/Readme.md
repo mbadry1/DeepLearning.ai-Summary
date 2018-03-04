@@ -286,7 +286,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Now we will deal with a full CNN example. This example is something like the ***LeNet-5*** that was invented by Yann Lecun.
   - Input Image are:   `a0 = 32x32x3`
-    - `n0 = 39` and `nc0 = 3`
+    - `n0 = 32` and `nc0 = 3`
   - First layer (Conv layer):        `#Conv1`
     - `f1 = 5`, `s1 = 1`, and `p1 = 0`
     - `number of filters = 6`
@@ -343,7 +343,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - **LeNet-5**
   - **AlexNet**
   - **VGG**
-- The best CNN architecture that won the last ImageNet competation is called **ResNet** and it has 152 layers!
+- The best CNN architecture that won the last ImageNet competition is called **ResNet** and it has 152 layers!
 - There are also an architecture called **Inception** that was made by Google that are very useful to learn and apply to your tasks.
 - Reading and trying the mentioned models can boost you and give you a lot of ideas to solve your task.
 

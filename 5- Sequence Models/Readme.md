@@ -115,7 +115,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - X<sup>\<t></sup> gets an element by index t.
 - T<sub>x</sub> is the size of the input sequence and T<sub>y</sub> is the size of the output sequence.
   - T<sub>x</sub> = T<sub>y</sub> = 9 in the last example although they can be different in other problems than name entity one.
-- X<sub>(i)\<t></sub><sup>\<t></sup> is the element t of the sequence i in the training. Similarly for Y
+- X<sub>(i)</sub><sup>\<t></sup> is the element t of the sequence i in the training. Similarly for Y
 - T<sub>x</sub> <sup>(i)</sup> is the size of the input sequence i.  It can be different across the sets. Similarly for Y
 - **Representing words**:
   - We will now work in this course with **NLP** which stands for nature language processing. One of the challenges of NLP is how can we represent a word?
