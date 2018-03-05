@@ -36,6 +36,11 @@ At last I've successfully completed the specialization and earned my [certificat
 
 
 
+## Similar Notes
+
+- Beautifully drawn notes by Tess Ferrandez:
+  - https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng
+
 ## Reviews
 
 As [DeepLearning.ai](https://deeplearning.ai) is one of the most popular courses in the field of AI/ML/DL, there are some good reviews regarding some or whole of the specialization courses.

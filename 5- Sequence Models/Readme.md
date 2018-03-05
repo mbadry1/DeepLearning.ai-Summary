@@ -151,7 +151,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - A lot of papers and books write the same architecture this way:
   - ![](Images/03.png)
   - Its harder to interpreter. Its easier to roll this drawings to the unrolled version we have descried.
-- In the discussed RNN architecture,  the current output y<sup>^t</sup> depends on the previous inputs and activations.
+- In the discussed RNN architecture,  the current output y<sup>^\<t></sup> depends on the previous inputs and activations.
 - Lets have this example ' He Said, "Teddy Roosevelt was a great president"  '. In this example Teddy is a person name but we know that from the word **President** that came after Teddy not from **He** and **said** that is before it.
 - So limitation of the discussed architecture is that it learns from behind. To address this problem we will later discuss **Bidirectional** RNNs  (BRNNs).
 - Now lets discuss the forward propagation equations on the discussed architecture:
