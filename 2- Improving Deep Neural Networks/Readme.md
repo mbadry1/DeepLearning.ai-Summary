@@ -261,8 +261,8 @@ Here are the course summary as its given on the course [link](https://www.course
     ```
 
 - The last example explains that the derivatives will be decreased/Increased exponentially.
-- So If W > I (Identity matrix)     The weights will vanish.
-- And If W < I (Identity matrix)     The weights will explode.
+- So If W > I (Identity matrix)     The weights will explode.
+- And If W < I (Identity matrix)     The weights will vanish.
 - Recently Microsoft trained 152 layers (ResNet)! which is a really big number.
 
 ### Weight Initialization for Deep Networks
