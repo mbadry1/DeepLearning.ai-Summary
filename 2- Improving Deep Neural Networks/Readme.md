@@ -207,7 +207,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - For example in a computer vision data:
     - You can flip all your pictures horizontally this will give you m more data.
     - You could also take a random position and rotation in an image to get more data.
-  - For example in OCR, you'll need the distort the digits.
+  - For example in OCR, you'll need to distort the digits.
   - This technique's new data aren't good as the real independent data, but still can be used as a Regularization technique.
 - **Early stopping**:
   - In this technique we plot the training data and the Dev data cost together. In some steps the Dev data cost will stay still.
@@ -261,7 +261,7 @@ Here are the course summary as its given on the course [link](https://www.course
     ```
 
 - The last example explains that the derivatives will be decreased/Increased exponentially.
-- So If W > I (Identity matrix)     The weights will explode.
+- So If W > I (Identity matrix)     The weights will vanish.
 - And If W < I (Identity matrix)     The weights will explode.
 - Recently Microsoft trained 152 layers (ResNet)! which is a really big number.
 
