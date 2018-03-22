@@ -135,9 +135,9 @@ Here are the course summary as its given on the course [link](https://www.course
   - The normal cost function that we want to minimize is:
      `J(w,b) = (1/m) * Sum(L(y(i),y'(i)))`
   - The L2 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y'(i),y'(i))) + (Lmda/2m) * ||W||2 `
+    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * ||W||2 `
   - The L1 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y'(i),y'(i))) + (Lmda/2m) * (||W||)`
+    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * (||W||)`
   - The L1 Regularization version makes a lot of w values become zeros, which makes the model size is small.
   - L2 Regularization is being used much often.
   - `Lmda` here is the Regularization parameter (Hyperparameter)
@@ -145,9 +145,9 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Regularization For NN:
   - The normal cost function that we want to minimize is:
-    `J(W1,b1...,WL,bL) = (1/m) * Sum(L(y'(i),y'(i)))`
+    `J(W1,b1...,WL,bL) = (1/m) * Sum(L(y(i),y'(i)))`
   - The L2 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y'(i),y'(i))) + (Lmda/2m) * Sum((||W[l]||) ^2)`
+    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * Sum((||W[l]||) ^2)`
   - We stack the matrix as one vector `(mn,1)` and then we apply `squrt(w1^2+w2^2.....)`
   - To do back propagation (old way):
 
@@ -315,7 +315,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - If algorithm fails grad check, look at components to try to identify the bug.
 - Remember if you use the normal Regularization to add the value of the additional check to your equation
 
-    (lamda/2m)sum(W[l])
+    `(lamda/2m)sum(W[l])`
 
 - Gradient checking doesn't work with dropout.
   - because J is not consistent.
