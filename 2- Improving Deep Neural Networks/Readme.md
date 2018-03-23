@@ -313,10 +313,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Don't use the gradient-checking algorithm for all the calculation because its a much slow algorithm
 - The gradient-checking is for debugging.
 - If algorithm fails grad check, look at components to try to identify the bug.
-- Remember if you use the normal Regularization to add the value of the additional check to your equation
-
-    `(lamda/2m)sum(W[l])`
-
+- Don't forget to add `(lamda/2m)sum(W[l])` to `J` if you are using L1 or L2 regularization.
 - Gradient checking doesn't work with dropout.
   - because J is not consistent.
 - Run gradient checking at random initialization and train the network for a while maybe there's a bug that are not on the first iteration.
