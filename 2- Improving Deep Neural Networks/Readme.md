@@ -76,7 +76,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - You will try to build a model upon training set then try to make the Dev set to work as much as possible. Then after your model is ready you try and evaluate the testing set.
 - so the trend on the ratio of splitting the models:
   - If size of the  dataset is 100 to 1000000  ==> 60/20/20
-  - If size of the  dataset is 1000000  to INF  ==> 99/1/1 or  99.5/0.25/0.25
+  - If size of the  dataset is 1000000  to INF  ==> 98/1/1 or  99.5/0.25/0.25
 - The trend now gives the training data the biggest sets.
 - Make sure the Training/Dev/test set is coming from the same distribution.
   - For example if cat training pictures is from the web and the Dev/test pictures are from users cell phone they will dismatch. The better is to make them one distribution.
