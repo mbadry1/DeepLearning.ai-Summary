@@ -784,7 +784,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Turning FC layer into convolutional layers (predict image class from four classes):
   - ![](Images/19.png)
-  - As you can see in the above image, we turned the FC layer into a Conv layer using a convolution with the width and height of the filter is the same as the with and height of the input.
+  - As you can see in the above image, we turned the FC layer into a Conv layer using a convolution with the width and height of the filter is the same as the width and height of the input.
 - **Convolution implementation of sliding windows**:
   - First lets consider that the Conv net you trained in like this (No FC all is conv layers):
     - ![](Images/20.png)
