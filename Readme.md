@@ -72,7 +72,9 @@ Group description:
 
 Taking [fast.ai](http://www.fast.ai/) courses series as it focuses more on the practical works.
 
+## Acknowledgements
 
+Thanks for [wangzhenhui1992](https://github.com/wangzhenhui1992) for helping me revising and  fixing all mistakes in the notes
 
 <br/>
 
