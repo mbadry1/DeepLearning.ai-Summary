@@ -1287,7 +1287,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Use pre-trained ConvNet. (E.g., VGG network)
 - Let `a(c)[l]` and `a(G)[l]` be the activation of layer `l` on the images.
 - If `a(c)[l]` and `a(G)[l]` are similar then they will have the same content
-  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a(c)[G] ||2`
+  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a(G)[l] ||2`
 
 #### Style Cost Function
 
