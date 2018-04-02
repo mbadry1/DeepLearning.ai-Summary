@@ -153,7 +153,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Its harder to interpreter. Its easier to roll this drawings to the unrolled version we have descried.
 - In the discussed RNN architecture,  the current output y<sup>^\<t></sup> depends on the previous inputs and activations.
 - Lets have this example ' He Said, "Teddy Roosevelt was a great president"  '. In this example Teddy is a person name but we know that from the word **President** that came after Teddy not from **He** and **said** that is before it.
-- So limitation of the discussed architecture is that it learns from behind. To address this problem we will later discuss **Bidirectional** RNNs  (BRNNs).
+- So limitation of the discussed architecture is that it can not learn from behind. To address this problem we will later discuss **Bidirectional** RNNs  (BRNNs).
 - Now lets discuss the forward propagation equations on the discussed architecture:
   - ![](Images/04.png)
   - The activation function of a is usually tanh or RELU and for y depends on your task choosing some activation functions like sigmoid and softmax. In name entity recognition task we are solving, we will use Sigmoid because we only have two classes.
