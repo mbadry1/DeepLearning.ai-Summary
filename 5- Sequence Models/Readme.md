@@ -146,7 +146,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - There are three weight matrices here: W<sub>ax</sub>, W<sub>aa</sub>, and W<sub>ya</sub> with shapes:
     - W<sub>ax</sub>: (NoOfHiddenNeurons, n<sub>x</sub>)
     - W<sub>aa</sub>: (NoOfHiddenNeurons, NoOfHiddenNeurons)
-    - W<sub>ax</sub>: (n<sub>y</sub>, NoOfHiddenNeurons)
+    - W<sub>ya</sub>: (n<sub>y</sub>, NoOfHiddenNeurons)
 - The weight matrix W<sub>aa</sub> is the memory the RNN is trying to maintain from the previous layers.
 - A lot of papers and books write the same architecture this way:
   - ![](Images/03.png)
