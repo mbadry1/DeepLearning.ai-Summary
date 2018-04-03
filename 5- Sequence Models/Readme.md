@@ -153,7 +153,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Its harder to interpreter. Its easier to roll this drawings to the unrolled version we have descried.
 - In the discussed RNN architecture,  the current output y<sup>^\<t></sup> depends on the previous inputs and activations.
 - Lets have this example ' He Said, "Teddy Roosevelt was a great president"  '. In this example Teddy is a person name but we know that from the word **President** that came after Teddy not from **He** and **said** that is before it.
-- So limitation of the discussed architecture is that it learns from behind. To address this problem we will later discuss **Bidirectional** RNNs  (BRNNs).
+- So limitation of the discussed architecture is that it can not learn from behind. To address this problem we will later discuss **Bidirectional** RNNs  (BRNNs).
 - Now lets discuss the forward propagation equations on the discussed architecture:
   - ![](Images/04.png)
   - The activation function of a is usually tanh or RELU and for y depends on your task choosing some activation functions like sigmoid and softmax. In name entity recognition task we are solving, we will use Sigmoid because we only have two classes.
@@ -198,7 +198,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Thats where the language models comes. It gives a probability for the two sentences and the application decides the best based on this probability.
 - The job of a language model is given any sentence give a probability of that sentence. Also what is the next sentence probability given a sentence.
 - **How to build language modeling with RNNs?**
-  - The first thing it to get a **training set**: Large corpus of target language text.
+  - The first thing is to get a **training set**: Large corpus of target language text.
   - Then tokenize this training set by getting the vocabulary and then one-hot each word.
   - Put an end of sentence token `<EOS>` with the vocabulary and include it with each converted sentence. Also like we have mentioned before use the token `<UNK>` for the unknown words.
 - Given the sentence "Cats average 15 hours of sleep a day. `<EOS>`"
