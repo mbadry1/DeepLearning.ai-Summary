@@ -198,7 +198,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Thats where the language models comes. It gives a probability for the two sentences and the application decides the best based on this probability.
 - The job of a language model is given any sentence give a probability of that sentence. Also what is the next sentence probability given a sentence.
 - **How to build language modeling with RNNs?**
-  - The first thing it to get a **training set**: Large corpus of target language text.
+  - The first thing is to get a **training set**: Large corpus of target language text.
   - Then tokenize this training set by getting the vocabulary and then one-hot each word.
   - Put an end of sentence token `<EOS>` with the vocabulary and include it with each converted sentence. Also like we have mentioned before use the token `<UNK>` for the unknown words.
 - Given the sentence "Cats average 15 hours of sleep a day. `<EOS>`"
