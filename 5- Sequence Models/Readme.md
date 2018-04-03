@@ -196,7 +196,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - The apple and **pear** salad
   - **Pair** and **pear** sounds exactly the same, so how would a speech recognition application choose from the two.
   - Thats where the language models comes. It gives a probability for the two sentences and the application decides the best based on this probability.
-- The job of a language model is given any sentence give a probability of that sentence. Also what is the next sentence probability given a sentence.
+- The job of a language model is giving a probability of any given sentence .Also the probability of the next sentence.
 - **How to build language modeling with RNNs?**
   - The first thing is to get a **training set**: Large corpus of target language text.
   - Then tokenize this training set by getting the vocabulary and then one-hot each word.
