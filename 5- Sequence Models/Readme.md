@@ -702,7 +702,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/55.png)
 - The problems formations also are different:
   - In language model: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup>)
-  - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | y<sup>\<x></sup>, ....x<sup>\<Tx></sup>)
+  - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | x<sup>\<1></sup>, ....x<sup>\<Tx></sup>)
 - What we don't want in machine translation model, is not to sample the output at random. This may provide some choices as an output. Sometimes you may sample a bad output.
   - Example: 
     - X = "Jane visite l’Afrique en septembre."
