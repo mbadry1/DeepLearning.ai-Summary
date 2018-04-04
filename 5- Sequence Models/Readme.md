@@ -248,7 +248,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - ![](Images/16.png)
   - For computing the word "Was", we need to compute the gradient for everything behind. Multiplying by  fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
-  - There for half of your weights may not be updated properly!
+  - Therefore half of your weights may not be updated properly!
 
 - In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't be identify the singular/plural words so that it give it the right grammar word.
 
