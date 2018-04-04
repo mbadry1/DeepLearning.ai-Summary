@@ -196,7 +196,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - The apple and **pear** salad
   - **Pair** and **pear** sounds exactly the same, so how would a speech recognition application choose from the two.
   - Thats where the language models comes. It gives a probability for the two sentences and the application decides the best based on this probability.
-- The job of a language model is given any sentence give a probability of that sentence. Also what is the next sentence probability given a sentence.
+- The job of a language model is giving a probability of any given sentence .Also the probability of the next sentence.
 - **How to build language modeling with RNNs?**
   - The first thing is to get a **training set**: Large corpus of target language text.
   - Then tokenize this training set by getting the vocabulary and then one-hot each word.
@@ -234,7 +234,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Vanishing gradients with RNNs
 - One of the problems with naive RNNs that it runs into **vanishing gradient** problems.
 
-- An RNN that process a sequence data with the size of 10,000 time sets, has 10,000 deep layer! which is so hard to optimize.
+- An RNN that process a sequence data with the size of 10,000 time sets, has 10,000 deep layers which is so hard to optimize.
 
 - To address the problem lets take an example. Suppose we are working with language modeling problem and there are two sequences that it tries to learn:
 
@@ -247,7 +247,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - As we have discussed in Deep neural networks, deeper networks are luckily to get into the vanishing gradient problem. In deep nets to compute the weights of the earlier layers you have to compute all the weights after these weights which causes the gradient to vanish. That also happens with RNNs with a long sequence size.
 
   - ![](Images/16.png)
-  - For computing the word "Was", we need to compute the gradient for everything behind. Multiply by  fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
+  - For computing the word "Was", we need to compute the gradient for everything behind. Multiplying by  fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
   - There for half of your weights may not be updated properly!
 
 - In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't be identify the singular/plural words so that it give it the right grammar word.
@@ -702,7 +702,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/55.png)
 - The problems formations also are different:
   - In language model: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup>)
-  - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | y<sup>\<x></sup>, ....x<sup>\<Tx></sup>)
+  - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | x<sup>\<1></sup>, ....x<sup>\<Tx></sup>)
 - What we don't want in machine translation model, is not to sample the output at random. This may provide some choices as an output. Sometimes you may sample a bad output.
   - Example: 
     - X = "Jane visite l’Afrique en septembre."
