@@ -250,7 +250,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - For computing the word "Was", we need to compute the gradient for everything behind. Multiply by  fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
   - There for half of your weights may not be updated properly!
 
-- In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't be identify the singular/plural words so that it give it the right grammar word.
+- In the problem we described it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't be identify the singular/plural words so that it give it the right grammar word.
 
 - The conclusion is that RNNs aren't good in **long term dependencies**.
 
