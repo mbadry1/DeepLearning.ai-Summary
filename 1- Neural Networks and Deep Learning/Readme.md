@@ -287,14 +287,14 @@ Here are the course summary as its given on the course [link](https://www.course
 - As an input we have a matrix `X` and its `[Nx, m]` and a matrix `Y` and its `[Ny, m]`.
 - We will then compute at instance `[z1,z2...zm] = W' * X + [b,b,...b]`. This can be written in python as:
 
-    		Z = np.dot(W.T,X) + b    #Vectorization Then broadcasting, Z shape is (1, m)
-    		A = 1 / 1 + np.exp(-Z)   #Vectorization, A shape is (1, m)
+    		Z = np.dot(W.T,X) + b    # Vectorization, then broadcasting, Z shape is (1, m)
+    		A = 1 / 1 + np.exp(-Z)   # Vectorization, A shape is (1, m)
 
 - Vectorizing Logistic Regression's Gradient Output:
 
-   	dz = A - Y   #Vectorization, dz shape is (1, m)
-   	dw = np.dot(X,dz.T)/m 	#Vectorization, dw shape is (Nx, 1)
-   	db = dz.sum()/m 	#Vectorization, dz shape is (1, 1)
+   			dz = A - Y                  # Vectorization, dz shape is (1, m)
+   			dw = np.dot(X, dz.T) / m    # Vectorization, dw shape is (Nx, 1)
+   			db = dz.sum() / m           # Vectorization, dz shape is (1, 1)
 
 ### Notes on Python and NumPy
 
