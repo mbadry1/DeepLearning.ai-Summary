@@ -382,7 +382,7 @@ Here are the course summary as its given on the course [link](https://www.course
 #### Word Representation
 - NLP has been revolutionized by deep learning and especially be RNNs and deep RNNs.
 - Word embeddings is a way of representing words. It lets your algorithm automatically understand the analogies between words like "king" and "queen".
-- So var we have defined our language by a vocabulary. Then represented our words with one hot vector that represent the word in the vocabulary.
+- So far we have defined our language by a vocabulary. Then represented our words with one hot vector that represent the word in the vocabulary.
   - An image example would be:
     - ![](Images/27.png)
   - We will use the annotation **O** <sub>idx</sub> for any word that is represented with one hot like in the image.
@@ -390,9 +390,9 @@ Here are the course summary as its given on the course [link](https://www.course
     - For example: "I want a glass of **orange** ______" , a model should predict the next word as **Juice**.
     - A similar example "I want a glass of **apple** ______" , a model won't easily predict **juice** here if it doesn't trained on it. And if so the two examples aren't related although orange and apple are similar.
   - Inner product between any hot encoding word is zero. Also the distances between them are the same.
-- So, won't it be nice if instead of a one-hot presentation we can instead learn a featurized representation with each of these words: Man, Woman, King, Queen, Apple, and orange?
+- So, instead of a one-hot presentation, won't it be nice if we can learn a featurized representation with each of these words: Man, Woman, King, Queen, Apple, and orange?
   - ![](Images/28.png)
-  - Each word will have a 300 feature float point number for example.
+  - Each word will have a 300 features with type of float point number for example.
   - Each word column will be 300 dimensional vector which will be the representation.
   - We will use the notation **e**<sub>5391</sub> to describe Man word features vector.
   - Now if we went to the examples we descried again:
