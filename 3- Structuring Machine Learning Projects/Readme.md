@@ -298,7 +298,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - A lot of teams are working with deep learning applications that has training sets that are different from the Dev/test sets due to the hanger of deep learning to data.
 - There are some strategies to follow up when training set distribution differs from Dev/test sets distribution.
-  - Option one (Not recommended): shuffle are the data together and extract randomly training and Dev/test sets.
+  - Option one (Not recommended): shuffle all the data together and extract randomly training and Dev/test sets.
     - Advantages:   All the sets now are from the same distribution.
     - Disadvantages: The other distribution that was in the Dev/test sets will occur less in the new Dev/test sets and that might not what you want to achieve.
   - Option two: Take some of the Dev/test set examples and put them with the training distribution.
