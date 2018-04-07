@@ -404,7 +404,7 @@ Here are the course summary as its given on the course [link](https://www.course
     a[2, i] = sigmoid(z[2, i])  # shape of a[2, i] is (1,1)
   ```
 
-- Lets say we have `X` on shape `(Nx ,m)`. So the new pseudo code
+- Lets say we have `X` on shape `(Nx,m)`. So the new pseudo code:
 
   ```
   Z1 = W1X + b1     # shape of Z1 (noOfHiddenNeurons,m)
@@ -414,7 +414,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - If you notice always m is the number of columns.
-- In the last example we can call `X`, `A0` for instance:
+- In the last example we can call `X` = `A0`. So the previous step can be rewritten as:
 
   ```
   Z1 = W1A0 + b1    # shape of Z1 (noOfHiddenNeurons,m)
