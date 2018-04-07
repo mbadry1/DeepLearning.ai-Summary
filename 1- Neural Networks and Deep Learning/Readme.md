@@ -398,29 +398,29 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   for i = 1 to m
-  	z[1, i] = W1*x[i] + b1        # shape of z[1, i] is (noOfHiddenNeurons,1)
-  	a[1, i] = sigmoid(z[1, i])  # shape of a[1, i] is (noOfHiddenNeurons,1)
-  	z[2, i] = W2*a[1, i] + b2  # shape of z[2, i] is (1,1)
-  	a[2, i] = sigmoid(z[2, i])  # shape of a[2, i] is (1,1)
+    z[1, i] = W1*x[i] + b1      # shape of z[1, i] is (noOfHiddenNeurons,1)
+    a[1, i] = sigmoid(z[1, i])  # shape of a[1, i] is (noOfHiddenNeurons,1)
+    z[2, i] = W2*a[1, i] + b2   # shape of z[2, i] is (1,1)
+    a[2, i] = sigmoid(z[2, i])  # shape of a[2, i] is (1,1)
   ```
 
 - Lets say we have `X` on shape `(Nx ,m)`. So the new pseudo code
 
   ```
-  Z1 = W1X + b1       # shape of Z1 (noOfHiddenNeurons,m)
-  A1 = sigmoid(Z1)	# shape of A1 (noOfHiddenNeurons,m)
-  Z2 = W2A1 + b2	    # shape of Z2 is (1,m)
-  A2 = sigmoid(Z2)	# shape of A2 is (1,m)
+  Z1 = W1X + b1     # shape of Z1 (noOfHiddenNeurons,m)
+  A1 = sigmoid(Z1)  # shape of A1 (noOfHiddenNeurons,m)
+  Z2 = W2A1 + b2    # shape of Z2 is (1,m)
+  A2 = sigmoid(Z2)  # shape of A2 is (1,m)
   ```
 
 - If you notice always m is the number of columns.
 - In the last example we can call `X`, `A0` for instance:
 
   ```
-  Z1 = W1A0 + b1       # shape of Z1 (noOfHiddenNeurons,m)
-  A1 = sigmoid(Z1)	# shape of A1 (noOfHiddenNeurons,m)
-  Z2 = W2A1 + b2	    # shape of Z2 is (1,m)
-  A2 = sigmoid(Z2)	# shape of A2 is (1,m)
+  Z1 = W1A0 + b1    # shape of Z1 (noOfHiddenNeurons,m)
+  A1 = sigmoid(Z1)  # shape of A1 (noOfHiddenNeurons,m)
+  Z2 = W2A1 + b2    # shape of Z2 is (1,m)
+  A2 = sigmoid(Z2)  # shape of A2 is (1,m)
   ```
 
 ### Activation functions
