@@ -333,6 +333,8 @@ Here are the course summary as its given on the course [link](https://www.course
     - Calculate current loss (forward propagation)
     - Calculate current gradient (backward propagation)
     - Update parameters (gradient descent)
+- Preprocessing the dataset is important.
+- Tuning the learning rate (which is an example of a "hyperparameter") can make a big difference to the algorithm.
 - [kaggle.com](kaggle.com) is a good place for datasets and competitions.
 - [Pieter Abbeel](https://www2.eecs.berkeley.edu/Faculty/Homepages/abbeel.html) is one of the best in deep reinforcement learning.
 
