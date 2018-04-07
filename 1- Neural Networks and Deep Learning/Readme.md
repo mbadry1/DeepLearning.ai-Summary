@@ -106,7 +106,7 @@ Here are the course summary as its given on the course [link](https://www.course
        - IOT (Internet of things)
   2. Computation:
      - GPUs.
-     - Powerful CPUS.
+     - Powerful CPUs.
      - Distributed computing.
      - ASICs
   3. Algorithm:
@@ -228,7 +228,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - So we have:
-  - ![](Images/09.png)
+  ![](Images/09.png)
 
 - Then from right to left we will calculate derivations compared to the result:
 
@@ -348,9 +348,9 @@ Here are the course summary as its given on the course [link](https://www.course
 - In logistic regression we had:
 
   ```
-          X1  \  
-  		X2   ==>  z = XW + B ==> a = Sigmoid(z) ==> l(a,Y)
-  		X3  /
+  X1  \  
+  X2   ==>  z = XW + B ==> a = Sigmoid(z) ==> l(a,Y)
+  X3  /
   ```
 
 - In neural networks with one layer we will have:
