@@ -543,7 +543,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - One way is to choose the context by random from your corpus.
   - If you have done it that way, there will be frequent words like "the, of, a, and, to, .." that can dominate other words like "orange, apple, Mahmoud,..."
-  - So in practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the none common words.
+  - So in practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the non-common words.
 
 #### Negative Sampling
 - Negative sampling allows you to do something similar to the Skip-Gram model, but with a much more efficient learning algorithm. We will create a different learning problem
