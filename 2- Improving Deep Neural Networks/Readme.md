@@ -327,7 +327,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Training NN with a large data is slow. So to find an optimization algorithm that runs faster is a good idea.
 - Suppose we have `m = 50 million.` To train this data it will take a huge processing time for one step.
   - because 50 million won't fit in the memory at once we need other processing to make such a thing.
-- It turns out you can make a faster algorithm to make gradient decent process some of your m even before you finish the 50 million items.
+- It turns out you can make a faster algorithm to make gradient decent process some of your items even before you finish the 50 million items.
 - Suppose we have split m to **mini batches**.
   - `X{1} = 0    ==>  1000`
   - `X{2} = 1001 ==>  2000`
@@ -456,7 +456,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - This will help the cost function to go to the minimum point in a more fast and consistent way.
-- `beta = 0.9` is working very well for lots.
+- `beta = 0.9` is working very well for lots of people.
 - In practice people don't bother with **Bias correction** (They leave the first iterations to work as they want)
 
 ### RMSprop
@@ -477,10 +477,10 @@ Here are the course summary as its given on the course [link](https://www.course
   	b = B - learning_rate * db/sqrt(Sdb)
   ```
 
-- This algorithm will make the cost function move on the vertical direction slow and the horizontal direction fast.
+- This algorithm will make the cost function move on the vertical direction slow and the horizontal direction fast, in the following example.
   - ![](Images/06-_RMSprop.png)
 
-- Ensure that `SdW` is not zero by adding a small value to it epsilon
+- Ensure that `SdW` is not zero by adding a small value to it (epsilon).
    `W = W - learning_rate * dW/(sqrt(SdW) + epsilon)`
 
 - With this algorithm you can increase your learning rate.
@@ -573,11 +573,11 @@ Here are the course summary as its given on the course [link](https://www.course
   - Then: write this code:
 
     ```
-    r = (aLog-bLog) * np.random.rand() + 	bLog
+    r = (aLog-bLog) * np.random.rand() + 	aLog
     # In our Ex the range would be from [-4, 0] because rand range [0,1)
     result = 10^r
     ```
-
+It uniformly samples values from [a, b] as r.
 - If we want to use the last method on exploring on the "momentum beta":
   - Beta best range is from 0.9 to 0.999
   - You should scale this to `1-Beta = 0.001 to 0.1` and the use `a = 0.001` and `b = 0.1`
@@ -639,7 +639,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - -This adds some noise to the values `Z[l]` within that mini batch. Similar to dropout it adds some noise to each hidden layer activation
   - This has a slight regularization effect.
 - To reduce this regularization effect you can make your mini batch bigger.
-- If you need regularization you cant just relay on that slight regularization you'll need to add your regularization (L2 or dropout)
+- If you need regularization you cant just rely on that slight regularization you'll need to add your regularization (L2 or dropout).
 
 ### Batch normalization at test time
 
