@@ -573,7 +573,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Then: write this code:
 
     ```
-    r = (aLog-bLog) * np.random.rand() + 	aLog
+    r = (aLog-bLog) * np.random.rand() + 	bLog
     # In our Ex the range would be from [-4, 0] because rand range [0,1)
     result = 10^r
     ```
