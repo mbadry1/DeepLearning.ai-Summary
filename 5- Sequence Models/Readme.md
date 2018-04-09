@@ -503,7 +503,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - We will choose Context and target.
 
-  - The target is choose randomly based on a window with a specific size.
+  - The target is chosen randomly basing on a window with a specific size.
 
   - | Context | Target | How far |
     | ------- | ------ | ------- |
