@@ -71,18 +71,18 @@ Here are the course summary as its given on the course [link](https://www.course
 - You have to go through the loop many times to figure out your hyperparameters.
 - Your data will be split into three parts:
   - Training set.		(Has to be the largest set)
-  - Dev set.
+  - Dev set or Validation set.
   - Testing set.
-- You will try to build a model upon training set then try to make the Dev set to work as much as possible. Then after your model is ready you try and evaluate the testing set.
+- You will try to build a model upon training set then try to optimize hyperparameters on Dev set as much as possible. Then after your model is ready you try and evaluate the testing set.
 - so the trend on the ratio of splitting the models:
   - If size of the  dataset is 100 to 1000000  ==> 60/20/20
   - If size of the  dataset is 1000000  to INF  ==> 98/1/1 or  99.5/0.25/0.25
 - The trend now gives the training data the biggest sets.
 - Make sure the Training/Dev/test set is coming from the same distribution.
-  - For example if cat training pictures is from the web and the Dev/test pictures are from users cell phone they will dismatch. The better is to make them one distribution.
+  - For example if cat training pictures is from the web and the Dev/test pictures are from users cell phone they will mismatch. It is better to make them one distribution.
 - The Dev set rule is to try them on some of the good models you've created.
 - Its OK to only have a Dev set without a testing set.
-- Almost all People is calling the Dev set, the test set. But a better terminology is to call it a Dev set as its used in the development.
+- Almost all people call the Dev set as the test set. But a better terminology is to call it a Dev set as its used in the development.
 
 ### Bias / Variance
 
@@ -106,7 +106,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Best:
     - Training error: 0.5%
     - Test error: 1%
-  - These Assumptions came from that human has 0% error. If the problem isn't like that you'll need another approach.
+  - These Assumptions came from that human has 0% error. If the problem isn't like that you'll need to use human error as baseline.
 
 ### Basic Recipe for Machine Learning
 
@@ -120,7 +120,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Try regularization.
   - Try a different model that are suitable for your data.
 - You should try the previous two points until you have a low bias / low variance.
-- In the older days before deep learning there was a "Bias / variance trade off". But because now you have more options on solving the bias of variance problem its really helpful to use deep learning.
+- In the older days before deep learning there was a "Bias / variance trade off". But because now you have more options on solving the bias and variance problem its really helpful to use deep learning.
 - Training a bigger neural network never hurt.
 
 ### Regularization
@@ -129,13 +129,13 @@ Here are the course summary as its given on the course [link](https://www.course
 - L1 matrix Norm:
   - `||W|| = Sum(|W[i,j]|)		# Sum of all Ws with abs `
 - L2 matrix Norm sometimes its called Frobenius norm:
-  - `||W||2 = Sum(|W[i,j]|^2)	#Sum of all Ws squared`
-  - Also can be calculated using`||W||2 = W.T * W `
+  - `||W||^2 = Sum(|W[i,j]|^2)	#Sum of all Ws squared`
+  - Also can be calculated using`||W||^2 = W.T * W `
 - Regularization For logistic regression:
   - The normal cost function that we want to minimize is:
      `J(w,b) = (1/m) * Sum(L(y(i),y'(i)))`
   - The L2 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * ||W||2 `
+    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * ||W||^2 `
   - The L1 Regularization version:
     `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * (||W||)`
   - The L1 Regularization version makes a lot of w values become zeros, which makes the model size is small.
@@ -148,7 +148,7 @@ Here are the course summary as its given on the course [link](https://www.course
     `J(W1,b1...,WL,bL) = (1/m) * Sum(L(y(i),y'(i)))`
   - The L2 Regularization version:
     `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * Sum((||W[l]||) ^2)`
-  - We stack the matrix as one vector `(mn,1)` and then we apply `squrt(w1^2+w2^2.....)`
+  - We stack the matrix as one vector `(mn,1)` and then we apply `sqrt(w1^2+w2^2.....)`
   - To do back propagation (old way):
 
     `w[l] = w[l] - learningRate * dw[l]`
@@ -196,7 +196,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Can't rely on one feature so have to spread out weights
 - Dropout can have different dropouts per layer.
-- The input layer drop out is has to be near than 1 because we need to learn a lot from the input.
+- The input layer drop out is has to be near 1 because we need to learn a lot from the input.
 - A lot of researchers are using dropout with CNN.
 - Downside of dropout is that the loss function is not well defined and it will be hard to debug.
   - To solve that you'll need to set all the dropouts by 1 and then check your cost graph if its going well set the dropouts again.
@@ -205,13 +205,13 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - **Data augmentation**:
   - For example in a computer vision data:
-    - You can flip all your pictures horizontally this will give you m more data.
+    - You can flip all your pictures horizontally this will give you m more data instances.
     - You could also take a random position and rotation in an image to get more data.
   - For example in OCR, you'll need to distort the digits.
-  - This technique's new data aren't good as the real independent data, but still can be used as a Regularization technique.
+  - This technique's new data isn't as good as the real independent data, but still can be used as a Regularization technique.
 - **Early stopping**:
-  - In this technique we plot the training data and the Dev data cost together. In some steps the Dev data cost will stay still.
-  - We will pick the point at which the training data graph and Dev data graph are best at.
+  - In this technique we plot the training data and the Dev data cost together. At some iteration the Dev data cost will stop decreasing.
+  - We will pick the point at which the training data graph and Dev data graph are best (lowest training cost with lowest dev cost).
   - We will take these parameters as the best parameters.
     - ![](Images/02-_Early_stopping.png)
   - This technique is not recommended because it makes us think about something else more than optimize W's and b's.
@@ -230,7 +230,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Normalization are going on these steps:
   1. Get mean. `Mean = (1/m) * sum(x(i))`
   2. Subtract the mean from each input. `X = X - Mean`
-     - This makes your inputs are around 0 dimensions.
+     - This makes your inputs centered around 0.
   3. Get the variance. `variance = (1/m) * sum(x(i)^2)`
   4. Normalize the variance. `X/= variance`
 - These steps should be applied to training, Dev, and testing sets.

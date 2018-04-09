@@ -441,7 +441,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - ![](Images/33.png)
     - This vector represents the gender.
     - This drawing is 2D visualization of the 4D vector that has been extracted by t-SNE algorithm. It was drawing for just clarification! Don't rely on t-SNE algorithm in finding parallels.
-  - So we can reformulate the problem to finding:
+  - So we can reformulate the problem to find:
     - e<sub>Man</sub> - e<sub>Woman</sub> ≈ e<sub>King</sub> - e<sub>??</sub>
   - It can also represented mathematically by:
     - ![](Images/34.png)

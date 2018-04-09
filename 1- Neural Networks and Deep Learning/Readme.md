@@ -106,7 +106,7 @@ Here are the course summary as its given on the course [link](https://www.course
        - IOT (Internet of things)
   2. Computation:
      - GPUs.
-     - Powerful CPUS.
+     - Powerful CPUs.
      - Distributed computing.
      - ASICs
   3. Algorithm:
@@ -228,7 +228,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 - So we have:
-  - ![](Images/09.png)
+  ![](Images/09.png)
 
 - Then from right to left we will calculate derivations compared to the result:
 
@@ -333,6 +333,8 @@ Here are the course summary as its given on the course [link](https://www.course
     - Calculate current loss (forward propagation)
     - Calculate current gradient (backward propagation)
     - Update parameters (gradient descent)
+- Preprocessing the dataset is important.
+- Tuning the learning rate (which is an example of a "hyperparameter") can make a big difference to the algorithm.
 - [kaggle.com](kaggle.com) is a good place for datasets and competitions.
 - [Pieter Abbeel](https://www2.eecs.berkeley.edu/Faculty/Homepages/abbeel.html) is one of the best in deep reinforcement learning.
 
@@ -346,9 +348,9 @@ Here are the course summary as its given on the course [link](https://www.course
 - In logistic regression we had:
 
   ```
-          X1  \  
-  		X2   ==>  z = XW + B ==> a = Sigmoid(z) ==> l(a,Y)
-  		X3  /
+  X1  \  
+  X2   ==>  z = XW + B ==> a = Sigmoid(z) ==> l(a,Y)
+  X3  /
   ```
 
 - In neural networks with one layer we will have:
@@ -396,29 +398,29 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   for i = 1 to m
-  	z[1, i] = W1*x[i] + b1        # shape of z[1, i] is (noOfHiddenNeurons,1)
-  	a[1, i] = sigmoid(z[1, i])  # shape of a[1, i] is (noOfHiddenNeurons,1)
-  	z[2, i] = W2*a[1, i] + b2  # shape of z[2, i] is (1,1)
-  	a[2, i] = sigmoid(z[2, i])  # shape of a[2, i] is (1,1)
+    z[1, i] = W1*x[i] + b1      # shape of z[1, i] is (noOfHiddenNeurons,1)
+    a[1, i] = sigmoid(z[1, i])  # shape of a[1, i] is (noOfHiddenNeurons,1)
+    z[2, i] = W2*a[1, i] + b2   # shape of z[2, i] is (1,1)
+    a[2, i] = sigmoid(z[2, i])  # shape of a[2, i] is (1,1)
   ```
 
-- Lets say we have `X` on shape `(Nx ,m)`. So the new pseudo code
+- Lets say we have `X` on shape `(Nx,m)`. So the new pseudo code:
 
   ```
-  Z1 = W1X + b1       # shape of Z1 (noOfHiddenNeurons,m)
-  A1 = sigmoid(Z1)	# shape of A1 (noOfHiddenNeurons,m)
-  Z2 = W2A1 + b2	    # shape of Z2 is (1,m)
-  A2 = sigmoid(Z2)	# shape of A2 is (1,m)
+  Z1 = W1X + b1     # shape of Z1 (noOfHiddenNeurons,m)
+  A1 = sigmoid(Z1)  # shape of A1 (noOfHiddenNeurons,m)
+  Z2 = W2A1 + b2    # shape of Z2 is (1,m)
+  A2 = sigmoid(Z2)  # shape of A2 is (1,m)
   ```
 
 - If you notice always m is the number of columns.
-- In the last example we can call `X`, `A0` for instance:
+- In the last example we can call `X` = `A0`. So the previous step can be rewritten as:
 
   ```
-  Z1 = W1A0 + b1       # shape of Z1 (noOfHiddenNeurons,m)
-  A1 = sigmoid(Z1)	# shape of A1 (noOfHiddenNeurons,m)
-  Z2 = W2A1 + b2	    # shape of Z2 is (1,m)
-  A2 = sigmoid(Z2)	# shape of A2 is (1,m)
+  Z1 = W1A0 + b1    # shape of Z1 (noOfHiddenNeurons,m)
+  A1 = sigmoid(Z1)  # shape of A1 (noOfHiddenNeurons,m)
+  Z2 = W2A1 + b2    # shape of Z2 is (1,m)
+  A2 = sigmoid(Z2)  # shape of A2 is (1,m)
   ```
 
 ### Activation functions
