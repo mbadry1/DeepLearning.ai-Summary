@@ -600,10 +600,10 @@ Here are the course summary as its given on the course [link](https://www.course
   - "I want a glass of orange juice to go along with my cereal"
 - We will choose a context and a target from the choices we have mentioned in the previous sections.
 - Then we will calculate this for every pair, X<sub>ct</sub> = # times `t` appears in context of `c`
-- X<sub>ct</sub> = X<sub>tc</sub> if we choose a window pairs, but they will not equal if we choose the previous words for example. In GloVe they use a window which means they are equal
+- X<sub>ct</sub> = X<sub>tc</sub> if we choose a window pair, but they will not equal if we choose the previous words for example. In GloVe they use a window which means they are equal
 - The model is defined like this:
   - ![](Images/44.png)
-- f(x) is given to help with the log 0 problem. Also it gives a weights for some words. For stop words like this, is, the it gives it a low weight, also for words that doesn't occur so much.
+- f(x) is given to help with the log 0 problem. Also it gives weights for some words. For stop words like this, is, the it gives it a low weight, also for words that doesn't occur so much.
 - ceta and e are symmetric which helps getting the final word embedding. 
 - Conclusion on word embeddings:
   - If this is your first try, you should try to download a pretrained model that has been made and actually works best.
