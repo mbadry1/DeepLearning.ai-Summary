@@ -635,7 +635,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Man : Computer_programmer as Woman : **Homemaker**
   - Father : Doctor as Mother : **Nurse**
 - Word embeddings can reflect gender, ethnicity, age, sexual orientation, and other biases of text used to train the model.
-- Learning algorithms by general is making an important decisions! and it mustn't be biased.
+- Learning algorithms by general is making an important decision and it mustn't be biased.
 - Andrew thinks we actually have better ideas for quickly reducing the bias in AI than for quickly reducing the bias in the human race, although it still needs a lot of work to be done.
 - Addressing bias in word embeddings steps:
   - Idea is by paper: https://arxiv.org/abs/1607.06520
