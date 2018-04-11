@@ -455,7 +455,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - If we removed the activation function from our algorithm that can be called linear activation function.
 - Linear activation function will output linear activations
   - Whatever hidden layers you add, the activation will be always linear like logistic regression (So its useless in a lot of complex problems)
-- You might use this in one place, If the output is real numbers, you can use linear activation function in the output layer.
+- You might use linear activation function in one place - in the output layer if the output is real numbers (regression problem). But even in this case if the output value is non-negative you could use RELU instead.
 
 ### Derivatives of activation functions
 
