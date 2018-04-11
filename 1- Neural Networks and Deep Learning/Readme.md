@@ -478,16 +478,16 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   g(z)  = np.maximum(0,z)
-  g'(z) = { 0  if z<0
-  		  1  if z>=0  }
+  g'(z) = { 0  if z < 0
+            1  if z >= 0  }
   ```
 
 - Derivation of leaky RELU activation function:
 
   ```
   g(z)  = np.maximum(0.01 * z, z)
-  g'(z) = { 0.01  if z<0
-  				  1     if z>=0   }
+  g'(z) = { 0.01  if z < 0
+            1     if z >= 0   }
   ```
 
 ### Gradient descent for Neural Networks
