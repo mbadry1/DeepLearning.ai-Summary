@@ -1,4 +1,4 @@
-﻿# Convolutional Neural Networks
+# Convolutional Neural Networks
 
 This is the forth course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
@@ -60,7 +60,7 @@ This is the forth course of the deep learning specialization at [Coursera](https
 
 ## Course summary
 
-Here are the course summary as its given on the course [link](https://www.coursera.org/learn/convolutional-neural-networks):
+Here is the course summary as given on the course [link](https://www.coursera.org/learn/convolutional-neural-networks):
 
 > This course will teach you how to build convolutional neural networks and apply it to image data. Thanks to deep learning, computer vision is working far better than just two years ago, and this is enabling numerous exciting applications ranging from safe autonomous driving, to accurate face recognition, to automatic reading of radiology images. 
 >
@@ -80,12 +80,12 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Computer vision
 
-- Computer vision is from the applications that are rapidly active thanks to deep learning.
-- One of the applications of computer vision that are using deep learning includes:
+- Computer vision is one of the applications that are rapidly active thanks to deep learning.
+- Some of the applications of computer vision that are using deep learning includes:
   - Self driving cars.
   - Face recognition.
-- Deep learning also is making new arts to be created to in computer vision as we will see.
-- Rabid changes to computer vision are making new applications that weren't possible a few years ago.
+- Deep learning is also enabling new types of art to be created.
+- Rapid changes to computer vision are making new applications that weren't possible a few years ago.
 - Computer vision deep leaning techniques are always evolving making a new architectures which can help us in other areas other than computer vision.
   - For example, Andrew Ng took some ideas of computer vision and applied it in speech recognition.
 - Examples of a computer vision problems includes:
@@ -94,9 +94,9 @@ Here are the course summary as its given on the course [link](https://www.course
     - Detect object and localize them.
   - Neural style transfer
     - Changes the style of an image using another image.
-- On of the challenges of computer vision problem that images can be so large and we want a fast and accurate algorithm to work with that.
+- One of the challenges of computer vision problem that images can be so large and we want a fast and accurate algorithm to work with that.
   - For example, a `1000x1000` image will represent 3 million feature/input to the full connected neural network. If the following hidden layer contains 1000, then we will want to learn weights of the shape `[1000, 3 million]` which is 3 billion parameter only in the first layer and thats so computationally expensive!
-- On of the solutions is to build this using **convolution layers** instead of the **fully connected layers**.
+- One of the solutions is to build this using **convolution layers** instead of the **fully connected layers**.
 
 ### Edge detection example
 
@@ -119,7 +119,7 @@ Here are the course summary as its given on the course [link](https://www.course
     -1	-1	-1
     ```
 
-- There are a lot of ways we can put number inside the horizontal of vertical edge detections. For example here are the vertical **Sobel** filter (The idea is taking care of the middle row):
+- There are a lot of ways we can put number inside the horizontal or vertical edge detections. For example here are the vertical **Sobel** filter (The idea is taking care of the middle row):
 
   ```
   1	0	-1
@@ -163,18 +163,18 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Strided convolution is another piece that are used in CNNs.
 
-- We will call stride `S`
+- We will call stride `S`.
 
 - When we are making the convolution operation we used `S` to tell us the number of pixels we will jump when we are convolving filter/kernel. The last examples we described S was 1.
 
 - Now the general rule are:
-  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s+1,(n+2p-f)/s+1` matrix. 
+  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s + 1,(n+2p-f)/s + 1` matrix. 
 
 - In case `(n+2p-f)/s + 1` is fraction we can take **floor** of this value.
 
 - In math textbooks the conv operation is filpping the filter before using it. What we were doing is called cross-correlation operation but the state of art of deep learning is using this as conv operation.
 
-- Same convolutions is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
+- Same convolutions is a convolution with a padding so that output size is the same as the input size. Its given by the equation:
 
   ```
   p = (n*s - n + f - s) / 2
@@ -209,7 +209,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - In the last result p=0, s=1
   - Hint number of parameters here are: `(3x3x3x10) + 10 = 280`
 - The last example forms a layer in the CNN.
-- Hint that no matter how the size of the input, the number of the parameters for the same filter will still the same. That makes it less prune to overfitting.
+- Hint: no matter the size of the input, the number of the parameters is same if filter size is same. That makes it less prone to overfitting.
 - Here are some notations we will use. If layer l is a conv layer:
 
   ```
@@ -384,7 +384,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   - The original paper contains Multiple GPUs and Local Response normalization (RN).
 
-    - Multiple GPUs was used because the GPUs was so fast back then.
+    - Multiple GPUs were used because the GPUs were not so fast back then.
     - Researchers proved that Local Response normalization doesn't help much so for now don't bother yourself for understanding or implementing it. 
 
   - This paper convinced the computer vision researchers that deep learning is so important.
@@ -516,8 +516,8 @@ Here are the course summary as its given on the course [link](https://www.course
 - A 1 x 1 convolution is useful when:
 
   - We want to shrink the number of channels. We also call this feature transformation.
-    - In the second discussed example above we have shrieked the input from 32 to 5.
-  - We will later see that by shrinking it can save a lot of computations.
+    - In the second discussed example above we have shrinked the input from 32 to 5 channels.
+  - We will later see that by shrinking it we can save a lot of computations.
   - If we have specified the number of 1 x 1 Conv filters to be the same as the input number of channels then the output will contain the same number of channels. Then the 1 x 1 Conv will act like a non linearity and will learn non linearity operator. 
 
 - Replace fully connected layers with 1 x 1 convolutions as Yann LeCun believes they are the same.
@@ -540,7 +540,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - If we have just focused on a 5 x 5 Conv that we have done in the last example.
   - There are 32 same filters of 5 x 5, and the input are 28 x 28 x 192.
   - Output should be 28 x 28 x 32
-  - The total number of multiples needed here are:
+  - The total number of multiplications needed here are:
     - Number of outputs * Filter size * Filter size * Input dimensions
     - Which equals: `28 * 28 * 32 * 5 * 5 * 192 = 120 Mil` 
     - 120 Mil multiply operation still a problem in the modern day computers.
@@ -572,7 +572,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/15.png)
 - Some times a Max-Pool block is used before the inception module to reduce the dimensions of the inputs.
 - There are a 3 Sofmax branches at different positions to push the network toward its goal. and helps to ensure that the intermediate features are good enough to the network to learn and it turns out that softmax0 and sofmax1 gives regularization effect.
-- Since the development of the Inception module, the authors and the others have built another versions of this network. Like inception v2, v3, and v4. Also there are a network that has used the inception module and the ResNet together.
+- Since the development of the Inception module, the authors and the others have built another versions of this network. Like inception v2, v3, and v4. Also there is a network that has used the inception module and the ResNet together.
 - [[Szegedy et al., 2014, Going Deeper with Convolutions]](https://arxiv.org/abs/1409.4842)
 
 ### Using Open-Source Implementation
@@ -583,13 +583,13 @@ Here are the course summary as its given on the course [link](https://www.course
   - Parameter tuning.
 - A lot of deep learning researchers are opening sourcing their code into Internet on sites like [Github](Github.com).
 - If you see a research paper and you want to build over it, the first thing you should do is to look for an open source implementation for this paper.
-- Some advantage of doing this is that you might download the network implementation along with its parameters/weights. The author might used a multiple GPUs and some weeks to reach this result and its right in front of you after you download it.
+- Some advantage of doing this is that you might download the network implementation along with its parameters/weights. The author might have used multiple GPUs and spent some weeks to reach this result and its right in front of you after you download it.
 
 ### Transfer Learning
 
-- It you are using a specific NN architecture that has been trained before, you can use this pretrained parameters/weights instead of random initialization to solve your problem.
+- If you are using a specific NN architecture that has been trained before, you can use this pretrained parameters/weights instead of random initialization to solve your problem.
 - It can help you boost the performance of the NN.
-- The pretrained models might have trained of a large datasets like ImageNet, Ms COCO, or pascal and took a lot of time to learn those parameters/weights with optimized hyperparameters. This can save you a lot of time.
+- The pretrained models might have trained on a large datasets like ImageNet, Ms COCO, or pascal and took a lot of time to learn those parameters/weights with optimized hyperparameters. This can save you a lot of time.
 - Lets see an example:
   - Lets say you have a cat classification problem which contains 3 classes Tigger, Misty and neither.
   - You don't have much a lot of data to train a NN on these images.
@@ -600,13 +600,13 @@ Here are the course summary as its given on the course [link](https://www.course
 - Another example:
   - What if in the last example you have a lot of pictures for your cats.
   - One thing you can do is to freeze few layers from the beginning of the pretrained network and learn the other weights in the network.
-  - Some other idea is to through away the layers that aren't freeze and put your own layers there.
+  - Some other idea is to throw away the layers that aren't frozen and put your own layers there.
 - Another example:
   - If you have enough data, you can fine tune all the layers in your pretrained network but don't random initialize the parameters, leave the learned parameters as it is and learn from there. 
 
 ### Data Augmentation
 
-- If data is increases, your deep NN will perform better. Data augmentation is one of the techniques that deep learning uses to increase the performance of deep NN.
+- If data is increased, your deep NN will perform better. Data augmentation is one of the techniques that deep learning uses to increase the performance of deep NN.
 - The majority of computer vision applications needs more data right now.
 - Some data augmentation methods that are used for computer vision tasks includes:
   - Mirroring.
@@ -632,9 +632,9 @@ Here are the course summary as its given on the course [link](https://www.course
 - If your problem has a large amount of data, researchers are tend to use:
   - Simpler algorithms.
   - Less hand engineering.
-- If you don't have that much data people are tend to try more hand engineering for the problem "Hacks". Like choosing a more complex NN architecture.
-- Because we haven't that much data in a lot of computer vision problems, It relies a lot on hand engineering.
-- We will see in the next chapter that because the object detection has a less data, a more complex NN architectures will be presented.
+- If you don't have that much data people tend to try more hand engineering for the problem "Hacks". Like choosing a more complex NN architecture.
+- Because we haven't got that much data in a lot of computer vision problems, it relies a lot on hand engineering.
+- We will see in the next chapter that because the object detection has less data, a more complex NN architectures will be presented.
 - Tips for doing well on benchmarks/winning competitions:
   - Ensembling.
     - Train several networks independently and average their outputs. Merging down some classifiers.
