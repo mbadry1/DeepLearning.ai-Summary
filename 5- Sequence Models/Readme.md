@@ -638,7 +638,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Man : Computer_programmer as Woman : **Homemaker**
   - Father : Doctor as Mother : **Nurse**
 - Word embeddings can reflect gender, ethnicity, age, sexual orientation, and other biases of text used to train the model.
-- Learning algorithms by general is making an important decisions! and it mustn't be biased.
+- Learning algorithms by general is making an important decision and it mustn't be biased.
 - Andrew thinks we actually have better ideas for quickly reducing the bias in AI than for quickly reducing the bias in the human race, although it still needs a lot of work to be done.
 - Addressing bias in word embeddings steps:
   - Idea is by paper: https://arxiv.org/abs/1607.06520
@@ -659,12 +659,12 @@ Here are the course summary as its given on the course [link](https://www.course
        - Babysitter and doctor needs to be neutral so we project them on nonbias with the direction of the bias:
          - ![](Images/50.png)
          - After that they will be equal in the term of gender.
-         - To do this the authors of the paper trained a classifier to tell the words that needs to be  neutralized or not.
+         - To do this the authors of the paper trained a classifier to tell the words that they need to be  neutralized or not.
     3. Equalize pairs
        - We want each pair to have difference only in gender. Like:
          - Grandfather - Grandmother
-         - He - Sh
-         - Boy - Girl
+         - He - She
+         - Boy - Girl
        - We want to do this because the distance between grandfather and babysitter is bigger than babysitter and grandmother:
          - ![](Images/51.png)
        - To do that, we move grandfather and grandmother to a point where they will be in the middle of the non-bias axis.
