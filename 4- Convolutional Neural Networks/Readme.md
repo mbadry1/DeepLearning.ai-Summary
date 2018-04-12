@@ -657,7 +657,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 ### Object Localization
 
-- Object detection is one from the areas that deep learning is doing great in the past two years.
+- Object detection is one of the areas in which deep learning is doing great in the past two years.
 
 - What are localization and detection?
 
@@ -697,11 +697,11 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     ]
     ```
 
-  - Example (Object is presented):
+  - Example (Object is present):
 
     - ```
       Y = [
-        		1		# Object is presented
+        		1		# Object is present
         		0
         		0
         		100
@@ -765,7 +765,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - We will use a Conv net to solve the object detection problem using a technique called the sliding windows detection algorithm.
 - For example lets say we are working on Car object detection.
-- The first thing, we will a Conv net on a cropped car objects and non car images.
+- The first thing, we will train a Conv net on cropped car images and non car images.
   - ![](Images/18.png)
 - After we finish training of this Conv net we will then use it with the sliding windows technique.
 - Sliding windows detection algorithm:
@@ -786,9 +786,9 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - ![](Images/19.png)
   - As you can see in the above image, we turned the FC layer into a Conv layer using a convolution with the width and height of the filter is the same as the width and height of the input.
 - **Convolution implementation of sliding windows**:
-  - First lets consider that the Conv net you trained in like this (No FC all is conv layers):
+  - First lets consider that the Conv net you trained is like this (No FC all is conv layers):
     - ![](Images/20.png)
-  - Say now we have a 16 x 16 x 3 image that we need to apply the sliding windows in. By the normal implementation that have been mentioned in the section before this, we could run this Conv net four times each rectangle size will be 16 x 16.
+  - Say now we have a 16 x 16 x 3 image that we need to apply the sliding windows in. By the normal implementation that have been mentioned in the section before this, we would run this Conv net four times each rectangle size will be 16 x 16.
   - The convolution implementation will be as follows:
     - ![](Images/21.png)
   - Simply we have feed the image into the same Conv net we have trained.
@@ -800,7 +800,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - [[Sermanet et al., 2014, OverFeat: Integrated recognition, localization and detection using convolutional networks]](https://arxiv.org/abs/1312.6229)
 - The weakness of the algorithm is that the position of the rectangle wont be so accurate. Maybe none of the rectangles is exactly on the object you want to recognize.
   - ![](Images/23.png)
-  - In red the rectangle we want in blue the best car rectangle.
+  - In red, the rectangle we want and in blue is the required car rectangle.
 
 ### Bounding Box Predictions
 
@@ -814,7 +814,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
   1. Lets say we have an image of 100 X 100
   2. Place a  3 x 3 grid on the image. For more smother results you should use 19 x 19 for the 100 x 100
-  3. Apply the classification and localization algorithm we discussed in a previous section to each section of the grid. `bx` and `by` will represent the center point of the object in each grid and will be relative to the box so the range is between 0 and 1 while `bh` and `bw` will represent the height and width of the object which can be greater than 0.0 but still float point.
+  3. Apply the classification and localization algorithm we discussed in a previous section to each section of the grid. `bx` and `by` will represent the center point of the object in each grid and will be relative to the box so the range is between 0 and 1 while `bh` and `bw` will represent the height and width of the object which can be greater than 1.0 but still a floating point value.
   4. Do everything at once with the convolution sliding window. If Y shape is 1 x 8 as we discussed before then the output of the 100 x 100 image should be 3 x 3 x 8 which corresponds to 9 cell results.
   5. Merging the results using predicted localization mid point.
 
@@ -830,8 +830,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 ### Intersection Over Union
 
 - Intersection Over Union is a function used to evaluate the object detection algorithm.
-- It computes size of intersection and divide it by the union. More generally, *IoU*
-  *is a measure of the overlap between two bounding boxes*.
+- It computes size of intersection and divide it by the union. More generally, *IoU* *is a measure of the overlap between two bounding boxes*.
 - For example:
   - ![](Images/25.png)
   - The red is the labeled output and the purple is the predicted output.
@@ -848,17 +847,17 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - ![](Images/26.png)
   - Each car has two or more detections with different probabilities. This came from some of the grids that thinks that this is the center point of the object.
 - Non-max suppression algorithm:
-  1. Lets assume that we are targeting one class as an output.
+  1. Lets assume that we are targeting one class as an output class.
   2. Y shape should be `[Pc, bx, by, bh, hw]` Where Pc is the probability if that object occurs.
   3. Discard all boxes with `Pc < 0.6`  
   4. While there are any remaining boxes:
      1. Pick the box with the largest Pc Output that as a prediction.
-     2. Discard any remaining box with `IoU < 0.5` with the box output in the previous step.
-- If there are multiple classes/object types `c` you want to detect, you should run the Non-max suppression `c` times.
+     2. Discard any remaining box with `IoU > 0.5` with that box output in the previous step i.e any box with high overlap(greater than overlap threshold of 0.5).
+- If there are multiple classes/object types `c` you want to detect, you should run the Non-max suppression `c` times, once for every output class.
 
 ### Anchor Boxes
 
-- In YOLO, a grid only detects on object. What if a grid cell wants to detect multiple object?
+- In YOLO, a grid only detects one object. What if a grid cell wants to detect multiple object?
   - ![](Images/27.png)
   - Car and person grid is same here.
   - In practice this happens rarely.
@@ -873,7 +872,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - ![](Images/29.png)
   - Where the car was near the anchor 2 than anchor 1.
 - You may have two or more anchor boxes but you should know their shapes.
-  - how do you choose the anchor boxes and people used to just choose them by hand you know choose a maybe five or ten anchor ball shapes that spans a variety  of shapes that see to cover the types of objects you seem to detect as a much.
+  - how do you choose the anchor boxes and people used to just choose them by hand. Maybe five or ten anchor box shapes that spans a variety  of shapes that cover the types of objects you seem to detect frequently.
   - You may also use a k-means algorithm on your dataset to specify that.
 - Anchor boxes allows your algorithm to specialize, means in our case to easily detect wider images or taller ones.
 
@@ -893,7 +892,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
   - Like we said in practice they use five or more anchor boxes hand made or generated using k-means.
 
-- Our labeled Y shape will be `[Ny, HeightOfGrid, WidthOfGrid, 16]` each row is as following:
+- Our labeled Y shape will be `[Ny, HeightOfGrid, WidthOfGrid, 16]`, where Ny is number of instances and each row (of size 16) is as follows:
 
   - `[Pc, bx, by, bh, bw, c1, c2, c3, Pc, bx, by, bh, bw, c1, c2, c3]`
 
@@ -1143,24 +1142,24 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 #### What is face recognition?
 
-- Face recognition system identifies a persons face. It can work on both images or videos.
-- **<u>Liveness detection</u>** within a video face recognition system prevents the network from identifying a real  picture in an image. It can be learned by supervised deep learning using a dataset for live human and in-live human and sequence learning.
+- Face recognition system identifies a person's face. It can work on both images or videos.
+- **<u>Liveness detection</u>** within a video face recognition system prevents the network from identifying a face in an image. It can be learned by supervised deep learning using a dataset for live human and in-live human and sequence learning.
 - Face verification vs. face recognition:
   - Verification:
-    - Input image, name/ID. (1 : 1)
-    - Output whether the input image is that of the claimed person.
+    - Input: image, name/ID. (1 : 1)
+    - Output: whether the input image is that of the claimed person.
     - "is this the claimed person?"
   - Recognition:
     - Has a database of K persons
     - Get an input image
     - Output ID if the image is any of the K persons (or not recognized)
     - "who is this person?"
-- We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given a K persons. 
+- We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given K persons. 
 
 #### One Shot Learning
 
-- One of the face recognition challenges is to solve a one shot problem.
-- One Shot Learning: A recognition system is able to recognize a person learning from one image.
+- One of the face recognition challenges is to solve one shot learning problem.
+- One Shot Learning: A recognition system is able to recognize a person, learning from one image.
 - Historically deep learning doesn't work well with a small number of data.
 - Instead to make this work, we will learn a **similarity function**:
   - d( **img1**, **img2** ) = degree of difference between images.
@@ -1175,7 +1174,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Siamese network architecture are as the following:
   - ![](Images/35.png)
   - We make 2 identical conv nets which encodes an input image into a vector. In the above image the vector shape is (128, )
-  - The loss function will be `d(x1, x2) = || f(x1) - f(x2) ||2`
+  - The loss function will be `d(x1, x2) = || f(x1) - f(x2) ||^2`
   - If `X1`, `X2` are the same person, we want d to be low. If they are different persons, we want d to be high.
   - [[Taigman et. al., 2014. DeepFace closing the gap to human level performance]](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html)
 
@@ -1187,18 +1186,18 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - The triplet name came from that we are comparing an anchor A with a positive P and a negative N image.
 - Formally we want:
   - Positive distance to be less than negative distance
-  - `||f(A) - f(P)||2  <= ||f(A) - f(N)||2`
+  - `||f(A) - f(P)||^2  <= ||f(A) - f(N)||^2`
   - Then
-  - `||f(A) - f(P)||2  - ||f(A) - f(N)||2 <= 0`
+  - `||f(A) - f(P)||^2  - ||f(A) - f(N)||^2 <= 0`
   - To make sure the NN won't get an output of zeros easily:
-  - `||f(A) - f(P)||2  - ||f(A) - f(N)||2 <= -alpha`
+  - `||f(A) - f(P)||^2  - ||f(A) - f(N)||^2 <= -alpha`
     - Alpha is a small number. Sometimes its called the margin.
   - Then
-  - `||f(A) - f(P)||2  - ||f(A) - f(N)||2 + alpha <= 0`
+  - `||f(A) - f(P)||^2  - ||f(A) - f(N)||^2 + alpha <= 0`
 - Final Loss function:
   - Given 3 images (A, P, N)
-  - `L(A, P, N) = max (||f(A) - f(P)||2  - ||f(A) - f(N)||2 + alpha , 0)`
-  - `J = Sum((A[i], P[i], N[i]) , i)` for all triplets of images.
+  - `L(A, P, N) = max (||f(A) - f(P)||^2  - ||f(A) - f(N)||^2 + alpha , 0)`
+  - `J = Sum(L(A[i], P[i], N[i]) , i)` for all triplets of images.
 - You need multiple images of the same person in your dataset. Then get some triplets out of your dataset. Dataset should be big enough.
 - Choosing the triplets A, P, N:
   - During training if A, P, N are chosen randomly (Subjet to A and P are the same and A and N aren't the same) then one of the problems this constrain is easily satisfied 
@@ -1283,11 +1282,11 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - In the previous section we showed that we need a cost function for the content image and the style image to measure how similar is them to each other.
 - Say you use hidden layer `l` to compute content cost. 
   - If we choose `l` to be small (like layer 1), we will force the network to get similar output to the original content image.
-  - In practice `l` is not to shallow and not too deep but in the middle.
+  - In practice `l` is not too shallow and not too deep but in the middle.
 - Use pre-trained ConvNet. (E.g., VGG network)
 - Let `a(c)[l]` and `a(G)[l]` be the activation of layer `l` on the images.
 - If `a(c)[l]` and `a(G)[l]` are similar then they will have the same content
-  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a(G)[l] ||2`
+  - `J(C, G) at a layer l = 1/2 || a(c)[l] - a(G)[l] ||^2`
 
 #### Style Cost Function
 
