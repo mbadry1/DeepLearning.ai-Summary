@@ -603,7 +603,10 @@ Here are the course summary as its given on the course [link](https://www.course
 - X<sub>ct</sub> = X<sub>tc</sub> if we choose a window pair, but they will not equal if we choose the previous words for example. In GloVe they use a window which means they are equal
 - The model is defined like this:
   - ![](Images/44.png)
-- f(x) is given to help with the log 0 problem. Also it gives weights for some words. For stop words like this, is, the it gives it a low weight, also for words that doesn't occur so much.
+- f(x) -the weighting term- is used for many reasons which includes:
+  - The `log(0)` problem, which might occur if there are no pairs for the given target and context values.
+  - Giving low weights for stop words like "is", "the", and "this" because they occurs a lot.
+  - Giving low weights for words that doesn't occur so much.
 - ceta and e are symmetric which helps getting the final word embedding. 
 - Conclusion on word embeddings:
   - If this is your first try, you should try to download a pretrained model that has been made and actually works best.
@@ -675,7 +678,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Various sequence to sequence architectures
 
 #### Basic Models
-- In this section we will learn about sequence to sequence - Many to Many -  models that are useful in various applications includes machine translation and speech recognition.
+- In this section we will learn about sequence to sequence - Many to Many -  models which are useful in various applications including machine translation and speech recognition.
 - Lets start by the basic model:
   - Given this machine translation problem in which X is a French sequence and Y is an English sequence.
     - ![](Images/52.png)

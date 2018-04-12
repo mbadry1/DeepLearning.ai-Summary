@@ -435,7 +435,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
     Or
     `A = np.tanh(z)   # Where z is the input matrix`
-- It turns out that using the Tanh function in hidden layers is far more better. (Because of the zero mean of the function)
+- It turns out that the tanh activation usually works better than sigmoid activation function for hidden units because the mean of its output is closer to zero, and so it centers the data better for the next layer.
 - Sigmoid or Tanh function disadvantage is that if the input is too small or too high, the slope will be near zero which will cause us the gradient decent problem.
 - One of the popular activation functions that solved the slow gradient decent is the RELU function.
   `RELU = max(0,z) # so if z is negative the slope is 0 and if z is positive the slope remains linear.`
@@ -455,7 +455,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - If we removed the activation function from our algorithm that can be called linear activation function.
 - Linear activation function will output linear activations
   - Whatever hidden layers you add, the activation will be always linear like logistic regression (So its useless in a lot of complex problems)
-- You might use this in one place, If the output is real numbers, you can use linear activation function in the output layer.
+- You might use linear activation function in one place - in the output layer if the output is real numbers (regression problem). But even in this case if the output value is non-negative you could use RELU instead.
 
 ### Derivatives of activation functions
 
@@ -478,16 +478,16 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   g(z)  = np.maximum(0,z)
-  g'(z) = { 0  if z<0
-  		  1  if z>=0  }
+  g'(z) = { 0  if z < 0
+            1  if z >= 0  }
   ```
 
 - Derivation of leaky RELU activation function:
 
   ```
   g(z)  = np.maximum(0.01 * z, z)
-  g'(z) = { 0.01  if z<0
-  				  1     if z>=0   }
+  g'(z) = { 0.01  if z < 0
+            1     if z >= 0   }
   ```
 
 ### Gradient descent for Neural Networks
@@ -543,22 +543,20 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - In logistic regression it wasn't important to initialize the weights randomly, while in NN we have to initialize them randomly.
 
-- If we initialize the weights with zeros in NN it won't work lets see why.
-
-- If we initialize `W` with zero, Then `A1[:,1]` will equal to `A[:,2]`. So `Z[:,1]` will equal `Z[:,2]` (We are talking in the middle layer)
-
-- Then all the hidden units will always updates the same.
+- If we initialize all the weights with zeros in NN it won't work (initializing bias with zero is OK):
+  - all hidden units will be completely identical (symmetric) - compute exactly the same function
+  - on each gradient descent iteration all the hidden units will always update the same
 
 - To solve this we initialize the W's with a small random numbers:
 
   ```
-  W1 = np.random.randn((2,2)) * 0.01   #0.01 to make it small enough
-  b1 = np.zeros((2,1))   # its ok to have b as zero, it won't get us to the symmetry problem.
+  W1 = np.random.randn((2,2)) * 0.01    # 0.01 to make it small enough
+  b1 = np.zeros((2,1))                  # its ok to have b as zero, it won't get us to the symmetry breaking problem
   ```
 
-- We need small values because in sigmoid for example, if the number is big it will be 0 or 1 we will have flat parts. So learning will be so slow.
+- We need small values because in sigmoid (or tanh), for example, if the weight is too large you are more likely to end up even at the very start of training with very large values of Z. Which causes your tanh or your sigmoid activation function to be saturated, thus slowing down learning. If you don't have any sigmoid or tanh activation functions throughout your neural network, this is less of an issue.
 
-- 0.01 is alright for 1 hidden neurons, but if the NN is deep this number can be changed but it will always be a small number.
+- Constant 0.01 is alright for 1 hidden layer networks, but if the NN is deep this number can be changed but it will always be a small number.
 
 ## Deep Neural Networks
 
