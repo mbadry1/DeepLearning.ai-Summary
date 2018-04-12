@@ -74,7 +74,7 @@ Taking [fast.ai](http://www.fast.ai/) courses series as it focuses more on the p
 
 ## Acknowledgements
 
-Thanks for [wangzhenhui1992](https://github.com/wangzhenhui1992) and [VladKha](https://github.com/VladKha) for helping me revising and  fixing all mistakes in the notes
+Thanks for [wangzhenhui1992](https://github.com/wangzhenhui1992), [jarpit96](https://github.com/jarpit96), and [VladKha](https://github.com/VladKha) for helping me revising and  fixing mistakes in the notes
 
 <br/>
 
