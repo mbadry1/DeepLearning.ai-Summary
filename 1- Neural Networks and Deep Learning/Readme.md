@@ -676,14 +676,13 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ## Extra: Ian Goodfellow interview
 
-- Ian is one of the best researchers in Deep neural network.
-- He is mainly working with generative models GANs.
-- He need to stabilize GANs to be like deep learning.
-  - GANs stabilizing will take the market as the best generative model.
-- Ian wrote the first deep learning textbook with Yoshua Bengio and Aaron Courville.
-- He works with [OpenAI.com](OpenAI.com) 
-- He tells all of the ones who want to get into AI to get a PHD or post your code on Github and the companies will find you.
-- He thinks that we need to start with securing NN right in the start while we develop it.'
+- Ian is one of the world's most visible deep learning researchers.
+- Ian is mainly working with generative models. He is the creator of GANs.
+- We need to stabilize GANs. Stabilized GANs can become the best generative models.
+- Ian wrote the first textbook on the modern version of deep learning with Yoshua Bengio and Aaron Courville.
+- Ian worked with [OpenAI.com](OpenAI.com) and Google on ML and NN applications.
+- Ian tells all who wants to get into AI to get a Ph.D. or post your code on Github and the companies will find you.
+- Ian thinks that we need to start anticipating security problems with ML now and make sure that these algorithms are secure from the start instead of trying to patch it in retroactively years later.
 
 
 
