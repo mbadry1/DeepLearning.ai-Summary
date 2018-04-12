@@ -678,7 +678,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Various sequence to sequence architectures
 
 #### Basic Models
-- In this section we will learn about sequence to sequence - Many to Many -  models that are useful in various applications includes machine translation and speech recognition.
+- In this section we will learn about sequence to sequence - Many to Many -  models which are useful in various applications including machine translation and speech recognition.
 - Lets start by the basic model:
   - Given this machine translation problem in which X is a French sequence and Y is an English sequence.
     - ![](Images/52.png)
