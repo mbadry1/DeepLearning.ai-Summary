@@ -582,14 +582,14 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Forward Propagation in a Deep Network
 
-- Forward propagation General rule for one input:
+- Forward propagation general rule for one input:
 
   ```
   z[l] = W[l]a[l-1] + b[l]
   a[l] = g[l](a[l])
   ```
 
-- Forward propagation General rule for `m` inputs:
+- Forward propagation general rule for `m` inputs:
 
   ```
   Z[l] = W[l]A[l-1] + B[l]
@@ -602,7 +602,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Getting your matrix dimensions right
 
 - The best way to debug your matrices dimensions is by a pencil and paper.
-- Dimension of `W` is `(n[l],n[l-1])` . Can be thought by Right to left.
+- Dimension of `W` is `(n[l],n[l-1])` . Can be thought by right to left.
 - Dimension of `b` is `(n[l],1)`
 - `dw` has the same shape as `W`, while `db` is the same shape as `b`
 - Dimension of `Z[l],` `A[l]`, `dZ[l]`, and `dA[l]`  is `(n[l],m)`
