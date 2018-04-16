@@ -610,15 +610,15 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Why deep representations?
 
 - Why deep NN works well, we will discuss this question in this section.
-- Deep NN makes relations with data from simpler to complex. In each layer it tries to make a relations between the previous layer.
-- Face recognition application:
-  - Image ==> Edges ==> Face parts ==> Faces ==> desired face
-- Audio recognition application:
-  - Audio ==> Low level sound features like (sss,bb) ==> Phonemes ==> Words ==> Sentences
-- Neural Researchers thinks that deep neural networks thinks like brains (Simple ==> Complex)
+- Deep NN makes relations with data from simpler to complex. In each layer it tries to make a relation with the previous layer. E.g.:
+  - 1) Face recognition application:
+      - Image ==> Edges ==> Face parts ==> Faces ==> desired face
+  - 2) Audio recognition application:
+      - Audio ==> Low level sound features like (sss,bb) ==> Phonemes ==> Words ==> Sentences
+- Neural Researchers think that deep neural networks "think" like brains (simple ==> complex)
 - Circuit theory and deep learning:
   - ![](Images/07.png)
-- When starting on an application don't start directly by dozens of hidden layers. Try the simplest solutions (L Regression) then try the parameters then try the shallow neural network and so on.
+- When starting on an application don't start directly by dozens of hidden layers. Try the simplest solutions (e.g. Logistic Regression), then try the shallow neural network and so on.
 
 ### Building blocks of deep neural networks
 
