@@ -665,7 +665,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Number of hidden units `n`.
   - Choice of activation functions.
 - You have to try values yourself of hyper parameters.
-- In the old days they thought that learning rate is a parameter while now all knows its a hyper parameter.
+- In the earlier days of DL and ML learning rate was often called a parameter, but it really is (and now everybody call it) a hyperparameter.
 - On the next course we will see how to optimize hyperparameters.
 
 ### What does this have to do with the brain
