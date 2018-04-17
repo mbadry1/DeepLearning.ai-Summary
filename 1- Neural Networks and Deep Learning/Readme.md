@@ -670,9 +670,12 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### What does this have to do with the brain
 
-- No Human today understand how a human brain neuron works.
-- No Human today know exactly how many neurons on the brain.
-- NN is a small representation of how brain work. The most near model of human brain is in the computer vision (CNN)
+- The analogy that "It is like the brain" has become really an oversimplified explanation.
+- There is a very simplistic analogy between a single logistic unit and a single neuron in the brain.
+- No human today understand how a human brain neuron works.
+- No human today know exactly how many neurons on the brain.
+- Deep learning in Andrew's opinion is very good at learning very flexible, complex functions to learn X to Y mappings, to learn input-output mappings (supervised learning).
+- The field of computer vision has taken a bit more inspiration from the human brains then other disciplines that also apply deep learning.
 
 ## Extra: Ian Goodfellow interview
 
