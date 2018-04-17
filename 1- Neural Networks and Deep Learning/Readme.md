@@ -676,6 +676,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - No human today know exactly how many neurons on the brain.
 - Deep learning in Andrew's opinion is very good at learning very flexible, complex functions to learn X to Y mappings, to learn input-output mappings (supervised learning).
 - The field of computer vision has taken a bit more inspiration from the human brains then other disciplines that also apply deep learning.
+- NN is a small representation of how brain work. The most near model of human brain is in the computer vision (CNN)
 
 ## Extra: Ian Goodfellow interview
 
