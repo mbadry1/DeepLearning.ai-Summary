@@ -70,19 +70,18 @@ Here are the course summary as its given on the course [link](https://www.course
 - So the idea is you go through the loop: `Idea ==> Code ==> Experiment`.
 - You have to go through the loop many times to figure out your hyperparameters.
 - Your data will be split into three parts:
-  - Training set.		(Has to be the largest set)
-  - Dev set or Validation set.
+  - Training set.
+  - Hold-out cross validation set / Development or "dev" set.
   - Testing set.
-- You will try to build a model upon training set then try to optimize hyperparameters on Dev set as much as possible. Then after your model is ready you try and evaluate the testing set.
+- You will try to build a model upon training set then try to optimize hyperparameters on dev set as much as possible. Then after your model is ready you try and evaluate the testing set.
 - so the trend on the ratio of splitting the models:
   - If size of the  dataset is 100 to 1000000  ==> 60/20/20
   - If size of the  dataset is 1000000  to INF  ==> 98/1/1 or  99.5/0.25/0.25
 - The trend now gives the training data the biggest sets.
-- Make sure the Training/Dev/test set is coming from the same distribution.
-  - For example if cat training pictures is from the web and the Dev/test pictures are from users cell phone they will mismatch. It is better to make them one distribution.
-- The Dev set rule is to try them on some of the good models you've created.
-- Its OK to only have a Dev set without a testing set.
-- Almost all people call the Dev set as the test set. But a better terminology is to call it a Dev set as its used in the development.
+- Make sure the dev and test set are coming from the same distribution.
+  - For example if cat training pictures is from the web and the dev/test pictures are from users cell phone they will mismatch. It is better to make sure that dev and test set are from the same distribution.
+- The dev set rule is to try them on some of the good models you've created.
+- Its OK to only have a dev set without a testing set. But a lot of people in this case call the dev set as the test set. A better terminology is to call it a dev set as its used in the development.
 
 ### Bias / Variance
 
