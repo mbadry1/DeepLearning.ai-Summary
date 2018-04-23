@@ -110,17 +110,17 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Basic Recipe for Machine Learning
 
 - If your algorithm has a high bias:
-  - Try to make your NN bigger (Size of Hidden units, Number of layers)
-  - Try a different model that are suitable for your data.
+  - Try to make your NN bigger (size of hidden units, number of layers)
+  - Try a different model that is suitable for your data.
   - Try to run it longer.
-  - Different optimization algorithm.
+  - Different (advanced) optimization algorithms.
 - If your algorithm has a high variance:
   - More data.
   - Try regularization.
-  - Try a different model that are suitable for your data.
-- You should try the previous two points until you have a low bias / low variance.
-- In the older days before deep learning there was a "Bias / variance trade off". But because now you have more options on solving the bias and variance problem its really helpful to use deep learning.
-- Training a bigger neural network never hurt.
+  - Try a different model that is suitable for your data.
+- You should try the previous two points until you have a low bias and low variance.
+- In the older days before deep learning, there was a "Bias/variance tradeoff". But because now you have more options/tools for solving the bias and variance problem its really helpful to use deep learning.
+- Training a bigger neural network never hurts.
 
 ### Regularization
 
