@@ -168,25 +168,25 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Dropout Regularization
 
-- In the most cases Andrew Ng tells that he uses the L1/L2 regularization.
-- The dropout Regularization eliminates some neurons/weights on each iteration based on a probability.
-- A technique called "Inverse dropout" is one of the techniques that are used to implement Inverse dropout.
-- Code for Inverse dropout:
+- In most cases Andrew Ng tells that he uses the L2 regularization.
+- The dropout regularization eliminates some neurons/weights on each iteration based on a probability.
+- A most common technique to implement dropout is called "Inverted dropout".
+- Code for Inverted dropout:
 
   ```
-  keep_prob = 0.8
-  l = 3          # This code will work only on layer 3
+  keep_prob = 0.8   # 0 <= keep_prob <= 1
+  l = 3  # this code is only for layer 3
   # the generated number that are less than 0.8 will be dropped. 80% stay, 20% dropped
-  d3 = np.random.randn(a[l].shape[0], a[l].shape[1]) < keep_prob
+  d3 = np.random.randn(a3.shape[0], a3.shape[1]) < keep_prob
 
-  a3 = np.multiply(a3,d3)   #Keeps only the values in d3
+  a3 = np.multiply(a3,d3)   # keep only the values in d3
 
-  # Maximize a3 again to gain the loss (The expected value of a3 is the same) - To solve the
-  # scaling problem
+  # increase a3 to not reduce the expected value of output
+  # (ensures that the expected value of a3 remains the same) - to solve the scaling problem
   a3 = a3 / keep_prob       
   ```
-
-- At test time we don't run the "Inverse dropout"
+- Vector d[l] is used for forward and back propagation and is the same for them, but it is different for each pass.
+- At test time we don't use dropout. If you implement dropout at test time - it would add noise to predictions.
 
 ### Understanding Dropout
 
