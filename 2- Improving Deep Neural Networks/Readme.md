@@ -147,11 +147,11 @@ Here are the course summary as its given on the course [link](https://www.course
     `dw[l] = (from back propagation)`
   - The new way:   
     `dw[l] = (from back propagation) + lambda/m * w[l]`
-  - So pluging it in weight update step:   
-    `w[l] = w[l] - learning_rate * dw[l] =`   
-         `= w[l] - learning_rate * ((from back propagation) + lambda/m * w[l]) = `   
-         `= w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation) =`   
-         `= (1 - (learning_rate*lambda)/m) * w[l] - learning_rate * (from back propagation)`
+  - So plugging it in weight update step:      
+        w[l] = w[l] - learning_rate * dw[l]
+             = w[l] - learning_rate * ((from back propagation) + lambda/m * w[l])
+             = w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation) 
+             = (1 - (learning_rate*lambda)/m) * w[l] - learning_rate * (from back propagation)
   - In practice this penalizes large weights and effectively limits the freedom in your model.
   - The new term `(1 - (learning_rate*lambda)/m) * w[l]`  causes the **weight to decay** in proportion to its size.
   ### Why regularization reduces overfitting? 
@@ -173,11 +173,11 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - A most common technique to implement dropout is called "Inverted dropout".
 - Code for Inverted dropout:
 
-  ```
+  ```python
   keep_prob = 0.8   # 0 <= keep_prob <= 1
   l = 3  # this code is only for layer 3
   # the generated number that are less than 0.8 will be dropped. 80% stay, 20% dropped
-  d3 = np.random.randn(a3.shape[0], a3.shape[1]) < keep_prob
+  d3 = np.random.randn(a[l].shape[0], a[l].shape[1]) < keep_prob
 
   a3 = np.multiply(a3,d3)   # keep only the values in d3
 
@@ -738,7 +738,7 @@ It uniformly samples values from [a, b] as r.
   - the result should be `w = 5` as the function is `(w-5)^2 = 0`
   - Code V1:
 
-    ```
+    ```python
     w = tf.Variable(0, dtype=tf.float32)                 # Creating a variable w
     cost = tf.add(tf.add(w**2, tf.multiply(-10.0, w)), 25.0)        # can be written as this [cost = w**2 - 10*w + 25]
     train = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
@@ -759,7 +759,7 @@ It uniformly samples values from [a, b] as r.
 
   - Code V2 (we feed the inputs to the algorithm through coefficient):
 
-    ```
+    ```python
     coefficient = np.array([[1.], [-10.], [25.]])
 
     x = tf.placeholder(tf.float32, [3, 1])
@@ -787,7 +787,7 @@ It uniformly samples values from [a, b] as r.
 - If you are using a mini-batch training you should change the `feed_dict={x: coefficient}` to the current mini batch.
 - Almost all TensorFlow  program uses this:
 
-  ```
+  ```python
   with tf.Session() as session:             # Because its better at clean up.
   	session.run(init)
   	session.run(w)
