@@ -193,12 +193,15 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Understanding Dropout
 
-- Can't rely on one feature so have to spread out weights
-- Dropout can have different dropouts per layer.
-- The input layer drop out is has to be near 1 because we need to learn a lot from the input.
-- A lot of researchers are using dropout with CNN.
-- Downside of dropout is that the loss function is not well defined and it will be hard to debug.
-  - To solve that you'll need to set all the dropouts by 1 and then check your cost graph if its going well set the dropouts again.
+- In the previous video, the intuition was that dropout randomly knocks out units in your network. So it's as if on every iteration you're working with a smaller NN, and so using a smaller NN seems like it should have a regularizing effect.
+- Another intuition: can't rely on any one feature, so have to spread out weights.
+- It's possible to show that dropout has a similar effect to L2 regularization.
+- Dropout can have different `keep_prob` per layer.
+- The input layer dropout has to be near 1 (or 1 - no dropout) because you don't want to eliminate a lot of features.
+- If you're more worried about some layers overfitting than others, you can set a lower `keep_prob` for some layers than others. The downside is, this gives you even more hyperparameters to search for using cross-validation. One other alternative might be to have some layers where you apply dropout and some layers where you don't apply dropout and then just have one hyperparameter, which is a `keep_prob` for the layers for which you do apply dropouts.
+- A lot of researchers are using dropout with Computer Vision (CV) because they have a very big input size and almost never have enough data, so overfitting is the usual problem. And dropout is a regularization technique to prevent overfitting.
+- A downside of dropout is that the cost function J is not well defined and it will be hard to debug (plot J by iteration).
+  - To solve that you'll need to turn off dropout, set all the `keep_prob`s to 1, and then run the code and check that it monotonically decreases J and then turn on the dropouts again.
 
 ### Other regularization methods
 
