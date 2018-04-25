@@ -205,16 +205,16 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - **Data augmentation**:
   - For example in a computer vision data:
     - You can flip all your pictures horizontally this will give you m more data instances.
-    - You could also take a random position and rotation in an image to get more data.
-  - For example in OCR, you'll need to distort the digits.
-  - This technique's new data isn't as good as the real independent data, but still can be used as a Regularization technique.
+    - You could also apply a random position and rotation to an image to get more data.
+  - For example in OCR, you can impose random rotations and distortions to digits/letters.
+  - New data obtained using this technique isn't as good as the real independent data, but still can be used as a regularization technique.
 - **Early stopping**:
-  - In this technique we plot the training data and the Dev data cost together. At some iteration the Dev data cost will stop decreasing.
-  - We will pick the point at which the training data graph and Dev data graph are best (lowest training cost with lowest dev cost).
+  - In this technique we plot the training set and the dev set cost together for each iteration. At some iteration the dev set cost will stop decreasing and will start increasing.
+  - We will pick the point at which the training set error and dev set error are best (lowest training cost with lowest dev cost).
   - We will take these parameters as the best parameters.
     - ![](Images/02-_Early_stopping.png)
-  - This technique is not recommended because it makes us think about something else more than optimize W's and b's.
-  - But its advantage is that you don't need to modify a Hyperparameter like in Regularization.
+  - Andrew prefers to use L2 regularization instead of early stopping because this technique simultaneously tries to minimize the cost function and not to overfit which contradicts the orthogonalization approach (will be discussed further).
+  - But its advantage is that you don't need to search a hyperparameter like in other regularization approaches (like `lambda` in L2 regularization).
 - **Model Ensembles**:
   - Algorithm:
     - Train multiple independent models.
