@@ -124,44 +124,39 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Regularization
 
-- Adding Regularization to NN will help it reduce variance (Overfitting)
-- L1 matrix Norm:
-  - `||W|| = Sum(|W[i,j]|)		# Sum of all Ws with abs `
-- L2 matrix Norm sometimes its called Frobenius norm:
-  - `||W||^2 = Sum(|W[i,j]|^2)	#Sum of all Ws squared`
-  - Also can be calculated using`||W||^2 = W.T * W `
-- Regularization For logistic regression:
-  - The normal cost function that we want to minimize is:
-     `J(w,b) = (1/m) * Sum(L(y(i),y'(i)))`
-  - The L2 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * ||W||^2 `
-  - The L1 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * (||W||)`
-  - The L1 Regularization version makes a lot of w values become zeros, which makes the model size is small.
-  - L2 Regularization is being used much often.
-  - `Lmda` here is the Regularization parameter (Hyperparameter)
-
-
-- Regularization For NN:
-  - The normal cost function that we want to minimize is:
+- Adding regularization to NN will help it reduce variance (overfitting)
+- L1 matrix norm:
+  - `||W|| = Sum(|w[i,j]|)  # sum of absolute values of all w`
+- L2 matrix norm because of arcane technical math reasons is called Frobenius norm:
+  - `||W||^2 = Sum(|w[i,j]|^2)	# sum of all w squared`
+  - Also can be calculated as `||W||^2 = W.T * W`
+- Regularization for logistic regression:
+  - The normal cost function that we want to minimize is: `J(w,b) = (1/m) * Sum(L(y(i),y'(i)))`
+  - The L2 regularization version: `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (lambda/2m) * Sum(|w[i]|^2)`
+  - The L1 regularization version: `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (lambda/2m) * Sum(|w[i]|)`
+  - The L1 regularization version makes a lot of w values become zeros, which makes the model size smaller.
+  - L2 regularization is being used much more often.
+  - `lambda` here is the regularization parameter (hyperparameter)
+- Regularization for NN:
+  - The normal cost function that we want to minimize is:   
     `J(W1,b1...,WL,bL) = (1/m) * Sum(L(y(i),y'(i)))`
-  - The L2 Regularization version:
-    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (Lmda/2m) * Sum((||W[l]||) ^2)`
-  - We stack the matrix as one vector `(mn,1)` and then we apply `sqrt(w1^2+w2^2.....)`
-  - To do back propagation (old way):
-
-    `w[l] = w[l] - learningRate * dw[l]`
-
-  - The new way:
-
-    `dw[l] = (Back prob) + (Lmda/m)*w[l]`
-
-  - So: 
-    - `w[l] = w[l] - (Lmda/m)*w[l] - learningRate * dw[l]` 
-    - `w[l] = (1 - (learninRate*Lmda)/m) w[l] - learninRate*dw[l]`
+  - The L2 regularization version:   
+    `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (lambda/2m) * Sum((||W[l]||^2)`
+  - We stack the matrix as one vector `(mn,1)` and then we apply `sqrt(w1^2 + w2^2.....)`
+  - To do back propagation (old way):   
+    `dw[l] = (from back propagation)`
+  - The new way:   
+    `dw[l] = (from back propagation) + lambda/m * w[l]`
+  - So pluging it in weight update step:   
+    `w[l] = w[l] - learning_rate * dw[l] =`   
+         `= w[l] - learning_rate * ((from back propagation) + lambda/m * w[l]) = `   
+         `= w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation) =`   
+         `= (1 - (learning_rate*lambda)/m) * w[l] - learning_rate * (from back propagation)`
   -  In practice this penalizes large weights and effectively limits the freedom in your model.
-  - The new term `(1 - (learninRate*Lmda)/m) w[l]`  causes the weight to decay in proportion to its size.
-- Why regularization reduces overfitting? Here are some intuitions:
+  - The new term `(1 - (learning_rate*lambda)/m) * w[l]`  causes the **weight to decay** in proportion to its size.
+
+### Why regularization reduces overfitting? 
+Here are some intuitions:
   1. Number 1
      - If `Lmda` is too large, as the equations we discussed before a lot of w's will be zeros which will make the NN act like logistic regression.
      - If `Lmda` is good enough it will just reduce some weights that makes the neural network overfit.
