@@ -162,12 +162,14 @@ Here are the course summary as its given on the course [link](https://www.course
   -  In practice this penalizes large weights and effectively limits the freedom in your model.
   - The new term `(1 - (learninRate*Lmda)/m) w[l]`  causes the weight to decay in proportion to its size.
 - Why regularization reduces overfitting? Here are some intuitions:
-  1. Number 1
-     - If `Lmda` is too large, as the equations we discussed before a lot of w's will be zeros which will make the NN act like logistic regression.
-     - If `Lmda` is good enough it will just reduce some weights that makes the neural network overfit.
-  2. Number 2 (in Tanh activation function)
-     - If `Lmda` is too large, w's will be small which makes the Tanh activation function to be from non linear to linear which makes the NN a linear classifier.
-     - If `Lmda` good enough it will just make some Tanh activation a linear classifier which will prevent overfitting.
+  - Intuition 1:
+     - If `lambda` is too large - a lot of w's will be close to zeros which will make the NN simpler (you can think of it as it would behave closer to logistic regression).
+     - If `lambda` is good enough it will just reduce some weights that makes the neural network overfit.
+  - Intuition 2 (with _tanh_ activation function):
+     - If `lambda` is too large, w's will be small (close to zero) - will use the linear part of the _tanh_ activation function, so we will go from non linear activation to _roughly_ linear which would make the NN a _roughly_ linear classifier.
+     - If `lambda` good enough it will just make some of _tanh_ activations _roughly_ linear which will prevent overfitting.
+     
+_**Implementation tip**_: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases **monotonically** after every elevation of gradient descent with regularization. If you plot the old definition of J (no regularization) then you might not see it decrease monotonically.
 
 ### Dropout Regularization
 
