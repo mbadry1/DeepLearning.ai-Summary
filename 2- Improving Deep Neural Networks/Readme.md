@@ -140,19 +140,29 @@ Here are the course summary as its given on the course [link](https://www.course
 - Regularization for NN:
   - The normal cost function that we want to minimize is:   
     `J(W1,b1...,WL,bL) = (1/m) * Sum(L(y(i),y'(i)))`
+
   - The L2 regularization version:   
     `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (lambda/2m) * Sum((||W[l]||^2)`
+
   - We stack the matrix as one vector `(mn,1)` and then we apply `sqrt(w1^2 + w2^2.....)`
+
   - To do back propagation (old way):   
     `dw[l] = (from back propagation)`
+
   - The new way:   
     `dw[l] = (from back propagation) + lambda/m * w[l]`
-  - So plugging it in weight update step:      
-        w[l] = w[l] - learning_rate * dw[l]
-             = w[l] - learning_rate * ((from back propagation) + lambda/m * w[l])
-             = w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation) 
-             = (1 - (learning_rate*lambda)/m) * w[l] - learning_rate * (from back propagation)
+
+  - So plugging it in weight update step:
+
+    - ```
+      w[l] = w[l] - learning_rate * dw[l]
+           = w[l] - learning_rate * ((from back propagation) + lambda/m * w[l])
+           = w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation) 
+           = (1 - (learning_rate*lambda)/m) * w[l] - learning_rate * (from back propagation)
+      ```
+
   - In practice this penalizes large weights and effectively limits the freedom in your model.
+
   - The new term `(1 - (learning_rate*lambda)/m) * w[l]`  causes the **weight to decay** in proportion to its size.
   ### Why regularization reduces overfitting? 
   Here are some intuitions:
