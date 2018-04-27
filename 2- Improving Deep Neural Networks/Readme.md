@@ -12,6 +12,7 @@ This is the second course of the deep learning specialization at [Coursera](http
       * [Bias / Variance](#bias--variance)
       * [Basic Recipe for Machine Learning](#basic-recipe-for-machine-learning)
       * [Regularization](#regularization)
+      * [Why regularization reduces overfitting?](#why-regularization-reduces-overfitting)
       * [Dropout Regularization](#dropout-regularization)
       * [Understanding Dropout](#understanding-dropout)
       * [Other regularization methods](#other-regularization-methods)
@@ -164,8 +165,11 @@ Here are the course summary as its given on the course [link](https://www.course
   - In practice this penalizes large weights and effectively limits the freedom in your model.
 
   - The new term `(1 - (learning_rate*lambda)/m) * w[l]`  causes the **weight to decay** in proportion to its size.
-  ### Why regularization reduces overfitting? 
-  Here are some intuitions:
+
+
+### Why regularization reduces overfitting?
+
+Here are some intuitions:
   - Intuition 1:
      - If `lambda` is too large - a lot of w's will be close to zeros which will make the NN simpler (you can think of it as it would behave closer to logistic regression).
      - If `lambda` is good enough it will just reduce some weights that makes the neural network overfit.
