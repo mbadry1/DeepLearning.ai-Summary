@@ -199,7 +199,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   # (ensures that the expected value of a3 remains the same) - to solve the scaling problem
   a3 = a3 / keep_prob       
   ```
-- Vector d[l] is used for forward and back propagation and is the same for them, but it is different for each pass.
+- Vector d[l] is used for forward and back propagation and is the same for them, but it is different for each iteration (pass) or training example.
 - At test time we don't use dropout. If you implement dropout at test time - it would add noise to predictions.
 
 ### Understanding Dropout
