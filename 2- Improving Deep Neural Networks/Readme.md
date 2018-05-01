@@ -261,22 +261,27 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
     Y' = W[L]W[L-1].....W[2]W[1]X
     ```
 
-  - Then, if we have 2 layers, in each layer, we have two assumptions:
+  - Then, if we have 2 hidden units per layer and x1 = x2 = 1, we result in:
 
     ```
-    Y' = (W[L][1.5  0]^(L-1)) X = 1.5^L 	# which will be so large
+    if W[l] = [1.5   0] 
+              [0   1.5] (l != L because of different dimensions in the output layer)
+    Y' = W[L] [1.5  0]^(L-1) X = 1.5^L 	# which will be very large
               [0  1.5]
     ```
 
     ```
-    Y' = (W[L][0.5  0]^(L-1)) X = 0.5^L 	# which will be so small
+    if W[l] = [0.5  0]
+              [0  0.5]
+    Y' = W[L] [0.5  0]^(L-1) X = 0.5^L 	# which will be very small
               [0  0.5]
     ```
 
-- The last example explains that the derivatives will be decreased/Increased exponentially.
-- So If W > I (Identity matrix)     The weights will explode.
-- And If W < I (Identity matrix)     The weights will vanish.
-- Recently Microsoft trained 152 layers (ResNet)! which is a really big number.
+- The last example explains that the activations (and similarly derivatives) will be decreased/increased exponentially as a function of number of layers.
+- So If W > I (Identity matrix) the activation and gradients will explode.
+- And If W < I (Identity matrix) the activation and gradients will vanish.
+- Recently Microsoft trained 152 layers (ResNet)! which is a really big number. With such a deep neural network, if your activations or gradients increase or decrease exponentially as a function of L, then these values could get really big or really small. And this makes training difficult, especially if your gradients are exponentially smaller than L, then gradient descent will take tiny little steps. It will take a long time for gradient descent to learn anything.
+- There is a partial solution that doesn't completely solve this problem but it helps a lot - careful choice of how you initialize the weights (next video).
 
 ### Weight Initialization for Deep Networks
 
