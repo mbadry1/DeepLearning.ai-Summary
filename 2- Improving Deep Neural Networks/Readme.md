@@ -20,7 +20,6 @@ This is the second course of the deep learning specialization at [Coursera](http
       * [Vanishing / Exploding gradients](#vanishing--exploding-gradients)
       * [Weight Initialization for Deep Networks](#weight-initialization-for-deep-networks)
       * [Numerical approximation of gradients](#numerical-approximation-of-gradients)
-      * [Gradient checking](#gradient-checking)
       * [Gradient checking implementation notes](#gradient-checking-implementation-notes)
    * [Optimization algorithms](#optimization-algorithms)
       * [Mini-batch gradient descent](#mini-batch-gradient-descent)
