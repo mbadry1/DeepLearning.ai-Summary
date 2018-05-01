@@ -241,15 +241,15 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - If you normalize your inputs this will speed up the training process a lot.
 - Normalization are going on these steps:
-  1. Get mean. `Mean = (1/m) * sum(x(i))`
-  2. Subtract the mean from each input. `X = X - Mean`
+  1. Get the mean of the training set: `mean = (1/m) * sum(x(i))`
+  2. Subtract the mean from each input: `X = X - mean`
      - This makes your inputs centered around 0.
-  3. Get the variance. `variance = (1/m) * sum(x(i)^2)`
-  4. Normalize the variance. `X/= variance`
-- These steps should be applied to training, Dev, and testing sets.
+  3. Get the variance of the training set: `variance = (1/m) * sum(x(i)^2)`
+  4. Normalize the variance. `X /= variance`
+- These steps should be applied to training, dev, and testing sets (but using mean and variance of the train set).
 - Why normalize?
-  - If we don't normalize the inputs our loss function will be deep and its shape is inconsistent then optimizing it will take a long time.
-  - But if we normalize it the opposite will occur. the shape of the function will be consistent and the optimizing will be easier.
+  - If we don't normalize the inputs our cost function will be deep and its shape will be inconsistent (elongated) then optimizing it will take a long time.
+  - But if we normalize it the opposite will occur. The shape of the cost function will be consistent (look more symmetric like circle in 2D example) and the optimizing will be easier (faster).
 
 ### Vanishing / Exploding gradients
 
