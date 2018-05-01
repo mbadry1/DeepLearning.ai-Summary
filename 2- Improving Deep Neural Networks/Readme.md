@@ -301,9 +301,9 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Numerical approximation of gradients
 
-- There is an implementation called gradient check which tells if your implementation of back prob. is right.
-- There's a numerical way to calculate the derivative
-  - ![](Images/03-_Numerical_approximation_of_gradients.png)
+- There is an technique called gradient checking which tells you if your implementation of backpropagation is correct.
+- There's a numerical way to calculate the derivative:
+  ![](Images/03-_Numerical_approximation_of_gradients.png)
 - This checking is so helpful at finding the errors in your back prob. algorithm but its slower than gradient descent.
 - Implementation of this is so simple.
 - Gradient checking:
