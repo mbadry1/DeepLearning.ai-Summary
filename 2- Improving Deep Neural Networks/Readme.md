@@ -20,6 +20,7 @@ This is the second course of the deep learning specialization at [Coursera](http
       * [Vanishing / Exploding gradients](#vanishing--exploding-gradients)
       * [Weight Initialization for Deep Networks](#weight-initialization-for-deep-networks)
       * [Numerical approximation of gradients](#numerical-approximation-of-gradients)
+      * [Gradient checking](#gradient-checking)
       * [Gradient checking implementation notes](#gradient-checking-implementation-notes)
    * [Optimization algorithms](#optimization-algorithms)
       * [Mini-batch gradient descent](#mini-batch-gradient-descent)
@@ -304,22 +305,27 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - There is an implementation called gradient check which tells if your implementation of back prob. is right.
 - There's a numerical way to calculate the derivative
   - ![](Images/03-_Numerical_approximation_of_gradients.png)
-- This checking is so helpful at finding the errors in your back prob. algorithm but its slower than gradient descent.
-- Implementation of this is so simple.
+
+### Gradient checking
+
+- Gradient checking approximates the gradients and is very helpful for finding the errors in your backpropagation implementation but it's slower than gradient descent (so use only for debugging).
+- Implementation of this is very simple.
 - Gradient checking:
-  - First take `W[1],b[1]...W[L]b[L]` and reshape into one big vector (`Ceta`)
-  - The cost function will be `L(Ceta)`
-  - Then take `dW[1],db[1]......dW[L]db[L]` into one big vector (`d_ceta`)
+  - First take `W[1],b[1],...,W[L],b[L]` and reshape into one big vector (`theta`)
+  - The cost function will be `L(theta)`
+  - Then take `dW[1],db[1],...,dW[L],db[L]` into one big vector (`d_theta`)
   - **Algorithm**:
 
     ```
-    eps = 10^-7   #Small number
-    for i in len(Ceta):
-    	d_ceta_calc[i] = (J(ceta1,..,ceta[i] + eps) -  J(ceta1,..,ceta[i] - eps)) / 2*eps
+    eps = 10^-7   # small number
+    for i in len(theta):
+      d_theta_approx[i] = (J(theta1,...,theta[i] + eps) -  J(theta1,...,theta[i] - eps)) / 2*eps
     ```
 
-  - Finally we check this formula  `(||d_ceta_calc - d_ceta||) / (||d_ceta_calc||+||d_ceta||)` 
-    - The `||` is the Euclidean distance.
+  - Finally we evaluate this formula `(||d_theta_approx - d_theta||) / (||d_theta_approx||+||d_theta||)` (`||` - Euclidean vector norm) and check (with eps = 10^-7):
+    - if it is < 10^-7  - great, very likely the backpropagation implementation is correct
+    - if around 10^-5   - can be OK, but need to inspect if there are no particularly big values in `d_theta_approx - d_theta` vector
+    - if it is >= 10^-3 - bad, probably there is a bug in backpropagation implementation
 
 ### Gradient checking implementation notes
 
