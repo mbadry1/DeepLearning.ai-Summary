@@ -242,15 +242,15 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - If you normalize your inputs this will speed up the training process a lot.
 - Normalization are going on these steps:
-  1. Get mean. `Mean = (1/m) * sum(x(i))`
-  2. Subtract the mean from each input. `X = X - Mean`
+  1. Get the mean of the training set: `mean = (1/m) * sum(x(i))`
+  2. Subtract the mean from each input: `X = X - mean`
      - This makes your inputs centered around 0.
-  3. Get the variance. `variance = (1/m) * sum(x(i)^2)`
-  4. Normalize the variance. `X/= variance`
-- These steps should be applied to training, Dev, and testing sets.
+  3. Get the variance of the training set: `variance = (1/m) * sum(x(i)^2)`
+  4. Normalize the variance. `X /= variance`
+- These steps should be applied to training, dev, and testing sets (but using mean and variance of the train set).
 - Why normalize?
-  - If we don't normalize the inputs our loss function will be deep and its shape is inconsistent then optimizing it will take a long time.
-  - But if we normalize it the opposite will occur. the shape of the function will be consistent and the optimizing will be easier.
+  - If we don't normalize the inputs our cost function will be deep and its shape will be inconsistent (elongated) then optimizing it will take a long time.
+  - But if we normalize it the opposite will occur. The shape of the cost function will be consistent (look more symmetric like circle in 2D example) and we can use a larger learning rate alpha - the optimization will be faster.
 
 ### Vanishing / Exploding gradients
 
@@ -262,52 +262,60 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
     Y' = W[L]W[L-1].....W[2]W[1]X
     ```
 
-  - Then, if we have 2 layers, in each layer, we have two assumptions:
+  - Then, if we have 2 hidden units per layer and x1 = x2 = 1, we result in:
 
     ```
-    Y' = (W[L][1.5  0]^(L-1)) X = 1.5^L 	# which will be so large
+    if W[l] = [1.5   0] 
+              [0   1.5] (l != L because of different dimensions in the output layer)
+    Y' = W[L] [1.5  0]^(L-1) X = 1.5^L 	# which will be very large
               [0  1.5]
     ```
 
     ```
-    Y' = (W[L][0.5  0]^(L-1)) X = 0.5^L 	# which will be so small
+    if W[l] = [0.5  0]
+              [0  0.5]
+    Y' = W[L] [0.5  0]^(L-1) X = 0.5^L 	# which will be very small
               [0  0.5]
     ```
 
-- The last example explains that the derivatives will be decreased/Increased exponentially.
-- So If W > I (Identity matrix)     The weights will explode.
-- And If W < I (Identity matrix)     The weights will vanish.
-- Recently Microsoft trained 152 layers (ResNet)! which is a really big number.
+- The last example explains that the activations (and similarly derivatives) will be decreased/increased exponentially as a function of number of layers.
+- So If W > I (Identity matrix) the activation and gradients will explode.
+- And If W < I (Identity matrix) the activation and gradients will vanish.
+- Recently Microsoft trained 152 layers (ResNet)! which is a really big number. With such a deep neural network, if your activations or gradients increase or decrease exponentially as a function of L, then these values could get really big or really small. And this makes training difficult, especially if your gradients are exponentially smaller than L, then gradient descent will take tiny little steps. It will take a long time for gradient descent to learn anything.
+- There is a partial solution that doesn't completely solve this problem but it helps a lot - careful choice of how you initialize the weights (next video).
 
 ### Weight Initialization for Deep Networks
 
-- A partial solution to the Vanishing / Exploding gradients in NN is better or more careful choice of the random initialization of weights.
-- In a single neuron (Perceptron model): `Z = w1X1 + w2X2 + ...+wnXn`
-  - So if `Nx` is large we want `W`'s to be smaller to not explode the cost.
-- So it turns out that we need the variance which equals `1/Nx` to be the range of `W`'s
-- So lets say when we initialize `W`'s we initialize like this (For Tanh its better to use this):
+- A partial solution to the Vanishing / Exploding gradients in NN is better or more careful choice of the random initialization of weights
+- In a single neuron (Perceptron model): `Z = w1x1 + w2x2 + ... + wnxn`
+  - So if `n_x` is large we want `W`'s to be smaller to not explode the cost.
+- So it turns out that we need the variance which equals `1/n_x` to be the range of `W`'s
+- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):
 
   ```
-  np.random.rand(shape)*np.sqrt(1/n[l-1])               #n[l-1] In the multiple layers.
+  np.random.rand(shape) * np.sqrt(1/n[l-1])
+  ```
+  or variation of this (Bengio et al.)
+  
+  ```
+  np.random.rand(shape) * np.sqrt(2/(n[l-1] + n[l]))
   ```
 
-- Setting this to `2/n[l-1]` especially for RELU is better:
+- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:
 
   ```
-  np.random.rand(shape)*np.sqrt(2/n[l-1])               #n[l-1] In the multiple layers.
+  np.random.rand(shape) * np.sqrt(2/n[l-1])
   ```
-
-- This is the best way to solve Vanishing / Exploding gradients (RELU + Weight Initialization with variance)
+- Number 1 or 2 in the nominator can also be a hyperparameter to tune (but not the first to start with)
+- This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/eplode too quickly
 - The initialization in this video is called "He Initialization / Xavier Initialization" and has been published in 2015 paper.
 
 ### Numerical approximation of gradients
 
-- There is an implementation called gradient check which tells if your implementation of back prob. is right.
-- There's a numerical way to calculate the derivative
+
+- There is an technique called gradient checking which tells you if your implementation of backpropagation is correct.
+- There's a numerical way to calculate the derivative:
   - ![](Images/03-_Numerical_approximation_of_gradients.png)
-
-### Gradient checking
-
 - Gradient checking approximates the gradients and is very helpful for finding the errors in your backpropagation implementation but it's slower than gradient descent (so use only for debugging).
 - Implementation of this is very simple.
 - Gradient checking:
@@ -329,13 +337,13 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Gradient checking implementation notes
 
-- Don't use the gradient-checking algorithm for all the calculation because its a much slow algorithm
-- The gradient-checking is for debugging.
+- Don't use the gradient checking algorithm at training time because it's very slow.
+- Use gradient checking only for debugging.
 - If algorithm fails grad check, look at components to try to identify the bug.
-- Don't forget to add `(lamda/2m)sum(W[l])` to `J` if you are using L1 or L2 regularization.
-- Gradient checking doesn't work with dropout.
-  - because J is not consistent.
-- Run gradient checking at random initialization and train the network for a while maybe there's a bug that are not on the first iteration.
+- Don't forget to add `lamda/(2m) * sum(W[l])` to `J` if you are using L1 or L2 regularization.
+- Gradient checking doesn't work with dropout because J is not consistent. 
+  - You can first turn off dropout (set `keep_prob = 1.0`), run gradient checking and then turn on dropout again.
+- Run gradient checking at random initialization and train the network for a while maybe there's a bug which can be seen when w's and b's become larger (further from 0) and can't be seen on the first iteration (when w's and b's are very small).
 
 
 
