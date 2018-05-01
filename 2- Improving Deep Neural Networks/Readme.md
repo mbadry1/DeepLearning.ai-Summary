@@ -285,23 +285,28 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Weight Initialization for Deep Networks
 
-- A partial solution to the Vanishing / Exploding gradients in NN is better or more careful choice of the random initialization of weights.
-- In a single neuron (Perceptron model): `Z = w1X1 + w2X2 + ...+wnXn`
-  - So if `Nx` is large we want `W`'s to be smaller to not explode the cost.
-- So it turns out that we need the variance which equals `1/Nx` to be the range of `W`'s
-- So lets say when we initialize `W`'s we initialize like this (For Tanh its better to use this):
+- A partial solution to the Vanishing / Exploding gradients in NN is better or more careful choice of the random initialization of weights
+- In a single neuron (Perceptron model): `Z = w1x1 + w2x2 + ... + wnxn`
+  - So if `n_x` is large we want `W`'s to be smaller to not explode the cost.
+- So it turns out that we need the variance which equals `1/n_x` to be the range of `W`'s
+- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):
 
   ```
-  np.random.rand(shape)*np.sqrt(1/n[l-1])               #n[l-1] In the multiple layers.
+  np.random.rand(shape) * np.sqrt(1/n[l-1])
+  ```
+  or variation of this (Bengio et al.)
+  
+  ```
+  np.random.rand(shape) * np.sqrt(2/(n[l-1] + n[l]))
   ```
 
-- Setting this to `2/n[l-1]` especially for RELU is better:
+- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:
 
   ```
-  np.random.rand(shape)*np.sqrt(2/n[l-1])               #n[l-1] In the multiple layers.
+  np.random.rand(shape) * np.sqrt(2/n[l-1])
   ```
-
-- This is the best way to solve Vanishing / Exploding gradients (RELU + Weight Initialization with variance)
+- Number 1 or 2 in the nominator can also be a hyperparameter to tune (but not the first to start with)
+- This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/eplode too quickly
 - The initialization in this video is called "He Initialization / Xavier Initialization" and has been published in 2015 paper.
 
 ### Numerical approximation of gradients
