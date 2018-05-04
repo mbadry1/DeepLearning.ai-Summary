@@ -21,6 +21,7 @@ This is the second course of the deep learning specialization at [Coursera](http
       * [Weight Initialization for Deep Networks](#weight-initialization-for-deep-networks)
       * [Numerical approximation of gradients](#numerical-approximation-of-gradients)
       * [Gradient checking implementation notes](#gradient-checking-implementation-notes)
+      * [Initialization](#initialization)
    * [Optimization algorithms](#optimization-algorithms)
       * [Mini-batch gradient descent](#mini-batch-gradient-descent)
       * [Understanding mini-batch gradient descent](#understanding-mini-batch-gradient-descent)
@@ -344,7 +345,21 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   - You can first turn off dropout (set `keep_prob = 1.0`), run gradient checking and then turn on dropout again.
 - Run gradient checking at random initialization and train the network for a while maybe there's a bug which can be seen when w's and b's become larger (further from 0) and can't be seen on the first iteration (when w's and b's are very small).
 
+### Initialization
 
+- The weights $W^{[l]}$ should be initialized randomly to break symmetry
+
+- It is however okay to initialize the biases $b^{[l]}$ to zeros. Symmetry is still broken so long as $W^{[l]}$ is initialized randomly
+
+- Different initializations lead to different results
+
+- Random initialization is used to break symmetry and make sure different hidden units can learn different things
+
+- Don't intialize to values that are too large
+
+- He initialization works well for networks with ReLU activations. 
+
+  
 
 ## Optimization algorithms
 
