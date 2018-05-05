@@ -453,15 +453,13 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Bias correction in exponentially weighted averages
 
-- The bias correction helps making the exponentially weighted averages more accurate.
-- Because `V(0) = 0`, the bias of the weighted averages is shifted and the accuracy suffers.
+- The bias correction helps make the exponentially weighted averages more accurate.
+- Because `v(0) = 0`, the bias of the weighted averages is shifted and the accuracy suffers at the start.
 - To solve the bias issue we have to use this equation:
-
   ```
-  V(t) = (beta v(t-1) + (1-beta) ceta(t)) / (1 - beta^t)
+  v(t) = (beta * v(t-1) + (1-beta) * theta(t)) / (1 - beta^t)
   ```
-
-- As you see the as t became larger the `(1 - beta^t)` became `1`
+- As t becomes larger the `(1 - beta^t)` becomes close to `1`
 
 ### Gradient descent with momentum
 
