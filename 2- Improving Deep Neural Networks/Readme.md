@@ -378,20 +378,29 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Understanding mini-batch gradient descent
 
-- In mini batch algorithm, the cost won't go down with each step as batch algorithm do. It could contain some ups and downs but at whole it has to go down.
-  - ![](Images/04-_batch_vs_mini_batch_cost.png)
-- Choosing mini-batch size
-  - If (`mini batch size = m`)     ==>    Batch gradient descent
-    - If (`mini batch size = 1`)  ==>    Stochastic gradient descent
-    - Might be faster than standard in big data `> 10^7`
-    - If (`mini batch size = between 1 and m`) ==>    Mini Batch gradient descent
-- In Stochastic gradient descent is so noisy regarding cost minimization and won't reach the minimum cost. Also you lose vectorization advantage.
-- In mini batch gradient descent is so noisy regarding cost minimization and won't reach the minimum cost. But you have the vectorization advantage and you can look at the costs when the code is running to see if its right. To help with the noisy cost minimization you should reduce the learning rate.
-- Guidelines for using mini batch:
-  - It has to be a power of 2 to take advantage of vectorization:
-    `64, 128, 256, 512, 1024....`
-  - Make sure mini-batch fits in CPU/GPU
-- Mini batch size is a Hyperparameter.
+- In mini-batch algorithm, the cost won't go down with each step as it does in batch algorithm. It could contain some ups and downs but generally it has to go down (unlike the batch gradient descent where cost function descreases on each iteration).
+  ![](Images/04-_batch_vs_mini_batch_cost.png)
+- Mini-batch size:
+  - (`mini batch size = m`)  ==>    Batch gradient descent
+  - (`mini batch size = 1`)  ==>    Stochastic gradient descent (SGD)
+  - (`mini batch size = between 1 and m`) ==>    Mini-batch gradient descent
+- Batch gradient descent:
+  - too long per iteration (epoch)
+- Stochastic gradient descent:
+  - too noisy regarding cost minimization (can be reduced by using smaller learning rate)
+  - won't ever converge (reach the minimum cost)
+  - lose speedup from vectorization
+- Mini-batch gradient descent:
+  1. faster learning:
+      - you have the vectorization advantage
+      - make progress without waiting to process the entire training set
+  2. doesn't always exactly converge (oscelates in a very small region, but you can reduce learning rate)
+- Guidelines for choosing mini-batch size:
+  1. If small training set (< 2000 examples) - use batch gradient descent.
+  2. It has to be a power of 2 (because of the way computer memory is layed out and accessed, sometimes your code runs faster if your mini-batch size is a power of 2):
+    `64, 128, 256, 512, 1024, ...`
+  3. Make sure that mini-batch fits in CPU/GPU memory.
+- Mini-batch size is a `hyperparameter`.
 
 ### Exponentially weighted averages
 
