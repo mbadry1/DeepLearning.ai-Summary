@@ -488,29 +488,27 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 ### RMSprop
 
 - Stands for **Root mean square prop**.
-- This algorithm speeds up the Gradient descent.
+- This algorithm speeds up the gradient descent.
 - Pseudo code:
-
   ```
-  SdW = 0, Sdb = 0
+  sdW = 0, sdb = 0
   on iteration t:
-  	# The mini batch can be the whole batch its ok
-  	compute dw, db on current mini batch
+  	# can be mini-batch or batch gradient descent
+  	compute dw, db on current mini-batch
   	
-  	SdW = (beta * SdW) + (1 - beta)dW^2
-  	Sdb = (beta * Sdb) + (1 - beta)db^2
-  	W = W - learning_rate * dW/sqrt(SdW)
-  	b = B - learning_rate * db/sqrt(Sdb)
+  	sdW = (beta * sdW) + (1 - beta) * dW^2  # squaring is element-wise
+  	sdb = (beta * sdb) + (1 - beta) * db^2  # squaring is element-wise
+  	W = W - learning_rate * dW/sqrt(sdW)
+  	b = B - learning_rate * db/sqrt(sdb)
   ```
+- RMSprop will make the cost function move slower on the vertical direction and faster on the horizontal direction in the following example:
+    ![](Images/06-_RMSprop.png)
 
-- This algorithm will make the cost function move on the vertical direction slow and the horizontal direction fast, in the following example.
-  - ![](Images/06-_RMSprop.png)
-
-- Ensure that `SdW` is not zero by adding a small value to it (epsilon).
-   `W = W - learning_rate * dW/(sqrt(SdW) + epsilon)`
-
-- With this algorithm you can increase your learning rate.
-- Developed by Jeoffery Hinton on [Coursea.com](Coursea.com ).
+- Ensure that `sdW` is not zero by adding a small value `epsilon` (e.g. `epsilon = 10^-8`) to it:   
+   `W = W - learning_rate * dW/(sqrt(sdW) + epsilon)`
+   
+- With RMSprop you can increase your learning rate.
+- Developed by Geoffrey Hinton and firstly introduced on [Coursera.org](https://www.coursera.org/) course.
 
 ### Adam optimization algorithm
 
