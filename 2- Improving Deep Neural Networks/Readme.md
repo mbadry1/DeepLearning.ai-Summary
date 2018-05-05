@@ -465,25 +465,23 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Gradient descent with momentum
 
-- The momentum algorithm works faster than standard Gradient descent.
-- The simple idea is to calculate the exponentially weighted averages for your gradients and then updates your weights with the new values.
+- The momentum algorithm almost always works faster than standard gradient descent.
+- The simple idea is to calculate the exponentially weighted averages for your gradients and then update your weights with the new values.
 - Pseudo code:
-
   ```
-  VdW = 0, Vdb = 0
+  vdW = 0, vdb = 0
   on iteration t:
-  	# The mini batch can be the whole batch its ok
-  	compute dw, db on current mini batch                
+  	# can be mini-batch or batch gradient descent
+  	compute dw, db on current mini-batch                
   			
-  	VdW = (beta * VdW) + (1 - beta)dW
-  	Vdb = (beta * Vdb) + (1 - beta)db
-  	W = W - learning_rate * VdW
-  	b = B - learning_rate * Vdb
+  	vdW = beta * vdW + (1 - beta) * dW
+  	vdb = beta * vdb + (1 - beta) * db
+  	W = W - learning_rate * vdW
+  	b = b - learning_rate * vdb
   ```
-
-- This will help the cost function to go to the minimum point in a more fast and consistent way.
-- `beta = 0.9` is working very well for lots of people.
-- In practice people don't bother with **Bias correction** (They leave the first iterations to work as they want)
+- Momentum helps the cost function to go to the minimum point in a more fast and consistent way.
+- `beta` is another `hyperparameter`. `beta = 0.9` is very common and works very well in most cases.
+- In practice people don't bother implementing **bias correction**.
 
 ### RMSprop
 
