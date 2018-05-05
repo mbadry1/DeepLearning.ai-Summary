@@ -436,18 +436,17 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Understanding exponentially weighted averages
 
-- Intuitions:
-  - ![](Images/05-_exponentially_weighted_averages_intuitions.png)
-- We can implement this algorithm with more accurate results if we make a moving window. But the code is more efficient and faster using the exponentially weighted averages algorithm.
+- Intuitions:   
+    ![](Images/05-_exponentially_weighted_averages_intuitions.png)
+- We can implement this algorithm with more accurate results using a moving window. But the code is more efficient and faster using the exponentially weighted averages algorithm.
 
-- Algorithm is so simple:
-
+- Algorithm is very simple:
   ```
-  V = 0
+  v = 0
   Repeat
   {
-  	Get ceta(t)
-  	V = beta * V + (1-beta) * ceta(t)
+  	Get theta(t)
+  	v = beta * v + (1-beta) * theta(t)
   }
   ```
 
