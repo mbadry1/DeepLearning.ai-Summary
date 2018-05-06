@@ -433,6 +433,8 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
     - `beta = 0.9` will average last 10 entries
     - `beta = 0.98` will average last 50 entries
     - `beta = 0.5` will average last 2 entries
+- Best beta average for our case is between 0.9 and 0.98
+
 - Another imagery example:   
     ![](Images/Nasdaq1_small.png)   
     _(taken from [investopedia.com](https://www.investopedia.com/))_
