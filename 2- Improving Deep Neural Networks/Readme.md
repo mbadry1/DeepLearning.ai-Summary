@@ -351,30 +351,30 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 ### Mini-batch gradient descent
 
 - Training NN with a large data is slow. So to find an optimization algorithm that runs faster is a good idea.
-- Suppose we have `m = 50 million.` To train this data it will take a huge processing time for one step.
+- Suppose we have `m = 50 million`. To train this data it will take a huge processing time for one step.
   - because 50 million won't fit in the memory at once we need other processing to make such a thing.
-- It turns out you can make a faster algorithm to make gradient decent process some of your items even before you finish the 50 million items.
-- Suppose we have split m to **mini batches**.
-  - `X{1} = 0    ==>  1000`
-  - `X{2} = 1001 ==>  2000`
+- It turns out you can make a faster algorithm to make gradient descent process some of your items even before you finish the 50 million items.
+- Suppose we have split m to **mini batches** of size 1000.
+  - `X{1} = 0    ...  1000`
+  - `X{2} = 1001 ...  2000`
   - `....`
   - `X{bs} = ...`
 - We similarly split `X` & `Y`.
 - So the definition of mini batches ==> `t: X{t}, Y{t}`
-- In **Batch gradient descent** We run the gradient decent on the whole dataset.
-- While in **Mini-Batch gradient descent** We run the gradient decent on the mini datasets.
+- In **Batch gradient descent** we run the gradient descent on the whole dataset.
+- While in **Mini-Batch gradient descent** we run the gradient descent on the mini datasets.
 - Mini-Batch algorithm pseudo code:
 
   ```
-  for t = 1:No_of_batches                                     #This is called on epoch
+  for t = 1:No_of_batches                         # this is called an epoch
   	AL, caches = forward_prop(X{t}, Y{t})
-  	Cost = compute_cost(AL, Y{t})
+  	cost = compute_cost(AL, Y{t})
   	grads = backward_prop(AL, caches)
-  	UpdateParameters(grads)
+  	update_parameters(grads)
   ```
 
 - The code inside an epoch should be vectorized.
-- This works much faster in the large datasets.
+- Mini-batch gradient descent works much faster in the large datasets.
 
 ### Understanding mini-batch gradient descent
 
