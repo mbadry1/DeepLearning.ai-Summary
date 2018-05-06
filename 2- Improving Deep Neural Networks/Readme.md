@@ -404,7 +404,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Exponentially weighted averages
 
-- There are optimization algorithms that are better than **gradient descent**. but you should first learn about Exponentially weighted averages.
+- There are optimization algorithms that are better than **gradient descent**, but you should first learn about Exponentially weighted averages.
 - If we have data like the temperature of day through the year it could be like this:
 
   ```
@@ -418,7 +418,6 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - This data is small in winter and big in summer. If we plot this data we will find it some noisy.
 - Now lets compute the Exponentially weighted averages:
-
   ```
   V0 = 0
   V1 = 0.9 * V0 + 0.1 * t(1) = 4		# 0.9 and 0.1 are hyperparameters
@@ -426,22 +425,17 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   V3 = 0.9 * V2 + 0.1 * t(3) = 12.15
   ...
   ```
-
-- If we plot this it will represent averages.
-- Another imagery example:
-  - ![](Images/Nasdaq1_small.png)
-  - Taken from: [investopedia.com](investopedia.com)
 - General equation
-
   ```
-  V(t) = beta v(t-1) + (1-beta) ceta(t)
+  V(t) = beta * v(t-1) + (1-beta) * theta(t)
   ```
-
-  - If `beta = 0.9` then we are averaging through this equation: `(1/ (1-beta))` Then
-    - beta = 0.9 will average last 10 entries.
-    - beta = 0.98 will average last 50 entries.
-    - beta = 0.5 will average last 2 entries.
-- Best beta average for our case is between 0.9 and 0.98
+- If we plot this it will represent averages over `~ (1 / (1 - beta))` entries:
+    - `beta = 0.9` will average last 10 entries
+    - `beta = 0.98` will average last 50 entries
+    - `beta = 0.5` will average last 2 entries
+- Another imagery example:   
+    ![](Images/Nasdaq1_small.png)   
+    _(taken from [investopedia.com](https://www.investopedia.com/))_
 
 ### Understanding exponentially weighted averages
 
