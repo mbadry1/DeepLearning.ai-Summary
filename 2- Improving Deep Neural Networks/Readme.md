@@ -558,39 +558,37 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### Adam optimization algorithm
 
-- Stands for **Adaptive Momentum Estimation**.
+- Stands for **Adaptive Moment Estimation**.
 - Adam optimization and RMSprop are among the optimization algorithms that worked very well with a lot of NN architectures.
-- Adam optimization simply puts RMSprop and momentum and puts the together!
+- Adam optimization simply puts RMSprop and momentum together!
 - Pseudo code:
-
   ```
-  VdW = 0, VdW = 0
-  SdW = 0, Sdb = 0
+  vdW = 0, vdW = 0
+  sdW = 0, sdb = 0
   on iteration t:
-  	# The mini batch can be the whole batch its ok
-  	compute dw, db on current mini batch                
+  	# can be mini-batch or batch gradient descent
+  	compute dw, db on current mini-batch                
   			
-  	VdW = (beta1 * dW) + (1 - beta1)dW                    #Momentum
-  	Vdb = (beta1 * db) + (1 - beta1)db					#Momentum
+  	vdW = (beta1 * dW) + (1 - beta1) * dW     # momentum
+  	vdb = (beta1 * db) + (1 - beta1) * db     # momentum
   			
-  	SdW = (beta2 * dW) + (1 - beta2)dW^2					#RMSprop
-  	Sdb = (beta2 * db) + (1 - beta2)db^2					#RMSprop
+  	sdW = (beta2 * dW) + (1 - beta2) * dW^2   # RMSprop
+  	sdb = (beta2 * db) + (1 - beta2) * db^2   # RMSprop
   			
-  	VdW = VdW/ (1 - beta^t)			#Fixing bias
-  	Vdb = Vdb/ (1 - beta^t)			#Fixing bias
+  	vdW = vdW / (1 - beta1^t)      # fixing bias
+  	vdb = vdb / (1 - beta1^t)      # fixing bias
   			
-  	SdW = SdW/ (1 - beta^t) 		#Fixing bias
-  	Sdb = Sdb/ (1 - beta^t)			#Fixing bias
+  	sdW = sdW / (1 - beta2^t)      # fixing bias
+  	sdb = sdb / (1 - beta2^t)      # fixing bias
   					
-  	W = W - learning_rate * VdW/(sqrt(SdW) + epsilon)
-  	b = B - learning_rate * Vdb/(sqrt(Sdb) + epsilon)
+  	W = W - learning_rate * vdW / (sqrt(sdW) + epsilon)
+  	b = B - learning_rate * vdb / (sqrt(sdb) + epsilon)
   ```
-
-- Hyperparameters:
+- Hyperparameters for Adam:
   - Learning rate: needed to be tuned.
-  - `Beta1`. Parameter of the momentum. `0.9` is recommended by default.
-  - `Beta2`. Parameter of the RMSprop. `0.999` is recommended by default.
-  - `epsilon`. `10^-8` is recommended by default.
+  - `beta1`: parameter of the momentum - `0.9` is recommended by default.
+  - `beta2`: parameter of the RMSprop - `0.999` is recommended by default.
+  - `epsilon`: `10^-8` is recommended by default.
 
 ### Learning rate decay
 
