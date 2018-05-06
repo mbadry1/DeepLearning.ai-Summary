@@ -403,14 +403,13 @@ L2-regularization relies on the assumption that a model with small weights is si
 - Suppose we have split m to **mini batches** of size 1000.
   - `X{1} = 0    ...  1000`
   - `X{2} = 1001 ...  2000`
-  - `....`
+  - `...`
   - `X{bs} = ...`
 - We similarly split `X` & `Y`.
 - So the definition of mini batches ==> `t: X{t}, Y{t}`
 - In **Batch gradient descent** we run the gradient descent on the whole dataset.
 - While in **Mini-Batch gradient descent** we run the gradient descent on the mini datasets.
 - Mini-Batch algorithm pseudo code:
-
   ```
   for t = 1:No_of_batches                         # this is called an epoch
   	AL, caches = forward_prop(X{t}, Y{t})
@@ -418,7 +417,6 @@ L2-regularization relies on the assumption that a model with small weights is si
   	grads = backward_prop(AL, caches)
   	update_parameters(grads)
   ```
-
 - The code inside an epoch should be vectorized.
 - Mini-batch gradient descent works much faster in the large datasets.
 
@@ -452,16 +450,14 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 - There are optimization algorithms that are better than **gradient descent**, but you should first learn about Exponentially weighted averages.
 - If we have data like the temperature of day through the year it could be like this:
-
   ```
   t(1) = 40
   t(2) = 49
   t(3) = 45
-  ..
+  ...
   t(180) = 60
-  ..
+  ...
   ```
-
 - This data is small in winter and big in summer. If we plot this data we will find it some noisy.
 - Now lets compute the Exponentially weighted averages:
   ```
@@ -480,7 +476,6 @@ L2-regularization relies on the assumption that a model with small weights is si
     - `beta = 0.98` will average last 50 entries
     - `beta = 0.5` will average last 2 entries
 - Best beta average for our case is between 0.9 and 0.98
-
 - Another imagery example:   
     ![](Images/Nasdaq1_small.png)   
     _(taken from [investopedia.com](https://www.investopedia.com/))_
@@ -490,7 +485,6 @@ L2-regularization relies on the assumption that a model with small weights is si
 - Intuitions:   
     ![](Images/05-_exponentially_weighted_averages_intuitions.png)
 - We can implement this algorithm with more accurate results using a moving window. But the code is more efficient and faster using the exponentially weighted averages algorithm.
-
 - Algorithm is very simple:
   ```
   v = 0
@@ -544,15 +538,13 @@ L2-regularization relies on the assumption that a model with small weights is si
   	
   	sdW = (beta * sdW) + (1 - beta) * dW^2  # squaring is element-wise
   	sdb = (beta * sdb) + (1 - beta) * db^2  # squaring is element-wise
-  	W = W - learning_rate * dW/sqrt(sdW)
-  	b = B - learning_rate * db/sqrt(sdb)
+  	W = W - learning_rate * dW / sqrt(sdW)
+  	b = B - learning_rate * db / sqrt(sdb)
   ```
 - RMSprop will make the cost function move slower on the vertical direction and faster on the horizontal direction in the following example:
     ![](Images/06-_RMSprop.png)
-
 - Ensure that `sdW` is not zero by adding a small value `epsilon` (e.g. `epsilon = 10^-8`) to it:   
-   `W = W - learning_rate * dW/(sqrt(sdW) + epsilon)`
-   
+   `W = W - learning_rate * dW / (sqrt(sdW) + epsilon)`
 - With RMSprop you can increase your learning rate.
 - Developed by Geoffrey Hinton and firstly introduced on [Coursera.org](https://www.coursera.org/) course.
 
@@ -610,7 +602,6 @@ L2-regularization relies on the assumption that a model with small weights is si
 - It's unlikely to get stuck in a bad local optima in high dimensions, it is much more likely to get to the saddle point rather to the local optima, which is not a problem.
 - Plateaus can make learning slow:
   - Plateau is a region where the derivative is close to zero for a long time.
-  - Plateaus is an area of fairly level high ground.
   - This is where algorithms like momentum, RMSprop or Adam can help.
 
 
