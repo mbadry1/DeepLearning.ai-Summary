@@ -562,11 +562,12 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### The problem of local optima
 
-- The normal local optima is not likely to appear in a deep neural network.
-- You are unlikely to get stuck in a bad local optima in high dimensions.
-- Plateaus can make learning slow.
+- The normal local optima is not likely to appear in a deep neural network because data is usually high dimensional. For point to be a local optima it has to be a local optima for each of the dimensions which is highly unlikely.
+- It's unlikely to get stuck in a bad local optima in high dimensions, it is much more likely to get to the saddle point rather to the local optima, which is not a problem.
+- Plateaus can make learning slow:
+  - Plateau is a region where the derivative is close to zero for a long time.
   - Plateaus is an area of fairly level high ground.
-  - This is where algorithms like momentum and Adam helps.
+  - This is where algorithms like momentum, RMSprop or Adam can help.
 
 
 
