@@ -593,14 +593,16 @@ L2-regularization relies on the assumption that a model with small weights is si
 ### Learning rate decay
 
 - Slowly reduce learning rate.
-- In mini batch algorithm, we said that the minimization of the cost won't reach optimum point. But by making the learning rate decays with iterations it will reach it as the steps beside the optimum is small.
+- As mentioned before mini-batch gradient descent won't reach the optimum point (converge). But by making the learning rate decay with iterations it will be much closer to it because the steps (and possible oscillations) near the optimum are smaller.
 - One technique equations is`learning_rate = (1 / (1 + decay_rate * epoch_num)) * learning_rate_0`  
-  - `epoch_num` is over all data (not a single mini batch).
-- Other learning rate decay methods (Continuous):
+  - `epoch_num` is over all data (not a single mini-batch).
+- Other learning rate decay methods (continuous):
   - `learning_rate = (0.95 ^ epoch_num) * learning_rate_0`
   - `learning_rate = (k / sqrt(epoch_num)) * learning_rate_0`
-- Some people is making changing the learning rate manually.
-- For Andrew Ng, learning rate decay has less priority
+- Some people perform learning rate decay discretely - repeatedly decrease after some number of epochs.
+- Some people are making changes to the learning rate manually.
+- `decay_rate` is another `hyperparameter`.
+- For Andrew Ng, learning rate decay has less priority.
 
 ### The problem of local optima
 
