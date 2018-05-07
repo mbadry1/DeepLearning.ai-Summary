@@ -666,21 +666,22 @@ It uniformly samples values from [a, b] as r.
 
 ### Normalizing activations in a network
 
-- In the current evolution of deep learning an algorithm called **Batch Normalization** is so important.
-  - Made by Sergey Ioffe and Christian Szegedy.
+- In the rise of deep learning, one of the most important ideas has been an algorithm called **batch normalization**, created by two researchers, Sergey Ioffe and Christian Szegedy.
 - Batch Normalization speeds up learning.
-- We discussed before that we can normalize input using the mean and variance method. This helped a lot in the shape of the cost function and reaching the minimum point in a more faster way!
-- The question is *For any hidden layer can we normalize `A[l]` to train `W[l]`, `b[l]` faster?*. This is what batch normalization is about.
-- Some papers normalize `Z[l]` and some normalize `A[l]`. Most of them uses `Z[l]` and recommended from Andrew Ng.
-- Algorithm
-  - Given `Z[l] = [z(1) z(2) .. z(m)]`   `#i = 1 to m (for one input)`
+- Before we normalized input by subtracting the mean and dividing by variance. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
+- The question is: *for any hidden layer can we normalize `A[l]` to train `W[l]`, `b[l]` faster?* This is what batch normalization is about.
+- There are some debates in the deep learning literature about whether you should normalize values before the activation function `Z[l]` or after applying the activation function `A[l]`. In practice, normalizing `Z[l]` is done much more often and that is what Andrew Ng presents.
+- Algorithm:
+  - Given `Z[l] = [z(1), ..., z(m)]`, i = 1 to m (for each input)
   - Compute `mean[i] = 1/m * sum(z[i])`
-  - Compute `Variance[i] = 1/m * sum((z[i] - mean)^2)`
-  - Then `Z_norm[i] = (z(i) - mean) / np.sqrt(Variance + epsilon)`
-    - Forcing the outputs to a specific distribution.
-  - Then `Z_dash[i] = alpha * Z_norm[i] + beta`
-    - alpha and beta are learnable parameters.
+  - Compute `variance[i] = 1/m * sum((z[i] - mean[i])^2)`
+  - Then `Z_norm[i] = (z(i) - mean[i]) / np.sqrt(variance + epsilon)` (add `epsilon` for numerical stability if variance = 0)
+    - Forcing the inputs to a distribution with zero mean and variance of 1.
+  - Then `Z_tilde[i] = gamma * Z_norm[i] + beta`
+    - To make inputs belong to other distribution (with other mean and variance).
+    - gamma and beta are learnable parameters of the model.
     - Making the NN learn the distribution of the outputs.
+    - _Note:_ if `gamma = sqrt(variance + epsilon)` and `beta = mean` then `Z_tilde[i] = Z_norm[i]`
 
 ### Fitting Batch Normalization into a neural network
 
