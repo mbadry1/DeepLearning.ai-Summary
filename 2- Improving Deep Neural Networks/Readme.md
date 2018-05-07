@@ -656,13 +656,14 @@ It uniformly samples values from [a, b] as r.
 
 ### Hyperparameters tuning in practice: Pandas vs. Caviar 
 
-- If you don't have a much computational resources you will go thought "The baby sit model"
-  - Run the model with different hyperparameters day by day.
-  - Check at the end of each day if there are a progress or not.
-  - You run one model at a time.
-  - Called panda approach
-- If you have computational resources, you can run some models in parallel and at the end of the day(s) you check the results.
-  - Called Caviar model.
+- Intuitions about hyperparameter settings from one application area may or may not transfer to a different one.
+- If you don't have much computational resources you can use the "babysitting model":
+  - Day 0 you might initialize your parameter as random and then start training.
+  - Then you watch your learning curve gradually decrease over the day.
+  - And each day you nudge your parameters a little during training.
+  - Called panda approach.
+- If you have enough computational resources, you can run some models in parallel and at the end of the day(s) you check the results.
+  - Called Caviar approach.
 
 ### Normalizing activations in a network
 
