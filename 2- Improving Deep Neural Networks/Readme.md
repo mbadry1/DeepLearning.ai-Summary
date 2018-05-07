@@ -619,22 +619,23 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### Tuning process
 
-- We need some steps to tune our Hyperparameters to get the best out of them.
-- So far the Hyperparameters importance are (As to Andrew Ng)
+- We need to tune our hyperparameters to get the best out of them.
+- Hyperparameters importance are (as for Andrew Ng):
   1. Learning rate.
-  2. Mini-batch size.
-  3. No. of hidden units.
-  4. Momentum beta.
+  2. Momentum beta.
+  3. Mini-batch size.
+  4. No. of hidden units.
   5. No. of layers.
-  6. Use learning rate decay?
-  7. Adam `beta1` & `beta2`
-  8. regularization lambda
-  9. Activation functions
-- Its hard to decide which Hyperparameter is the more important in a problem. It depends much on your problem.
-- One of the ideas to tune is to make a box with `N` Hyperparameter settings and then try the `N` settings on your problem.
-- You can use Coarse to fine box and randomly initialize it the hyperparameters.
-  - Then if you find some values that gives you a better values. Zoom into the box.
-- This methods can be automated!
+  6. Learning rate decay.
+  7. Regularization lambda.
+  8. Activation functions.
+  9. Adam `beta1` & `beta2`.
+- Its hard to decide which hyperparameter is the most important in a problem. It depends a lot on your problem.
+- One of the ways to tune is to sample a grid with `N` hyperparameter settings and then try all settings combinations on your problem.
+- Try random values: don't use a grid.
+- You can use `Coarse to fine sampling scheme`:
+  - When you find some hyperparameters values that give you a better performance - zoom into a smaller region around these values and sample more densely within this space.
+- These methods can be automated.
 
 ### Using an appropriate scale to pick hyperparameters
 
