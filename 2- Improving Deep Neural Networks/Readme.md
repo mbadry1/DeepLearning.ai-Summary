@@ -638,21 +638,25 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### Using an appropriate scale to pick hyperparameters
 
-- If you have a specific range for a hyper parameter lets say from "a" to "b". Lets demonstrate the logarithmic scale, this will give you a good random points:
-  - Calculate: `aLog = log(a)`                   `# Ex. a = 0.0001 then aLog = -4`
-    - Calculate: `bLog = log(b)`                 `# Ex. b = 1  then bLog = 0`
-  - Then: write this code:
-
+- Let's say you have a specific range for a hyperparameter from "a" to "b". It's better to search for the right ones using the logarithmic scale rather then in linear scale:
+  - Calculate: `a_log = log(a)  # e.g. a = 0.0001 then a_log = -4`
+  - Calculate: `b_log = log(b)  # e.g. b = 1  then b_log = 0`
+  - Then:
     ```
-    r = (aLog-bLog) * np.random.rand() + 	bLog
-    # In our Ex the range would be from [-4, 0] because rand range [0,1)
+    r = (a_log - b_log) * np.random.rand() + b_log
+    # In the example the range would be from [-4, 0] because rand range [0,1)
     result = 10^r
     ```
-It uniformly samples values from [a, b] as r.
+    It uniformly samples values in log scale from [a,b].
 - If we want to use the last method on exploring on the "momentum beta":
-  - Beta best range is from 0.9 to 0.999
-  - You should scale this to `1-Beta = 0.001 to 0.1` and the use `a = 0.001` and `b = 0.1`
-  - And remember to subtract 1 from the resulted random value.
+  - Beta best range is from 0.9 to 0.999.
+  - You should search for `1 - beta in range 0.001 to 0.1 (1 - 0.9 and 1 - 0.999)` and the use `a = 0.001` and `b = 0.1`. Then:
+    ```
+    a_log = -3
+    b_log = -1
+    r = (a_log - b_log) * np.random.rand() + b_log
+    beta = 1 - 10^r   # because 1 - beta = 10^r
+    ```
 
 ### Hyperparameters tuning in practice: Pandas vs. Caviar 
 
