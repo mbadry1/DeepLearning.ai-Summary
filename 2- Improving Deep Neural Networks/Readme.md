@@ -683,21 +683,26 @@ L2-regularization relies on the assumption that a model with small weights is si
 ### Fitting Batch Normalization into a neural network
 
 - Using batch norm in 3 hidden layers NN:
-  - ![](Images/bn.png)
+    ![](Images/bn.png)
 - Our NN parameters will be:
-  - `W[1]`, `b[1]`, `W[2]`, `b[2]`, `W[3]`, `b[3]`, `beta[1]`, `alpha[1]`, `beta[2]`, `alpha[2]`, `beta[3]`, `alpha[3]`
-- If you are using a deep learning framework, You won't have to implement batch norm yourself.
+  - `W[1]`, `b[1]`, ..., `W[L]`, `b[L]`, `beta[1]`, `gamma[1]`, ..., `beta[L]`, `gamma[L]`
+  - `beta[1]`, `gamma[1]`, ..., `beta[L]`, `gamma[L]` are updated using any optimization algorithms (like GD, RMSprop, Adam)
+- If you are using a deep learning framework, you won't have to implement batch norm yourself:
   - Ex. in Tensorflow you can add this line: `tf.nn.batch-normalization()`
-- If we are using batch norm the parameter `b[1]`, `b[2]`,.... Doesn't count because:
-  - `Z[l] = W[l]A[l-1] + b[l]`
-  - `Z_N[l] = alpha[l] * Z_norm[l] + beta[l]`
+- Batch normalization is usually applied with mini-batches.
+- If we are using batch normalization parameters `b[1]`, ..., `b[L]` doesn't count because they will be eliminated after mean subtraction step, so:
+  ```
+  Z[l] = W[l]A[l-1] + b[l] => Z[l] = W[l]A[l-1]
+  Z_norm[l] = ...
+  Z_tilde[l] = gamma[l] * Z_norm[l] + beta[l]
+  ```
   - Taking the mean of a constant `b[l]` will eliminate the `b[l]`
 - So if you are using batch normalization, you can remove b[l] or make it always zero.
-- So the parameter will be Ws, betas, and alphas.
+- So the parameters will be `W[l]`, `beta[l]`, and `alpha[l]`.
 - Shapes:
-  - `Z[l]`				`#(n[l], m)`
-    - `alpha[l]`      	        `#(n[l], m)`
-    - `beta[l]`                `#(n[l], m)`
+  - `Z[l]       - (n[l], m)`
+  - `beta[l]    - (n[l], m)`
+  - `gamma[l]   - (n[l], m)`
 
 ### Why does Batch normalization work
 
