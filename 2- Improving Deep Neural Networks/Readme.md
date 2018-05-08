@@ -670,9 +670,9 @@ L2-regularization relies on the assumption that a model with small weights is si
 - There are some debates in the deep learning literature about whether you should normalize values before the activation function `Z[l]` or after applying the activation function `A[l]`. In practice, normalizing `Z[l]` is done much more often and that is what Andrew Ng presents.
 - Algorithm:
   - Given `Z[l] = [z(1), ..., z(m)]`, i = 1 to m (for each input)
-  - Compute `mean[i] = 1/m * sum(z[i])`
-  - Compute `variance[i] = 1/m * sum((z[i] - mean[i])^2)`
-  - Then `Z_norm[i] = (z(i) - mean[i]) / np.sqrt(variance + epsilon)` (add `epsilon` for numerical stability if variance = 0)
+  - Compute `mean = 1/m * sum(z[i])`
+  - Compute `variance = 1/m * sum((z[i] - mean)^2)`
+  - Then `Z_norm[i] = (z(i) - mean) / np.sqrt(variance + epsilon)` (add `epsilon` for numerical stability if variance = 0)
     - Forcing the inputs to a distribution with zero mean and variance of 1.
   - Then `Z_tilde[i] = gamma * Z_norm[i] + beta`
     - To make inputs belong to other distribution (with other mean and variance).
