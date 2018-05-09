@@ -40,7 +40,7 @@ This is the second course of the deep learning specialization at [Coursera](http
       * [Hyperparameters tuning in practice: Pandas vs. Caviar](#hyperparameters-tuning-in-practice-pandas-vs-caviar)
       * [Normalizing activations in a network](#normalizing-activations-in-a-network)
       * [Fitting Batch Normalization into a neural network](#fitting-batch-normalization-into-a-neural-network)
-      * [Why does Batch normalization work](#why-does-batch-normalization-work)
+      * [Why does Batch normalization work?](#why-does-batch-normalization-work)
       * [Batch normalization at test time](#batch-normalization-at-test-time)
       * [Softmax Regression](#softmax-regression)
       * [Training a Softmax classifier](#training-a-softmax-classifier)
@@ -704,7 +704,7 @@ L2-regularization relies on the assumption that a model with small weights is si
   - `beta[l]    - (n[l], m)`
   - `gamma[l]   - (n[l], m)`
 
-### Why does Batch normalization work
+### Why does Batch normalization work?
 
 - The first reason is the same reason as why we normalize X.
 - The second reason is that batch normalization reduces the problem of input values changing (shifting).
