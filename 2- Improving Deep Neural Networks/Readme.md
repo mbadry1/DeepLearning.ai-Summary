@@ -784,7 +784,7 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### Deep learning frameworks
 
-- Its not practical to implement everything from scratch. Out last implementations was to know how NN works.
+- It's not practical to implement everything from scratch. Our numpy implementations were to know how NN works.
 - There are many good deep learning frameworks.
 - Deep learning is now in the phase of doing something with the frameworks and not from scratch to keep on going.
 - Here are some of the leading deep learning frameworks:
@@ -802,8 +802,8 @@ L2-regularization relies on the assumption that a model with small weights is si
 - How to choose deep learning framework:
   - Ease of programming (development and deployment)
   - Running speed
-  - Truly open (Open source with good governance)
-- Programing frameworks can not only shorten your coding time, but sometimes also perform optimizations that speed up your code.
+  - Truly open (open source with good governance)
+- Programming frameworks can not only shorten your coding time but sometimes also perform optimizations that speed up your code.
 
 ### TensorFlow
 
