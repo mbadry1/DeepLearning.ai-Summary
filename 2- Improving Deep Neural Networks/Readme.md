@@ -717,13 +717,13 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### Batch normalization at test time
 
-- When we train a NN with Batch normalization, we compute the mean and the variance of the size of mini-batch.
-- In testing we have to test one by one example. The mean and the variance of one example doesn't make sense!
-- We have to compute an estimate value of mean and variance to use it in the testing time.
-- We can use the weighted average across the mini batches.
-- We will use the estimate values of the mean and variance to test.
-- There are another method to estimate this value called "Running average"
-- In practice don't worry as you will use a deep learning framework and it will contain some default of doing such a thing.
+- When we train a NN with Batch normalization, we compute the mean and the variance of the mini-batch.
+- In testing we might need to process examples one at a time. The mean and the variance of one example won't make sense.
+- We have to compute an estimated value of mean and variance to use it in testing time.
+- We can use the weighted average across the mini-batches.
+- We will use the estimated values of the mean and variance to test.
+- This method is also sometimes called "Running average".
+- In practice most often you will use a deep learning framework and it will contain some default implementation of doing such a thing.
 
 ### Softmax Regression
 
