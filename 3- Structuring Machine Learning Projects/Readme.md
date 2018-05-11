@@ -14,7 +14,7 @@ This is the third course of the deep learning specialization at [Coursera](https
       * [Satisfying and Optimizing metric](#satisfying-and-optimizing-metric)
       * [Train/Dev/Test distributions](#traindevtest-distributions)
       * [Size of the Dev and Test sets](#size-of-the-dev-and-test-sets)
-      * [When to change Dev/Test sets and metrics](#when-to-change-devtest-sets-and-metrics)
+      * [When to change dev/test sets and metrics](#when-to-change-devtest-sets-and-metrics)
       * [Why human-level performance?](#why-human-level-performance)
       * [Avoidable bias](#avoidable-bias)
       * [Understanding human-level performance](#understanding-human-level-performance)
@@ -149,25 +149,26 @@ Here are the course summary as its given on the course [link](https://www.course
 - In the modern deep learning you have if you have a million or more
   - 98% Training, 1% Dev, 1% Test
 
-### When to change Dev/Test sets and metrics
+### When to change dev/test sets and metrics
 
-- Lets take an example. In a cat classification example we have these metric results:
+- Let's take an example. In a cat classification example we have these metric results:
 
   | Metric      | Classification error                     |
   | ----------- | ---------------------------------------- |
-  | Algorithm A | 3% error (But a lot of porn images is treated as cat images here) |
+  | Algorithm A | 3% error (But a lot of porn images are treated as cat images here) |
   | Algorithm B | 5% error                                 |
   - In the last example if we choose the best algorithm by metric it would be "A", but if the users decide it will be "B"
-
-  - Thus here we want to change out metric.
-  - `OldMetric = (1/m) * sum(y_pred[i] != y[i] ,m)`
-    - Where m is the number of Dev set items.
-  - `NewMetric = (1/sum(w[i])) * sum( w[i] * (y_pred[i] != y[i]) ,m)`
+  - Thus here we want and need to change our metric.
+  - `old_metric = (1/m) * sum(y_pred[i] != y[i], m)`
+    - Where m is the number of dev set images.
+  - `new_metric = (1/sum(w[i])) * sum(w[i] * (y_pred[i] != y[i]), m)`
     - where:
-       - `w[i] = 1                   if x[i] is not porn`
-       - `w[i] = 10                 if x[i] is porn`
-
-- Conclusion: If doing well on your metric + Dev/test set doesn't correspond to doing well in your application, change your metric and/or Dev/test set.
+       - `w[i] = 1    if x[i] is not porn`
+       - `w[i] = 10   if x[i] is porn`
+- This is actually an example of an orthogonalization where you should take a machine learning problem and break it into distinct steps:
+  1. Figure out how to define a metric that captures what you want to do - place the target.
+  2. Worry about how to actually do well on this metric - how to aim/shoot accurately at the target.
+- Conclusion: if doing well on your metric + dev/test set doesn't correspond to doing well in your application, change your metric and/or dev/test set.
 
 ### Why human-level performance?
 
