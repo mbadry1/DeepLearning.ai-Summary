@@ -84,33 +84,27 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Single number evaluation metric
 
-- Its better and faster to set a Single number evaluation metric to your project before you start it.
-- Difference between precision and recall (In cat classification example):
-  - Suppose we run the classifier on 10 images which are 5 cats and 5 non-cats. The classifier identifies that there are 4 cats. but he identified 1 wrong cat.
-
+- Its better and faster to set a single number evaluation metric for your project before you start it.
+- Difference between precision and recall (in cat classification example):
+  - Suppose we run the classifier on 10 images which are 5 cats and 5 non-cats. The classifier identifies that there are 4 cats, but it identified 1 wrong cat.
   - Confusion matrix:
 
-    - |             | Cat  | Non-Cat |
-      | ----------- | ---- | ------- |
-      | **Cat**     | 3    | 2       |
-      | **Non-Cat** | 1    | 4       |
-
-  - **Precision**: percentage of true cats in the recognized result. per = 3/4
-
-  - **Recall**: percentage of true recognition in the whole dataset. rec = 3/5
-
-  - **Accuracy**= 3/10
-- Using a precision/recall for evaluation is good in a lot of cases they doesn't tell you which is better. Ex:
+      |                | Predicted cat  | Predicted non-cat |
+      | -------------- | -------------- | ----------------- |
+      | Actual cat     | 3              | 2                 |
+      | Actual non-cat | 1              | 4                 |
+  - **Precision**: percentage of true cats in the recognized result: P = 3/(3 + 1) 
+  - **Recall**: percentage of true recognition cat of the all cat predictions: R = 3/(3 + 2)
+  - **Accuracy**: (3+4)/10
+- Using a precision/recall for evaluation is good in a lot of cases, but separately they don't tell you which algothims is better. Ex:
 
   | Classifier | Precision | Recall |
   | ---------- | --------- | ------ |
   | A          | 95%       | 90%    |
   | B          | 98%       | 85%    |
-
-- A better thing is to merge precision and Recall together. There a something called `F1` score
-  - You can think of `F1` score as average of Precision and Recall
-    `F1 = 2/ ((1/Per) + (1/Rec))`
-- IF you have a lot of value as your metric  you should take the average.
+- A better thing is to combine precision and recall in one single (real) number evaluation metric. There a metric called `F1` score, which combines them
+  - You can think of `F1` score as an average of precision and recall
+    `F1 = 2 / ((1/P) + (1/R))`
 
 ### Satisfying and Optimizing metric
 
