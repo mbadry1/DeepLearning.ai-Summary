@@ -183,16 +183,18 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Avoidable bias
 
-- Suppose that the cat classification algorithm gives these percentages:
+- Suppose that the cat classification algorithm gives these results:
 
   | Humans             | 1%   | 7.5% |
   | ------------------ | ---- | ---- |
   | **Training error** | 8%   | 8%   |
   | **Dev Error**      | 10%  | 10%  |
-
-  - In the left example, if the human level error is 1% then we have to focus on the **bias**.
-  - In the right example, if the human level error is 7.5% then we have to focus on the **variance**.
-  - In the latest examples we have used the human level as a proxy form Bayes optimal error because humans vision is too good.
+  - In the left example, because the human level error is 1% then we have to focus on the **bias**.
+  - In the right example, because the human level error is 7.5% then we have to focus on the **variance**.
+  - The human-level error as a proxy (estimate) for Bayes optimal error. Bayes optimal error is always less (better), but human-level in most cases is not far from it.
+  - You can't do better then Bayes error unless you are overfitting.
+  - `Avoidable bias = Training error - Human (Bayes) error`
+  - `Variance = Dev error - Training error`
 
 ### Understanding human-level performance
 
