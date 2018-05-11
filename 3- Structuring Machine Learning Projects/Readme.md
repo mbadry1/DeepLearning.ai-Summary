@@ -220,18 +220,20 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Improving your model performance
 
-- To improve your deep learning supervised system follow these guideline:
-  1. Look at the difference between human level error and the training error.  ***Avoidable bias***
-  2. Look at the difference between the training error and the Test/Dev set. ***Variance***
-  3. If number 1 difference is large you have these options:
+- The two fundamental asssumptions of supervised learning:
+  1. You can fit the training set pretty well. This is roughly saying that you can achieve low **avoidable bias**. 
+  2. The training set performance generalizes pretty well to the dev/test set. This is roughly saying that **variance** is not too bad.
+- To improve your deep learning supervised system follow these guidelines:
+  1. Look at the difference between human level error and the training error - **avoidable bias**.
+  2. Look at the difference between the dev/test set and training set error - **Variance**.
+  3. If **avoidable bias** is large you have these options:
      - Train bigger model.
-     - Train longer/better optimization algorithm (Adam).
-     - NN architecture/hyperparameters search.
-     - Bigger training data.
-  4. If number 2 difference is large you have these options:
+     - Train longer/better optimization algorithm (like Momentum, RMSprop, Adam).
+     - Find better NN architecture/hyperparameters search.
+  4. If **variance** is large you have these options:
      - Get more training data.
-     - Regularization.
-     - NN architecture/hyperparameters search.
+     - Regularization (L2, Dropout, data augumentation).
+     - Find better NN architecture/hyperparameters search.
 
 
 
