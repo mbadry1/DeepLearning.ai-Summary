@@ -310,19 +310,19 @@ Here are the course summary as its given on the course [link](https://www.course
 - Bias and Variance analysis changes when training and Dev/test set is from the different distribution.
 - Example: the cat classification example. Suppose you've worked in the example and reached this
   - Human error: 0%
-  - Training error: 1%
+  - Train error: 1%
   - Dev error: 10%
   - In this example, you'll think that this is a variance problem, but because the distributions aren't the same you can't tell for sure. Because it could be that train set was easy to train on, but the dev set was more difficult.
 - To solve this issue we create a new set called train-dev set as a random subset of the training set (so it has the same distribution) and we get:
   - Human error: 0%
-  - Training error: 1%
+  - Train error: 1%
   - Train-dev error: 9%
   - Dev error: 10%
   - Now we are sure that this is a high variance problem.
 - Suppose we have a different situation:
   - Human error: 0%
-  - Training error: 1%
-  - TrainingDev error: 1.5%
+  - Train error: 1%
+  - Train-dev error: 1.5%
   - Dev error: 10%
   - In this case we have something called *Data mismatch* problem.
 - Conclusions:
