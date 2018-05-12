@@ -40,7 +40,7 @@ This is the second course of the deep learning specialization at [Coursera](http
       * [Hyperparameters tuning in practice: Pandas vs. Caviar](#hyperparameters-tuning-in-practice-pandas-vs-caviar)
       * [Normalizing activations in a network](#normalizing-activations-in-a-network)
       * [Fitting Batch Normalization into a neural network](#fitting-batch-normalization-into-a-neural-network)
-      * [Why does Batch normalization work](#why-does-batch-normalization-work)
+      * [Why does Batch normalization work?](#why-does-batch-normalization-work)
       * [Batch normalization at test time](#batch-normalization-at-test-time)
       * [Softmax Regression](#softmax-regression)
       * [Training a Softmax classifier](#training-a-softmax-classifier)
@@ -704,16 +704,16 @@ L2-regularization relies on the assumption that a model with small weights is si
   - `beta[l]    - (n[l], m)`
   - `gamma[l]   - (n[l], m)`
 
-### Why does Batch normalization work
+### Why does Batch normalization work?
 
 - The first reason is the same reason as why we normalize X.
-- The second reason is that batch normalization reduces the problem of input values changing.
-- Batch norm does some regularization:
-  - Each mini batch is scaled by the mean/variance computed of that mini batch.
-  - -This adds some noise to the values `Z[l]` within that mini batch. Similar to dropout it adds some noise to each hidden layer activation
+- The second reason is that batch normalization reduces the problem of input values changing (shifting).
+- Batch normalization does some regularization:
+  - Each mini batch is scaled by the mean/variance computed of that mini-batch.
+  - This adds some noise to the values `Z[l]` within that mini batch. So similar to dropout it adds some noise to each hidden layer's activations.
   - This has a slight regularization effect.
-- To reduce this regularization effect you can make your mini batch bigger.
-- If you need regularization you cant just rely on that slight regularization you'll need to add your regularization (L2 or dropout).
+  - Using bigger size of the mini-batch you are reducing noise and therefore regularization effect.
+  - Don't rely on batch normalization as a regularization. It's intended for normalization of hidden units, activations and therefore speeding up learning. For regularization use other regularization techniques (L2 or dropout).
 
 ### Batch normalization at test time
 
