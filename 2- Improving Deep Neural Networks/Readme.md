@@ -727,26 +727,27 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 ### Softmax Regression
 
-- Every example we have used so far are talking about classification on only two classes.
-- There are a generalization of logistic regression called Softmax regression that are more general.
-- For example if we are classifying dogs, cat, and none of that
+- In every example we have used so far we were talking about binary classification.
+- There are a generalization of logistic regression called Softmax regression that is used for multiclass classification/regression.
+- For example if we are classifying by classes `dog`, `cat`, `baby chick` and `none of that`
   - Dog `class = 1`
   - Cat `class = 2`
+  - Baby chick `class = 3`
   - None `class = 0`
-  - To represent a dog vector `y = [1 0 0]`
-  - To represent a cat vector `y = [0 1 0]`
-  - To represent a none vector `y = [0 0 1]`
-- We will use these notations:
-  - `C = no. Of classes`
-  - Range of classes is `(0,...C-1)`
-  - In output layer. `Ny = C`
-- Each of the output layers will contain a probability if the class is true.
+  - To represent a dog vector `y = [0 1 0 0]`
+  - To represent a cat vector `y = [0 0 1 0]`
+  - To represent a baby chick vector `y = [0 0 0 1]`
+  - To represent a none vector `y = [1 0 0 0]`
+- Notations:
+  - `C = no. of classes`
+  - Range of classes is `(0, ..., C-1)`
+  - In output layer `Ny = C`
+- Each of C values in the output layer will contain a probability of the example to belong to each of the classes.
 - In the last layer we will have to activate the Softmax activation function instead of the sigmoid activation.
 - Softmax activation equations:
-
   ```
-  t = e^(Z[L])        # shape(C, m)
-  A[L] = e^(Z[L]) / sum(t, C)       # shape(C, m)
+  t = e^(Z[L])                      # shape(C, m)
+  A[L] = e^(Z[L]) / sum(t)          # shape(C, m), sum(t) - sum of t's for each example (shape (1, m))
   ```
 
 ### Training a Softmax classifier
