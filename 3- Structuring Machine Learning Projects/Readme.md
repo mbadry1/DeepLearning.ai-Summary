@@ -289,9 +289,8 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Build your first system quickly, then iterate
 
 - The steps you take to make your deep learning project:
-  - Setup Dev/test set and metric
+  - Setup dev/test set and metric
   - Build initial system quickly
-    - Using the training data.
   - Use Bias/Variance analysis & Error analysis to prioritize next steps.
 
 ### Training and testing on different distributions
