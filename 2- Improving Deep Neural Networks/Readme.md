@@ -754,34 +754,26 @@ L2-regularization relies on the assumption that a model with small weights is si
 
 - There's an activation which is called hard max, which gets 1 for the maximum value and zeros for the others.
   - If you are using NumPy, its `np.max` over the vertical axis.
-- The Softmax name came from Softening the values and not harding them like hard max.
-- Softmax is a generalization of logistic regression with two or more classes.
-- The loss function used with Softmax:
-
+- The Softmax name came from softening the values and not harding them like hard max.
+- Softmax is a generalization of logistic activation function to `C` classes. If `C = 2` softmax reduces to logistic regression.
+- The loss function used with softmax:
   ```
-  L(y,y_dash) = -sum(y[i]*log(y_dash), C)
+  L(y, y_hat) = - sum(y[j] * log(y_hat[j])) # j = 0 to C-1
   ```
-
-- The cost function used with Softmax:
-
+- The cost function used with softmax:
   ```
-  J(w[1], b[1], ....) = -1/m * (sum(L(y[i],y_dash[i]), m))
+  J(w[1], b[1], ...) = - 1 / m * (sum(L(y[i], y_hat[i]))) # i = 0 to m
   ```
-
-- Back propagation with Softmax:
-
+- Back propagation with softmax:
   ```
-  dZ[L] = Y_dash - Y
+  dZ[L] = Y_hat - Y
   ```
-
-- The derivative of Softmax is:
-
+- The derivative of softmax is:
   ```
-  Y_dash( 1 - Y_dash)
+  Y_hat * (1 - Y_hat)
   ```
-
 - Example:
-  - ![](Images/07-_softmax.png)
+    ![](Images/07-_softmax.png)
 
 ### Deep learning frameworks
 
