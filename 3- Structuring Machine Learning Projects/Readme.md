@@ -70,17 +70,17 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Orthogonalization
 
-- Some deep learning developers knows exactly what hyperparameter to tune to achieve a specific task. This is called Orthogonalization.
-- In Orthogonalization you have some controls, but each control does a specific task and doesn't effect other controls.
-- Chain of assumptions in machine learning:
-  1. You'll have to fit training set well on cost function. (Near human level performance if possible)
-     - If its not achieved you could try: bigger network - other optimization algorithm...
-  2. Fit Dev set well on cost function.
-     - If its not achieved you could try: regularization - Bigger training set ...
+- Some deep learning developers know exactly what hyperparameter to tune in order to try to achieve one effect. This is a process we call orthogonalization.
+- In orthogonalization, you have some controls, but each control does a specific task and doesn't affect other controls.
+- For a supervised learning system to do well, you usually need to tune the knobs of your system to make sure that four things hold true - chain of assumptions in machine learning:
+  1. You'll have to fit training set well on cost function (near human level performance if possible).
+     - If it's not achieved you could try bigger network, another optimization algorithm (like Adam)...
+  2. Fit dev set well on cost function.
+     - If its not achieved you could try regularization, bigger training set...
   3. Fit test set well on cost function.
-     - If its not achieved you could try: Bigger Dev. set ...
+     - If its not achieved you could try bigger dev. set...
   4. Performs well in real world.
-     - If its not achieved you could try: change dev. set - change cost function..
+     - If its not achieved you could try change dev. set, change cost function...
 
 ### Single number evaluation metric
 
