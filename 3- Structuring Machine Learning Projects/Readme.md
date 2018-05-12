@@ -56,17 +56,17 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Why ML Strategy
 
-- You have a lot of ideas to improve the accuracy of your deep learning system:
+- You have a lot of ideas for how to improve the accuracy of your deep learning system:
   - Collect more data.
   - Collect more diverse training set.
-  - Train gradient decent longer.
+  - Train algorithm longer with gradient descent.
+  - Try different optimization algorithm (e.g. Adam).
   - Try bigger network.
   - Try smaller network.
-  - Try dropout
-  - Add L2 regularization
-  - Try different optimization algorithm "ex. Adam"
-  - Activation functions.
-- This course will give you some strategies to help you analyze your problem to go in a direction that will get you a better results.
+  - Try dropout.
+  - Add L2 regularization.
+  - Change network architecture (activation functions, # of hidden units, etc.)
+- This course will give you some strategies to help analyze your problem to go in a direction that will help you get better results.
 
 ### Orthogonalization
 
