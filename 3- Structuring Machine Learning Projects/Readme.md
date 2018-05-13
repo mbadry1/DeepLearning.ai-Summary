@@ -346,14 +346,16 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Transfer learning
 
-- Apply the knowledge you took in a task and apply it in another task.
-- For example You have trained a cat classifier with a lot of data, you can use all the learning data or part of it to solve x-ray classification problem.
-- To do transfer learning, delete the weights of the last layer of the NN and keep all the other weights as a fixed weights. Initialize the new weights and feed the new data to the NN and learn the new weights. Thats if you have a small data set, but if you have enough data you can retrain all the weights again this is called **fine tuning**.
-- You can create a several new layers not just one layer to original NN.
+- Apply the knowledge you took in a task A and apply it in another task B.
+- For example, you have trained a cat classifier with a lot of data, you can use the part of the trained NN it to solve x-ray classification problem.
+- To do transfer learning, delete the last layer of NN and it's weights and:
+  1. Option 1: if you have a small data set - keep all the other weights as a fixed weights. Add a new last layer(-s) and initialize the new layer weights and feed the new data to the NN and learn the new weights.
+  2. Option 2: if you have enough data you can retrain all the weights.
+- Option 1 and 2 are called **fine-tuning** and training on task A called **pretraining**.
 - When transfer learning make sense:
-  - When you have a lot of data for the problem you are transferring from and relatively less data for the problem your transferring to.
-  - Task A and B has the same input X.   (Same type as input ex. image, audio)
-  - Low level features from A could be helpful for learning B
+  - Task A and B have the same input X (e.g. image, audio).
+  - You have a lot of data for the task A you are transferring from and relatively less data for the task B your transferring to.
+  - Low level features from task A could be helpful for learning task B.
 
 ### Multi-task learning
 
