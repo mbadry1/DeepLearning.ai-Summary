@@ -421,15 +421,16 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Whether to use end-to-end deep learning
 
-- Here are some guidelines on Whether to use end-to-end deep learning.
-- Pros of end to end deep learning:
-  - Let the data speak.
-  - Less hand designing of components needed.
-- Cons of end to end deep learning:
-  - May need large amount of data.
-  - Excludes potentially useful hand design components. (It helps more on small dataset)
-- Applying end to end deep learning:
-  - Do you have sufficient data to learn a function of the ***complexity*** needed to map x to y?
+- Pros of end-to-end deep learning:
+  - Let the data speak. By having a pure machine learning approach, your NN learning input from X to Y may be more able to capture whatever statistics are in the data, rather than being forced to reflect human preconceptions.
+  - Less hand-designing of components needed.
+- Cons of end-to-end deep learning:
+  - May need a large amount of data.
+  - Excludes potentially useful hand-design components (it helps more on the smaller dataset).
+- Applying end-to-end deep learning:
+  - Key question: Do you have sufficient data to learn a function of the **complexity** needed to map x to y?
+  - Use ML/DL to learn some individual components.
+  - When applying supervised learning you should carefully choose what types of X to Y mappings you want to learn depending on what task you can get data for.
 
 
 
