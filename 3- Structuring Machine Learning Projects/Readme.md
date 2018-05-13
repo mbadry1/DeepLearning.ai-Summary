@@ -361,7 +361,9 @@ Here are the course summary as its given on the course [link](https://www.course
 - Example:
   - You want to build an object recognition system that detects pedestrians, cars, stop signs, and traffic lights (image has multiple labels).
   - Then Y shape will be `(4,m)` because we have 4 classes and each one is a binary one.
-  - Then `Loss = (1/m) sum(sum(L(Y_dash[i], Y[i]), 4), m)`
+  - Then   
+  `Cost = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j))), i = 1..m, j = 1..4`, where   
+  `L = - y(i)_j * log(y_hat(i)_j) - (1 - y(i)_j) * log(1 - y_hat(i)_j)`
 - In the last example you could have trained 4 neural networks separately but if some of the earlier features in neural network can be shared between these different types of objects, then you find that training one neural network to do four things results in better performance than training 4 completely separate neural networks to do the four tasks separately. 
 - Multi-task learning will also work if y isn't complete for some labels. For example:
   ```
@@ -370,7 +372,7 @@ Here are the course summary as its given on the course [link](https://www.course
       [? 1 ? ...]
   ```
   - And in this case it will do good with the missing data, just the loss function will be different:   
-    `Loss = (1/m) sum(sum(L(Y_dash[i], Y[i]) for all i which Y[i] != ?), m)`
+    `Loss = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j) for all j which y(i)_j != ?))`
 - Multi-task learning makes sense:
   1. Training on a set of tasks that could benefit from having shared lower-level features.
   2. Usually, amount of data you have for each task is quite similar.
