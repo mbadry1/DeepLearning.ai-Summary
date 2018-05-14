@@ -73,30 +73,29 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - Sequence Models like RNN and LSTMs have greatly transformed learning on sequences in the past few years.
 - Examples of sequence data in applications:
-  - Speech recognition (**Sequence to sequence**):
-    - X:           Wave sequence
-    - Y:           Text sequence
+  - Speech recognition (**sequence to sequence**):
+    - X: wave sequence
+    - Y: text sequence
   - Music generation (**one to sequence**):
-    - X:           (Can be nothing or an integer)
-    - Y:           Wave sequence
+    - X: nothing or an integer
+    - Y: wave sequence
   - Sentiment classification (**sequence to one**):
-    - X:          Text sequence
-    - Y:           Integer rating from one to five
+    - X: text sequence
+    - Y: integer rating from one to five
   - DNA sequence analysis (**sequence to sequence**):
-    - X:           DNA sequence
-    - Y:            DNA Labels
+    - X: DNA sequence
+    - Y: DNA Labels
   - Machine translation (**sequence to sequence**):
-    - X:            Text sequence (In a language)
-    - Y:            Text sequence (In other language)
-  - Video activity recognition (**Sequence to one**):
-    - X:            Video frames
-    - Y:             Label (Activity)
-  - Name entity recognition  (**Sequence to sequence**):
-    - X:            Text sequence
-    - Y:             Label sequence
+    - X: text sequence (in one language)
+    - Y: text sequence (in other language)
+  - Video activity recognition (**sequence to one**):
+    - X: video frames
+    - Y: label (activity)
+  - Name entity recognition (**sequence to sequence**):
+    - X: text sequence
+    - Y: label sequence
     - Can be used by seach engines to index different type of words inside a text.
-- As you can see there are different data with different input and outputs - sequence or one - that can be learned by supervised learning models.
-- There are different ways and models to tackle different sequence problem.
+- All of these problems with different input and output (sequence or not) can be addressed as supervised learning with label data X, Y as the training set.
 
 ### Notation
 
