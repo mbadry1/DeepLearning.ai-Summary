@@ -163,17 +163,18 @@ Here are the course summary as its given on the course [link](https://www.course
   - w<sub>a</sub> shape: (NoOfHiddenNeurons, NoOfHiddenNeurons + n<sub>x</sub>)
   - [a<sup><t-1></sup>, x<sup>t</sup>] shape: (NoOfHiddenNeurons + n<sub>x</sub>, 1)
 ### Backpropagation through time
-- Lets see how backpropagation works with the RNN architecture we have developed.
-- Often, Deep learning frameworks do backpropagation automatically for you. But its useful to know how it works especially in RNNs.
-- Here is the graph:
-  - ![](Images/06.png)
-  - Where w<sup>a</sup>, b<sup>a</sup>, w<sup>y</sup>, and b<sup>y</sup> are shared across each element in a sequence.
-- We will use the cross entropy loss function:
-  - ![](Images/07.png)
-  - Where the first equation is the loss for one element and the loss for the whole sequence is given by the summation over all the calculated values.
-- Graph with losses:
-  - ![](Images/08.png)
-- The backpropagation here is called **backpropagation through time** because of the passed activation `a` from one sequence element to another.
+- Let's see how backpropagation works with the RNN architecture.
+- Usually deep learning frameworks do backpropagation automatically for you. But it's useful to know how it works in RNNs.
+- Here is the graph:   
+  ![](Images/06.png)
+  - Where w<sub>a</sub>, b<sub>a</sub>, w<sub>y</sub>, and b<sub>y</sub> are shared across each element in a sequence.
+- We will use the cross-entropy loss function:   
+  ![](Images/07.png)
+  - Where the first equation is the loss for one example and the loss for the whole sequence is given by the summation over all the calculated single example losses.
+- Graph with losses:   
+  ![](Images/08.png)
+- The backpropagation here is called **backpropagation through time** because we pass activation `a` from one sequence element to another like backwards in time.
+
 ### Different types of RNNs
 - So far we have seen only one RNN architecture in which T<sub>x</sub> equals T<sub>Y</sub> always. In some other problems, they may not equal so we need different architectures.
 - The ideas in this section was inspired by Andrej Karpathy [blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). Mainly this image has all types:
