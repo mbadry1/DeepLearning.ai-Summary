@@ -189,30 +189,30 @@ Here are the course summary as its given on the course [link](https://www.course
   - There are an encoder and a decoder in the architecture. The encoder encodes the input sequence into one matrix and feed it to the decoder to generate the outputs. Encoder and decoder have different weight matrices.
 - There are another architecture which is the **attention** architecture which we will talk about in chapter 3.
 ### Language model and sequence generation
-- RNNs do very well in language model problems. In this section we will build a language model using RNNs.
+- RNNs do very well in language model problems. In this section, we will build a language model using RNNs.
 - **What is a language model**
-  - Lets say we are solving a speech recognition problem and some one says a sentence that can be interpreted into to two sentences:
+  - Let's say we are solving a speech recognition problem and someone says a sentence that can be interpreted into to two sentences:
     - The apple and **pair** salad
     - The apple and **pear** salad
   - **Pair** and **pear** sounds exactly the same, so how would a speech recognition application choose from the two.
-  - Thats where the language models comes. It gives a probability for the two sentences and the application decides the best based on this probability.
-- The job of a language model is giving a probability of any given sentence .Also the probability of the next sentence.
-- **How to build language modeling with RNNs?**
-  - The first thing is to get a **training set**: Large corpus of target language text.
+  - That's where the language model comes in. It gives a probability for the two sentences and the application decides the best based on this probability.
+- The job of a language model is to give a probability of any given sequence of words.
+- **How to build language models with RNNs?**
+  - The first thing is to get a **training set**: a large corpus of target language text.
   - Then tokenize this training set by getting the vocabulary and then one-hot each word.
-  - Put an end of sentence token `<EOS>` with the vocabulary and include it with each converted sentence. Also like we have mentioned before use the token `<UNK>` for the unknown words.
+  - Put an end of sentence token `<EOS>` with the vocabulary and include it with each converted sentence. Also, use the token `<UNK>` for the unknown words.
 - Given the sentence "Cats average 15 hours of sleep a day. `<EOS>`"
-  - In training time we will use this:
-    - ![](Images/13.png)
-    - We pass to 0 vector - One hot -  to the first layer.
-  - The loss function is defined by cross entropy loss:
-    - ![](Images/14.png)
-    - `i`  is for all elements in the training set.
+  - In training time we will use this:   
+    ![](Images/13.png)
+  - The loss function is defined by cross-entropy loss:   
+    ![](Images/14.png)
+    - `i`  is for all elements in the corpus, `t` - for all timesteps.
 - To use this model:
   1.  For predicting the chance of **next word**, we feed the sentence to the RNN and then get the final y<sup>^\<t></sup> hot vector and sort it by maximum probability.
   2.  For taking the **probability of a sentence**, we compute this:
-     - p(y<sup><1></sup>, y<sup><2></sup>, y<sup><3></sup>) = p(y<sup><1></sup>) * p(y<sup><2></sup> | y<sup><1></sup>) * p(y<sup><3></sup> | y<sup><1></sup>, y<sup><2></sup>)
-     - This is simply feeding the sentence to the RNN and multiply the probability for the given word in all the output hot encoded.
+      - p(y<sup><1></sup>, y<sup><2></sup>, y<sup><3></sup>) = p(y<sup><1></sup>) * p(y<sup><2></sup> | y<sup><1></sup>) * p(y<sup><3></sup> | y<sup><1></sup>, y<sup><2></sup>)
+      - This is simply feeding the sentence into the RNN and multiplying the probabilities (outputs).
+
 ### Sampling novel sequences
 - After a sequence model is trained on a language model, to check what the model has learned you can apply it on a sample novel sequence.
 - Lets see the steps of how we can sample a novel sequence from a trained sequence language model:
