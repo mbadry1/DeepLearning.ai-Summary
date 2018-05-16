@@ -257,12 +257,10 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - The Vanishing / Exploding gradients occurs when your derivatives become very small or very big.
 - To understand the problem, suppose that we have a deep neural network with number of layers L, and all the activation functions are **linear** and each `b = 0`
-  - Then:
-
+  - Then:   
     ```
     Y' = W[L]W[L-1].....W[2]W[1]X
     ```
-
   - Then, if we have 2 hidden units per layer and x1 = x2 = 1, we result in:
 
     ```
@@ -271,14 +269,12 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
     Y' = W[L] [1.5  0]^(L-1) X = 1.5^L 	# which will be very large
               [0  1.5]
     ```
-
     ```
     if W[l] = [0.5  0]
               [0  0.5]
     Y' = W[L] [0.5  0]^(L-1) X = 0.5^L 	# which will be very small
               [0  0.5]
     ```
-
 - The last example explains that the activations (and similarly derivatives) will be decreased/increased exponentially as a function of number of layers.
 - So If W > I (Identity matrix) the activation and gradients will explode.
 - And If W < I (Identity matrix) the activation and gradients will vanish.
@@ -291,46 +287,39 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - In a single neuron (Perceptron model): `Z = w1x1 + w2x2 + ... + wnxn`
   - So if `n_x` is large we want `W`'s to be smaller to not explode the cost.
 - So it turns out that we need the variance which equals `1/n_x` to be the range of `W`'s
-- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):
-
+- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):   
   ```
   np.random.rand(shape) * np.sqrt(1/n[l-1])
   ```
-  or variation of this (Bengio et al.)
-  
+  or variation of this (Bengio et al.):   
   ```
   np.random.rand(shape) * np.sqrt(2/(n[l-1] + n[l]))
   ```
-
-- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:
-
+- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:   
   ```
   np.random.rand(shape) * np.sqrt(2/n[l-1])
   ```
 - Number 1 or 2 in the nominator can also be a hyperparameter to tune (but not the first to start with)
-- This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/eplode too quickly
+- This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/explode too quickly
 - The initialization in this video is called "He Initialization / Xavier Initialization" and has been published in 2015 paper.
 
 ### Numerical approximation of gradients
 
-
 - There is an technique called gradient checking which tells you if your implementation of backpropagation is correct.
-- There's a numerical way to calculate the derivative:
-  - ![](Images/03-_Numerical_approximation_of_gradients.png)
+- There's a numerical way to calculate the derivative:   
+  ![](Images/03-_Numerical_approximation_of_gradients.png)
 - Gradient checking approximates the gradients and is very helpful for finding the errors in your backpropagation implementation but it's slower than gradient descent (so use only for debugging).
 - Implementation of this is very simple.
 - Gradient checking:
   - First take `W[1],b[1],...,W[L],b[L]` and reshape into one big vector (`theta`)
   - The cost function will be `L(theta)`
   - Then take `dW[1],db[1],...,dW[L],db[L]` into one big vector (`d_theta`)
-  - **Algorithm**:
-
+  - **Algorithm**:   
     ```
     eps = 10^-7   # small number
     for i in len(theta):
       d_theta_approx[i] = (J(theta1,...,theta[i] + eps) -  J(theta1,...,theta[i] - eps)) / 2*eps
     ```
-
   - Finally we evaluate this formula `(||d_theta_approx - d_theta||) / (||d_theta_approx||+||d_theta||)` (`||` - Euclidean vector norm) and check (with eps = 10^-7):
     - if it is < 10^-7  - great, very likely the backpropagation implementation is correct
     - if around 10^-5   - can be OK, but need to inspect if there are no particularly big values in `d_theta_approx - d_theta` vector
