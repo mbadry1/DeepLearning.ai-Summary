@@ -294,14 +294,14 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Training and testing on different distributions
 
-- A lot of teams are working with deep learning applications that has training sets that are different from the Dev/test sets due to the hanger of deep learning to data.
-- There are some strategies to follow up when training set distribution differs from Dev/test sets distribution.
-  - Option one (Not recommended): shuffle all the data together and extract randomly training and Dev/test sets.
-    - Advantages:   All the sets now are from the same distribution.
-    - Disadvantages: The other distribution that was in the Dev/test sets will occur less in the new Dev/test sets and that might not what you want to achieve.
-  - Option two: Take some of the Dev/test set examples and put them with the training distribution.
-    - Advantages: The distribution you care about is your target now.
-    - Disadvantage: the distributions are different. but you will get a better performance over a long time.
+- A lot of teams are working with deep learning applications that have training sets that are different from the dev/test sets due to the hunger of deep learning to data.
+- There are some strategies to follow up when training set distribution differs from dev/test sets distribution.
+  - Option one (not recommended): shuffle all the data together and extract randomly training and dev/test sets.
+    - Advantages: all the sets now come from the same distribution.
+    - Disadvantages: the other (real world) distribution that was in the dev/test sets will occur less in the new dev/test sets and that might be not what you want to achieve.
+  - Option two: take some of the dev/test set examples and add them to the training set.
+    - Advantages: the distribution you care about is your target now.
+    - Disadvantage: the distributions in training and dev/test sets are now different. But you will get a better performance over a long time.
 
 ### Bias and Variance with mismatched data distributions
 
