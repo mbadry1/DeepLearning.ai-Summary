@@ -263,9 +263,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Cleaning up incorrectly labeled data
 
-- Labeled data is incorrect when y of x is incorrect.
-- If the incorrect labeled data is in the training set, Deep learning are quite robust to random error (Not systematic error). But its OK to go and fix these labels if you can.
-- If you want to check for mislabeled data in Dev/test set, you should also try error analysis with mislabeled column. Ex:
+- DL algorithms are quite robust to random errors in the training set but less robust to systematic errors. But it's OK to go and fix these labels if you can.
+- If you want to check for mislabeled data in dev/test set, you should also try error analysis with the mislabeled column. Ex:
 
   | Image        | Dog    | Great Cats | blurry  | Mislabeled | Comments |
   | ------------ | ------ | ---------- | ------- | ---------- | -------- |
@@ -275,16 +274,16 @@ Here are the course summary as its given on the course [link](https://www.course
   | 4            |        | ✓          |         |            |          |
   | ....         |        |            |         |            |          |
   | **% totals** | **8%** | **43%**    | **61%** | **6%**     |          |
-
   - Then:
-    - If Overall Dev set error: 		10%
-      - Then Errors due incorrect data: 0.6%
-        - Then Errors due other causes:9.4%
+    - If overall dev set error: 10%
+      - Then errors due to incorrect data: 0.6%
+      - Then errors due to other causes: 9.4%
     - Then you should focus on the 9.4% error rather than the incorrect data.
-- Consider these while correcting the Dev/test mislabeled:
-  - Apply same process to your Dev and test sets to make sure they continue to come from the same distribution.
+- Consider these guidelines while correcting the dev/test mislabeled examples:
+  - Apply the same process to your dev and test sets to make sure they continue to come from the same distribution.
   - Consider examining examples your algorithm got right as well as ones it got wrong. (Not always done if you reached a good accuracy)
-  - Train and (Dev/Test) data may now come from slightly different distributions
+  - Train and (dev/test) data may now come from a slightly different distributions.
+  - It's very important to have dev and test sets to come from the same distribution. But it could be OK for a train set to come from slighly other distribution.
 
 ### Build your first system quickly, then iterate
 
