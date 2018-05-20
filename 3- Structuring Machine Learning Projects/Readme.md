@@ -239,27 +239,27 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Carrying out error analysis
 
-- Error analysis is to analysis why the accuracy of the system is like that. Example:
-  - In the cat classification example, if you have 10% error on your Dev set and you want to solve the error.
-  - If you discovered that some of the mislabeled data are dog pictures that looks like cats, should you try to make your cat classifier do better on dogs? this could take some weeks.
-  - Error analysis approach (To take a decision):
-    - Get 100 mislabeled Dev set examples at random.
+- Error analysis - process of manually examining mistakes that your algorithm is making. It can give you insights into what to do next. E.g.:
+  - In the cat classification example, if you have 10% error on your dev set and you want to decrease the error.
+  - You discovered that some of the mislabeled data are dog pictures that look like cats. Should you try to make your cat classifier do better on dogs (this could take some weeks)?
+  - Error analysis approach:
+    - Get 100 mislabeled dev set examples at random.
     - Count up how many are dogs.
-    - if there are 5/100 is dogs then it doesn't count to train your classifier to dogs.
-    - if there are 50/100 is dogs then you should work in that.
+    - if 5 of 100 are dogs then training your classifier to do better on dogs will decrease your error up to 9.5% (called ceiling), which can be too little.
+    - if 50 of 100 are dogs then you could decrease your error up to 5%, which is reasonable and you should work on that.
 - Based on the last example, error analysis helps you to analyze the error before taking an action that could take lot of time with no need.
-- You can evaluate multiple ideas -Error analysis ideas- in parallel and choose the best idea. create an excel shape to do that and decide Ex:
+- Sometimes, you can evaluate multiple error analysis ideas in parallel and choose the best idea. Create a spreadsheet to do that and decide, e.g.:
 
-  | Image        | Dog    | Great Cats | blurry  | Comments |
-  | ------------ | ------ | ---------- | ------- | -------- |
-  | 1            | ✓      |            |         |          |
-  | 2            | ✓      |            | ✓       |          |
-  | 3            |        |            |         |          |
-  | 4            |        | ✓          |         |          |
-  | ....         |        |            |         |          |
-  | **% totals** | **8%** | **43%**    | **61%** |          |
-
+  | Image        | Dog    | Great Cats | blurry  | Instagram filters |    Comments    |
+  | ------------ | ------ | ---------- | ------- | ----------------- |--------------- |
+  | 1            | ✓      |            |         | ✓                 |  Pitbul        |
+  | 2            | ✓      |            | ✓       | ✓                 |                |
+  | 3            |        |            |         |                   |Rainy day at zoo|
+  | 4            |        | ✓          |         |                   |                |
+  | ....         |        |            |         |                   |                |
+  | **% totals** | **8%** | **43%**    | **61%** |      **12%**      |                |
 - In the last example you will decide to work on great cats or blurry images to improve your performance.
+- This quick counting procedure, which you can often do in, at most, small numbers of hours can really help you make much better prioritization decisions, and understand how promising different approaches are to work on. 
 
 ### Cleaning up incorrectly labeled data
 
