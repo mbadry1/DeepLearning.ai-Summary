@@ -12,7 +12,7 @@ This is the third course of the deep learning specialization at [Coursera](https
       * [Orthogonalization](#orthogonalization)
       * [Single number evaluation metric](#single-number-evaluation-metric)
       * [Satisfying and Optimizing metric](#satisfying-and-optimizing-metric)
-      * [Train/Dev/Test distributions](#traindevtest-distributions)
+      * [Train/dev/test distributions](#traindevtest-distributions)
       * [Size of the Dev and Test sets](#size-of-the-dev-and-test-sets)
       * [When to change Dev/Test sets and metrics](#when-to-change-devtest-sets-and-metrics)
       * [Why human-level performance?](#why-human-level-performance)
@@ -126,10 +126,11 @@ Here are the course summary as its given on the course [link](https://www.course
   subject to N-1 # satisficing metric (N-1 satisficing metrics)
   ```
 
-### Train/Dev/Test distributions
+### Train/dev/test distributions
 
-- Dev/Test set has to come from the same distribution.
-- Choose Dev/Test sets to reflect data you expect to get in the future and consider important to do well on.
+- Dev and test sets have to come from the same distribution.
+- Choose dev set and test set to reflect data you expect to get in the future and consider important to do well on.
+- Setting up the dev set, as well as the validation metric is really defining what target you want to aim at.
 
 ### Size of the Dev and Test sets
 
