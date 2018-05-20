@@ -164,15 +164,17 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Why human-level performance?
 
-- We compare to human-level performance because a lot of deep learning algorithms in the recent days are a lot better than human level.
-- After an algorithm reaches the human level performance it doesn't get better much.
-  - ![01- Why human-level performance](Images/01-_Why_human-level_performance.png)
-- You won't surpass an error that's called "Bayes optimal error"
-- There aren't much error range between human-level error and Bayes optimal error.
-- Humans are quite good at lot of tasks. So as long as Machine learning is worse than humans, you can:
+- We compare to human-level performance because of two main reasons:
+  1. Because of advances in deep learning, machine learning algorithms are suddenly working much better and so it has become much more feasible in a lot of application areas for machine learning algorithms to actually become competitive with human-level performance. 
+  2. It turns out that the workflow of designing and building a machine learning system is much more efficient when you're trying to do something that humans can also do.
+- After an algorithm reaches the human level performance the progress and accuracy slow down.
+    ![01- Why human-level performance](Images/01-_Why_human-level_performance.png)
+- You won't surpass an error that's called "Bayes optimal error".
+- There isn't much error range between human-level error and Bayes optimal error.
+- Humans are quite good at a lot of tasks. So as long as Machine learning is worse than humans, you can:
   - Get labeled data from humans.
-  - Gain insight from manual error analysis. (Why did a person get it right?)
-  - Better analysis of bias/variance
+  - Gain insight from manual error analysis: why did a person get it right?
+  - Better analysis of bias/variance.
 
 ### Avoidable bias
 
