@@ -199,10 +199,10 @@ Here are the course summary as its given on the course [link](https://www.course
 - Summary of bias/variance with human-level performance:
   1. human-level error (proxy for Bayes error)
      - Calculate `avoidable bias = training error - human-level error`
-     - If difference is bigger then its **variance** then you should use a strategy for **bias**.
+     - If difference is bigger then its **avoidable bias** then you should use a strategy for **bias** resolving.
   2. training error
      - Calculate `variance = dev error - training error`
-     - If difference is bigger then it's **avoidable bias** then you should use a strategy for **variance**.
+     - If difference is bigger then it's **variance** then you should use a strategy for **variance** resolving.
   3. Dev error
 - So having an estimate of human-level performance gives you an estimate of Bayes error. And this allows you to more quickly make decisions as to whether you should focus on trying to reduce a bias or trying to reduce the variance of your algorithm.
 - These techniques will tend to work well until you surpass human-level performance, whereupon you might no longer have a good estimate of Bayes error that still helps you make this decision really clearly. 
