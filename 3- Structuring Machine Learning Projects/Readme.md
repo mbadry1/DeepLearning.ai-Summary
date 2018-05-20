@@ -115,19 +115,15 @@ Here are the course summary as its given on the course [link](https://www.course
   | A          | 90%  | 80 ms        |
   | B          | 92%  | 95 ms        |
   | C          | 92%  | 1,500 ms     |
-
-- In this case we can solve that by Satisfying and Optimizing metric. Ex:
-
+- So we can solve that by choosing a single optimizing metric and decide that other metrics are satisfying. Ex:
   ```
-  Maximize 		F1							# Optimizing metric
-  subject to 		Running time < 100ms		# Satisficing metric
+  Maximize F1                     # optimizing metric
+  subject to running time < 100ms # satisficing metric
   ```
-
 - So as a general rule:
-
   ```
-  Maximize 		1					#Optimizing metric (One optimizing metric)
-  subject to 		N-1					#Satisficing metric (N-1 Satisficing metric)
+  Maximize 1     # optimizing metric (one optimizing metric)
+  subject to N-1 # satisficing metric (N-1 satisficing metrics)
   ```
 
 ### Train/Dev/Test distributions
