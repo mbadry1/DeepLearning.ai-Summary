@@ -341,12 +341,15 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Addressing data mismatch
 
-- Carry out manual error analysis to try to understand difference between training and Dev/test sets.
-- Make training data more similar; or collect more data similar to Dev/test sets.
-  - There are something called **Artificial data synthesis** that can help you Make more training data.
-    - Combine some of your training data with something that can convert it to the Dev/test set distribution.
-      - Ex. Generate cars using 3D in a car classification example.
-    - Be careful with "Artificial data synthesis" because your NN might overfit these generated data.
+- There aren't completely systematic solutions to this, but there some things you could try.
+1. Carry out manual error analysis to try to understand the difference between training and dev/test sets.
+2. Make training data more similar, or collect more data similar to dev/test sets.
+- If your goal is to make the training data more similar to your dev set one of the techniques you can use **Artificial data synthesis** that can help you make more training data.
+    - Combine some of your training data with something that can convert it to the dev/test set distribution.
+      - Examples:
+        1. Combine normal audio with car noise to get audio with car noise example.
+        2. Generate cars using 3D graphics in a car classification example.
+    - Be cautious and bear in mind whether or not you might be accidentally simulating data only from a tiny subset of the space of all possible examples because your NN might overfit these generated data (like particular car noise or a particular design of 3D graphics cars).
 
 ### Transfer learning
 
