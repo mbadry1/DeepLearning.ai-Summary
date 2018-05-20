@@ -193,18 +193,19 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Understanding human-level performance
 
-- When choosing human-level performance, it has to be choose in the terms of what you want to achieve with the system.
-- You might have multiple human-level performance based on the human experience. Then the system you are trying to build will choose from these human levels as set it as proxy for Bayes error.
-- Improving deep learning algorithms is harder once you reach a human level performance.
+- When choosing human-level performance, it has to be chosen in the terms of what you want to achieve with the system.
+- You might have multiple human-level performances based on the human experience. Then you choose the human-level performance (proxy for Bayes error) that is more suitable for the system you're trying to build.
+- Improving deep learning algorithms is harder once you reach a human-level performance.
 - Summary of bias/variance with human-level performance:
-  1. human level error (Proxy for Bayes error)
-     - Calculate `training error - human level error`
-     - If difference is bigger then its **Avoidable bias** then you should use a strategy for **bias**.
-  2. Training error
-     - Calculate `dev error - training error`
-     - If difference is bigger then its **Variance** then you should use a strategy for **Variance**.
+  1. human-level error (proxy for Bayes error)
+     - Calculate `avoidable bias = training error - human-level error`
+     - If difference is bigger then its **variance** then you should use a strategy for **bias**.
+  2. training error
+     - Calculate `variance = dev error - training error`
+     - If difference is bigger then it's **avoidable bias** then you should use a strategy for **variance**.
   3. Dev error
-- In a lot of problems Bayes error isn't zero that's why we need human level performance comparing.
+- So having an estimate of human-level performance gives you an estimate of Bayes error. And this allows you to more quickly make decisions as to whether you should focus on trying to reduce a bias or trying to reduce the variance of your algorithm.
+- These techniques will tend to work well until you surpass human-level performance, whereupon you might no longer have a good estimate of Bayes error that still helps you make this decision really clearly. 
 
 ### Surpassing human-level performance
 
