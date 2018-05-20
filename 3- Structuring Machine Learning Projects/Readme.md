@@ -305,39 +305,39 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Bias and Variance with mismatched data distributions
 
-- Bias and Variance analysis changes when training and Dev/test set is from different distribution.
-- Example: Assume the cat classification example. Suppose you've worked in the example and reached this
-  - Human error:               0%
-  - Training error:              1%
-  - Dev error:                      10%
-- In the last example you'll think that this is a variance problem, but because the distributions aren't the same you cant judge this.
-- Imagine if we created a new set called training-Dev set as a random subset of the training distribution. and we run error analysis and it came as follows:
-  - Human error:               0%
-  - Training error:              1%
-  - TrainingDev error:       8%
-  - Dev error:                      10%
-- Now you are sure this is a variance error.
-- Suppose you have a different situation:
-  - Human error:               0%
-  - Training error:              1%
-  - TrainingDev error:       1.5%
-  - Dev error:                      10%
-- In this case you have something called *Data mismatch* problem.
-- To conclude, first you'll have a new set called training-Dev set which has the same distribution as training set. Then follow this:
-  1. human level error (Proxy for Bayes error)
-     - Calculate `training error - human level error`
-     - If difference is bigger then its **Avoidable bias** then you should use a strategy for **bias**.
-  2. Training error
-     - Calculate `Training-Dev error - training error`
-     - If difference is bigger then its **Variance** then you should use a strategy for **Variance**.
-  3. Training-Dev error
-     - Calculate `dev error - training-dev error`
-     - If difference is bigger then its **Data mismatch** then you should use a strategy for **Data mismatch**.
+- Bias and Variance analysis changes when training and Dev/test set is from the different distribution.
+- Example: the cat classification example. Suppose you've worked in the example and reached this
+  - Human error: 0%
+  - Train error: 1%
+  - Dev error: 10%
+  - In this example, you'll think that this is a variance problem, but because the distributions aren't the same you can't tell for sure. Because it could be that train set was easy to train on, but the dev set was more difficult.
+- To solve this issue we create a new set called train-dev set as a random subset of the training set (so it has the same distribution) and we get:
+  - Human error: 0%
+  - Train error: 1%
+  - Train-dev error: 9%
+  - Dev error: 10%
+  - Now we are sure that this is a high variance problem.
+- Suppose we have a different situation:
+  - Human error: 0%
+  - Train error: 1%
+  - Train-dev error: 1.5%
+  - Dev error: 10%
+  - In this case we have something called *Data mismatch* problem.
+- Conclusions:
+  1. Human-level error (proxy for Bayes error)
+  2. Train error
+     - Calculate `avoidable bias = training error - human level error`
+     - If the difference is big then its **Avoidable bias** problem then you should use a strategy for high **bias**.
+  3. Train-dev error
+     - Calculate `variance = training-dev error - training error`
+     - If the difference is big then its high **variance** problem then you should use a strategy for solving it.
   4. Dev error
-     - Calculate `test error - dev error`
-     - Is the degree of overfitting to Dev set
+     - Calculate `data mismatch = dev error - train-dev error`
+     - If difference is much bigger then train-dev error its **Data mismatch** problem.
   5. Test error
-- Unfortunately there aren't much systematic ways to deal with Data mismatch but the next section will try to give us some insights.
+     - Calculate `degree of overfitting to dev set = test error - dev error`
+     - Is the difference is big (positive) then maybe you need to find a bigger dev set (dev set and test set come from the same distribution, so the only way for there to be a huge gap here, for it to do much better on the dev set than the test set, is if you somehow managed to overfit the dev set).
+- Unfortunately, there aren't many systematic ways to deal with data mismatch. There are some things to try about this in the next section.
 
 ### Addressing data mismatch
 
