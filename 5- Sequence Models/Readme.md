@@ -333,17 +333,18 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Long Short Term Memory (LSTM)
 
-- Other unit that can make you do long term dependences is an LSTM unit and its more powerful and general than GRUs.
+- LSTM - the other type of RNN that can enables you to accunt for long-term dependences. It's more powerful and general than GRUs.
 - In LSTMs , C<sup>\<t></sup> != a<sup>\<t></sup>
-- Here are the equations of an LSTM unit:
-  - ![](Images/21.png)
-- In GRUs we have an update gate `U`, a relevance gate `r`, and a candidate cell variables C<sup>~\<t></sup> while in LSTMs we have an update gate `U` - Sometimes its called Input gate I -, a forget gate `F`, an output gate `O`, and a candidate cell variables C<sup>~\<t></sup>
-- Drawings - which is inspired from http://colah.github.io/posts/2015-08-Understanding-LSTMs/ -: 
-  - ![](Images/22.png)
-- Some Variants on LSTMs includes:
+- Here are the equations of an LSTM unit:   
+  ![](Images/21.png)
+- In GRUs we have an update gate `U`, a relevance gate `r`, and a candidate cell variables C<sup>\~\<t></sup> while in LSTMs we have an update gate `U` (sometimes it's called input gate I), a forget gate `F`, an output gate `O`, and a candidate cell variables C<sup>\~\<t></sup>
+- Drawings (inspired by http://colah.github.io/posts/2015-08-Understanding-LSTMs/):    
+  ![](Images/22.png)
+- Some variants on LSTMs includes:
   - LSTM with **peephole connections**.
     - The normal LSTM with C<sup>\<t-1></sup> included with every gate.
-- There isn't a universal superior in choosing between LSTMs and its variants. Some win and some problems and some don't. One of the advantages of GRUs is that its simpler and can be used to build much bigger network but the LSTM is more powerful and general as we said.
+- There isn't a universal superior between LSTMs and it's variants. One of the advantages of GRUs is that it's simpler and can be used to build much bigger network but the LSTM is more powerful and general.
+
 ### Bidirectional RNN
 - There are still some ideas to make a powerful sequence model. One of them is bidirectional RNNs and another is Deep RNNs.
 - As we saw before, here are an example on Name entity recognition:
