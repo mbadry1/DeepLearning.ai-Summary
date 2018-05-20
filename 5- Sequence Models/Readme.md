@@ -361,10 +361,10 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Deep RNNs
 
 - In a lot of cases the standard one layer RNNs will solve your problem. But in some problems its useful to stack some RNN layers to make a deeper network.
-- For example, a deep RNN with 3 layers would look like this:
-  - ![](Images/25.png)
-- In feed forward deep nets we can have till 100 or 200 layer and this would be a so big network. In deep RNNs stacking 3 layers is considered deep and already expensive.
-- In some cases you might see a deep network that are connected after recurrent cell.
+- For example, a deep RNN with 3 layers would look like this:  
+  ![](Images/25.png)
+- In feed-forward deep nets, there could be 100 or even 200 layers. In deep RNNs stacking 3 layers is already considered deep and expensive to train.
+- In some cases you might see some feed-forward network layers connected after recurrent cell.
 
 
 ### Back propagation with RNNs
