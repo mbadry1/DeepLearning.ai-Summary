@@ -277,21 +277,19 @@ Here are the course summary as its given on the course [link](https://www.course
       - Most popular.
       - We will discuss it next.
 ### Gated Recurrent Unit (GRU)
-- GRU is an RNN type that can help solve the vanishing gradient problem and can remember the long term dependencies.
+- GRU is an RNN type that can help solve the vanishing gradient problem and can remember the long-term dependencies.
 
-- The basic RNN unit can be visualized to be like this:
-
-  - ![](Images/17.png)
+- The basic RNN unit can be visualized to be like this:   
+  ![](Images/17.png)
 
 - We will represent the GRU with a similar drawings.
 
-- Each layer in **GRUs**  has a new variable `C` which is the memory cell. It can tell to wether memorize a something or not.
+- Each layer in **GRUs**  has a new variable `C` which is the memory cell. It can tell to whether memorize something or not.
 
 - In GRUs, C<sup>\<t></sup> = a<sup>\<t></sup>
 
-- Equations of the GRUs:
-
-  - ![](Images/18.png)
+- Equations of the GRUs:   
+  ![](Images/18.png)
   - The update gate is between 0 and 1
     - To understand GRUs imagine that the update gate is either 0 or 1 most of the time.
   - So we update the memory cell based on the update cell and the previous cell.
@@ -307,15 +305,15 @@ Here are the course summary as its given on the course [link](https://www.course
     - | Word    | Update gate(U)             | Cell memory (C) |
       | ------- | -------------------------- | --------------- |
       | The     | 0                          | val             |
-      | cat     | 1                          | newVal          |
-      | which   | 0                          | newVal          |
-      | already | 0                          | newVal          |
-      | ...     | 0                          | newVal          |
-      | was     | 1 (I dont need it anymore) | newerVal        |
+      | cat     | 1                          | new_val         |
+      | which   | 0                          | new_val         |
+      | already | 0                          | new_val         |
+      | ...     | 0                          | new_val         |
+      | was     | 1 (I don't need it anymore)| newer_val       |
       | full    | ..                         | ..              |
-- Drawing for the GRUs
-  - ![](Images/19.png)
-  - Drawings like in http://colah.github.io/posts/2015-08-Understanding-LSTMs/ is so popular and makes it easier to understand GRUs and LSTMs. But Andrew Ng finds its better to look at the equations.
+- Drawing for the GRUs   
+  ![](Images/19.png)
+  - Drawings like in http://colah.github.io/posts/2015-08-Understanding-LSTMs/ is so popular and makes it easier to understand GRUs and LSTMs. But Andrew Ng finds it's better to look at the equations.
 - Because the update gate U is usually a small number like 0.00001, GRUs doesn't suffer the vanishing gradient problem.
   - In the equation this makes C<sup>\<t></sup> = C<sup>\<t-1></sup> in a lot of cases.
 - Shapes:
@@ -324,10 +322,10 @@ Here are the course summary as its given on the course [link](https://www.course
   - c<sup>~\<t></sup> is the same as a<sup>\<t></sup>
   - u<sup>\<t></sup> is also the same dimensions of a<sup>\<t></sup>
 - The multiplication in the equations are element wise multiplication.
-- What has been descried so var is the Simplified GRU unit. Lets now describe the full one:
-  - The full GRU contains a new gate that is used with to calculate the candidate C. The gate tells you how relevance is C<sup>\<t-1></sup> to C<sup>\<t></sup>
+- What has been descried so far is the Simplified GRU unit. Let's now describe the full one:
+  - The full GRU contains a new gate that is used with to calculate the candidate C. The gate tells you how relevant is C<sup>\<t-1></sup> to C<sup>\<t></sup>
   - Equations:
-    - ![](Images/20.png)
+    ![](Images/20.png)
   - Shapes are the same
 - So why we use these architectures, why don't we change them, how we know they will work, why not add another gate, why not use the simpler GRU instead of the full GRU; well researchers has experimented over years all the various types of these architectures with many many different versions and also addressing the vanishing gradient problem. They have found that full GRUs are one of the best RNN architectures  to be used for many different problems. You can make your design but put in mind that GRUs and LSTMs are standards.
 
