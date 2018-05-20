@@ -13,7 +13,7 @@ This is the third course of the deep learning specialization at [Coursera](https
       * [Single number evaluation metric](#single-number-evaluation-metric)
       * [Satisfying and Optimizing metric](#satisfying-and-optimizing-metric)
       * [Train/dev/test distributions](#traindevtest-distributions)
-      * [Size of the Dev and Test sets](#size-of-the-dev-and-test-sets)
+      * [Size of the dev and test sets](#size-of-the-dev-and-test-sets)
       * [When to change Dev/Test sets and metrics](#when-to-change-devtest-sets-and-metrics)
       * [Why human-level performance?](#why-human-level-performance)
       * [Avoidable bias](#avoidable-bias)
@@ -132,13 +132,11 @@ Here are the course summary as its given on the course [link](https://www.course
 - Choose dev set and test set to reflect data you expect to get in the future and consider important to do well on.
 - Setting up the dev set, as well as the validation metric is really defining what target you want to aim at.
 
-### Size of the Dev and Test sets
+### Size of the dev and test sets
 
-- Old way of splitting was 70% training, 30% test.
-- Old way of splitting was 60% training, 20% Dev, 20% test.
-- The old way was valid for ranges 1000 --> 100000
-- In the modern deep learning you have if you have a million or more
-  - 98% Training, 1% Dev, 1% Test
+- An old way of splitting the data was 70% training, 30% test or 60% training, 20% dev, 20% test. 
+- The old way was valid for a number of examples ~ <100000 
+- In the modern deep learning if you have a million or more examples a reasonable split would be 98% training, 1% dev, 1% test. 
 
 ### When to change Dev/Test sets and metrics
 
