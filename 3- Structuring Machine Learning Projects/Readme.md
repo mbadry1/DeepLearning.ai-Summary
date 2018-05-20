@@ -209,12 +209,12 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Surpassing human-level performance
 
-- In some problems, deep learning has surpassed human level performance. Like:
+- In some problems, deep learning has surpassed human-level performance. Like:
   - Online advertising.
   - Product recommendation.
   - Loan approval.
-- The last examples are non natural perception task. Humans are far better in natural perception task like computer vision and speech recognition.
-- Its harder for machines to surpass human level in natural perception task.
+- The last examples are not natural perception task, rather learning on structural data. Humans are far better in natural perception tasks like computer vision and speech recognition.
+- It's harder for machines to surpass human-level performance in natural perception task. But there are already some systems that achieved it.
 
 ### Improving your model performance
 
