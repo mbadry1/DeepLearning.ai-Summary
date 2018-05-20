@@ -393,40 +393,39 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### What is end-to-end deep learning?
 
-- Some systems has multiple stages to implement. An end to end deep learning implements all these stages with a single NN.
-- Example:
-  - Suppose you have a speech recognition system:
-
+- Some systems have multiple stages to implement. An end-to-end deep learning system implements all these stages with a single NN.
+- Example 1:
+  - Speech recognition system:
     ```
-    Audio ---> Features --> Phonemes --> Words --> Transcript			# System
-    Audio ---------------------------------------> Transcript			# End to end
+    Audio ---> Features --> Phonemes --> Words --> Transcript    # non-end-to-end system
+    Audio ---------------------------------------> Transcript    # end-to-end deep learning system
     ```
-
-  - End to end deep learning gives data more freedom, it might not use phonemes when training!
-- To build and end to end deep learning system that works well, we need a big dataset. If you have a small dataset the ordinary implementation of each stage is just fine.
-
-- Another example:
-  - Suppose you want to build a face recognition system:
-
+  - End-to-end deep learning gives data more freedom, it might not use phonemes when training!
+- To build the end-to-end deep learning system that works well, we need a big dataset (more data then in non end-to-end system). If we have a small dataset the ordinary implementation could work just fine.
+- Example 2:
+  - Face recognition system:
     ```
-    Image->Image adjustments->Face detection->Face recognition->Matching	# System.
-    Image ----------------------------------->Face recognition->Matching  # End to end
-    Image->Image adjustments->Face detection------------------->Matching  # Best imp for now
+    Image ---------------------> Face recognition    # end-to-end deep learning system
+    Image --> Face detection --> Face recognition    # deep learning system - best approach for now
     ```
-
-  - Best in practice now is the third approach.
-  - In the third implementation its a two steps approach where part is manually implemented and the other is using deep learning.
-  - Its working well because its harder to get a lot of pictures with people in front of the camera than getting faces of people and compare them.
-  - In the third implementation the NN takes two faces as an input and outputs if the two faces are the same or not.
-- Another example:
-  - Suppose you want to build a machine translation system:
-
+  - In practice, the best approach is the second one for now.
+  - In the second implementation, it's a two steps approach where both parts are implemented using deep learning.
+  - Its working well because it's harder to get a lot of pictures with people in front of the camera than getting faces of people and compare them.
+  - In the second implementation at the last step, the NN takes two faces as an input and outputs if the two faces are the same person or not.
+- Example 3:
+  - Machine translation system:
     ```
-    English --> Text analysis --> ......................... --> Fresh		# System.
-    English --------------------------------------------------> Fresh		# End to end
+    English --> Text analysis --> ... --> French    # non-end-to-end system
+    English ----------------------------> French    # end-to-end deep learning system - best approach
     ```
-
-  - Here end to end deep leaning system works well because we have enough data to build it.
+  - Here end-to-end deep leaning system works better because we have enough data to build it.
+- Example 4:
+  - Estimating child's age from the x-ray picture of a hand:
+  ```
+  Image --> Bones --> Age    # non-end-to-end system - best approach for now
+  Image ------------> Age    # end-to-end system
+  ```
+  - In this example non-end-to-end system works better because we don't have enough data to train end-to-end system.
 
 ### Whether to use end-to-end deep learning
 
