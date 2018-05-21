@@ -136,14 +136,14 @@ Here are the course summary as its given on the course [link](https://www.course
 - The goal is given this representation for x to learn a mapping using a sequence model to then target output y as a supervised learning problem.
 
 ### Recurrent Neural Network Model
-- Why not a standard network for sequence problems? There are two problems:
-  - Inputs, outputs can be different lengths in different examples!
-    - This can be solved in normal NNs by paddings with the maximum lengths but its not a good solution.
+- Why not to use a standard network for sequence tasks? There are two problems:
+  - Inputs, outputs can be different lengths in different examples.
+    - This can be solved for normal NNs by paddings with the maximum lengths but it's not a good solution.
   - Doesn't share features learned across different positions of text/sequence.
-    - Using a feature sharing like in CNNs can significantly reduce the number of parameters in your model. Thats what we will do in RNNs.
-- Recurrent neural networks doesn't have the two mentioned problems.
-- Lets build a RNN that solves **name entity recognition** task:
-  - ![](Images/02.png)
+    - Using a feature sharing like in CNNs can significantly reduce the number of parameters in your model. That's what we will do in RNNs.
+- Recurrent neural network doesn't have either of the two mentioned problems.
+- Lets build a RNN that solves **name entity recognition** task:   
+    ![](Images/02.png)
   - In this problem T<sub>x</sub> = T<sub>y</sub>. In other problems where they aren't equal, the RNN architecture may be different.
   - a<sup><0></sup> is usually initialized with zeros, but some others may initialize it randomly in some cases.
   - There are three weight matrices here: W<sub>ax</sub>, W<sub>aa</sub>, and W<sub>ya</sub> with shapes:
@@ -151,20 +151,23 @@ Here are the course summary as its given on the course [link](https://www.course
     - W<sub>aa</sub>: (NoOfHiddenNeurons, NoOfHiddenNeurons)
     - W<sub>ya</sub>: (n<sub>y</sub>, NoOfHiddenNeurons)
 - The weight matrix W<sub>aa</sub> is the memory the RNN is trying to maintain from the previous layers.
-- A lot of papers and books write the same architecture this way:
-  - ![](Images/03.png)
-  - Its harder to interpreter. Its easier to roll this drawings to the unrolled version we have descried.
-- In the discussed RNN architecture,  the current output y<sup>^\<t></sup> depends on the previous inputs and activations.
-- Lets have this example ' He Said, "Teddy Roosevelt was a great president"  '. In this example Teddy is a person name but we know that from the word **President** that came after Teddy not from **He** and **said** that is before it.
-- So limitation of the discussed architecture is that it can not learn from behind. To address this problem we will later discuss **Bidirectional** RNNs  (BRNNs).
-- Now lets discuss the forward propagation equations on the discussed architecture:
-  - ![](Images/04.png)
-  - The activation function of a is usually tanh or RELU and for y depends on your task choosing some activation functions like sigmoid and softmax. In name entity recognition task we are solving, we will use Sigmoid because we only have two classes.
+- A lot of papers and books write the same architecture this way:  
+  ![](Images/03.png)
+  - It's harder to interpreter. It's easier to roll this drawings to the unrolled version.
+- In the discussed RNN architecture,  the current output y&#770;<sup>\<t></sup> depends on the previous inputs and activations.
+- Let's have this example 'He Said, "Teddy Roosevelt was a great president"'. In this example Teddy is a person name but we know that from the word **president** that came after Teddy not from **He** and **said** that were before it.
+- So limitation of the discussed architecture is that it can not learn from elements later in the sequence. To address this problem we will later discuss **Bidirectional RNN**  (BRNN).
+- Now let's discuss the forward propagation equations on the discussed architecture:   
+    ![](Images/04.png)
+  - The activation function of a is usually tanh or ReLU and for y depends on your task choosing some activation functions like sigmoid and softmax. In name entity recognition task we will use sigmoid because we only have two classes.
 - In order to help us develop complex RNN architectures, the last equations needs to be simplified a bit.
-- **Simplified RNN notation**:
-  - ![](Images/05.png)
+- **Simplified RNN notation**:   
+    ![](Images/05.png)
+  - w<sub>a</sub> is w<sub>aa</sub> and w<sub>ax</sub> stacked horizontaly.
+  - [a<sup>\<t-1></sup>, x<sup>\<t></sup>] is a<sup>\<t-1></sup> and x<sup>\<t></sup> stacked verticaly.
   - w<sub>a</sub> shape: (NoOfHiddenNeurons, NoOfHiddenNeurons + n<sub>x</sub>)
-  - [a<sup><t-1></sup>, x<sup>t</sup>] shape: (NoOfHiddenNeurons + n<sub>x</sub>, 1)
+  - [a<sup>\<t-1></sup>, x<sup>\<t></sup>] shape: (NoOfHiddenNeurons + n<sub>x</sub>, 1)
+
 ### Backpropagation through time
 - Lets see how backpropagation works with the RNN architecture we have developed.
 - Often, Deep learning frameworks do backpropagation automatically for you. But its useful to know how it works especially in RNNs.
