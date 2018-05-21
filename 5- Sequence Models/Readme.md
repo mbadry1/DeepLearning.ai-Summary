@@ -182,19 +182,22 @@ Here are the course summary as its given on the course [link](https://www.course
 - The backpropagation here is called **backpropagation through time** because we pass activation `a` from one sequence element to another like backwards in time.
 
 ### Different types of RNNs
-- So far we have seen only one RNN architecture in which T<sub>x</sub> equals T<sub>Y</sub> always. In some other problems, they may not equal so we need different architectures.
-- The ideas in this section was inspired by Andrej Karpathy [blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). Mainly this image has all types:
-  - ![](Images/09.jpg)
+- So far we have seen only one RNN architecture in which T<sub>x</sub> equals T<sub>Y</sub>. In some other problems, they may not equal so we need different architectures.
+- The ideas in this section was inspired by Andrej Karpathy [blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). Mainly this image has all types:   
+  ![](Images/09.jpg)
 - The architecture we have descried before is called **Many to Many**.
-- In sentiment analysis problem, X is a text while Y is an integer that rangers from 1 to 5. The RNN architecture for that is **Many to One** as in Andrej Karpathy image.
-  - ![](Images/10.png)
-- A **One to Many** architecture application would be music generation.
-  - ![](Images/11.png)
+- In sentiment analysis problem, X is a text while Y is an integer that rangers from 1 to 5. The RNN architecture for that is **Many to One** as in Andrej Karpathy image.   
+  ![](Images/10.png)
+- A **One to Many** architecture application would be music generation.  
+  ![](Images/11.png)
   - Note that starting the second layer we are feeding the generated output back to the network.
-- There are another interesting architecture in **Many To Many**. Applications like machine translation inputs and outputs sequences have different lengths in most of the cases. So an alternative Many To Many architecture that fits the translation would be as follows:
-  - ![](Images/12.png)
-  - There are an encoder and a decoder in the architecture. The encoder encodes the input sequence into one matrix and feed it to the decoder to generate the outputs. Encoder and decoder have different weight matrices.
-- There are another architecture which is the **attention** architecture which we will talk about in chapter 3.
+- There are another interesting architecture in **Many To Many**. Applications like machine translation inputs and outputs sequences have different lengths in most of the cases. So an alternative _Many To Many_ architecture that fits the translation would be as follows:   
+  ![](Images/12.png)
+  - There are an encoder and a decoder parts in this architecture. The encoder encodes the input sequence into one matrix and feed it to the decoder to generate the outputs. Encoder and decoder have different weight matrices.
+- Summary of RNN types:   
+   ![](Images/12_different_types_of_rnn.jpg)
+- There is another architecture which is the **attention** architecture which we will talk about in chapter 3.
+
 ### Language model and sequence generation
 - RNNs do very well in language model problems. In this section we will build a language model using RNNs.
 - **What is a language model**
