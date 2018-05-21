@@ -247,50 +247,49 @@ Here are the course summary as its given on the course [link](https://www.course
 - The trend Andrew has seen in NLP is that for the most part, a word-level language model is still used, but as computers get faster there are more and more applications where people are, at least in some special cases, starting to look at more character-level models. Also, they are used in specialized applications where you might need to deal with unknown words or other vocabulary words a lot. Or they are also used in more specialized applications where you have a more specialized vocabulary.
 
 ### Vanishing gradients with RNNs
-- One of the problems with naive RNNs that it runs into **vanishing gradient** problems.
+- One of the problems with naive RNNs that they run into **vanishing gradient** problem.
 
-- An RNN that process a sequence data with the size of 10,000 time sets, has 10,000 deep layers which is so hard to optimize.
+- An RNN that process a sequence data with the size of 10,000 time steps, has 10,000 deep layers which is very hard to optimize.
 
-- To address the problem lets take an example. Suppose we are working with language modeling problem and there are two sequences that it tries to learn:
+- Let's take an example. Suppose we are working with language modeling problem and there are two sequences that model tries to learn:
 
-  - "The **cat**, which already ate ........................, **was** full"
-  - "The **cats**, which already ate ........................, **were** full"
-  - The dots represents many words
+  - "The **cat**, which already ate ..., **was** full"
+  - "The **cats**, which already ate ..., **were** full"
+  - Dots represent many words in between.
 
-- What we need to learn here that "was" came with "cat" and that "were" came with "cats". The naive RNN will find it hard to get this relation.
+- What we need to learn here that "was" came with "cat" and that "were" came with "cats". The naive RNN is not very good at capturing very long-term dependencies like this.
 
-- As we have discussed in Deep neural networks, deeper networks are luckily to get into the vanishing gradient problem. In deep nets to compute the weights of the earlier layers you have to compute all the weights after these weights which causes the gradient to vanish. That also happens with RNNs with a long sequence size.
+- As we have discussed in Deep neural networks, deeper networks are getting into the vanishing gradient problem. That also happens with RNNs with a long sequence size.   
+  ![](Images/16.png)   
+  - For computing the word "was", we need to compute the gradient for everything behind. Multiplying fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
+  - Therefore some of your weights may not be updated properly.
 
-  - ![](Images/16.png)
-  - For computing the word "Was", we need to compute the gradient for everything behind. Multiplying by  fractions tends to vanish the gradient, while multiplication of large number tends to explode it.
-  - Therefore half of your weights may not be updated properly!
+- In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't identify the singular/plural words so that it gives it the right grammar form of verb was/were.
 
-- In the problem we descried it means that its hard for the network to memorize "was" word all over back to "cat". So in this case, the network won't be identify the singular/plural words so that it give it the right grammar word.
-
-- The conclusion is that RNNs aren't good in **long term dependencies**.
+- The conclusion is that RNNs aren't good in **long-term dependencies**.
 
 - > In theory, RNNs are absolutely capable of handling such “long-term dependencies.” A human could carefully pick parameters for them to solve toy problems of this form. Sadly, in practice, RNNs don’t seem to be able to learn them. http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
-- Vanishing gradients is tends to be the bigger problems with RNNs than the Exploding gradients problem. We will discuss how to solve it in the next sections.
+- _Vanishing gradients_ problem tends to be the bigger problem with RNNs than the _exploding gradients_ problem. We will discuss how to solve it in next sections.
 
-- Exploding gradients can be easily seen when your weight values become `NAN` . So one of the ways solve exploding gradient is to apply **gradient clipping** means if your gradient is more than a threshold deal with the gradient as a fixed value. 
+- Exploding gradients can be easily seen when your weight values become `NaN`. So one of the ways solve exploding gradient is to apply **gradient clipping** means if your gradient is more than some threshold - re-scale some of your gradient vector so that is not too big. So there are cliped according to some maximum value.
 
-  - ![](Images/26.png)
+  ![](Images/26.png)
 
 - **Extra**:
-
-  - Solution for the Exploding gradient problem:
-    - Truncated back propagation.
+  - Solutions for the Exploding gradient problem:
+    - Truncated backpropagation.
       - Not to update all the weights in the way back.
       - Not optimal. You won't update all the weights.
     - Gradient clipping.
   - Solution for the Vanishing gradient problem:
     - Weight initialization.
-      - Like he initialization.
+      - Like He initialization.
     - Echo state networks.
     - Use LSTM/GRU networks.
       - Most popular.
       - We will discuss it next.
+ 
 ### Gated Recurrent Unit (GRU)
 - GRU is an RNN type that can help solve the vanishing gradient problem and can remember the long term dependencies.
 
