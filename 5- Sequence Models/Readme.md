@@ -358,19 +358,20 @@ Here are the course summary as its given on the course [link](https://www.course
 - There isn't a universal superior between LSTM and it's variants. One of the advantages of GRU is that it's simpler and can be used to build much bigger network but the LSTM is more powerful and general.
 
 ### Bidirectional RNN
-- There are still some ideas to make a powerful sequence model. One of them is bidirectional RNNs and another is Deep RNNs.
-- As we saw before, here are an example on Name entity recognition:
-  - ![](Images/23.png)
-- The name Teddy cannot be learned from **He** and **said**, but can be learned from **bears**.
-- BRNNs fixes this issue.
-- Here are BRNNs architecture:
-  - ![](Images/24.png)
-- Hint that BRNNs are **acyclic graph**!
-- The forward propagation goes from left to right, and from right to left. It learns from both sides.
-- To make predictions we use y<sup>^\<t></sup> by using the two activations that comes from left and right.
+- There are still some ideas to let you build much more powerful sequence models. One of them is bidirectional RNNs and another is Deep RNNs.
+- As we saw before, here is an example of the Name entity recognition task:  
+  ![](Images/23.png)
+- The name **Teddy** cannot be learned from **He** and **said**, but can be learned from **bears**.
+- BiRNNs fixes this issue.
+- Here is BRNNs architecture:   
+  ![](Images/24.png)
+- Note, that BiRNN is an **acyclic graph**.
+- Part of the forward propagation goes from left to right, and part - from right to left. It learns from both sides.
+- To make predictions we use y&#770;<sup>\<t></sup> by using the two activations that come from left and right.
 - The blocks here can be any RNN block including the basic RNNs, LSTMs, or GRUs.
-- For a lot of NLP or text processing problems, a BRNN with LSTM appears to be commonly used.
-- The disadvantage of BRNNs that you need the entire sequence before you can process it. For example in live speech recognition if you used BRNNs you will need to wait for the person who speaks to stop to take the entire sequence and then make your predictions.
+- For a lot of NLP or text processing problems, a BiRNN with LSTM appears to be commonly used.
+- The disadvantage of BiRNNs that you need the entire sequence before you can process it. For example, in live speech recognition if you use BiRNNs you will need to wait for the person who speaks to stop to take the entire sequence and then make your predictions.
+
 ### Deep RNNs
 
 - In a lot of cases the standard one layer RNNs will solve your problem. But in some problems its useful to stack some RNN layers to make a deeper network.
