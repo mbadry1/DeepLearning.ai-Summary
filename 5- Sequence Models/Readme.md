@@ -224,23 +224,28 @@ Here are the course summary as its given on the course [link](https://www.course
       - This is simply feeding the sentence into the RNN and multiplying the probabilities (outputs).
 
 ### Sampling novel sequences
-- After a sequence model is trained on a language model, to check what the model has learned you can apply it on a sample novel sequence.
+- After a sequence model is trained on a language model, to check what the model has learned you can apply it to sample novel sequence.
 - Lets see the steps of how we can sample a novel sequence from a trained sequence language model:
-  1. Given this model:
-     - ![](Images/15.png)
+  1. Given this model:   
+     ![](Images/15.png)
   2. We first pass a<sup><0></sup> = zeros vector, and x<sup><1></sup> = zeros vector.
-  3. Then we choose a prediction from y<sup>^<1></sup> using random distribution. For example it could be "The".
-     - In Numpy this can be made using: `numpy.random.choice`
-     - This is the line where you get a random sentences each time you run a novel sequence.
+  3. Then we choose a prediction randomly from distribution obtained by y&#770;<sup><1></sup>. For example it could be "The".
+     - In numpy this can be implemented using: `numpy.random.choice(...)`
+     - This is the line where you get a random beginning of the sentence each time you sample run a novel sequence.
   4. We pass the last predicted word with the calculated  a<sup><1></sup>
   5. We keep doing 3 & 4 steps for a fixed length or until we get the `<EOS>` token.
-  6. You can reject any `<UNK>` token if you mind finding it in you output.
-- So far we have build a word level language model. A **character** level language model also can be made.
-- In the character level language model the vocabulary will contain `[a-zA-Z0-9]`, space, and some special characters.
-- Cons of character level language model compared to the word level language model:
-  - There will be no `<UNK>` token.
-  - It can deal with any word.
-- But main disadvantage you will have a larger sequences! and also more computationally expensive and harder to train.
+  6. You can reject any `<UNK>` token if you mind finding it in your output.
+- So far we have to build a word-level language model. It's also possible to implement a **character-level** language model.
+- In the character-level language model, the vocabulary will contain `[a-zA-Z0-9]`, punctuation, special characters and possibly <EOS> token.
+- Character-level language model has some pros and cons compared to the word-level language model
+  - Pros:
+    1. There will be no `<UNK>` token - it can create any word.
+  - Cons:
+    1. The main disadvantage is that you end up with much longer sequences. 
+    2. Character-level language models are not as good as word-level language models at capturing long range dependencies between how the the earlier parts of the sentence also affect the later part of the sentence.
+    3. Also more computationally expensive and harder to train.
+- The trend Andrew has seen in NLP is that for the most part, a word-level language model is still used, but as computers get faster there are more and more applications where people are, at least in some special cases, starting to look at more character-level models. Also, they are used in specialized applications where you might need to deal with unknown words or other vocabulary words a lot. Or they are also used in more specialized applications where you have a more specialized vocabulary.
+
 ### Vanishing gradients with RNNs
 - One of the problems with naive RNNs that it runs into **vanishing gradient** problems.
 
