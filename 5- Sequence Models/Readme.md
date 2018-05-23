@@ -440,7 +440,7 @@ Here are the course summary as its given on the course [link](https://www.course
   ![](Images/31.png)
   - In this problem, we encode each face into a vector and then check how similar are these vectors.
   - Words **encoding** and **embeddings** have a similar meaning here.
-  - In the word embeddings task, we are learning a representation for each word in our vocabulary (unlike in image encoding where we have to map each new image to some n-dimensional vector). We will discuss the algorithm in next sections.
+- In the word embeddings task, we are learning a representation for each word in our vocabulary (unlike in image encoding where we have to map each new image to some n-dimensional vector). We will discuss the algorithm in next sections.
 
 #### Properties of word embeddings
 - One of the most fascinating properties of word embeddings is that they can also help with analogy reasoning. Analogy reasoning is one of the most important applications of NLP.
