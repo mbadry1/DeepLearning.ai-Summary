@@ -438,30 +438,31 @@ Here are the course summary as its given on the course [link](https://www.course
 - In the word embeddings task, we are learning a representation for each word in our vocabulary (unlike in image encoding where we have to map each new image to some n-dimensional vector). We will discuss the algorithm in next sections.
 
 #### Properties of word embeddings
-- One of the most fascinating properties of word embeddings is that they can also help with analogy reasoning. Analogy reasoning is one of the most important applications of NLP.
+- One of the most fascinating properties of word embeddings is that they can also help with analogy reasoning. While analogy reasoning may not be by itself the most important NLP application, but it might help convey a sense of what these word embeddings can do.
 - Analogies example:
-  - Given this word embeddings table:
-    - ![](Images/32.png)
+  - Given this word embeddings table:   
+    ![](Images/32.png)
   - Can we conclude this relation:
     - Man ==> Woman
     - King ==> ??
   - Lets subtract e<sub>Man</sub> from e<sub>Woman</sub>. This will equal the vector `[-2  0  0  0]`
   - Similar e<sub>King</sub> - e<sub>Queen</sub> = `[-2  0  0  0]`
-  - So the difference is about the gender in both.
-    - ![](Images/33.png)
+  - So the difference is about the gender in both.   
+    ![](Images/33.png)
     - This vector represents the gender.
-    - This drawing is 2D visualization of the 4D vector that has been extracted by t-SNE algorithm. It was drawing for just clarification! Don't rely on t-SNE algorithm in finding parallels.
+    - This drawing is a 2D visualization of the 4D vector that has been extracted by a t-SNE algorithm. It's a drawing just for visualization. Don't rely on the t-SNE algorithm for finding parallels.
   - So we can reformulate the problem to find:
     - e<sub>Man</sub> - e<sub>Woman</sub> ≈ e<sub>King</sub> - e<sub>??</sub>
-  - It can also represented mathematically by:
-    - ![](Images/34.png)
+  - It can also be represented mathematically by:   
+    ![](Images/34.png)
   - It turns out that e<sub>Queen</sub> is the best solution here that gets the the similar vector.
-- Cosine similarity:
-  - Equation:
-    - ![](Images/35.png)
+- Cosine similarity - the most commonly used similarity function:
+  - Equation:   
+    ![](Images/35.png)
     - $$\text{CosineSimilarity(u, v)} = \frac {u . v} {||u||_2 ||v||_2} = cos(\theta)$$
-    - The top part represents the inner product of `u` and `v` vectors. That will be large if the vectors are so similar.
-  - We can use this equation to calculate the similarities between word embeddings and on the analogy problem where `u` = e<sub>w</sub> and `v` = e<sub>king</sub> - e<sub>man</sub> + e<sub>woman</sub>
+    - The top part represents the inner product of `u` and `v` vectors. It will be large if the vectors are very similar.
+- You can also use Euclidean distance as a similarity function (but it rather measures a dissimilarity, so you should take it with negative sign).
+- We can use this equation to calculate the similarities between word embeddings and on the analogy problem where `u` = e<sub>w</sub> and `v` = e<sub>king</sub> - e<sub>man</sub> + e<sub>woman</sub>
 
 #### Embedding matrix
 - When you implement an algorithm to learn a word embedding, what you end up learning is an **<u>embedding matrix</u>**.
