@@ -468,15 +468,16 @@ Here are the course summary as its given on the course [link](https://www.course
   - We can use this equation to calculate the similarities between word embeddings and on the analogy problem where `u` = e<sub>w</sub> and `v` = e<sub>king</sub> - e<sub>man</sub> + e<sub>woman</sub>
 
 #### Embedding matrix
-- When you implement an algorithm to learn a word embedding, what you end up learning is an **<u>embedding matrix</u>**.
-- Lets take an example:
-  - Suppose we are using 10,000 words as our vocabulary.
-  - The algorithm should extract a matrix `E` of the shape (300, 10,000) in case we are extracting 300 features. (300, 10,001) if we have `<UNK>` token.
-    - ![](Images/36.png)
-  - If O<sub>6257</sub> is the one hot encoding of the word **orange**, then `E`. O<sub>6257</sub> equals e<sub>6257</sub> which shape is (300, 1)
-  - Generally `E`. O<sub>j</sub>  = e<sub>j</sub>
-- In the next sections you will see that we first initialize `E` randomly and then try to learn all the parameters of this matrix.
-- In practice its not efficient to use a dot multiplication when you are trying to extract the embeddings of a specific word, instead we will use slicing to slice a specific column. In keras there are a embedding layer that extracts this column with no multiplications!
+- When you implement an algorithm to learn a word embedding, what you end up learning is a **<u>embedding matrix</u>**.
+- Let's take an example:
+  - Suppose we are using 10,000 words as our vocabulary (plus <UNK> token).
+  - The algorithm should create a matrix `E` of the shape (300, 10,000) in case we are extracting 300 features.   
+    ![](Images/36.png)
+  - If O<sub>6257</sub> is the one hot encoding of the word **orange**, then   
+    _np.dot(`E`,O<sub>6257</sub>) = e<sub>6257</sub>_ which shape is (300, 1).
+  - Generally _np.dot(`E`, O<sub>j</sub>) = e<sub>j</sub>_
+- In the next sections, you will see that we first initialize `E` randomly and then try to learn all the parameters of this matrix.
+- In practice it's not efficient to use a dot multiplication when you are trying to extract the embeddings of a specific word, instead, we will use slicing to slice a specific column. In Keras there is an embedding layer that extracts this column with no multiplication.
 
 ### Learning Word Embeddings: Word2vec & GloVe
 
