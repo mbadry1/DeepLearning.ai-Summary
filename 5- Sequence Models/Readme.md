@@ -415,26 +415,27 @@ Here are the course summary as its given on the course [link](https://www.course
 - The **word embeddings** came from that we need to embed a unique vector inside a n-dimensional space.
 
 #### Using word embeddings
-- Lets see how we can take the feature representation we have extracted from each word and apply it in Name entity recognition problem.
-- Given this example - From named entity recognition - :
-  - ![](Images/30.png)
-- **Sally Johnson** is a persons name.
-- After training on this sentence the model should find out that the sentence "**Robert Lin** is an *apple* farmer" contains Robert Lin as a name, as apple and orange has near representations.
-- Now if you have tested your model with this sentence "**Mahmoud Badry** is a *durian* cultivator" the network should learn the name even if it hasn't seen the word *durian* before. Thats the power of word representations.
-- The algorithms that are used to learn **word embeddings** can exterminate billions of unlabeled text - for example 100 billion- words and learn the representation from them.
+- Let's see how we can take the feature representation we have extracted from each word and apply it in the Named entity recognition problem.
+- Given this example (from named entity recognition):   
+  ![](Images/30.png)
+- **Sally Johnson** is a person's name.
+- After training on this sentence the model should find out that the sentence "**Robert Lin** is an *apple* farmer" contains Robert Lin as a name, as apple and orange have near representations.
+- Now if you have tested your model with this sentence "**Mahmoud Badry** is a *durian* cultivator" the network should learn the name even if it hasn't seen the word *durian* before (during training). That's the power of word representations.
+- The algorithms that are used to learn **word embeddings** can examine billions of words of unlabeled text - for example, 100 billion words and learn the representation from them.
 - Transfer learning and word embeddings:
-  1. Learn word embeddings from large text corpus. say 100 billion word
+  1. Learn word embeddings from large text corpus (1-100 billion of words).
      - Or download pre-trained embedding online.
-  2. Transfer embeddings to new task with smaller training set. say 100k word.
-  3. Optimal: Continue to finetune the word embeddings with new data.
-     - This can be done if your smaller training set are big enough.
-- Also one of the advantages of using word embeddings is that it reduces the size of the input!
+  2. Transfer embedding to new task with the smaller training set (say, 100k words).
+  3. Optional: continue to finetune the word embeddings with new data.
+     - You bother doing this if your smaller training set (from step 2) is big enough.
+- Word embeddings tend to make the biggest difference when the task you're trying to carry out has a relatively smaller training set.
+- Also, one of the advantages of using word embeddings is that it reduces the size of the input!
   - 10,000 one hot compared to 300 features vector.
-- Word embeddings has an interesting relationship to the face recognition task:
-  - ![](Images/31.png)
-  - In this problem we encode each face into a vector and then check how similar is these vectors.
-  - The word **encode** and **embeddings** has a similar meaning here.
-  - In the word embeddings task, we are getting a vector say from e<sub>1</sub> to e<sub>300</sub> for each word in our vocabulary. We will discuss the algorithm in the next sections.
+- Word embeddings have an interesting relationship to the face recognition task:   
+  ![](Images/31.png)
+  - In this problem, we encode each face into a vector and then check how similar are these vectors.
+  - Words **encoding** and **embeddings** have a similar meaning here.
+- In the word embeddings task, we are learning a representation for each word in our vocabulary (unlike in image encoding where we have to map each new image to some n-dimensional vector). We will discuss the algorithm in next sections.
 
 #### Properties of word embeddings
 - One of the most fascinating properties of word embeddings is that they can also help with analogy reasoning. Analogy reasoning is one of the most important applications of NLP.
