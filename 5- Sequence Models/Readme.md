@@ -394,30 +394,30 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Introduction to Word Embeddings
 
 #### Word Representation
-- NLP has been revolutionized by deep learning and especially be RNNs and deep RNNs.
+- NLP has been revolutionized by deep learning and especially by RNNs and deep RNNs.
 - Word embeddings is a way of representing words. It lets your algorithm automatically understand the analogies between words like "king" and "queen".
-- So far we have defined our language by a vocabulary. Then represented our words with one hot vector that represent the word in the vocabulary.
-  - An image example would be:
-    - ![](Images/27.png)
-  - We will use the annotation **O** <sub>idx</sub> for any word that is represented with one hot like in the image.
-  - One of  the weaknesses of this representation is that it treats a word as a thing that itself and it doesn't allow an algorithm to generalize across words.
-    - For example: "I want a glass of **orange** ______" , a model should predict the next word as **Juice**.
-    - A similar example "I want a glass of **apple** ______" , a model won't easily predict **juice** here if it doesn't trained on it. And if so the two examples aren't related although orange and apple are similar.
-  - Inner product between any hot encoding word is zero. Also the distances between them are the same.
-- So, instead of a one-hot presentation, won't it be nice if we can learn a featurized representation with each of these words: Man, Woman, King, Queen, Apple, and orange?
-  - ![](Images/28.png)
-  - Each word will have a 300 features with type of float point number for example.
-  - Each word column will be 300 dimensional vector which will be the representation.
-  - We will use the notation **e**<sub>5391</sub> to describe Man word features vector.
-  - Now if we went to the examples we descried again:
+- So far we have defined our language by a vocabulary. Then represented our words with a one-hot vector that represents the word in the vocabulary.
+  - An image example would be:   
+    ![](Images/27.png)
+  - We will use the annotation **O** <sub>idx</sub> for any word that is represented with one-hot like in the image.
+  - One of the weaknesses of this representation is that it treats a word as a thing that itself and it doesn't allow an algorithm to generalize across words.
+    - For example: "I want a glass of **orange** ______", a model should predict the next word as **juice**.
+    - A similar example "I want a glass of **apple** ______", a model won't easily predict **juice** here if it wasn't trained on it. And if so the two examples aren't related although orange and apple are similar.
+  - Inner product between any one-hot encoding vector is zero. Also, the distances between them are the same.
+- So, instead of a one-hot presentation, won't it be nice if we can learn a featurized representation with each of these words: man, woman, king, queen, apple, and orange?   
+  ![](Images/28.png)
+  - Each word will have a, for example, 300 features with a type of float point number.
+  - Each word column will be a 300-dimensional vector which will be the representation.
+  - We will use the notation **e**<sub>5391</sub> to describe **man** word features vector.
+  - Now, if we return to the examples we described again:
     -  "I want a glass of **orange** ______" 
     -  I want a glass of **apple** ______
-  - Orange and apple now shares a lot of similar features which makes it easier for an algorithm to generalize between them.
+  - Orange and apple now share a lot of similar features which makes it easier for an algorithm to generalize between them.
   - We call this representation **Word embeddings**.
-- To visualize word embeddings we use t-SNE algorithm to reduce the features to 2 dimensions which makes it easy to visualize. 
-  - ![](Images/29.png)
-  - You will get a sense that more related words distance are smaller than other distances.
-- The **word embeddings** came from that we need to embed a unique vector inside an n dimensions.
+- To visualize word embeddings we use a t-SNE algorithm to reduce the features to 2 dimensions which makes it easy to visualize:    
+  ![](Images/29.png)
+  - You will get a sense that more related words are closer to each other.
+- The **word embeddings** came from that we need to embed a unique vector inside a n-dimensional space.
 
 #### Using word embeddings
 - Lets see how we can take the feature representation we have extracted from each word and apply it in Name entity recognition problem.
