@@ -553,8 +553,8 @@ L2-regularization relies on the assumption that a model with small weights is si
   	vdW = (beta1 * vdW) + (1 - beta1) * dW     # momentum
   	vdb = (beta1 * vdb) + (1 - beta1) * db     # momentum
   			
-  	sdW = (beta2 * dW) + (1 - beta2) * dW^2   # RMSprop
-  	sdb = (beta2 * db) + (1 - beta2) * db^2   # RMSprop
+  	sdW = (beta2 * sdW) + (1 - beta2) * dW^2   # RMSprop
+  	sdb = (beta2 * sdb) + (1 - beta2) * db^2   # RMSprop
   			
   	vdW = vdW / (1 - beta1^t)      # fixing bias
   	vdb = vdb / (1 - beta1^t)      # fixing bias
