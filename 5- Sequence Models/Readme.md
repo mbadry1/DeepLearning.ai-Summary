@@ -524,7 +524,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - This is not an easy learning problem because learning within -10/+10 words (10 - an example) is hard.
   - We want to learn this to get our word embeddings model.
 - Word2Vec model:
-  - Vocabulary size = 10,000 word
+  - Vocabulary size = 10,000 words
   - Let's say that the context word are `c` and the target word is `t`
   - We want to learn `c` to `t`
   - We get e<sub>c</sub> by `E`. o<sub>c</sub>
