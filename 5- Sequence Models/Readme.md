@@ -509,53 +509,40 @@ Here are the course summary as its given on the course [link](https://www.course
        - We will talk about this in the next section.
 
 #### Word2Vec
-- Before presenting Word2Vec, lets talk about **Skip-grams**:
-
-  - For example if we have the sentence: "I want a glass of orange juice to go along with my cereal"
-
-  - We will choose Context and target.
-
-  - The target is chosen randomly basing on a window with a specific size.
-
-  - | Context | Target | How far |
+- Before presenting Word2Vec, lets talk about **skip-grams**:
+  - For example, we have the sentence: "I want a glass of orange juice to go along with my cereal"
+  - We will choose **context** and **target**.
+  - The target is chosen randomly based on a window with a specific size.
+   
+    | Context | Target | How far |
     | ------- | ------ | ------- |
     | orange  | juice  | +1      |
     | orange  | glass  | -2      |
-    | orange  | my     | +6      |
+    | orange  | my     | +6      |    
 
     We have converted the problem into a supervised problem.
-
-  - This is not an easy learning problem because within -10/+10 words for example is hard.
-
+  - This is not an easy learning problem because learning within -10/+10 words (10 - an example) is hard.
   - We want to learn this to get our word embeddings model.
-
 - Word2Vec model:
-
   - Vocabulary size = 10,000 word
-  - Lets say that the context word are `c` and the target word are `t`
+  - Let's say that the context word are `c` and the target word is `t`
   - We want to learn `c` to `t`
-  - we get e<sub>c</sub> by `E`. o<sub>c</sub>
-  - We then use a softmax layer to get `P(t|c)` which is y<sup>^</sup>
+  - We get e<sub>c</sub> by `E`. o<sub>c</sub>
+  - We then use a softmax layer to get `P(t|c)` which is y&#770;
   - Also we will use the cross-entropy loss function.
   - This model is called skip-grams model.
-
-- The last model has a problem with the softmax classifier:
-
-  - ![](Images/39.png)
+- The last model has a problem with the softmax layer:   
+  ![](Images/39.png)
   - Here we are summing 10,000 numbers which corresponds to the number of words in our vocabulary.
-  - If this number is larger say 1 million, the computation will become so slow.
-
-- The solution for the past problem is to use "**Hierarchical softmax classifier**" which works as a tree classifier.
-
-  - ![](Images/40.png)
-
-- In practice the hierarchical softmax classifier doesn't use a balanced tree like the drawn one. Common words are in the top and less common are in the bottom.
-
-- How to sample the context c?
-
+  - If this number is larger say 1 million, the computation will become very slow.
+- One of the solutions for the last problem is to use "**Hierarchical softmax classifier**" which works as a tree classifier.   
+  ![](Images/40.png)
+- In practice, the hierarchical softmax classifier doesn't use a balanced tree like the drawn one. Common words are at the top and less common are at the bottom.
+- How to sample the context **c**?
   - One way is to choose the context by random from your corpus.
-  - If you have done it that way, there will be frequent words like "the, of, a, and, to, .." that can dominate other words like "orange, apple, Mahmoud,..."
-  - So in practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the non-common words.
+  - If you have done it that way, there will be frequent words like "the, of, a, and, to, .." that can dominate other words like "orange, apple, durian,..."
+  - In practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the non-common words.
+- word2vec paper includes 2 ideas of learning word embeddings. One is skip-gram model and another is CBoW (continious bag-of-words).
 
 #### Negative Sampling
 - Negative sampling allows you to do something similar to the Skip-Gram model, but with a much more efficient learning algorithm. We will create a different learning problem
