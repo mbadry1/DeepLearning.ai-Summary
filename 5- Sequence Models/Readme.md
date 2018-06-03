@@ -468,9 +468,9 @@ Here are the course summary as its given on the course [link](https://www.course
 - When you implement an algorithm to learn a word embedding, what you end up learning is a **<u>embedding matrix</u>**.
 - Let's take an example:
   - Suppose we are using 10,000 words as our vocabulary (plus <UNK> token).
-  - The algorithm should create a matrix `E` of the shape (300, 10,000) in case we are extracting 300 features.   
+  - The algorithm should create a matrix `E` of the shape (300, 10000) in case we are extracting 300 features.   
     ![](Images/36.png)
-  - If O<sub>6257</sub> is the one hot encoding of the word **orange**, then   
+  - If O<sub>6257</sub> is the one hot encoding of the word **orange** of shape (10000, 1), then   
     _np.dot(`E`,O<sub>6257</sub>) = e<sub>6257</sub>_ which shape is (300, 1).
   - Generally _np.dot(`E`, O<sub>j</sub>) = e<sub>j</sub>_
 - In the next sections, you will see that we first initialize `E` randomly and then try to learn all the parameters of this matrix.
