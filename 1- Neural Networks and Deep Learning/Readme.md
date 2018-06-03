@@ -491,7 +491,6 @@ Here are the course summary as its given on the course [link](https://www.course
   ```
 
 ### Gradient descent for Neural Networks
-
 - In this section we will have the full back propagation of the neural network (Just the equations with no explanations).
 - Gradient descent algorithm:
   - NN parameters:
@@ -524,20 +523,18 @@ Here are the course summary as its given on the course [link](https://www.course
   A2 = Sigmoid(Z2)      # Sigmoid because the output is between 0 and 1
   ```
 
-- Back propagation (The new thing / derivations):
-
+- Backpropagation (derivations):   
   ```
   dZ2 = A2 - Y      # derivative of cost function we used * derivative of the sigmoid function
   dW2 = (dZ2 * A1.T) / m
   db2 = Sum(dZ2) / m
   dZ1 = (W2.T * dZ2) * g'1(Z1)  # element wise product (*)
-  dW2 = (dZ1 * A0.T) / m   # A0 = X
-  db2 = Sum(dZ1) / m
-  # Hint there are transposes when you are trying to multiplicate because these are matrices.
+  dW1 = (dZ1 * A0.T) / m   # A0 = X
+  db1 = Sum(dZ1) / m
+  # Hint there are transposes with multiplication because to keep dimensions correct
   ```
-
-- How we derived the 6 equations of the back propagation:
-  - ![](Images/06.png)
+- How we derived the 6 equations of the backpropagation:   
+  ![](Images/06.png)
 
 ### Random Initialization
 
