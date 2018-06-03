@@ -558,14 +558,10 @@ Here are the course summary as its given on the course [link](https://www.course
   - So in practice, we don't take the context uniformly random, instead there are some heuristics to balance the common words and the non-common words.
 
 #### Negative Sampling
-- Negative sampling allows you to do something similar to the Skip-Gram model, but with a much more efficient learning algorithm. We will create a different learning problem
-
+- Negative sampling allows you to do something similar to the skip-gram model, but with a much more efficient learning algorithm. We will create a different learning problem.
 - Given this example:
-
   - "I want a glass of orange juice to go along with my cereal"
-
 - The sampling will look like this:
-
 - | Context | Word  | target |
   | ------- | ----- | ------ |
   | orange  | juice | 1      |
@@ -574,35 +570,25 @@ Here are the course summary as its given on the course [link](https://www.course
   | orange  | the   | 0      |
   | orange  | of    | 0      |
 
-  We get positive example by using the same skip-grams technique, a fixed window that goes around.
-
+  We get positive example by using the same skip-grams technique, with a fixed window that goes around.
 - To generate a negative example, we pick a word randomly from the vocabulary.
-
-- Notice that we got "of" although it was appeared in the same sentence.
-
+- Notice, that we got word "of" as a negative example although it appeared in the same sentence.
 - So the steps to generate the samples are:
-
   1. Pick a positive context
   2. Pick a k negative contexts from the dictionary.
-
-- K is recommended to be from 5 to 20 in small datasets. For larger ones 2 to 5.
-
-- We will have a k negative examples to 1 positive ones in the data we are collecting.
-
-- Now lets define the model that will learn this supervised learning problem:
-
+- k is recommended to be from 5 to 20 in small datasets. For larger ones - 2 to 5.
+- We will have a ratio of k negative examples to 1 positive ones in the data we are collecting.
+- Now let's define the model that will learn this supervised learning problem:
   - Lets say that the context word are `c` and the word are `t` and `y` is the target.
-  - We will apply the simple logistic regression model.
-  - ![](Images/41.png)
-  - The logistic regression model can be drawn like this:
-  - ![](Images/42.png)
-  - So we are like having 10,000 binary classification problem, and we only train k+1 classifier of them in each iteration.
-
-- Now how to select negative samples:
-
-  - We can sample according to empirical frequencies in words corpus which means according to how often different words appears. But the problem with that is that we will have more frequent words like the, of, and..
-  - The best is to sample with this equation - According to authors - :
-    - ![](Images/43.png)
+  - We will apply the simple logistic regression model.   
+  ![](Images/41.png)
+  - The logistic regression model can be drawn like this:   
+  ![](Images/42.png)
+  - So we are like having 10,000 binary classification problems, and we only train k+1 classifier of them in each iteration.
+- How to select negative samples:
+  - We can sample according to empirical frequencies in words corpus which means according to how often different words appears. But the problem with that is that we will have more frequent words like _the, of, and..._
+  - The best is to sample with this equation (according to authors):   
+    ![](Images/43.png)
 
 #### GloVe word vectors
 - GloVe is another algorithm for learning the word embeddings, Its the simplest of them.
