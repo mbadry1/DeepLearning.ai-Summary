@@ -629,20 +629,20 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Applications using Word Embeddings
 
 #### Sentiment Classification
-- As we have discussed before, Sentiment classification is the process of finding if a text has a positive or a negative review. Its so useful in NLP and is used in so many applications. An example would be:
-  - ![](Images/45.png)
-- One of the challenges with it, is that you might haven't a huge labeled training data for it, but using word embeddings can help getting rid of this.
+- As we have discussed before, Sentiment classification is the process of finding if a text has a positive or a negative review. Its so useful in NLP and is used in so many applications. An example would be:   
+  ![](Images/45.png)
+- One of the challenges with it, is that you might not have a huge labeled training data for it, but using word embeddings can help getting rid of this.
 - The common dataset sizes varies from 10,000 to 100,000 words.
-- A simple sentiment classification model would be like this:
-  - ![](Images/46.png)
+- A simple sentiment classification model would be like this:   
+  ![](Images/46.png)
   - The embedding matrix may have been trained on say 100 billion words.
-  - Number of features given a word is 300.
+  - Number of features in word embedding is 300.
   - We can use **sum** or **average** given all the words then pass it to a softmax classifier. That makes this classifier works for short or long sentences.
-- One of the problems with this simple model is that it ignores words order! for example "Completely lacking in **good** taste, **good** service, and **good** ambience" has the word good 3 times but its a negative review!
-- A better model uses an RNN for solving this problem:
-  - ![](Images/47.png)
+- One of the problems with this simple model is that it ignores words order. For example "Completely lacking in **good** taste, **good** service, and **good** ambience" has the word _good_ 3 times but its a negative review.
+- A better model uses an RNN for solving this problem:   
+  ![](Images/47.png)
   - And so if you train this algorithm, you end up with a pretty decent sentiment classification algorithm.
-  - Also it will generalize even if words aren't in your dataset, for example the sentencte "Completely **<u>absent of</u>** good taste, good service, and good ambience" will be the same as the trained word!
+  - Also, it will generalize better even if words weren't in your dataset. For example you have the sentence "Completely **<u>absent</u>** of good taste, good service, and good ambience", then even if the word "absent" is not in your label training set, if it was in your 1 billion or 100 billion word corpus used to train the word embeddings, it might still get this right and generalize much better even to words that were in the training set used to train the word embeddings but not necessarily in the label training set that you had for specifically the sentiment classification problem.
 
 #### Debiasing word embeddings
 - We want to make sure that our word embeddings free from undesirable forms of bias, such as gender bias, ethnicity bias and so on.
