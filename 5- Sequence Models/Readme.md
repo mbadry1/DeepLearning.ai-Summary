@@ -470,7 +470,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Suppose we are using 10,000 words as our vocabulary (plus <UNK> token).
   - The algorithm should create a matrix `E` of the shape (300, 10,000) in case we are extracting 300 features.   
     ![](Images/36.png)
-  - If O<sub>6257</sub> is the one hot encoding of the word **orange**, then   
+  - If O<sub>6257</sub> is the one hot encoding of the word **orange** of shape (10000, 1), then   
     _np.dot(`E`,O<sub>6257</sub>) = e<sub>6257</sub>_ which shape is (300, 1).
   - Generally _np.dot(`E`, O<sub>j</sub>) = e<sub>j</sub>_
 - In the next sections, you will see that we first initialize `E` randomly and then try to learn all the parameters of this matrix.
@@ -645,17 +645,17 @@ Here are the course summary as its given on the course [link](https://www.course
   - Also it will generalize even if words aren't in your dataset, for example the sentencte "Completely **<u>absent of</u>** good taste, good service, and good ambience" will be the same as the trained word!
 
 #### Debiasing word embeddings
-- We want to make sure that our word embeddings free from undesirable forms of bias, such as gender bias, ethnicity bias and so on.
-- A horrifying result on a trained word embeddings in the context of Analogies:
+- We want to make sure that our word embeddings are free from undesirable forms of (human) bias, such as gender bias, ethnicity bias and so on.
+- A horrifying result on trained word embeddings used for analogy reasoning:
   - Man : Computer_programmer as Woman : **Homemaker**
   - Father : Doctor as Mother : **Nurse**
 - Word embeddings can reflect gender, ethnicity, age, sexual orientation, and other biases of text used to train the model.
-- Learning algorithms by general is making an important decision and it mustn't be biased.
+- Learning algorithms in general are making important decisions and must not be biased.
 - Andrew thinks we actually have better ideas for quickly reducing the bias in AI than for quickly reducing the bias in the human race, although it still needs a lot of work to be done.
 - Addressing bias in word embeddings steps:
   - Idea is by paper: https://arxiv.org/abs/1607.06520
-  - Given this learned embeddings: 
-    - ![](Images/48.png)
+  - Given these learned embeddings:   
+    ![](Images/48.png)
   - We need to solve the **gender bias** here. The steps we will discuss can help solve any bias problem but we are focusing here on gender bias.
   - Here are the steps:
     1. Identify the direction:
@@ -664,23 +664,23 @@ Here are the course summary as its given on the course [link](https://www.course
          - e<sub>male</sub> - e<sub>female</sub>
          - ....
        - Choose some k differences and average them.
-       - This will help you find this:
-         - ![](Images/49.png)
+       - This will help you find this:   
+         ![](Images/49.png)
        - By that we have found the bias direction which is 1D vector and the non-bias vector which is 299D vector.
     2. Neutralize: For every word that is not definitional, project to get rid of bias.
-       - Babysitter and doctor needs to be neutral so we project them on nonbias with the direction of the bias:
-         - ![](Images/50.png)
+       - Babysitter and doctor needs to be neutral so we project them on non-bias with the direction of the bias:   
+         ![](Images/50.png)
          - After that they will be equal in the term of gender.
-         - To do this the authors of the paper trained a classifier to tell the words that they need to be  neutralized or not.
+         - To do this the authors of the paper trained a classifier to tell the words that they need to be  neutralized or not.
     3. Equalize pairs
        - We want each pair to have difference only in gender. Like:
          - Grandfather - Grandmother
-         - He - She
-         - Boy - Girl
-       - We want to do this because the distance between grandfather and babysitter is bigger than babysitter and grandmother:
-         - ![](Images/51.png)
+         - He - She
+         - Boy - Girl
+       - We want to do this because the distance between grandfather and babysitter is bigger than babysitter and grandmother:   
+         ![](Images/51.png)
        - To do that, we move grandfather and grandmother to a point where they will be in the middle of the non-bias axis.
-       - There are some words you need to do this for in your steps. The size of these words are relatively small.
+       - There are some words you need to do this for in your steps. The number of these words is relatively small.
 
 
 ## Sequence models & Attention mechanism
