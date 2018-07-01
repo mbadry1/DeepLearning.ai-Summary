@@ -1,6 +1,6 @@
 # Convolutional Neural Networks
 
-This is the forth course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
+This is the fourth course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
 ## Table of contents
 
@@ -364,7 +364,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - **AlexNet**
 
-  - Named after Alex Krizhevsky who was the first author of this paper. The other authors includes Jeoffery Hinton.
+  - Named after Alex Krizhevsky who was the first author of this paper. The other authors includes Geoffrey Hinton.
 
   - The goal for the model was the ImageNet challenge which classifies images into 1000 classes. Here are the drawing of the model:
 
