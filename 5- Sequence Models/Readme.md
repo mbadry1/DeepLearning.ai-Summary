@@ -855,28 +855,27 @@ Here are the course summary as its given on the course [link](https://www.course
   - ​
 
 #### Attention Model
-
 - Lets formalize the intuition from the last section into the exact details on how this can be implemented.
-- First we will have an bidirectional RNN - most common is LSTMs - that encodes French language:
-  - ![](Images/68.png)
-- For learning purposes, lets assume that a<sup>\<t></sup> will include the both directions.
-- We will have an RNN to extract the output using a context `c` which is computer using the attention weights. This denotes how much information do it needs to look in a<sup>\<t></sup>
-  - ![](Images/69.png)
-- Sum of the attention weights for each element in the sequence should be 1:
-  - ![](Images/70.png)
-- Also the context `c` are calculated using this equation:
-  - ![](Images/71.png)
+- First we will have an bidirectional RNN (most common is LSTMs) that encodes French language:   
+  ![](Images/68.png)
+- For learning purposes, lets assume that a<sup>\<t'></sup> will include the both directions activations at time step t'.
+- We will have a unidirectional RNN to produce the output using a context `c` which is computed using the attention weights, which denote how much information does the output needs to look in a<sup>\<t'></sup>   
+  ![](Images/69.png)
+- Sum of the attention weights for each element in the sequence should be 1:   
+  ![](Images/70.png)
+- The context `c` is calculated using this equation:   
+  ![](Images/71.png)
 - Lets see how can we compute the attention weights:
   - So alpha<sup>\<t, t'></sup> = amount of attention y<sup>\<t></sup> should pay to a<sup>\<t'></sup>
     - Like for example we payed attention to the first three words through alpha<sup>\<1,1></sup>, alpha<sup>\<1,2></sup>, alpha<sup>\<1,3></sup>
-  - We are going to softmax the attention weights so that their sum is 1:
-    - ![](Images/72.png)
-  - Now we need to know how to calculate e<sup>\<t, t'></sup>. We will compute e using a small neural network:
-    - ![](Images/73.png)
+  - We are going to softmax the attention weights so that their sum is 1:   
+    ![](Images/72.png)
+  - Now we need to know how to calculate e<sup>\<t, t'></sup>. We will compute e using a small neural network (usually 1-layer, because we will need to compute this a lot):   
+    ![](Images/73.png)
     - s<sup>\<t-1></sup> is the hidden state of the RNN s, and a<sup>\<t'></sup> is the activation of the other bidirectional RNN. 
 - One of the disadvantages of this algorithm is that it takes quadratic time or quadratic cost to run.
-- One fun way to see how attention works is by visualizing the attention weights:
-  - ![](Images/74.png)
+- One fun way to see how attention works is by visualizing the attention weights:   
+  ![](Images/74.png)
 
 ### Speech recognition - Audio data
 
