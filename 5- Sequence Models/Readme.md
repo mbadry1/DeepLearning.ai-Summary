@@ -688,11 +688,11 @@ Here are the course summary as its given on the course [link](https://www.course
 
 #### Picking the most likely sentence
 - There are some similarities between the language model we have learned previously, and the machine translation model we have just discussed, but there are some differences as well.
-- The language model we have learned as so similar to the decoder of the machined translation model, except for a<sup>0</sup>
-  - ![](Images/55.png)
-- The problems formations also are different:
-  - In language model: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup>)
-  - In machine translation: P(y<sup>\<1></sup>, ....y<sup>\<Ty></sup> | x<sup>\<1></sup>, ....x<sup>\<Tx></sup>)
+- The language model we have learned is very similar to the decoder part of the machined translation model, except for a<sup>\<0></sup>   
+  ![](Images/55.png)
+- Problems formulations also are different:
+  - In language model: P(y<sup>\<1></sup>, ..., y<sup>\<Ty></sup>)
+  - In machine translation: P(y<sup>\<1></sup>, ..., y<sup>\<Ty></sup> | x<sup>\<1></sup>, ..., x<sup>\<Tx></sup>)
 - What we don't want in machine translation model, is not to sample the output at random. This may provide some choices as an output. Sometimes you may sample a bad output.
   - Example: 
     - X = "Jane visite l’Afrique en septembre."
@@ -700,15 +700,15 @@ Here are the course summary as its given on the course [link](https://www.course
       - Jane is visiting Africa in September.
       - Jane is going to be visiting Africa in September.
       - In September, Jane will visit Africa.
-- So we need to get the best output, this can be take by the equation:
-  - ![](Images/56.png)
+- So we need to get the best output it can be:   
+  ![](Images/56.png)
 - The most common algorithm is the beam search, which we will explain in the next section.
 - Why not use greedy search? Why not get the best choices each time?
   - It turns out that this approach doesn't really work!
   - Lets explain it with an example:
     - The best output for the example we talked about is "Jane is visiting Africa in September."
-    - Suppose that you when you are choosing with greedy approach, the first two words were "Jane is", the word that may come after that will be "going" as "going" is the most common word that comes after "Noun is" so the result may look like this: "Jane is going to be visiting Africa in September." and that isn't the best/optimal solution.
-- So what is better than greedy approach, is trying to get an approximate solution, that will try to maximize the output.
+    - Suppose that when you are choosing with greedy approach, the first two words were "Jane is", the word that may come after that will be "going" as "going" is the most common word that comes after "<Noun> is" so the result may look like this: "Jane is going to be visiting Africa in September.". And that isn't the best/optimal solution.
+- So what is better than greedy approach, is to get an approximate solution, that will try to maximize the output (the last equation above).
 
 #### Beam Search
 - Beam search is the most widely used algorithm to get the best output sequence. Its a heuristic search algorithm.
