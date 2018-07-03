@@ -721,28 +721,28 @@ Here are the course summary as its given on the course [link](https://www.course
 - If `B = 1` this will become the greedy search.
 
 #### Refinements to Beam Search
-- In the previous section we have discussed the basic beam search. In this section we will try to do some refinements to it to work even better.
+- In the previous section, we have discussed the basic beam search. In this section, we will try to do some refinements to it.
 - The first thing is **Length optimization**
-  - In beam search we are trying to optimize:
-    - ![](Images/56.png)
-  - And to do that we multiply:
-    - P(y<sup>\<1></sup> | x) * P(y<sup>\<2></sup> | x, y<sup>\<1></sup>) * ..... P(y<sup>\<t></sup> | x, y<sup>\<y(t-1)></sup>)
-  - Each probability is a fraction. Also maybe a small fraction.
-  - Multiplying small fractions will cause a **numerical overflow**! Meaning that it's too small for the floating part representation in your computer to store accurately.
-  - So in practice we use **summing** **logs** instead of multiplying directly.
-    - ![](Images/57.png)
-  - But theres another problem. The two optimization functions we have mentions tends to find small sequences! Because multiplying a lot of fractions gives a smaller value.
-  - So theres another change , by dividing by the number of elements in the sequence.
-    - ![](Images/58.png)
-    - alpha is a hyper parameter to tune.
-    - If alpha = 0, Then its like we do nothing.
-    - If alpha = 1, Then its like we are using full sequence length.
-    - In practice alpha = 0.7 is a good thing. 
-- The second thing is who can we choose best `B`?
-  - The larger B, the larger possibilities, the better are the results. But it will be more computationally expensive.
-  - In practice, you might see a in the production sentence `B=10`
-  - `B=100`, `B=1000` are uncommon.
-  - Unlike exact search algorithms like BFS (Breadth First Search) or  DFS (Depth First Search), Beam Search runs faster but is not guaranteed to find exact solution.
+  - In beam search we are trying to optimize:   
+    ![](Images/56.png)
+  - And to do that we multiply:   
+    P(y<sup>\<1></sup> | x) * P(y<sup>\<2></sup> | x, y<sup>\<1></sup>) * ... * P(y<sup>\<t></sup> | x, y<sup>\<y(t-1)></sup>)
+  - Each probability is a fraction, most of the time a small fraction.
+  - Multiplying small fractions will cause a **numerical overflow**. Meaning that it's too small for the floating part representation in your computer to store accurately.
+  - So in practice we use **summing logs of probabilities** instead of multiplying directly.   
+    ![](Images/57.png)
+  - But there's another problem. The two optimization functions we have mentioned are preferring small sequences rather than long ones. Because multiplying more fractions gives a smaller value, so fewer fractions - bigger result.
+  - So there's another step - dividing by the number of elements in the sequence.   
+    ![](Images/58.png)
+    - alpha is a hyperparameter to tune.
+    - If alpha = 0 - no sequence length normalization.
+    - If alpha = 1 - full sequence length normalization.
+    - In practice alpha = 0.7 is a good thing (somewhere in between two extremes).
+- The second thing is how can we choose best `B`?
+  - The larger B - the larger possibilities, the better are the results. But it will be more computationally expensive.
+  - In practice, you might see in the production setting `B=10`
+  - `B=100`, `B=1000` are uncommon (sometimes used in research settings)
+  - Unlike exact search algorithms like BFS (Breadth First Search) or  DFS (Depth First Search), Beam Search runs faster but is not guaranteed to find the exact solution.
 
 #### Error analysis in beam search
 - We have talked before on **Error analysis** in <u>Structuring Machine Learning Projects</u> chapter. We will apply these concepts to improve our beam search algorithm.
