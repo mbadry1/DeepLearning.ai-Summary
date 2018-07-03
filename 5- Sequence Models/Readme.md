@@ -711,12 +711,12 @@ Here are the course summary as its given on the course [link](https://www.course
 - So what is better than greedy approach, is trying to get an approximate solution, that will try to maximize the output.
 
 #### Beam Search
-- Beam search is the most widely used algorithm to get the best output sequence. Its a heuristic search algorithm.
-- To illustrate the algorithm we will be stick with the example from the previous section. We need Y = "Jane is visiting Africa in September."
+- Beam search is the most widely used algorithm to get the best output sequence. It's a heuristic search algorithm.
+- To illustrate the algorithm we will stick with the example from the previous section. We need Y = "Jane is visiting Africa in September."
 - The algorithm has a parameter `B`  which is the beam width. Lets take `B = 3` which means the algorithm will get 3 outputs at a time.
 - For the first step you will get ["in", "jane", "september"] words that are the best candidates.
-- Then for each word in the first output, get B words from the 3 where the best are the result of multiplying both probabilities. Se we will have then ["In September", "jane is", "jane visit"]. Notice that we automatically ignored September.
-- Repeat the same process and get the best B words for ["September", "is", "visit"]  and so so.
+- Then for each word in the first output, get B next (second) words and select top best B combinations where the best are those what give the highest value of multiplying both probabilities - P(y<sup>\<1></sup>|x) * P(y<sup>\<2></sup>|x,y<sup>\<1></sup>). Se we will have then ["in september", "jane is", "jane visit"]. Notice, that we automatically discard _september_ as a first word.
+- Repeat the same process and get the best B words for ["september", "is", "visit"]  and so on.
 - In this algorithm, keep only B instances of your network.
 - If `B = 1` this will become the greedy search.
 
