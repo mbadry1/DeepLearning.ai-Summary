@@ -767,39 +767,29 @@ Here are the course summary as its given on the course [link](https://www.course
 
 #### BLEU Score
 - One of the challenges of machine translation, is that given a sentence in a language there are one or more possible good translation in another language. So how do we evaluate our results?
-- The way we do this is by using **BLEU score**. BLEU stands for bilingual evaluation understudy.
-- The intuition is so long as the machine generated translation is pretty close to any of the references provided by humans, then it will get a high BLEU score.
-
-
-- Lets take an example:
-
+- The way we do this is by using **BLEU score**. BLEU stands for _bilingual evaluation understudy_.
+- The intuition is: as long as the machine-generated translation is pretty close to any of the references provided by humans, then it will get a high BLEU score.
+- Let's take an example:
   - X = "Le chat est sur le tapis."
-  - Y1 = "The cat is on the mat."
-  - Y2 = "There is a cat on the mat."
-  - Suppose that the machine outputs: "<u>the the the the the the the.</u>"
-  - One way to evaluate the machine output is to look at each word in the output and check it in the references. This is called precision:
-    - precision = 7/7  because the appeared in Y1 or Y2
+  - Y1 = "The cat is on the mat." (human reference 1)
+  - Y2 = "There is a cat on the mat." (human reference 2)
+  - Suppose that the machine outputs: "the the the the the the the."
+  - One way to evaluate the machine output is to look at each word in the output and check if it is in the references. This is called _precision_:
+    - precision = 7/7  because "the" appeared in Y1 or Y2
   - This is not a useful measure!
   - We can use a modified precision in which we are looking for the reference with the maximum number of a particular word and set the maximum appearing of this word to this number. So:
     - modified precision = 2/7 because the max is 2 in Y1
     - We clipped the 7 times by the max which is 2.
-  - The problem here is that we are looking at one word at a time, we may need to look at pairs
-
-- Another example (BLEU score on bigrams)
-
-  - The n-**grams** typically are collected from a text or speech corpus. When the items are words, n-**grams** may also be called shingles. An n-**gram** of size 1 is referred to as a "unigram"; size 2 is a "bigram" (or, less commonly, a "digram"); size 3 is a "trigram".
-
+  - Here we are looking at one word at a time - unigrams, we may look at n-grams too
+- BLEU score on bigrams
+  - The **n-grams** typically are collected from a text or speech corpus. When the items are words, **n-grams** may also be called shingles. An **n-gram** of size 1 is referred to as a "unigram"; size 2 is a "bigram" (or, less commonly, a "digram"); size 3 is a "trigram".
   - X = "Le chat est sur le tapis."
-
   - Y1 = "The cat is on the mat."
-
   - Y2 = "There is a cat on the mat."
-
-  - Suppose that the machine outputs: "<u>The cat the cat on the mat.</u>"
-
+  - Suppose that the machine outputs: "the cat the cat on the mat."
   - The bigrams in the machine output:
-
-  - | Pairs      | Count | Count clip |
+  
+    | Pairs      | Count | Count clip |
     | ---------- | ----- | ---------- |
     | the cat    | 2     | 1 (Y1)     |
     | cat the    | 1     | 0          |
@@ -808,22 +798,17 @@ Here are the course summary as its given on the course [link](https://www.course
     | the mat    | 1     | 1 (Y1)     |
     | **Totals** | 6     | 4          |
 
-    Score = Count clip / Count = 4/6
-
-- So here are the equations for the n-grams:
-
-  - ![](Images/60.png)
-
-- Lets put this together to formalize the BLEU score:
-
-  - **P<sub>n</sub>** = Bleu score on n-grams only
-  - **Combined Bleu score** equation:
-    - ![](Images/61.png)
-    - For example if we want Bleu for 4, we compute P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub>, P<sub>4</sub> and then average them and take the exp.
-  - Another equation is **BP penalty** which stands for brevity penalty. It turns out that if a machine outputs a small number of words it will get a better score so we need to handle that.
-    - ![](Images/62.png)
-
-- Blue score is has several open source implementations and used in variety of systems like machine translation and image captioning.
+    Modified precision = sum(Count clip) / sum(Count) = 4/6
+- So here are the equations for modified presicion for the n-grams case:   
+  ![](Images/60.png)
+- Let's put this together to formalize the BLEU score:
+  - **P<sub>n</sub>** = Bleu score on one type of n-gram
+  - **Combined BLEU score** = BP * exp(1/n * sum(P<sub>n</sub>))
+    - For example if we want BLEU for 4, we compute P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub>, P<sub>4</sub> and then average them and take the exp.
+  - **BP** is called **BP penalty** which stands for brevity penalty. It turns out that if a machine outputs a small number of words it will get a better score so we need to handle that.   
+    ![](Images/62.png)
+- BLEU score has several open source implementations. 
+- It is used in a variety of systems like machine translation and image captioning.
 
 #### Attention Model Intuition
 
