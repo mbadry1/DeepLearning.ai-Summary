@@ -930,8 +930,8 @@ Here are the course summary as its given on the course [link](https://www.course
   - Y will be labels 0 or 1. 0 represents the non-trigger word, while 1 is that trigger word that we need to detect.
   - The model architecture can be like this:  
     ![](Images/80.png)
-    - The vertical lines in the audio clip represent the trigger words. The corresponding to this will be 1.
-  - One disadvantage of this is the imbalanced dataset outputs. There will be a lot of zeros and few ones.
+    - The vertical lines in the audio clip represent moment just after the trigger word. The corresponding to this will be 1.
+  - One disadvantage of this creates a very imbalanced training set. There will be a lot of zeros and few ones.
   - A hack to solve this is to make an output a few ones for several times or for a fixed period of time before reverting back to zero.  
     ![](Images/81.png)  
     ![](Images/85.png)
