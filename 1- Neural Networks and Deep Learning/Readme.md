@@ -642,7 +642,7 @@ Here are the course summary as its given on the course [link](https://www.course
   dZ[l] = dA[l] * g'[l](Z[l])
   dW[l] = (dZ[l]A[l-1].T) / m
   db[l] = sum(dZ[l])/m                # Dont forget axis=1, keepdims=True
-  dA[l-1] = w[l].T * dZ[1]            # The multiplication here are a dot product.
+  dA[l-1] = w[l].T * dZ[l]            # The multiplication here are a dot product.
   Output dA[l-1], dW[l], db[l]
   ```
 
