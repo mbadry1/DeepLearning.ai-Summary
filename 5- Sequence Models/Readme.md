@@ -811,33 +811,31 @@ Here are the course summary as its given on the course [link](https://www.course
 - It is used in a variety of systems like machine translation and image captioning.
 
 #### Attention Model Intuition
-
-- So far we are using sequence to sequence models with an encoder and decoders. There are a technique called attention which makes these models even better.
-- The attention algorithm, the attention idea has been one of the most influential ideas in deep learning. 
+- So far we were using sequence to sequence models with an encoder and decoders. There is a technique called _attention_ which makes these models even better.
+- The attention idea has been one of the most influential ideas in deep learning. 
 - The problem of long sequences:
-  - Given this model, inputs, and outputs.
-    - ![](Images/63.png)
+  - Given this model, inputs, and outputs.   
+    ![](Images/63.png)
   - The encoder should memorize this long sequence into one vector, and the decoder has to process this vector to generate the translation.
-  - If a human would translate this sentence, he wouldn't read the whole sentence and memorize it then try to translate it. He translates a part at a time.
-  - The performance of this model decreases if a sentence is so long.
-  - We will discuss the attention model that works like a human that looks at parts at a time. That will significantly increase the accuracy even with bigger sequence:
-    -  ![](Images/64.png)
+  - If a human would translate this sentence, he/she wouldn't read the whole sentence and memorize it then try to translate it. He/she translates a part at a time.
+  - The performance of this model decreases if a sentence is long.
+  - We will discuss the attention model that works like a human that looks at parts at a time. That will significantly increase the accuracy even with longer sequence:   
+    ![](Images/64.png)
     -  Blue is the normal model, while green is the model with attention mechanism.
-- In this section we will give just some intuitions about the attention model and in the next section we will discuss its details.
+- In this section we will give just some intuitions about the attention model and in the next section we will discuss it's details.
 - At first the attention model was developed for machine translation but then other applications used it like computer vision and new architectures like Neural Turing machine.
 - The attention model was descried in this paper:
-  - [[Bahdanau](https://arxiv.org/abs/1409.0473) et. al., 2014. Neural machine translation by jointly learning to align and translate]
+  - [Bahdanau et. al., 2014. Neural machine translation by jointly learning to align and translate](https://arxiv.org/abs/1409.0473)
 - Now for the intuition:
-  - Suppose that our decoder is a bidirectional RNN:
-    - ![](Images/65.png)
-  - We gave the French sentence to the encoder and it should generate a vector that represents the inputs.
+  - Suppose that our encoder is a bidirectional RNN:
+    ![](Images/65.png)
+  - We give the French sentence to the encoder and it should generate a vector that represents the inputs.
   - Now to generate the first word in English which is "Jane" we will make another RNN which is the decoder.
-  - attention weights are used to specify which words are needed when to generate a word. So to generate "jane" we will look at "jane", "visite", "l'Afrique"
-    - ![](Images/66.png)
-  - alpha<sup>1,1</sup>, alpha<sup>1,2</sup>, and alpha<sup>1,3</sup> are the attention weights used.
-  - And so to generate any word there will be a set of attention weights that controls which words we are looking at right now.
-    - ![](Images/67.png)
-  - ​
+  - Attention weights are used to specify which words are needed when to generate a word. So to generate "jane" we will look at "jane", "visite", "l'Afrique"   
+    ![](Images/66.png)
+  - alpha<sup>\<1,1></sup>, alpha<sup>\<1,2></sup>, and alpha<sup>\<1,3></sup> are the attention weights being used.
+  - And so to generate any word there will be a set of attention weights that controls which words we are looking at right now.   
+    ![](Images/67.png)
 
 #### Attention Model
 
