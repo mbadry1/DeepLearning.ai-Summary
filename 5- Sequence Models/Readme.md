@@ -745,25 +745,25 @@ Here are the course summary as its given on the course [link](https://www.course
   - Unlike exact search algorithms like BFS (Breadth First Search) or  DFS (Depth First Search), Beam Search runs faster but is not guaranteed to find the exact solution.
 
 #### Error analysis in beam search
-- We have talked before on **Error analysis** in <u>Structuring Machine Learning Projects</u> chapter. We will apply these concepts to improve our beam search algorithm.
-- We will use error analysis to figure out if the `B` hyperparameter of the beam search is the problem - because it doesn't get an optimal solution  - or to in other hyperparameters like the RNN parameters.
-- Lets take an example:
-  - Our examples information:
+- We have talked before on **Error analysis** in _"Structuring Machine Learning Projects"_ course. We will apply these concepts to improve our beam search algorithm.
+- We will use error analysis to figure out if the `B` hyperparameter of the beam search is the problem (it doesn't get an optimal solution) or in our RNN part.
+- Let's take an example:
+  - Initial info:
     - x = "Jane visite l’Afrique en septembre."
-    - y<sup>*</sup> = "Jane visits Africa in September."
-    - y<sup>^</sup> = "Jane visited Africa last September."
-  - Our model that has produced a sentence that are different in meaning because of the word "last"
-  - We now want to know who to blame, the RNN or the beam search.
-  - To do that, we calculate P(y<sup>*</sup> | X) and P(y<sup>^</sup> | X). There are two cases:
-    - Case 1 (P(y<sup>*</sup> | X)  > P(y<sup>^</sup> | X)): 
+    - y<sup>*</sup> = "Jane visits Africa in September." - right answer
+    - y&#770; = "Jane visited Africa last September." - answer produced by model
+  - Our model that has produced not a good result.
+  - We now want to know who to blame - the RNN or the beam search.
+  - To do that, we calculate P(y<sup>*</sup> | X) and P(y&#770; | X). There are two cases:
+    - Case 1 (P(y<sup>*</sup> | X)  > P(y&#770; | X)): 
       - Conclusion: Beam search is at fault.
-    - Case 2 (P(y<sup>*</sup> | X)  <= P(y<sup>^</sup> | X)): 
+    - Case 2 (P(y<sup>*</sup> | X)  <= P(y&#770; | X)): 
       - Conclusion: RNN model is at fault.
 - The error analysis process is as following:
-  - You choose N error examples and make the following table:
-    - ![](Images/59.png)
-  - `B`  for beam search, `R` is for the RNN.
-  - Get counts and decide.
+  - You choose N error examples and make the following table:   
+    ![](Images/59.png)
+  - `B` for beam search, `R` is for the RNN.
+  - Get counts and decide what to work on next.
 
 #### BLEU Score
 - One of the challenges of machine translation, is that given a sentence in a language there are one or more possible good translation in another language. So how do we evaluate our results?
