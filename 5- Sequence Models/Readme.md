@@ -900,24 +900,23 @@ Here are the course summary as its given on the course [link](https://www.course
 - Using both attention model and CTC cost can help you to build an accurate speech recognition system.
 
 #### Trigger Word Detection
-- With the rise of deep learning speech recognition, there are a lot of devices that can be waked up by saying some words with your voice. These systems are called trigger word systems.
-- For example, Alexa - a smart device made by amazon - can answer your call "Alexa, What time is it" and then Alexa will reply you.
-- Trigger word detection system includes:
-  - ![](Images/79.png)
-- Now the trigger word detection literature is still evolving so there actually isn't a single universally agreed on algorithm for trigger word detection yet. But lets discuss an algorithm that can be used.
-- Lets now build a model that can solve this problem:
+- With the rise of deep learning speech recognition, there are a lot of devices that can be waked up by saying some words with your voice. These systems are called trigger word detection systems.
+- For example, Alexa - a smart device made by Amazon - can answer your call "Alexa, what time is it?" and then Alexa will respond to you.
+- Trigger word detection systems include:  
+  ![](Images/79.png)
+- For now, the trigger word detection literature is still evolving so there actually isn't a single universally agreed on the algorithm for trigger word detection yet. But let's discuss an algorithm that can be used.
+- Let's now build a model that can solve this problem:
   - X: audio clip
-  - X has been preprocessed and spectrogram features has been returned of X
+  - X has been preprocessed and spectrogram features have been returned of X
     - X<sup>\<1></sup>, X<sup>\<2></sup>, ... , X<sup>\<t></sup>
-  - Y will be labels 0 or 1. 0 represents the non trigger word, while 1 is that trigger word that we need to detect.
-  - The model architecture can be like this:
-    - ![](Images/80.png)
-    - The vertical lines in the audio clip represents the trigger words. The corresponding to this will be 1.
-  - One disadvantage of this is the imbalanced dataset outputs. There will be a lot of zeros and little ones.
-  - A hack to solve this is to make an output a few ones for several times or for a fixed period of time before reverting back to zero.
-    - ![](Images/81.png)
-    - ![](Images/85.png)
-  - ​
+  - Y will be labels 0 or 1. 0 represents the non-trigger word, while 1 is that trigger word that we need to detect.
+  - The model architecture can be like this:  
+    ![](Images/80.png)
+    - The vertical lines in the audio clip represent moment just after the trigger word. The corresponding to this will be 1.
+  - One disadvantage of this creates a very imbalanced training set. There will be a lot of zeros and few ones.
+  - A hack to solve this is to make an output a few ones for several times or for a fixed period of time before reverting back to zero.  
+    ![](Images/81.png)  
+    ![](Images/85.png)
 
 
 ## Extras
