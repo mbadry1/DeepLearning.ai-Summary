@@ -193,7 +193,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   keep_prob = 0.8   # 0 <= keep_prob <= 1
   l = 3  # this code is only for layer 3
   # the generated number that are less than 0.8 will be dropped. 80% stay, 20% dropped
-  d3 = np.random.randn(a[l].shape[0], a[l].shape[1]) < keep_prob
+  d3 = np.random.rand(a[l].shape[0], a[l].shape[1]) < keep_prob
 
   a3 = np.multiply(a3,d3)   # keep only the values in d3
 
