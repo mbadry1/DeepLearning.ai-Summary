@@ -357,7 +357,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   X1  \  
-  X2   =>  z1 = XW1 + B1 => a1 = Sigmoid(a1) => z2 = a1W2 + B2 => a2 = Sigmoid(z2) => l(a2,Y)
+  X2   =>  z1 = XW1 + B1 => a1 = Sigmoid(z1) => z2 = a1W2 + B2 => a2 = Sigmoid(z2) => l(a2,Y)
   X3  /
   ```
 
