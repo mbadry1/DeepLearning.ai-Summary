@@ -387,7 +387,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - `b1` is the matrix of the first hidden layer, it has a shape of `(noOfHiddenNeurons,1)`
     - `z1` is the result of the equation `z1 = W1*X + b`, it has a shape of `(noOfHiddenNeurons,1)`
     - `a1` is the result of the equation `a1 = sigmoid(z1)`, it has a shape of `(noOfHiddenNeurons,1)`
-    - `W2` is the matrix of the second hidden layer, it has a shape of `(1,noOfHiddenLayers)`
+    - `W2` is the matrix of the second hidden layer, it has a shape of `(1,noOfHiddenNeurons)`
     - `b2` is the matrix of the second hidden layer, it has a shape of `(1,1)`
     - `z2` is the result of the equation `z2 = W2*a1 + b`, it has a shape of `(1,1)`
     - `a2` is the result of the equation `a2 = sigmoid(z2)`, it has a shape of `(1,1)`
