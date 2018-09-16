@@ -682,7 +682,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Ian is mainly working with generative models. He is the creator of GANs.
 - We need to stabilize GANs. Stabilized GANs can become the best generative models.
 - Ian wrote the first textbook on the modern version of deep learning with Yoshua Bengio and Aaron Courville.
-- Ian worked with [OpenAI.com](OpenAI.com) and Google on ML and NN applications.
+- Ian worked with [OpenAI.com](https://openai.com/) and Google on ML and NN applications.
 - Ian tells all who wants to get into AI to get a Ph.D. or post your code on Github and the companies will find you.
 - Ian thinks that we need to start anticipating security problems with ML now and make sure that these algorithms are secure from the start instead of trying to patch it in retroactively years later.
 
