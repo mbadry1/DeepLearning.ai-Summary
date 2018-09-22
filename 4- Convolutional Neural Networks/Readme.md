@@ -249,7 +249,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
       - `n2 = 17`, `nc2 = 20`
     - Hint shrinking goes much faster because the stride is 2
   - Third layer (Conv layer):
-    - `f3 = 5`, `s3 = 2`, `p2 = 0`
+    - `f3 = 5`, `s3 = 2`, `p3 = 0`
     - `number of filters = 40`
     - The output are `a3 = 7x7x40`
       - `n3 = 7`, `nc3 = 40`
@@ -301,7 +301,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - The output are `a2 = 10x10x16`
       - `n2 = 10`, `nc2 = 16`
     - Then apply (Max pooling):         `#Pool2`
-      - `f1p = 2`, and `s1p = 2`
+      - `f2p = 2`, and `s2p = 2`
       - The output are `a2 = 5x5x16`
   - Third layer (Fully connected)   `#FC3`
     - Number of neurons are 120
