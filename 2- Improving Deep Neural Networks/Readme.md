@@ -312,7 +312,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - Implementation of this is very simple.
 - Gradient checking:
   - First take `W[1],b[1],...,W[L],b[L]` and reshape into one big vector (`theta`)
-  - The cost function will be `L(theta)`
+  - The cost function will be `J(theta)`
   - Then take `dW[1],db[1],...,dW[L],db[L]` into one big vector (`d_theta`)
   - **Algorithm**:   
     ```

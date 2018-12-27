@@ -51,15 +51,15 @@ This is the first course of the deep learning specialization at [Coursera](https
 
 Here are the course summary as its given on the course [link](https://www.coursera.org/learn/neural-networks-deep-learning):
 
-> If you want to break into cutting-edge AI, this course will help you do so. Deep learning engineers are highly sought after, and mastering deep learning will give you numerous new career opportunities. Deep learning is also a new "superpower" that will let you build AI systems that just weren't possible a few years ago. 
+> If you want to break into cutting-edge AI, this course will help you do so. Deep learning engineers are highly sought after, and mastering deep learning will give you numerous new career opportunities. Deep learning is also a new "superpower" that will let you build AI systems that just weren't possible a few years ago.
 >
 > In this course, you will learn the foundations of deep learning. When you finish this class, you will:
 > - Understand the major technology trends driving Deep Learning
-> - Be able to build, train and apply fully connected deep neural networks 
-> - Know how to implement efficient (vectorized) neural networks 
-> - Understand the key parameters in a neural network's architecture 
+> - Be able to build, train and apply fully connected deep neural networks
+> - Know how to implement efficient (vectorized) neural networks
+> - Understand the key parameters in a neural network's architecture
 >
-> This course also teaches you how Deep Learning actually works, rather than presenting only a cursory or surface-level description. So after completing it, you will be able to apply deep learning to a your own applications. If you are looking for a job in AI, after this course you will also be able to answer basic interview questions. 
+> This course also teaches you how Deep Learning actually works, rather than presenting only a cursory or surface-level description. So after completing it, you will be able to apply deep learning to a your own applications. If you are looking for a job in AI, after this course you will also be able to answer basic interview questions.
 
 
 
@@ -72,12 +72,12 @@ Here are the course summary as its given on the course [link](https://www.course
 - Single neuron == linear regression
 - Simple NN graph:
   - ![](Images/Others/01.jpg)
-  - Image taken from [tutorialspoint.com](tutorialspoint.com)
+  - Image taken from [tutorialspoint.com](http://www.tutorialspoint.com/)
 - RELU stands for rectified linear unit is the most popular activation function right now that makes deep NNs train faster now.
 - Hidden layers predicts connection between inputs automatically, thats what deep learning is good at.
 - Deep NN consists of more hidden layers (Deeper layers)
   - ![](Images/Others/02.png)
-  - Image taken from [opennn.net](opennn.net)
+  - Image taken from [opennn.net](http://www.opennn.net/)
 - Each Input will be connected to the hidden layer and the NN will decide the connections.
 - Supervised learning means we have the (X,Y) and we need to get the function that maps X to Y.
 
@@ -143,7 +143,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Simple equation:	`y = wx + b`
   - If x is a vector: `y = w(transpose)x + b`
   - If we need y to be in between 0 and 1 (probability): `y = sigmoid(w(transpose)x + b)`
-  - In some notations this might be used: `y = sigmoid(w(transpose)x)` 
+  - In some notations this might be used: `y = sigmoid(w(transpose)x)`
     - While `b` is `w0` of `w` and we add `x0 = 1`. but we won't use this notation in the course (Andrew said that the first notation is better).
 - In binary classification `Y` has to be between `0` and `1`.
 - In the last equation `w` is a vector of `Nx` and `b` is a real number
@@ -166,7 +166,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - First we initialize `w` and `b` to 0,0 or initialize them to a random value in the convex function and then try to improve the values the reach minimum value.
 - In Logistic regression people always use 0,0 instead of random.
 - The gradient decent algorithm repeats: `w = w - alpha * dw`
-  where alpha is the learning rate and `dw` is the derivative of `w` (Change to `w`) 
+  where alpha is the learning rate and `dw` is the derivative of `w` (Change to `w`)
   The derivative is also the slope of `w`
 - Looks like greedy algorithms. the derivative give us the direction to improve our parameters.
 
@@ -250,7 +250,7 @@ Here are the course summary as its given on the course [link](https://www.course
   		z(i) = W1*x1(i) + W2*x2(i) + b
   		a(i) = Sigmoid(z(i))
   		J += (Y(i)*log(a(i)) + (1-Y(i))*log(1-a(i)))
-  		
+
   		# Backward pass
   		dz(i) = a(i) - Y(i)
   		dw1 += dz(i) * x1(i)
@@ -260,7 +260,7 @@ Here are the course summary as its given on the course [link](https://www.course
   	dw1/= m
   	dw2/= m
   	db/= m
-  	
+
   	# Gradient descent
   	w1 = w1 - alpa * dw1
   	w2 = w2 - alpa * dw2
@@ -344,7 +344,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 > Learn to build a neural network with one hidden layer, using forward propagation and backpropagation.
 
-### Neural Networks Overview 
+### Neural Networks Overview
 
 - In logistic regression we had:
 
@@ -693,4 +693,3 @@ Here are the course summary as its given on the course [link](https://www.course
 <br><br>
 <br><br>
 These Notes were made by [Mahmoud Badry](mailto:mma18@fayoum.edu.eg) @2017
-
