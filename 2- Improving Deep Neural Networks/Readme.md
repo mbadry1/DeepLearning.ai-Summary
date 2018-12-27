@@ -337,9 +337,9 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 ### Initialization summary
 
-- The weights $W^{[l]}$ should be initialized randomly to break symmetry
+- The weights W<sup>[l]</sup> should be initialized randomly to break symmetry
 
-- It is however okay to initialize the biases $b^{[l]}$ to zeros. Symmetry is still broken so long as $W^{[l]}$ is initialized randomly
+- It is however okay to initialize the biases b<sup>[l]</sup> to zeros. Symmetry is still broken so long as W<sup>[l]</sup> is initialized randomly
 
 - Different initializations lead to different results
 

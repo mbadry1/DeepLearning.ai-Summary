@@ -93,12 +93,12 @@ Welcome to your week 4 assignment (part 1 of 2)! You have previously trained a 2
 - Implement an easy-to-use neural network class
 
 **Notation**:
-- Superscript $[l]$ denotes a quantity associated with the $l^{th}$ layer. 
-    - Example: $a^{[L]}$ is the $L^{th}$ layer activation. $W^{[L]}$ and $b^{[L]}$ are the $L^{th}$ layer parameters.
-- Superscript $(i)$ denotes a quantity associated with the $i^{th}$ example. 
-    - Example: $x^{(i)}$ is the $i^{th}$ training example.
-- Lowerscript $i$ denotes the $i^{th}$ entry of a vector.
-    - Example: $a^{[l]}_i$ denotes the $i^{th}$ entry of the $l^{th}$ layer's activations).
+- Superscript <sup>[l]</sup> denotes a quantity associated with the `l.th` layer.
+    - Example: a<sup>[L]</sup> is the `L.th` layer activation. W<sup>[L]</sup> and b<sup>[L]</sup> are the `L.th` (last) layer parameters.
+- Superscript <sup>(i)</sup> denotes a quantity associated with the `i.th` example.
+    - Example: x<sup>(i)</sup> is the `i.th` training example.
+- Lowerscript <sub>i</sub> denotes the `i.th` entry of a vector.
+    - Example: a<sup>[l]</sup><sub>i</sub> denotes the `i.th` entry of the `l.th` layer's activations).
 
 Let's get started!
 
@@ -152,10 +152,10 @@ Programing frameworks can not only shorten your coding time, but sometimes also 
 
 Until now, you've always used Gradient Descent to update the parameters and minimize the cost. In this notebook, you will learn more advanced optimization methods that can speed up learning and perhaps even get you to a better final value for the cost function. Having a good optimization algorithm can be the difference between waiting days vs. just a few hours to get a good result. 
 
-Gradient descent goes "downhill" on a cost function $J$. Think of it as trying to do this: 
+Gradient descent goes "downhill" on a cost function `J`. Think of it as trying to do this: 
 At each step of the training, you update your parameters following a certain direction to try to get to the lowest possible point. </center></caption>
 
-**Notations**: As usual, $\frac{\partial J}{\partial a } = $ `da` for any variable `a`.
+**Notations**: As usual, &part;J / &part;a =  `da` for any variable `a`.
 
 To get started, run the following code to import the libraries you will need.
 
@@ -180,18 +180,18 @@ There were no code assignments in this course.
 Welcome to Course 4's first assignment! In this assignment, you will implement convolutional (CONV) and pooling (POOL) layers in numpy, including both forward propagation and (optionally) backward propagation. 
 
 **Notation**:
-- Superscript $[l]$ denotes an object of the $l^{th}$ layer. 
-    - Example: $a^{[4]}$ is the $4^{th}$ layer activation. $W^{[5]}$ and $b^{[5]}$ are the $5^{th}$ layer parameters.
+- Superscript <sup>[l]</sup> denotes an object of the `l.th` layer.
+    - Example: a<sup>[4]</sup> is the `4.th` layer activation. W<sup>[5]</sup> and b<sup>[5]</sup> are the `5.<sup>th</sup>` layer parameters.
 
 
-- Superscript $(i)$ denotes an object from the $i^{th}$ example. 
-    - Example: $x^{(i)}$ is the $i^{th}$ training example input.
+- Superscript <sup>(i)</sup> denotes an object from the `i.th` example.
+    - Example: x<sup>(i)</sup> is the `i.th` training example input.
 
-- Lowerscript $i$ denotes the $i^{th}$ entry of a vector.
-    - Example: $a^{[l]}_i$ denotes the $i^{th}$ entry of the activations in layer $l$, assuming this is a fully connected (FC) layer.
+- Lowerscript <sub>i</sub> denotes the `i.th` entry of a vector.
+    - Example: a<sup>[l]</sup><sub>i</sub> denotes the `i.th` entry of the activations in layer `l`, assuming this is a fully connected (FC) layer.
 
-- $n_H$, $n_W$ and $n_C$ denote respectively the height, width and number of channels of a given layer. If you want to reference a specific layer $l$, you can also write $n_H^{[l]}$, $n_W^{[l]}$, $n_C^{[l]}$. 
-- $n_{H_{prev}}$, $n_{W_{prev}}$ and $n_{C_{prev}}$ denote respectively the height, width and number of channels of the previous layer. If referencing a specific layer $l$, this could also be denoted $n_H^{[l-1]}$, $n_W^{[l-1]}$, $n_C^{[l-1]}$. 
+- `n_H`, `n_W` and `n_C` denote respectively the height, width and number of channels of a given layer. If you want to reference a specific layer `l`, you can also write n_H<sup>[l]</sup>, n_W<sup>[l]</sup>, n_C<sup>[l]</sup>.
+- `n_H_prev`, `n_W_prev` and `n_C_prev` denote respectively the height, width and number of channels of the previous layer. If referencing a specific layer `l`, this could also be denoted n_H<sup>[l-1]</sup>, n_W<sup>[l-1]</sup>, n_C<sup>[l-1]</sup>.
 
 We assume that you are already familiar with `numpy` and/or have completed the previous courses of the specialization. Let's get started!
 
@@ -255,20 +255,20 @@ Run the following cell to load the packages and dependencies that are going to b
 ### Building a recurrent neural network - step by step
 Welcome to Course 5's first assignment! In this assignment, you will implement your first Recurrent Neural Network in numpy.
 
-Recurrent Neural Networks (RNN) are very effective for Natural Language Processing and other sequence tasks because they have "memory". They can read inputs $x^{\langle t \rangle}$ (such as words) one at a time, and remember some information/context through the hidden layer activations that get passed from one time-step to the next. This allows a uni-directional RNN to take information from the past to process later inputs. A bidirection RNN can take context from both the past and the future. 
+Recurrent Neural Networks (RNN) are very effective for Natural Language Processing and other sequence tasks because they have "memory". They can read inputs x<sup>`<t>`</sup> (such as words) one at a time, and remember some information/context through the hidden layer activations that get passed from one time-step to the next. This allows a uni-directional RNN to take information from the past to process later inputs. A bidirection RNN can take context from both the past and the future. 
 
 **Notation**:
-- Superscript $[l]$ denotes an object associated with the $l^{th}$ layer. 
-    - Example: $a^{[4]}$ is the $4^{th}$ layer activation. $W^{[5]}$ and $b^{[5]}$ are the $5^{th}$ layer parameters.
+- Superscript <sup>[l]</sup> denotes an object associated with the `l.th` layer.
+    - Example: a<sup>[4]</sup> is the `4.th` layer activation. W<sup>[5]</sup> and b<sup>[5]</sup> are the `5.th` layer parameters.
 
-- Superscript $(i)$ denotes an object associated with the $i^{th}$ example. 
-    - Example: $x^{(i)}$ is the $i^{th}$ training example input.
+- Superscript <sup>(i)</sup> denotes an object associated with the `i.th` example.
+    - Example: x<sup>(i)</sup> is the `i.th` training example input.
 
-- Superscript $\langle t \rangle$ denotes an object at the $t^{th}$ time-step. 
-    - Example: $x^{\langle t \rangle}$ is the input x at the $t^{th}$ time-step. $x^{(i)\langle t \rangle}$ is the input at the $t^{th}$ timestep of example $i$.
+- Superscript `<t>` denotes an object at the `t.th` time-step.
+    - Example: x<sup>`<t>`</sup> is the input x at the `t.th` time-step. x<sup>`(i)<t>`</sup> is the input at the `t.th` timestep of example `i`.
 
-- Lowerscript $i$ denotes the $i^{th}$ entry of a vector.
-    - Example: $a^{[l]}_i$ denotes the $i^{th}$ entry of the activations in layer $l$.
+- Lowerscript <sub>i</sub> denotes the `i.th` entry of a vector.
+    - Example: a<sup>[l]</sup><sub>i</sub> denotes the `i.th` entry of the activations in layer `l`.
 
 We assume that you are already familiar with `numpy` and/or have completed the previous courses of the specialization. Let's get started!
 
@@ -343,7 +343,6 @@ In this assignment you will learn to:
 - Train a trigger word detection model and make predictions
 
 Lets get started! Run the following cell to load the package you are going to use.  
-
 
 
 <br><br>
