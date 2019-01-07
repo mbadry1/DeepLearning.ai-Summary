@@ -406,7 +406,7 @@ Implications of L2-regularization on:
 
 ### Understanding mini-batch gradient descent
 
-- In mini-batch algorithm, the cost won't go down with each step as it does in batch algorithm. It could contain some ups and downs but generally it has to go down (unlike the batch gradient descent where cost function descreases on each iteration).
+- In mini-batch algorithm, the cost won't go down with each step as it does in batch algorithm. It could contain some ups and downs but generally it has to go down (unlike the batch gradient descent where cost function descreases on each iteration).<br/>
   ![](Images/04-_batch_vs_mini_batch_cost.png)
 - Mini-batch size:
   - (`mini batch size = m`)  ==>    Batch gradient descent
@@ -460,13 +460,13 @@ Implications of L2-regularization on:
     - `beta = 0.98` will average last 50 entries
     - `beta = 0.5` will average last 2 entries
 - Best beta average for our case is between 0.9 and 0.98
-- Another imagery example:
+- Another imagery example:<br/>
     ![](Images/Nasdaq1_small.png)
     _(taken from [investopedia.com](https://www.investopedia.com/))_
 
 ### Understanding exponentially weighted averages
 
-- Intuitions:
+- Intuitions:<br/>
     ![](Images/05-_exponentially_weighted_averages_intuitions.png)
 - We can implement this algorithm with more accurate results using a moving window. But the code is more efficient and faster using the exponentially weighted averages algorithm.
 - Algorithm is very simple:
