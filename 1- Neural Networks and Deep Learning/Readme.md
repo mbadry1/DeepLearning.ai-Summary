@@ -349,7 +349,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - In logistic regression we had:
 
   ```
-  X1  \  
+  X1  \
   X2   ==>  z = XW + B ==> a = Sigmoid(z) ==> l(a,Y)
   X3  /
   ```
@@ -357,7 +357,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - In neural networks with one layer we will have:
 
   ```
-  X1  \  
+  X1  \
   X2   =>  z1 = XW1 + B1 => a1 = Sigmoid(z1) => z2 = a1W2 + B2 => a2 = Sigmoid(z2) => l(a2,Y)
   X3  /
   ```
@@ -524,7 +524,7 @@ Here are the course summary as its given on the course [link](https://www.course
   A2 = Sigmoid(Z2)      # Sigmoid because the output is between 0 and 1
   ```
 
-- Backpropagation (derivations):   
+- Backpropagation (derivations):
   ```
   dZ2 = A2 - Y      # derivative of cost function we used * derivative of the sigmoid function
   dW2 = (dZ2 * A1.T) / m
@@ -534,7 +534,7 @@ Here are the course summary as its given on the course [link](https://www.course
   db1 = Sum(dZ1) / m
   # Hint there are transposes with multiplication because to keep dimensions correct
   ```
-- How we derived the 6 equations of the backpropagation:   
+- How we derived the 6 equations of the backpropagation:
   ![](Images/06.png)
 
 ### Random Initialization

@@ -62,7 +62,7 @@ This is the fourth course of the deep learning specialization at [Coursera](http
 
 Here is the course summary as given on the course [link](https://www.coursera.org/learn/convolutional-neural-networks):
 
-> This course will teach you how to build convolutional neural networks and apply it to image data. Thanks to deep learning, computer vision is working far better than just two years ago, and this is enabling numerous exciting applications ranging from safe autonomous driving, to accurate face recognition, to automatic reading of radiology images. 
+> This course will teach you how to build convolutional neural networks and apply it to image data. Thanks to deep learning, computer vision is working far better than just two years ago, and this is enabling numerous exciting applications ranging from safe autonomous driving, to accurate face recognition, to automatic reading of radiology images.
 >
 > You will:
 > - Understand how to build a convolutional neural network, including recent variations such as residual networks.
@@ -141,7 +141,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - In order to to use deep neural networks we really need to use **paddings**.
 - In the last section we saw that a `6x6` matrix convolved with `3x3` filter/kernel gives us a `4x4` matrix.
-- To give it a general rule, if a matrix `nxn` is convolved with `fxf` filter/kernel give us `n-f+1,n-f+1` matrix. 
+- To give it a general rule, if a matrix `nxn` is convolved with `fxf` filter/kernel give us `n-f+1,n-f+1` matrix.
 - The convolution operation shrinks the matrix if f>1.
 - We want to apply convolution operation multiple times, but if the image shrinks we will lose a lot of data on this process. Also the edges pixels are used less than other pixels in an image.
 - So the problems with convolutions are:
@@ -149,7 +149,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - throwing away a lot of information that are in the edges.
 - To solve these problems we can pad the input image before convolution by adding some rows and columns to it. We will call the padding amount `P` the number of row/columns that we will insert in top, bottom, left and right of the image.
 - In almost all the cases the padding values are zeros.
-- The general rule now,  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` give us `n+2p-f+1,n+2p-f+1` matrix. 
+- The general rule now,  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` give us `n+2p-f+1,n+2p-f+1` matrix.
 - If n = 6, f = 3, and p = 1 Then the output image will have `n+2p-f+1 = 6+2-3+1 = 6`. We maintain the size of the image.
 - Same convolutions is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
 
@@ -168,7 +168,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - When we are making the convolution operation we used `S` to tell us the number of pixels we will jump when we are convolving filter/kernel. The last examples we described S was 1.
 
 - Now the general rule are:
-  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s + 1,(n+2p-f)/s + 1` matrix. 
+  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s + 1,(n+2p-f)/s + 1` matrix.
 
 - In case `(n+2p-f)/s + 1` is fraction we can take **floor** of this value.
 
@@ -227,7 +227,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
   Activations: a[l] is nH[l] x nW[l] x nc[l]
   		     A[l] is m x nH[l] x nW[l] x nc[l]   # In batch or minbatch training
-  		     
+
   Weights: f[l] * f[l] * nc[l-1] * nc[l]
   bias:  (1, 1, 1, nc[l])
   ```
@@ -385,7 +385,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - The original paper contains Multiple GPUs and Local Response normalization (RN).
 
     - Multiple GPUs were used because the GPUs were not so fast back then.
-    - Researchers proved that Local Response normalization doesn't help much so for now don't bother yourself for understanding or implementing it. 
+    - Researchers proved that Local Response normalization doesn't help much so for now don't bother yourself for understanding or implementing it.
 
   - This paper convinced the computer vision researchers that deep learning is so important.
 
@@ -396,7 +396,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - A modification for AlexNet.
   - Instead of having a lot of hyperparameters lets have some simpler network.
   - Focus on having only these blocks:
-    - CONV = 3 X 3 filter, s = 1, same  
+    - CONV = 3 X 3 filter, s = 1, same
     - MAX-POOL = 2 X 2 , s = 2
   - Here are the architecture:
     - ![](Images/07.png)
@@ -427,7 +427,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - ![](Images/10.png)
   - On the left is the normal NN and on the right are the ResNet. As you can see the performance of ResNet increases as the network goes deeper.
   - In some cases going deeper won't effect the performance and that depends on the problem on your hand.
-  - Some people are trying to train 1000 layer now which isn't used in practice. 
+  - Some people are trying to train 1000 layer now which isn't used in practice.
   - [He et al., 2015. Deep residual networks for image recognition]
 
 ### Why ResNets work
@@ -518,11 +518,11 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - We want to shrink the number of channels. We also call this feature transformation.
     - In the second discussed example above we have shrinked the input from 32 to 5 channels.
   - We will later see that by shrinking it we can save a lot of computations.
-  - If we have specified the number of 1 x 1 Conv filters to be the same as the input number of channels then the output will contain the same number of channels. Then the 1 x 1 Conv will act like a non linearity and will learn non linearity operator. 
+  - If we have specified the number of 1 x 1 Conv filters to be the same as the input number of channels then the output will contain the same number of channels. Then the 1 x 1 Conv will act like a non linearity and will learn non linearity operator.
 
 - Replace fully connected layers with 1 x 1 convolutions as Yann LeCun believes they are the same.
 
-  - > In Convolutional Nets, there is no such thing as "fully-connected layers". There are only convolution layers with 1x1 convolution kernels and a full connection table. [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143) 
+  - > In Convolutional Nets, there is no such thing as "fully-connected layers". There are only convolution layers with 1x1 convolution kernels and a full connection table. [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143)
 
 - [[Lin et al., 2013. Network in network]](https://arxiv.org/abs/1312.4400)
 
@@ -542,7 +542,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - Output should be 28 x 28 x 32
   - The total number of multiplications needed here are:
     - Number of outputs * Filter size * Filter size * Input dimensions
-    - Which equals: `28 * 28 * 32 * 5 * 5 * 192 = 120 Mil` 
+    - Which equals: `28 * 28 * 32 * 5 * 5 * 192 = 120 Mil`
     - 120 Mil multiply operation still a problem in the modern day computers.
   - Using a 1 x 1 convolution we can reduce 120 mil to just 12 mil. Lets see how.
 - Using 1 X 1 convolution to reduce computational cost:
@@ -602,7 +602,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - One thing you can do is to freeze few layers from the beginning of the pretrained network and learn the other weights in the network.
   - Some other idea is to throw away the layers that aren't frozen and put your own layers there.
 - Another example:
-  - If you have enough data, you can fine tune all the layers in your pretrained network but don't random initialize the parameters, leave the learned parameters as it is and learn from there. 
+  - If you have enough data, you can fine tune all the layers in your pretrained network but don't random initialize the parameters, leave the learned parameters as it is and learn from there.
 
 ### Data Augmentation
 
@@ -619,7 +619,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - Color shifting.
     - For example, we add to R, G, and B some distortions that will make the image identified as the same for the human but is different for the computer.
     - In practice the added value are pulled from some probability distribution and these shifts are some small.
-    - Makes your algorithm more robust in changing colors in images. 
+    - Makes your algorithm more robust in changing colors in images.
     - There are an algorithm which is called ***PCA color augmentation*** that decides the shifts needed automatically.
 - Implementing distortions during training:
   - You can use a different CPU thread to make you a distorted mini batches while you are training your NN.
@@ -661,7 +661,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - What are localization and detection?
 
-  - **Image Classification**: 
+  - **Image Classification**:
     - Classify an image to a specific class. The whole image represents one class. We don't want to know exactly where are the object. Usually only one object is presented.
     - ![](Images/Classification.jpg)
   - **Classification with localization**:
@@ -682,7 +682,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - To make classification with localization we use a Conv Net with a softmax attached to the end of it and a four numbers `bx`, `by`, `bh`, and `bw` to tell you the location of the class in the image. The dataset should contain this four numbers with the class too.
 
-- Defining the target label Y in classification with localization problem: 
+- Defining the target label Y in classification with localization problem:
 
   - ```
     Y = [
@@ -849,7 +849,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Non-max suppression algorithm:
   1. Lets assume that we are targeting one class as an output class.
   2. Y shape should be `[Pc, bx, by, bh, hw]` Where Pc is the probability if that object occurs.
-  3. Discard all boxes with `Pc < 0.6`  
+  3. Discard all boxes with `Pc < 0.6`
   4. While there are any remaining boxes:
      1. Pick the box with the largest Pc Output that as a prediction.
      2. Discard any remaining box with `IoU > 0.5` with that box output in the previous step i.e any box with high overlap(greater than overlap threshold of 0.5).
@@ -922,158 +922,158 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
   - ```
     ________________________________________________________________________________________
-    Layer (type)                     Output Shape          Param #     Connected to                
+    Layer (type)                     Output Shape          Param #     Connected to
     ========================================================================================
-    input_1 (InputLayer)             (None, 608, 608, 3)   0                                 
+    input_1 (InputLayer)             (None, 608, 608, 3)   0
     ________________________________________________________________________________________
-    conv2d_1 (Conv2D)                (None, 608, 608, 32)  864         input_1[0][0]         
+    conv2d_1 (Conv2D)                (None, 608, 608, 32)  864         input_1[0][0]
     ________________________________________________________________________________________
-    batch_normalization_1 (BatchNorm (None, 608, 608, 32)  128         conv2d_1[0][0]       
+    batch_normalization_1 (BatchNorm (None, 608, 608, 32)  128         conv2d_1[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_1 (LeakyReLU)        (None, 608, 608, 32)  0     batch_normalization_1[0][0] 
+    leaky_re_lu_1 (LeakyReLU)        (None, 608, 608, 32)  0     batch_normalization_1[0][0]
     ________________________________________________________________________________________
-    max_pooling2d_1 (MaxPooling2D)   (None, 304, 304, 32)  0           leaky_re_lu_1[0][0]   
+    max_pooling2d_1 (MaxPooling2D)   (None, 304, 304, 32)  0           leaky_re_lu_1[0][0]
     ________________________________________________________________________________________
-    conv2d_2 (Conv2D)                (None, 304, 304, 64)  18432       max_pooling2d_1[0][0] 
+    conv2d_2 (Conv2D)                (None, 304, 304, 64)  18432       max_pooling2d_1[0][0]
     ________________________________________________________________________________________
-    batch_normalization_2 (BatchNorm (None, 304, 304, 64)  256         conv2d_2[0][0]       
+    batch_normalization_2 (BatchNorm (None, 304, 304, 64)  256         conv2d_2[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_2 (LeakyReLU)        (None, 304, 304, 64)  0     batch_normalization_2[0][0] 
+    leaky_re_lu_2 (LeakyReLU)        (None, 304, 304, 64)  0     batch_normalization_2[0][0]
     _______________________________________________________________________________________
-    max_pooling2d_2 (MaxPooling2D)   (None, 152, 152, 64)  0           leaky_re_lu_2[0][0]   
+    max_pooling2d_2 (MaxPooling2D)   (None, 152, 152, 64)  0           leaky_re_lu_2[0][0]
     ________________________________________________________________________________________
-    conv2d_3 (Conv2D)                (None, 152, 152, 128) 73728       max_pooling2d_2[0][0] 
+    conv2d_3 (Conv2D)                (None, 152, 152, 128) 73728       max_pooling2d_2[0][0]
     ________________________________________________________________________________________
-    batch_normalization_3 (BatchNorm (None, 152, 152, 128) 512         conv2d_3[0][0]       
+    batch_normalization_3 (BatchNorm (None, 152, 152, 128) 512         conv2d_3[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_3 (LeakyReLU)        (None, 152, 152, 128) 0     batch_normalization_3[0][0] 
+    leaky_re_lu_3 (LeakyReLU)        (None, 152, 152, 128) 0     batch_normalization_3[0][0]
     ________________________________________________________________________________________
-    conv2d_4 (Conv2D)                (None, 152, 152, 64)  8192        leaky_re_lu_3[0][0]   
+    conv2d_4 (Conv2D)                (None, 152, 152, 64)  8192        leaky_re_lu_3[0][0]
     ________________________________________________________________________________________
-    batch_normalization_4 (BatchNorm (None, 152, 152, 64)  256         conv2d_4[0][0]       
+    batch_normalization_4 (BatchNorm (None, 152, 152, 64)  256         conv2d_4[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_4 (LeakyReLU)        (None, 152, 152, 64)  0     batch_normalization_4[0][0] 
+    leaky_re_lu_4 (LeakyReLU)        (None, 152, 152, 64)  0     batch_normalization_4[0][0]
     ________________________________________________________________________________________
-    conv2d_5 (Conv2D)                (None, 152, 152, 128) 73728       leaky_re_lu_4[0][0]   
+    conv2d_5 (Conv2D)                (None, 152, 152, 128) 73728       leaky_re_lu_4[0][0]
     ________________________________________________________________________________________
-    batch_normalization_5 (BatchNorm (None, 152, 152, 128) 512         conv2d_5[0][0]       
+    batch_normalization_5 (BatchNorm (None, 152, 152, 128) 512         conv2d_5[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_5 (LeakyReLU)        (None, 152, 152, 128) 0     batch_normalization_5[0][0] 
+    leaky_re_lu_5 (LeakyReLU)        (None, 152, 152, 128) 0     batch_normalization_5[0][0]
     ________________________________________________________________________________________
-    max_pooling2d_3 (MaxPooling2D)   (None, 76, 76, 128)   0           leaky_re_lu_5[0][0]   
+    max_pooling2d_3 (MaxPooling2D)   (None, 76, 76, 128)   0           leaky_re_lu_5[0][0]
     ________________________________________________________________________________________
-    conv2d_6 (Conv2D)                (None, 76, 76, 256)   294912      max_pooling2d_3[0][0] 
+    conv2d_6 (Conv2D)                (None, 76, 76, 256)   294912      max_pooling2d_3[0][0]
     _______________________________________________________________________________________
-    batch_normalization_6 (BatchNorm (None, 76, 76, 256)   1024        conv2d_6[0][0]       
+    batch_normalization_6 (BatchNorm (None, 76, 76, 256)   1024        conv2d_6[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_6 (LeakyReLU)        (None, 76, 76, 256)   0     batch_normalization_6[0][0] 
+    leaky_re_lu_6 (LeakyReLU)        (None, 76, 76, 256)   0     batch_normalization_6[0][0]
     _______________________________________________________________________________________
-    conv2d_7 (Conv2D)                (None, 76, 76, 128)   32768       leaky_re_lu_6[0][0]   
+    conv2d_7 (Conv2D)                (None, 76, 76, 128)   32768       leaky_re_lu_6[0][0]
     ________________________________________________________________________________________
-    batch_normalization_7 (BatchNorm (None, 76, 76, 128)   512         conv2d_7[0][0]       
+    batch_normalization_7 (BatchNorm (None, 76, 76, 128)   512         conv2d_7[0][0]
     _______________________________________________________________________________________
-    leaky_re_lu_7 (LeakyReLU)        (None, 76, 76, 128)   0     batch_normalization_7[0][0] 
+    leaky_re_lu_7 (LeakyReLU)        (None, 76, 76, 128)   0     batch_normalization_7[0][0]
     ________________________________________________________________________________________
-    conv2d_8 (Conv2D)                (None, 76, 76, 256)   294912      leaky_re_lu_7[0][0]   
+    conv2d_8 (Conv2D)                (None, 76, 76, 256)   294912      leaky_re_lu_7[0][0]
     ________________________________________________________________________________________
-    batch_normalization_8 (BatchNorm (None, 76, 76, 256)   1024        conv2d_8[0][0]       
+    batch_normalization_8 (BatchNorm (None, 76, 76, 256)   1024        conv2d_8[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_8 (LeakyReLU)        (None, 76, 76, 256)   0     batch_normalization_8[0][0] 
+    leaky_re_lu_8 (LeakyReLU)        (None, 76, 76, 256)   0     batch_normalization_8[0][0]
     ________________________________________________________________________________________
-    max_pooling2d_4 (MaxPooling2D)   (None, 38, 38, 256)   0           leaky_re_lu_8[0][0]   
+    max_pooling2d_4 (MaxPooling2D)   (None, 38, 38, 256)   0           leaky_re_lu_8[0][0]
     ________________________________________________________________________________________
-    conv2d_9 (Conv2D)                (None, 38, 38, 512)   1179648     max_pooling2d_4[0][0] 
+    conv2d_9 (Conv2D)                (None, 38, 38, 512)   1179648     max_pooling2d_4[0][0]
     ________________________________________________________________________________________
-    batch_normalization_9 (BatchNorm (None, 38, 38, 512)   2048        conv2d_9[0][0]       
+    batch_normalization_9 (BatchNorm (None, 38, 38, 512)   2048        conv2d_9[0][0]
     ________________________________________________________________________________________
-    leaky_re_lu_9 (LeakyReLU)        (None, 38, 38, 512)   0     batch_normalization_9[0][0] 
+    leaky_re_lu_9 (LeakyReLU)        (None, 38, 38, 512)   0     batch_normalization_9[0][0]
     ________________________________________________________________________________________
-    conv2d_10 (Conv2D)               (None, 38, 38, 256)   131072      leaky_re_lu_9[0][0]   
+    conv2d_10 (Conv2D)               (None, 38, 38, 256)   131072      leaky_re_lu_9[0][0]
     ________________________________________________________________________________________
-    batch_normalization_10 (BatchNor (None, 38, 38, 256)   1024        conv2d_10[0][0]       
+    batch_normalization_10 (BatchNor (None, 38, 38, 256)   1024        conv2d_10[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_10 (LeakyReLU)       (None, 38, 38, 256)   0    batch_normalization_10[0][0]
     ________________________________________________________________________________________
-    conv2d_11 (Conv2D)               (None, 38, 38, 512)   1179648    leaky_re_lu_10[0][0]   
+    conv2d_11 (Conv2D)               (None, 38, 38, 512)   1179648    leaky_re_lu_10[0][0]
     ________________________________________________________________________________________
-    batch_normalization_11 (BatchNor (None, 38, 38, 512)   2048        conv2d_11[0][0]       
+    batch_normalization_11 (BatchNor (None, 38, 38, 512)   2048        conv2d_11[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_11 (LeakyReLU)       (None, 38, 38, 512)   0    batch_normalization_11[0][0]
     _______________________________________________________________________________________
-    conv2d_12 (Conv2D)               (None, 38, 38, 256)   131072      leaky_re_lu_11[0][0] 
+    conv2d_12 (Conv2D)               (None, 38, 38, 256)   131072      leaky_re_lu_11[0][0]
     ________________________________________________________________________________________
-    batch_normalization_12 (BatchNor (None, 38, 38, 256)   1024        conv2d_12[0][0]       
+    batch_normalization_12 (BatchNor (None, 38, 38, 256)   1024        conv2d_12[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_12 (LeakyReLU)       (None, 38, 38, 256)   0   batch_normalization_12[0][0]
     ________________________________________________________________________________________
-    conv2d_13 (Conv2D)               (None, 38, 38, 512)   1179648     leaky_re_lu_12[0][0] 
+    conv2d_13 (Conv2D)               (None, 38, 38, 512)   1179648     leaky_re_lu_12[0][0]
     ________________________________________________________________________________________
-    batch_normalization_13 (BatchNor (None, 38, 38, 512)   2048        conv2d_13[0][0]       
+    batch_normalization_13 (BatchNor (None, 38, 38, 512)   2048        conv2d_13[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_13 (LeakyReLU)       (None, 38, 38, 512)   0    batch_normalization_13[0][0]
     ________________________________________________________________________________________
-    max_pooling2d_5 (MaxPooling2D)   (None, 19, 19, 512)   0           leaky_re_lu_13[0][0] 
+    max_pooling2d_5 (MaxPooling2D)   (None, 19, 19, 512)   0           leaky_re_lu_13[0][0]
     _______________________________________________________________________________________
-    conv2d_14 (Conv2D)               (None, 19, 19, 1024)  4718592     max_pooling2d_5[0][0] 
+    conv2d_14 (Conv2D)               (None, 19, 19, 1024)  4718592     max_pooling2d_5[0][0]
     ________________________________________________________________________________________
-    batch_normalization_14 (BatchNor (None, 19, 19, 1024)  4096        conv2d_14[0][0]       
+    batch_normalization_14 (BatchNor (None, 19, 19, 1024)  4096        conv2d_14[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_14 (LeakyReLU)       (None, 19, 19, 1024)  0    batch_normalization_14[0][0]
     ________________________________________________________________________________________
-    conv2d_15 (Conv2D)               (None, 19, 19, 512)   524288      leaky_re_lu_14[0][0] 
+    conv2d_15 (Conv2D)               (None, 19, 19, 512)   524288      leaky_re_lu_14[0][0]
     ________________________________________________________________________________________
-    batch_normalization_15 (BatchNor (None, 19, 19, 512)   2048        conv2d_15[0][0]       
+    batch_normalization_15 (BatchNor (None, 19, 19, 512)   2048        conv2d_15[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_15 (LeakyReLU)       (None, 19, 19, 512)   0    batch_normalization_15[0][0]
     ________________________________________________________________________________________
-    conv2d_16 (Conv2D)               (None, 19, 19, 1024)  4718592     leaky_re_lu_15[0][0] 
+    conv2d_16 (Conv2D)               (None, 19, 19, 1024)  4718592     leaky_re_lu_15[0][0]
     ________________________________________________________________________________________
-    batch_normalization_16 (BatchNor (None, 19, 19, 1024)  4096        conv2d_16[0][0]       
+    batch_normalization_16 (BatchNor (None, 19, 19, 1024)  4096        conv2d_16[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_16 (LeakyReLU)       (None, 19, 19, 1024)  0    batch_normalization_16[0][0]
     ________________________________________________________________________________________
-    conv2d_17 (Conv2D)               (None, 19, 19, 512)   524288      leaky_re_lu_16[0][0] 
+    conv2d_17 (Conv2D)               (None, 19, 19, 512)   524288      leaky_re_lu_16[0][0]
     ________________________________________________________________________________________
-    batch_normalization_17 (BatchNor (None, 19, 19, 512)   2048        conv2d_17[0][0]       
+    batch_normalization_17 (BatchNor (None, 19, 19, 512)   2048        conv2d_17[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_17 (LeakyReLU)       (None, 19, 19, 512)   0    batch_normalization_17[0][0]
     _______________________________________________________________________________________
-    conv2d_18 (Conv2D)               (None, 19, 19, 1024)  4718592     leaky_re_lu_17[0][0] 
+    conv2d_18 (Conv2D)               (None, 19, 19, 1024)  4718592     leaky_re_lu_17[0][0]
     ________________________________________________________________________________________
-    batch_normalization_18 (BatchNor (None, 19, 19, 1024)  4096        conv2d_18[0][0]       
+    batch_normalization_18 (BatchNor (None, 19, 19, 1024)  4096        conv2d_18[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_18 (LeakyReLU)       (None, 19, 19, 1024)  0    batch_normalization_18[0][0]
     ________________________________________________________________________________________
-    conv2d_19 (Conv2D)               (None, 19, 19, 1024)  9437184     leaky_re_lu_18[0][0] 
+    conv2d_19 (Conv2D)               (None, 19, 19, 1024)  9437184     leaky_re_lu_18[0][0]
     ________________________________________________________________________________________
-    batch_normalization_19 (BatchNor (None, 19, 19, 1024)  4096        conv2d_19[0][0]       
+    batch_normalization_19 (BatchNor (None, 19, 19, 1024)  4096        conv2d_19[0][0]
     ________________________________________________________________________________________
     conv2d_21 (Conv2D)               (None, 38, 38, 64)    32768       leaky_re_lu_13[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_19 (LeakyReLU)       (None, 19, 19, 1024)  0    batch_normalization_19[0][0]
     ________________________________________________________________________________________
-    batch_normalization_21 (BatchNor (None, 38, 38, 64)    256         conv2d_21[0][0]       
+    batch_normalization_21 (BatchNor (None, 38, 38, 64)    256         conv2d_21[0][0]
     ________________________________________________________________________________________
     conv2d_20 (Conv2D)               (None, 19, 19, 1024)  9437184     leaky_re_lu_19[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_21 (LeakyReLU)       (None, 38, 38, 64)    0    batch_normalization_21[0][0]
     ________________________________________________________________________________________
-    batch_normalization_20 (BatchNor (None, 19, 19, 1024)  4096        conv2d_20[0][0]       
+    batch_normalization_20 (BatchNor (None, 19, 19, 1024)  4096        conv2d_20[0][0]
     ________________________________________________________________________________________
-    space_to_depth_x2 (Lambda)       (None, 19, 19, 256)   0           leaky_re_lu_21[0][0] 
+    space_to_depth_x2 (Lambda)       (None, 19, 19, 256)   0           leaky_re_lu_21[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_20 (LeakyReLU)       (None, 19, 19, 1024)  0    batch_normalization_20[0][0]
     ________________________________________________________________________________________
-    concatenate_1 (Concatenate)      (None, 19, 19, 1280)  0         space_to_depth_x2[0][0] 
-                                                                      leaky_re_lu_20[0][0] 
+    concatenate_1 (Concatenate)      (None, 19, 19, 1280)  0         space_to_depth_x2[0][0]
+                                                                      leaky_re_lu_20[0][0]
     ________________________________________________________________________________________
-    conv2d_22 (Conv2D)               (None, 19, 19, 1024)  11796480    concatenate_1[0][0]   
+    conv2d_22 (Conv2D)               (None, 19, 19, 1024)  11796480    concatenate_1[0][0]
     ________________________________________________________________________________________
-    batch_normalization_22 (BatchNor (None, 19, 19, 1024)  4096        conv2d_22[0][0]       
+    batch_normalization_22 (BatchNor (None, 19, 19, 1024)  4096        conv2d_22[0][0]
     ________________________________________________________________________________________
     leaky_re_lu_22 (LeakyReLU)       (None, 19, 19, 1024)  0    batch_normalization_22[0][0]
     ________________________________________________________________________________________
-    conv2d_23 (Conv2D)               (None, 19, 19, 425)   435625      leaky_re_lu_22[0][0] 
+    conv2d_23 (Conv2D)               (None, 19, 19, 425)   435625      leaky_re_lu_22[0][0]
     ===============================================================================================
     Total params: 50,983,561
     Trainable params: 50,962,889
@@ -1154,7 +1154,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - Get an input image
     - Output ID if the image is any of the K persons (or not recognized)
     - "who is this person?"
-- We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given K persons. 
+- We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given K persons.
 
 #### One Shot Learning
 
@@ -1200,8 +1200,8 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - `J = Sum(L(A[i], P[i], N[i]) , i)` for all triplets of images.
 - You need multiple images of the same person in your dataset. Then get some triplets out of your dataset. Dataset should be big enough.
 - Choosing the triplets A, P, N:
-  - During training if A, P, N are chosen randomly (Subjet to A and P are the same and A and N aren't the same) then one of the problems this constrain is easily satisfied 
-    - `d(A, P) + alpha <= d (A, N)` 
+  - During training if A, P, N are chosen randomly (Subjet to A and P are the same and A and N aren't the same) then one of the problems this constrain is easily satisfied
+    - `d(A, P) + alpha <= d (A, N)`
     - So the NN wont learn much
   - What we want to do is choose triplets that are **hard** to train on.
     - So for all the triplets we want this to be satisfied:
@@ -1246,7 +1246,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Visualizing what a deep network is learning:
   - Given this AlexNet like Conv net:
     - ![](Images/38.png)
-  - Pick a unit in layer l. Find the nine image patches that maximize the unit's activation. 
+  - Pick a unit in layer l. Find the nine image patches that maximize the unit's activation.
     - Notice that a hidden unit in layer one will see relatively small portion of NN, so if you plotted it it will match a small image in the shallower layers while it will get larger image in deeper layers.
   - Repeat for other units and layers.
   - It turns out that layer 1 are learning the low level representations like colors and edges.
@@ -1280,7 +1280,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 #### Content Cost Function
 
 - In the previous section we showed that we need a cost function for the content image and the style image to measure how similar is them to each other.
-- Say you use hidden layer `l` to compute content cost. 
+- Say you use hidden layer `l` to compute content cost.
   - If we choose `l` to be small (like layer 1), we will force the network to get similar output to the original content image.
   - In practice `l` is not too shallow and not too deep but in the middle.
 - Use pre-trained ConvNet. (E.g., VGG network)
@@ -1292,7 +1292,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - Meaning of the ***style*** of an image:
   - Say you are using layer l's activation to measure ***style***.
-  - Define style as correlation between **activations** across **channels**. 
+  - Define style as correlation between **activations** across **channels**.
     - That means given an activation like this:
       - ![](Images/42.png)
     - How correlate is the orange channel with the yellow channel?
@@ -1340,7 +1340,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - Applying 32 filters with F = 5, S = 1
   - Output shape will be 6 X 32
 - The general equation `(N - F)/S + 1` can be applied here but here it gives a vector rather than a 2D matrix.
-- 1D data comes from a lot of resources such as waves, sounds, heartbeat signals. 
+- 1D data comes from a lot of resources such as waves, sounds, heartbeat signals.
 - In most of the applications that uses 1D data we use Recurrent Neural Network RNN.
 - 3D data also are available in some applications like CT scan:
   - ![](Images/44.png)

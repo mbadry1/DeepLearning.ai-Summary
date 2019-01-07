@@ -52,14 +52,14 @@ This is the second course of the deep learning specialization at [Coursera](http
 
 Here are the course summary as its given on the course [link](https://www.coursera.org/learn/deep-neural-network):
 
-> This course will teach you the "magic" of getting deep learning to work well. Rather than the deep learning process being a black box, you will understand what drives performance, and be able to more systematically get good results. You will also learn TensorFlow. 
+> This course will teach you the "magic" of getting deep learning to work well. Rather than the deep learning process being a black box, you will understand what drives performance, and be able to more systematically get good results. You will also learn TensorFlow.
 >
-> After 3 weeks, you will: 
-> - Understand industry best-practices for building deep learning applications. 
-> - Be able to effectively use the common neural network "tricks", including initialization, L2 and dropout regularization, Batch normalization, gradient checking, 
-> - Be able to implement and apply a variety of optimization algorithms, such as mini-batch gradient descent, Momentum, RMSprop and Adam, and check for their convergence. 
+> After 3 weeks, you will:
+> - Understand industry best-practices for building deep learning applications.
+> - Be able to effectively use the common neural network "tricks", including initialization, L2 and dropout regularization, Batch normalization, gradient checking,
+> - Be able to implement and apply a variety of optimization algorithms, such as mini-batch gradient descent, Momentum, RMSprop and Adam, and check for their convergence.
 > - Understand new best-practices for the deep learning era of how to set up train/dev/test sets and analyze bias/variance
-> - Be able to implement a neural network in TensorFlow. 
+> - Be able to implement a neural network in TensorFlow.
 >
 > This is the second course of the Deep Learning Specialization.
 
@@ -141,18 +141,18 @@ Here are the course summary as its given on the course [link](https://www.course
   - L2 regularization is being used much more often.
   - `lambda` here is the regularization parameter (hyperparameter)
 - Regularization for NN:
-  - The normal cost function that we want to minimize is:   
+  - The normal cost function that we want to minimize is:
     `J(W1,b1...,WL,bL) = (1/m) * Sum(L(y(i),y'(i)))`
 
-  - The L2 regularization version:   
+  - The L2 regularization version:
     `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (lambda/2m) * Sum((||W[l]||^2)`
 
   - We stack the matrix as one vector `(mn,1)` and then we apply `sqrt(w1^2 + w2^2.....)`
 
-  - To do back propagation (old way):   
+  - To do back propagation (old way):
     `dw[l] = (from back propagation)`
 
-  - The new way:   
+  - The new way:
     `dw[l] = (from back propagation) + lambda/m * w[l]`
 
   - So plugging it in weight update step:
@@ -160,7 +160,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - ```
       w[l] = w[l] - learning_rate * dw[l]
            = w[l] - learning_rate * ((from back propagation) + lambda/m * w[l])
-           = w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation) 
+           = w[l] - (learning_rate*lambda/m) * w[l] - learning_rate * (from back propagation)
            = (1 - (learning_rate*lambda)/m) * w[l] - learning_rate * (from back propagation)
       ```
 
@@ -178,7 +178,7 @@ Here are some intuitions:
   - Intuition 2 (with _tanh_ activation function):
      - If `lambda` is too large, w's will be small (close to zero) - will use the linear part of the _tanh_ activation function, so we will go from non linear activation to _roughly_ linear which would make the NN a _roughly_ linear classifier.
      - If `lambda` good enough it will just make some of _tanh_ activations _roughly_ linear which will prevent overfitting.
-     
+
 _**Implementation tip**_: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases **monotonically** after every elevation of gradient descent with regularization. If you plot the old definition of J (no regularization) then you might not see it decrease monotonically.
 
 
@@ -199,7 +199,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
   # increase a3 to not reduce the expected value of output
   # (ensures that the expected value of a3 remains the same) - to solve the scaling problem
-  a3 = a3 / keep_prob       
+  a3 = a3 / keep_prob
   ```
 - Vector d[l] is used for forward and back propagation and is the same for them, but it is different for each iteration (pass) or training example.
 - At test time we don't use dropout. If you implement dropout at test time - it would add noise to predictions.
@@ -257,14 +257,14 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - The Vanishing / Exploding gradients occurs when your derivatives become very small or very big.
 - To understand the problem, suppose that we have a deep neural network with number of layers L, and all the activation functions are **linear** and each `b = 0`
-  - Then:   
+  - Then:
     ```
     Y' = W[L]W[L-1].....W[2]W[1]X
     ```
   - Then, if we have 2 hidden units per layer and x1 = x2 = 1, we result in:
 
     ```
-    if W[l] = [1.5   0] 
+    if W[l] = [1.5   0]
               [0   1.5] (l != L because of different dimensions in the output layer)
     Y' = W[L] [1.5  0]^(L-1) X = 1.5^L 	# which will be very large
               [0  1.5]
@@ -287,15 +287,15 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - In a single neuron (Perceptron model): `Z = w1x1 + w2x2 + ... + wnxn`
   - So if `n_x` is large we want `W`'s to be smaller to not explode the cost.
 - So it turns out that we need the variance which equals `1/n_x` to be the range of `W`'s
-- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):   
+- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):
   ```
   np.random.rand(shape) * np.sqrt(1/n[l-1])
   ```
-  or variation of this (Bengio et al.):   
+  or variation of this (Bengio et al.):
   ```
   np.random.rand(shape) * np.sqrt(2/(n[l-1] + n[l]))
   ```
-- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:   
+- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:
   ```
   np.random.rand(shape) * np.sqrt(2/n[l-1])
   ```
@@ -306,7 +306,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 ### Numerical approximation of gradients
 
 - There is an technique called gradient checking which tells you if your implementation of backpropagation is correct.
-- There's a numerical way to calculate the derivative:   
+- There's a numerical way to calculate the derivative:
   ![](Images/03-_Numerical_approximation_of_gradients.png)
 - Gradient checking approximates the gradients and is very helpful for finding the errors in your backpropagation implementation but it's slower than gradient descent (so use only for debugging).
 - Implementation of this is very simple.
@@ -314,7 +314,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   - First take `W[1],b[1],...,W[L],b[L]` and reshape into one big vector (`theta`)
   - The cost function will be `J(theta)`
   - Then take `dW[1],db[1],...,dW[L],db[L]` into one big vector (`d_theta`)
-  - **Algorithm**:   
+  - **Algorithm**:
     ```
     eps = 10^-7   # small number
     for i in len(theta):
@@ -331,7 +331,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - Use gradient checking only for debugging.
 - If algorithm fails grad check, look at components to try to identify the bug.
 - Don't forget to add `lamda/(2m) * sum(W[l])` to `J` if you are using L1 or L2 regularization.
-- Gradient checking doesn't work with dropout because J is not consistent. 
+- Gradient checking doesn't work with dropout because J is not consistent.
   - You can first turn off dropout (set `keep_prob = 1.0`), run gradient checking and then turn on dropout again.
 - Run gradient checking at random initialization and train the network for a while maybe there's a bug which can be seen when w's and b's become larger (further from 0) and can't be seen on the first iteration (when w's and b's are very small).
 
@@ -347,19 +347,19 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - Don't intialize to values that are too large
 
-- He initialization works well for networks with ReLU activations. 
+- He initialization works well for networks with ReLU activations.
 
 ### Regularization summary
 
-#### 1. L2 Regularization   
-**Observations**:   
+#### 1. L2 Regularization
+**Observations**:
   - The value of λ is a hyperparameter that you can tune using a dev set.
   - L2 regularization makes your decision boundary smoother. If λ is too large, it is also possible to "oversmooth", resulting in a model with high bias.
 
-**What is L2-regularization actually doing?**:   
+**What is L2-regularization actually doing?**:
   - L2-regularization relies on the assumption that a model with small weights is simpler than a model with large weights. Thus, by penalizing the square values of the weights in the cost function you drive all the weights to smaller values. It becomes too costly for the cost to have large weights! This leads to a smoother model in which the output changes more slowly as the input changes.
 
-**What you should remember:**   
+**What you should remember:**
 Implications of L2-regularization on:
   - cost computation:
     - A regularization term is added to the cost
@@ -367,9 +367,9 @@ Implications of L2-regularization on:
     - There are extra terms in the gradients with respect to weight matrices
   - weights:
     - weights end up smaller ("weight decay") - are pushed to smaller values.
-    
-#### 2. Dropout   
-**What you should remember about dropout:**   
+
+#### 2. Dropout
+**What you should remember about dropout:**
 - Dropout is a regularization technique.
 - You only use dropout during training. Don't use dropout (randomly eliminate nodes) during test time.
 - Apply dropout both during forward and backward propagation.
@@ -460,13 +460,13 @@ Implications of L2-regularization on:
     - `beta = 0.98` will average last 50 entries
     - `beta = 0.5` will average last 2 entries
 - Best beta average for our case is between 0.9 and 0.98
-- Another imagery example:   
-    ![](Images/Nasdaq1_small.png)   
+- Another imagery example:
+    ![](Images/Nasdaq1_small.png)
     _(taken from [investopedia.com](https://www.investopedia.com/))_
 
 ### Understanding exponentially weighted averages
 
-- Intuitions:   
+- Intuitions:
     ![](Images/05-_exponentially_weighted_averages_intuitions.png)
 - We can implement this algorithm with more accurate results using a moving window. But the code is more efficient and faster using the exponentially weighted averages algorithm.
 - Algorithm is very simple:
@@ -498,8 +498,8 @@ Implications of L2-regularization on:
   vdW = 0, vdb = 0
   on iteration t:
   	# can be mini-batch or batch gradient descent
-  	compute dw, db on current mini-batch                
-  			
+  	compute dw, db on current mini-batch
+
   	vdW = beta * vdW + (1 - beta) * dW
   	vdb = beta * vdb + (1 - beta) * db
   	W = W - learning_rate * vdW
@@ -519,7 +519,7 @@ Implications of L2-regularization on:
   on iteration t:
   	# can be mini-batch or batch gradient descent
   	compute dw, db on current mini-batch
-  	
+
   	sdW = (beta * sdW) + (1 - beta) * dW^2  # squaring is element-wise
   	sdb = (beta * sdb) + (1 - beta) * db^2  # squaring is element-wise
   	W = W - learning_rate * dW / sqrt(sdW)
@@ -527,7 +527,7 @@ Implications of L2-regularization on:
   ```
 - RMSprop will make the cost function move slower on the vertical direction and faster on the horizontal direction in the following example:
     ![](Images/06-_RMSprop.png)
-- Ensure that `sdW` is not zero by adding a small value `epsilon` (e.g. `epsilon = 10^-8`) to it:   
+- Ensure that `sdW` is not zero by adding a small value `epsilon` (e.g. `epsilon = 10^-8`) to it:
    `W = W - learning_rate * dW / (sqrt(sdW) + epsilon)`
 - With RMSprop you can increase your learning rate.
 - Developed by Geoffrey Hinton and firstly introduced on [Coursera.org](https://www.coursera.org/) course.
@@ -543,20 +543,20 @@ Implications of L2-regularization on:
   sdW = 0, sdb = 0
   on iteration t:
   	# can be mini-batch or batch gradient descent
-  	compute dw, db on current mini-batch                
-  			
+  	compute dw, db on current mini-batch
+
   	vdW = (beta1 * vdW) + (1 - beta1) * dW     # momentum
   	vdb = (beta1 * vdb) + (1 - beta1) * db     # momentum
-  			
+
   	sdW = (beta2 * sdW) + (1 - beta2) * dW^2   # RMSprop
   	sdb = (beta2 * sdb) + (1 - beta2) * db^2   # RMSprop
-  			
+
   	vdW = vdW / (1 - beta1^t)      # fixing bias
   	vdb = vdb / (1 - beta1^t)      # fixing bias
-  			
+
   	sdW = sdW / (1 - beta2^t)      # fixing bias
   	sdb = sdb / (1 - beta2^t)      # fixing bias
-  					
+
   	W = W - learning_rate * vdW / (sqrt(sdW) + epsilon)
   	b = B - learning_rate * vdb / (sqrt(sdb) + epsilon)
   ```
@@ -570,7 +570,7 @@ Implications of L2-regularization on:
 
 - Slowly reduce learning rate.
 - As mentioned before mini-batch gradient descent won't reach the optimum point (converge). But by making the learning rate decay with iterations it will be much closer to it because the steps (and possible oscillations) near the optimum are smaller.
-- One technique equations is`learning_rate = (1 / (1 + decay_rate * epoch_num)) * learning_rate_0`  
+- One technique equations is`learning_rate = (1 / (1 + decay_rate * epoch_num)) * learning_rate_0`
   - `epoch_num` is over all data (not a single mini-batch).
 - Other learning rate decay methods (continuous):
   - `learning_rate = (0.95 ^ epoch_num) * learning_rate_0`
@@ -634,7 +634,7 @@ Implications of L2-regularization on:
     beta = 1 - 10^r   # because 1 - beta = 10^r
     ```
 
-### Hyperparameters tuning in practice: Pandas vs. Caviar 
+### Hyperparameters tuning in practice: Pandas vs. Caviar
 
 - Intuitions about hyperparameter settings from one application area may or may not transfer to a different one.
 - If you don't have much computational resources you can use the "babysitting model":
@@ -792,8 +792,8 @@ Implications of L2-regularization on:
     ```python
     import numpy as np
     import tensorflow as tf
-    
-    
+
+
     w = tf.Variable(0, dtype=tf.float32)                 # creating a variable w
     cost = tf.add(tf.add(w**2, tf.multiply(-10.0, w)), 25.0)        # can be written as this - cost = w**2 - 10*w + 25
     train = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
@@ -816,8 +816,8 @@ Implications of L2-regularization on:
     ```python
     import numpy as np
     import tensorflow as tf
-    
-    
+
+
     coefficients = np.array([[1.], [-10.], [25.]])
 
     x = tf.placeholder(tf.float32, [3, 1])

@@ -40,8 +40,8 @@ Here are the course summary as its given on the course [link](https://www.course
 >
 > Much of this content has never been taught elsewhere, and is drawn from my experience building and shipping many deep learning products. This course also has two "flight simulators" that let you practice decision-making as a machine learning project leader. This provides "industry experience" that you might otherwise get only after years of ML work experience.
 >
-> After 2 weeks, you will: 
-> - Understand how to diagnose errors in a machine learning system, and 
+> After 2 weeks, you will:
+> - Understand how to diagnose errors in a machine learning system, and
 > - Be able to prioritize the most promising directions for reducing error
 > - Understand complex ML settings, such as mismatched training/test sets, and comparing to and/or surpassing human-level performance
 > - Know how to apply end-to-end learning, transfer learning, and multi-task learning
@@ -93,7 +93,7 @@ Here are the course summary as its given on the course [link](https://www.course
       | -------------- | -------------- | ----------------- |
       | Actual cat     | 3              | 2                 |
       | Actual non-cat | 1              | 4                 |
-  - **Precision**: percentage of true cats in the recognized result: P = 3/(3 + 1) 
+  - **Precision**: percentage of true cats in the recognized result: P = 3/(3 + 1)
   - **Recall**: percentage of true recognition cat of the all cat predictions: R = 3/(3 + 2)
   - **Accuracy**: (3+4)/10
 - Using a precision/recall for evaluation is good in a lot of cases, but separately they don't tell you which algothims is better. Ex:
@@ -134,9 +134,9 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Size of the dev and test sets
 
-- An old way of splitting the data was 70% training, 30% test or 60% training, 20% dev, 20% test. 
-- The old way was valid for a number of examples ~ <100000 
-- In the modern deep learning if you have a million or more examples a reasonable split would be 98% training, 1% dev, 1% test. 
+- An old way of splitting the data was 70% training, 30% test or 60% training, 20% dev, 20% test.
+- The old way was valid for a number of examples ~ <100000
+- In the modern deep learning if you have a million or more examples a reasonable split would be 98% training, 1% dev, 1% test.
 
 ### When to change dev/test sets and metrics
 
@@ -147,7 +147,7 @@ Here are the course summary as its given on the course [link](https://www.course
   | Algorithm A | 3% error (But a lot of porn images are treated as cat images here) |
   | Algorithm B | 5% error                                                     |
   - In the last example if we choose the best algorithm by metric it would be "A", but if the users decide it will be "B"
-  - Thus in this case, we want and need to change our metric. 
+  - Thus in this case, we want and need to change our metric.
   - `OldMetric = (1/m) * sum(y_pred[i] != y[i] ,m)`
     - Where m is the number of Dev set items.
   - `NewMetric = (1/sum(w[i])) * sum(w[i] * (y_pred[i] != y[i]) ,m)`
@@ -155,9 +155,9 @@ Here are the course summary as its given on the course [link](https://www.course
        - `w[i] = 1                   if x[i] is not porn`
        - `w[i] = 10                 if x[i] is porn`
 
-- This is actually an example of an orthogonalization where you should take a machine learning problem and break it into distinct steps: 
+- This is actually an example of an orthogonalization where you should take a machine learning problem and break it into distinct steps:
 
-  1. Figure out how to define a metric that captures what you want to do - place the target. 
+  1. Figure out how to define a metric that captures what you want to do - place the target.
   2. Worry about how to actually do well on this metric - how to aim/shoot accurately at the target.
 
 - Conclusion: if doing well on your metric + dev/test set doesn't correspond to doing well in your application, change your metric and/or dev/test set.
@@ -165,7 +165,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Why human-level performance?
 
 - We compare to human-level performance because of two main reasons:
-  1. Because of advances in deep learning, machine learning algorithms are suddenly working much better and so it has become much more feasible in a lot of application areas for machine learning algorithms to actually become competitive with human-level performance. 
+  1. Because of advances in deep learning, machine learning algorithms are suddenly working much better and so it has become much more feasible in a lot of application areas for machine learning algorithms to actually become competitive with human-level performance.
   2. It turns out that the workflow of designing and building a machine learning system is much more efficient when you're trying to do something that humans can also do.
 - After an algorithm reaches the human level performance the progress and accuracy slow down.
     ![01- Why human-level performance](Images/01-_Why_human-level_performance.png)
@@ -205,7 +205,7 @@ Here are the course summary as its given on the course [link](https://www.course
      - If **variance** difference is bigger, then you should use a strategy for **variance** resolving.
   3. Dev error
 - So having an estimate of human-level performance gives you an estimate of Bayes error. And this allows you to more quickly make decisions as to whether you should focus on trying to reduce a bias or trying to reduce the variance of your algorithm.
-- These techniques will tend to work well until you surpass human-level performance, whereupon you might no longer have a good estimate of Bayes error that still helps you make this decision really clearly. 
+- These techniques will tend to work well until you surpass human-level performance, whereupon you might no longer have a good estimate of Bayes error that still helps you make this decision really clearly.
 
 ### Surpassing human-level performance
 
@@ -219,7 +219,7 @@ Here are the course summary as its given on the course [link](https://www.course
 ### Improving your model performance
 
 - The two fundamental asssumptions of supervised learning:
-  1. You can fit the training set pretty well. This is roughly saying that you can achieve low **avoidable bias**. 
+  1. You can fit the training set pretty well. This is roughly saying that you can achieve low **avoidable bias**.
   2. The training set performance generalizes pretty well to the dev/test set. This is roughly saying that **variance** is not too bad.
 - To improve your deep learning supervised system follow these guidelines:
   1. Look at the difference between human level error and the training error - **avoidable bias**.
@@ -259,7 +259,7 @@ Here are the course summary as its given on the course [link](https://www.course
   | ....         |        |            |         |                   |                |
   | **% totals** | **8%** | **43%**    | **61%** |      **12%**      |                |
 - In the last example you will decide to work on great cats or blurry images to improve your performance.
-- This quick counting procedure, which you can often do in, at most, small numbers of hours can really help you make much better prioritization decisions, and understand how promising different approaches are to work on. 
+- This quick counting procedure, which you can often do in, at most, small numbers of hours can really help you make much better prioritization decisions, and understand how promising different approaches are to work on.
 
 ### Cleaning up incorrectly labeled data
 
@@ -366,21 +366,21 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### Multi-task learning
 
-- Whereas in transfer learning, you have a sequential process where you learn from task A and then transfer that to task B. In multi-task learning, you start off simultaneously, trying to have one neural network do several things at the same time. And then each of these tasks helps hopefully all of the other tasks. 
+- Whereas in transfer learning, you have a sequential process where you learn from task A and then transfer that to task B. In multi-task learning, you start off simultaneously, trying to have one neural network do several things at the same time. And then each of these tasks helps hopefully all of the other tasks.
 - Example:
   - You want to build an object recognition system that detects pedestrians, cars, stop signs, and traffic lights (image has multiple labels).
   - Then Y shape will be `(4,m)` because we have 4 classes and each one is a binary one.
-  - Then   
-  `Cost = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j))), i = 1..m, j = 1..4`, where   
+  - Then
+  `Cost = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j))), i = 1..m, j = 1..4`, where
   `L = - y(i)_j * log(y_hat(i)_j) - (1 - y(i)_j) * log(1 - y_hat(i)_j)`
-- In the last example you could have trained 4 neural networks separately but if some of the earlier features in neural network can be shared between these different types of objects, then you find that training one neural network to do four things results in better performance than training 4 completely separate neural networks to do the four tasks separately. 
+- In the last example you could have trained 4 neural networks separately but if some of the earlier features in neural network can be shared between these different types of objects, then you find that training one neural network to do four things results in better performance than training 4 completely separate neural networks to do the four tasks separately.
 - Multi-task learning will also work if y isn't complete for some labels. For example:
   ```
   Y = [1 ? 1 ...]
       [0 0 1 ...]
       [? 1 ? ...]
   ```
-  - And in this case it will do good with the missing data, just the loss function will be different:   
+  - And in this case it will do good with the missing data, just the loss function will be different:
     `Loss = (1/m) * sum(sum(L(y_hat(i)_j, y(i)_j) for all j which y(i)_j != ?))`
 - Multi-task learning makes sense:
   1. Training on a set of tasks that could benefit from having shared lower-level features.
