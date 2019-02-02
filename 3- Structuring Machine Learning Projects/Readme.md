@@ -187,7 +187,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - In the left example, because the human level error is 1% then we have to focus on the **bias**.
   - In the right example, because the human level error is 7.5% then we have to focus on the **variance**.
   - The human-level error as a proxy (estimate) for Bayes optimal error. Bayes optimal error is always less (better), but human-level in most cases is not far from it.
-  - You can't do better then Bayes error unless you are overfitting.
+  - You can't do better than Bayes error unless you are overfitting.
   - `Avoidable bias = Training error - Human (Bayes) error`
   - `Variance = Dev error - Training error`
 
