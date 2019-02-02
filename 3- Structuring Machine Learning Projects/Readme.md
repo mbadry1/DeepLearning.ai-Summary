@@ -230,7 +230,7 @@ Here are the course summary as its given on the course [link](https://www.course
      - Find better NN architecture/hyperparameters search.
   4. If **variance** is large you have these options:
      - Get more training data.
-     - Regularization (L2, Dropout, data augumentation).
+     - Regularization (L2, Dropout, data augmentation).
      - Find better NN architecture/hyperparameters search.
 
 
