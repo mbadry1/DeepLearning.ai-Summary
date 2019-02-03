@@ -252,7 +252,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   | Image        | Dog    | Great Cats | blurry  | Instagram filters |    Comments    |
   | ------------ | ------ | ---------- | ------- | ----------------- |--------------- |
-  | 1            | ✓      |            |         | ✓                 |  Pitbul        |
+  | 1            | ✓      |            |         | ✓                 |  Pitbull       |
   | 2            | ✓      |            | ✓       | ✓                 |                |
   | 3            |        |            |         |                   |Rainy day at zoo|
   | 4            |        | ✓          |         |                   |                |
