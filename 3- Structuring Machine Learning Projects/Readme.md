@@ -283,7 +283,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Apply the same process to your dev and test sets to make sure they continue to come from the same distribution.
   - Consider examining examples your algorithm got right as well as ones it got wrong. (Not always done if you reached a good accuracy)
   - Train and (dev/test) data may now come from a slightly different distributions.
-  - It's very important to have dev and test sets to come from the same distribution. But it could be OK for a train set to come from slighly other distribution.
+  - It's very important to have dev and test sets to come from the same distribution. But it could be OK for a train set to come from slightly other distribution.
 
 ### Build your first system quickly, then iterate
 
