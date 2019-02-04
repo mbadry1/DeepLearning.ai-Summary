@@ -187,7 +187,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - In the left example, because the human level error is 1% then we have to focus on the **bias**.
   - In the right example, because the human level error is 7.5% then we have to focus on the **variance**.
   - The human-level error as a proxy (estimate) for Bayes optimal error. Bayes optimal error is always less (better), but human-level in most cases is not far from it.
-  - You can't do better then Bayes error unless you are overfitting.
+  - You can't do better than Bayes error unless you are overfitting.
   - `Avoidable bias = Training error - Human (Bayes) error`
   - `Variance = Dev error - Training error`
 
@@ -230,7 +230,7 @@ Here are the course summary as its given on the course [link](https://www.course
      - Find better NN architecture/hyperparameters search.
   4. If **variance** is large you have these options:
      - Get more training data.
-     - Regularization (L2, Dropout, data augumentation).
+     - Regularization (L2, Dropout, data augmentation).
      - Find better NN architecture/hyperparameters search.
 
 
@@ -252,7 +252,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
   | Image        | Dog    | Great Cats | blurry  | Instagram filters |    Comments    |
   | ------------ | ------ | ---------- | ------- | ----------------- |--------------- |
-  | 1            | ✓      |            |         | ✓                 |  Pitbul        |
+  | 1            | ✓      |            |         | ✓                 |  Pitbull       |
   | 2            | ✓      |            | ✓       | ✓                 |                |
   | 3            |        |            |         |                   |Rainy day at zoo|
   | 4            |        | ✓          |         |                   |                |
@@ -283,7 +283,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - Apply the same process to your dev and test sets to make sure they continue to come from the same distribution.
   - Consider examining examples your algorithm got right as well as ones it got wrong. (Not always done if you reached a good accuracy)
   - Train and (dev/test) data may now come from a slightly different distributions.
-  - It's very important to have dev and test sets to come from the same distribution. But it could be OK for a train set to come from slighly other distribution.
+  - It's very important to have dev and test sets to come from the same distribution. But it could be OK for a train set to come from slightly other distribution.
 
 ### Build your first system quickly, then iterate
 
