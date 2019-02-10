@@ -462,7 +462,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
   - Hint: dimensions of z[l+2] and a[l] have to be the same in resNets. In case they have different dimensions what we put a matrix parameters (Which can be learned or fixed)
 
-    - `a[l+2] = g( z[l+2] + ws * a[l] ) # The added Ws should make the dimentions equal`
+    - `a[l+2] = g( z[l+2] + ws * a[l] ) # The added Ws should make the dimensions equal`
     - ws also can be a zero padding.
 
 - Using a skip-connection helps the gradient to backpropagate and thus helps you to train deeper networks
