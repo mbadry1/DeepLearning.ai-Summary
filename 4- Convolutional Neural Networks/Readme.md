@@ -1124,7 +1124,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - Most of the implementation of faster R-CNN are still slower than YOLO.
 
-- Andew Ng thinks that the idea behind YOLO is better than R-CNN because you are able to do all the things in just one time instead of two times.
+- Andrew Ng thinks that the idea behind YOLO is better than R-CNN because you are able to do all the things in just one time instead of two times.
 
 - Other algorithms that uses one shot to get the output includes **SSD** and **MultiBox**.
 
