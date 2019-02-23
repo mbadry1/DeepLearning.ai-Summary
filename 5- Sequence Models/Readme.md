@@ -688,7 +688,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 #### Picking the most likely sentence
 - There are some similarities between the language model we have learned previously, and the machine translation model we have just discussed, but there are some differences as well.
-- The language model we have learned is very similar to the decoder part of the machined translation model, except for a<sup>\<0></sup>   
+- The language model we have learned is very similar to the decoder part of the machine translation model, except for a<sup>\<0></sup>   
   ![](Images/55.png)
 - Problems formulations also are different:
   - In language model: P(y<sup>\<1></sup>, ..., y<sup>\<Ty></sup>)
