@@ -161,8 +161,8 @@ Here are the course summary as its given on the course [link](https://www.course
 - In order to help us develop complex RNN architectures, the last equations needs to be simplified a bit.
 - **Simplified RNN notation**:   
     ![](Images/05.png)
-  - w<sub>a</sub> is w<sub>aa</sub> and w<sub>ax</sub> stacked horizontaly.
-  - [a<sup>\<t-1></sup>, x<sup>\<t></sup>] is a<sup>\<t-1></sup> and x<sup>\<t></sup> stacked verticaly.
+  - w<sub>a</sub> is w<sub>aa</sub> and w<sub>ax</sub> stacked horizontally.
+  - [a<sup>\<t-1></sup>, x<sup>\<t></sup>] is a<sup>\<t-1></sup> and x<sup>\<t></sup> stacked vertically.
   - w<sub>a</sub> shape: (NoOfHiddenNeurons, NoOfHiddenNeurons + n<sub>x</sub>)
   - [a<sup>\<t-1></sup>, x<sup>\<t></sup>] shape: (NoOfHiddenNeurons + n<sub>x</sub>, 1)
 
