@@ -799,7 +799,7 @@ Here are the course summary as its given on the course [link](https://www.course
     | **Totals** | 6     | 4          |
 
     Modified precision = sum(Count clip) / sum(Count) = 4/6
-- So here are the equations for modified presicion for the n-grams case:   
+- So here are the equations for modified precision for the n-grams case:   
   ![](Images/60.png)
 - Let's put this together to formalize the BLEU score:
   - **P<sub>n</sub>** = Bleu score on one type of n-gram
