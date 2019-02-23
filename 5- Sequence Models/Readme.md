@@ -886,7 +886,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - To explain this let's say that Y = "the quick brown fox"
   - We are going to use an RNN with input, output structure:   
     ![](Images/78.png)
-  - Note: this is a unidirectional RNN, but it practice a bidirectional RNN is used.
+  - Note: this is a unidirectional RNN, but in practice a bidirectional RNN is used.
   - Notice, that the number of inputs and number of outputs are the same here, but in speech recognition problem input X tends to be a lot larger than output Y.
     - 10 seconds of audio at 100Hz gives us X with shape (1000, ). These 10 seconds don't contain 1000 character outputs.
   - The CTC cost function allows the RNN to output something like this:
