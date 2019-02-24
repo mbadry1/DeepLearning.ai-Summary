@@ -462,7 +462,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
   - Hint: dimensions of z[l+2] and a[l] have to be the same in resNets. In case they have different dimensions what we put a matrix parameters (Which can be learned or fixed)
 
-    - `a[l+2] = g( z[l+2] + ws * a[l] ) # The added Ws should make the dimentions equal`
+    - `a[l+2] = g( z[l+2] + ws * a[l] ) # The added Ws should make the dimensions equal`
     - ws also can be a zero padding.
 
 - Using a skip-connection helps the gradient to backpropagate and thus helps you to train deeper networks
@@ -1124,7 +1124,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 - Most of the implementation of faster R-CNN are still slower than YOLO.
 
-- Andew Ng thinks that the idea behind YOLO is better than R-CNN because you are able to do all the things in just one time instead of two times.
+- Andrew Ng thinks that the idea behind YOLO is better than R-CNN because you are able to do all the things in just one time instead of two times.
 
 - Other algorithms that uses one shot to get the output includes **SSD** and **MultiBox**.
 
