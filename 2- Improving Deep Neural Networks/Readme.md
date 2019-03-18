@@ -132,7 +132,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - `||W|| = Sum(|w[i,j]|)  # sum of absolute values of all w`
 - L2 matrix norm because of arcane technical math reasons is called Frobenius norm:
   - `||W||^2 = Sum(|w[i,j]|^2)	# sum of all w squared`
-  - Also can be calculated as `||W||^2 = W.T * W`
+  - Also can be calculated as `||W||^2 = W.T * W if W is a vector`
 - Regularization for logistic regression:
   - The normal cost function that we want to minimize is: `J(w,b) = (1/m) * Sum(L(y(i),y'(i)))`
   - The L2 regularization version: `J(w,b) = (1/m) * Sum(L(y(i),y'(i))) + (lambda/2m) * Sum(|w[i]|^2)`
