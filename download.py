@@ -38,7 +38,7 @@ def main():
         pypandoc.convert_file(
             value,
             'pdf',
-            extra_args=['--latex-engine=xelatex', '-V', 'geometry:margin=1.5cm'],
+            extra_args=['--pdf-engine=xelatex', '-V', 'geometry:margin=1.5cm'],
             outputfile=(key + ".pdf")
         )
         print("Converting", key, "completed")
