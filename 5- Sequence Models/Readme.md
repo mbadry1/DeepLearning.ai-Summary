@@ -160,7 +160,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - The activation function of a is usually tanh or ReLU and for y depends on your task choosing some activation functions like sigmoid and softmax. In name entity recognition task we will use sigmoid because we only have two classes.
 - In order to help us develop complex RNN architectures, the last equations needs to be simplified a bit.
 - **Simplified RNN notation**:   
-    ![](Images/05.png)
+    ![](Images/05\.png)
   - w<sub>a</sub> is w<sub>aa</sub> and w<sub>ax</sub> stacked horizontally.
   - [a<sup>\<t-1></sup>, x<sup>\<t></sup>] is a<sup>\<t-1></sup> and x<sup>\<t></sup> stacked vertically.
   - w<sub>a</sub> shape: (NoOfHiddenNeurons, NoOfHiddenNeurons + n<sub>x</sub>)
