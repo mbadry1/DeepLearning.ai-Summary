@@ -69,7 +69,8 @@ Here are the course summary as its given on the course [link](https://www.course
 
 ### What is a (Neural Network) NN?
 
-- Single neuron == linear regression
+- Single neuron == linear regression without applying activation(perceptron)
+
 - Simple NN graph:
   - ![](Images/Others/01.jpg)
   - Image taken from [tutorialspoint.com](http://www.tutorialspoint.com/)
