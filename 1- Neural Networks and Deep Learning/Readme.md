@@ -227,13 +227,13 @@ Here are the course summary as its given on the course [link](https://www.course
 - Lets say we have these variables:
 
   ```
-  	X1					Feature
+  	X1                  Feature
   	X2                  Feature
   	W1                  Weight of the first feature.
   	W2                  Weight of the second feature.
   	B                   Logistic Regression parameter.
   	M                   Number of training examples
-  	Y(i)				Expected output of i
+  	Y(i)                Expected output of i
   ```
 
 - So we have:
@@ -246,7 +246,7 @@ Here are the course summary as its given on the course [link](https://www.course
   	d(z)  = d(l)/d(z) = a - y
   	d(W1) = X1 * d(z)
   	d(W2) = X2 * d(z)
-  	d(B) = d(z)
+  	d(B)  = d(z)
   ```
 
 - From the above we can conclude the logistic regression pseudo code:
@@ -472,7 +472,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Derivation of Sigmoid activation function:
 
   ```
-  g(z) = 1 / (1 + np.exp(-z))
+  g(z)  = 1 / (1 + np.exp(-z))
   g'(z) = (1 / (1 + np.exp(-z))) * (1 - (1 / (1 + np.exp(-z))))
   g'(z) = g(z) * (1 - g(z))
   ```
