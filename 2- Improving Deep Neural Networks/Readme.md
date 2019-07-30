@@ -460,9 +460,7 @@ Implications of L2-regularization on:
     - `beta = 0.98` will average last 50 entries
     - `beta = 0.5` will average last 2 entries
 - Best beta average for our case is between 0.9 and 0.98
-- Intuition: The reason why exponentially weighted averages are useful for further optimizing gradient descent algorithm is that it
-  can give different weights to recent data points (`theta`) based on value of `beta`. If `beta` is high (around 0.9), it smoothens
-  out the averages of skewed data points (oscillations w.r.t. Gradient descent terminology). So this reduces oscillations in gradient descent and hence makes faster and smoother path towerds minima.
+- **Intuition**: The reason why exponentially weighted averages are useful for further optimizing gradient descent algorithm is that it can give different weights to recent data points (`theta`) based on value of `beta`. If `beta` is high (around 0.9), it smoothens out the averages of skewed data points (oscillations w.r.t. Gradient descent terminology). So this reduces oscillations in gradient descent and hence makes faster and smoother path towerds minima.
 - Another imagery example:   
     ![](Images/Nasdaq1_small.png)   
     _(taken from [investopedia.com](https://www.investopedia.com/))_
