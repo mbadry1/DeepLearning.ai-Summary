@@ -299,7 +299,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   ```
   np.random.rand(shape) * np.sqrt(2/n[l-1])
   ```
-- Number 1 or 2 in the nominator can also be a hyperparameter to tune (but not the first to start with)
+- Number 1 or 2 in the neumerator can also be a hyperparameter to tune (but not the first to start with)
 - This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/explode too quickly
 - The initialization in this video is called "He Initialization / Xavier Initialization" and has been published in 2015 paper.
 
