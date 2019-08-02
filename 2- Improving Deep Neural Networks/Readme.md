@@ -604,7 +604,7 @@ Implications of L2-regularization on:
   6. Learning rate decay.
   7. Regularization lambda.
   8. Activation functions.
-  9. Adam `beta1` & `beta2`.
+  9. Adam `beta1`, `beta2` & `epsilon`.
 - Its hard to decide which hyperparameter is the most important in a problem. It depends a lot on your problem.
 - One of the ways to tune is to sample a grid with `N` hyperparameter settings and then try all settings combinations on your problem.
 - Try random values: don't use a grid.
