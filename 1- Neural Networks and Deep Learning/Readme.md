@@ -271,9 +271,9 @@ Here are the course summary as its given on the course [link](https://www.course
   	db/= m
 
   	# Gradient descent
-  	w1 = w1 - alpa * dw1
-  	w2 = w2 - alpa * dw2
-  	b = b - alpa * db
+  	w1 = w1 - alpha * dw1
+  	w2 = w2 - alpha * dw2
+  	b = b - alpha * db
   ```
 
 - The above code should run for some iterations to minimize error.
