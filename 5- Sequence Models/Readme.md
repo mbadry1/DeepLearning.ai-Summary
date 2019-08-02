@@ -183,7 +183,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - So far we have seen only one RNN architecture in which T<sub>x</sub> equals T<sub>Y</sub>. In some other problems, they may not equal so we need different architectures.
 - The ideas in this section was inspired by Andrej Karpathy [blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). Mainly this image has all types:   
   ![](Images/09.jpg)
-- The architecture we have descried before is called **Many to Many**.
+- The architecture we have described before is called **Many to Many**.
 - In sentiment analysis problem, X is a text while Y is an integer that rangers from 1 to 5. The RNN architecture for that is **Many to One** as in Andrej Karpathy image.   
   ![](Images/10.png)
 - A **One to Many** architecture application would be music generation.  
