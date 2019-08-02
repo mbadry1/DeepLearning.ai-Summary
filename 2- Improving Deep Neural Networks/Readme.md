@@ -460,6 +460,7 @@ Implications of L2-regularization on:
     - `beta = 0.98` will average last 50 entries
     - `beta = 0.5` will average last 2 entries
 - Best beta average for our case is between 0.9 and 0.98
+- **Intuition**: The reason why exponentially weighted averages are useful for further optimizing gradient descent algorithm is that it can give different weights to recent data points (`theta`) based on value of `beta`. If `beta` is high (around 0.9), it smoothens out the averages of skewed data points (oscillations w.r.t. Gradient descent terminology). So this reduces oscillations in gradient descent and hence makes faster and smoother path towerds minima.
 - Another imagery example:   
     ![](Images/Nasdaq1_small.png)   
     _(taken from [investopedia.com](https://www.investopedia.com/))_
@@ -650,7 +651,7 @@ Implications of L2-regularization on:
 - In the rise of deep learning, one of the most important ideas has been an algorithm called **batch normalization**, created by two researchers, Sergey Ioffe and Christian Szegedy.
 - Batch Normalization speeds up learning.
 - Before we normalized input by subtracting the mean and dividing by variance. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
-- The question is: *for any hidden layer can we normalize `A[l]` to train `W[l]`, `b[l]` faster?* This is what batch normalization is about.
+- The question is: *for any hidden layer can we normalize `A[l]` to train `W[l+1]`, `b[l+1]` faster?* This is what batch normalization is about.
 - There are some debates in the deep learning literature about whether you should normalize values before the activation function `Z[l]` or after applying the activation function `A[l]`. In practice, normalizing `Z[l]` is done much more often and that is what Andrew Ng presents.
 - Algorithm:
   - Given `Z[l] = [z(1), ..., z(m)]`, i = 1 to m (for each input)
