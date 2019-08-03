@@ -299,7 +299,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   ```
   np.random.rand(shape) * np.sqrt(2/n[l-1])
   ```
-- Number 1 or 2 in the nominator can also be a hyperparameter to tune (but not the first to start with)
+- Number 1 or 2 in the neumerator can also be a hyperparameter to tune (but not the first to start with)
 - This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/explode too quickly
 - The initialization in this video is called "He Initialization / Xavier Initialization" and has been published in 2015 paper.
 
@@ -605,7 +605,7 @@ Implications of L2-regularization on:
   6. Learning rate decay.
   7. Regularization lambda.
   8. Activation functions.
-  9. Adam `beta1` & `beta2`.
+  9. Adam `beta1`, `beta2` & `epsilon`.
 - Its hard to decide which hyperparameter is the most important in a problem. It depends a lot on your problem.
 - One of the ways to tune is to sample a grid with `N` hyperparameter settings and then try all settings combinations on your problem.
 - Try random values: don't use a grid.
