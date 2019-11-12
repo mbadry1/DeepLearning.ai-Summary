@@ -1,0 +1,19 @@
+#ipython_notebook img{                                                                                        
+    display:block;
+    background: url(coursera-logo.png) no-repeat;
+    background-size: contain;
+    width: 233px;
+    height: 33px;
+    padding-left: 233px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#ipython_notebook {
+    height: 40px !important;
+}
+
+/* Format for custom error modal message */
+.running-notebooks {
+    padding-top: 2em;
+}
