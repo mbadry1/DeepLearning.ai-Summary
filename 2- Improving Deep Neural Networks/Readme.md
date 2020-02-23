@@ -650,7 +650,7 @@ Implications of L2-regularization on:
 
 - In the rise of deep learning, one of the most important ideas has been an algorithm called **batch normalization**, created by two researchers, Sergey Ioffe and Christian Szegedy.
 - Batch Normalization speeds up learning.
-- Before we normalized input by subtracting the mean and dividing by variance. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
+- Before we normalized input by subtracting the mean and dividing by square root of variance. This helped a lot for the shape of the cost function and for reaching the minimum point faster.
 - The question is: *for any hidden layer can we normalize `A[l]` to train `W[l+1]`, `b[l+1]` faster?* This is what batch normalization is about.
 - There are some debates in the deep learning literature about whether you should normalize values before the activation function `Z[l]` or after applying the activation function `A[l]`. In practice, normalizing `Z[l]` is done much more often and that is what Andrew Ng presents.
 - Algorithm:
