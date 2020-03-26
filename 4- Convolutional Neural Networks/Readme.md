@@ -848,7 +848,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - Each car has two or more detections with different probabilities. This came from some of the grids that thinks that this is the center point of the object.
 - Non-max suppression algorithm:
   1. Lets assume that we are targeting one class as an output class.
-  2. Y shape should be `[Pc, bx, by, bh, hw]` Where Pc is the probability if that object occurs.
+  2. Y shape should be `[Pc, bx, by, bh, bw]` Where Pc is the probability if that object occurs.
   3. Discard all boxes with `Pc < 0.6`  
   4. While there are any remaining boxes:
      1. Pick the box with the largest Pc Output that as a prediction.
