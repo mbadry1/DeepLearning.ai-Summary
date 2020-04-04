@@ -1164,8 +1164,8 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Instead to make this work, we will learn a **similarity function**:
   - d( **img1**, **img2** ) = degree of difference between images.
   - We want d result to be low in case of the same faces.
-  - We use tau T as a threshold for d:
-    - If d( **img1**, **img2** ) <= T    Then the faces are the same.
+  - We use tau '𝜏' as a threshold for d:
+    - If d( **img1**, **img2** ) <= 𝜏    Then the faces are the same.
 - Similarity function helps us solving the one shot learning. Also its robust to new inputs.
 
 #### Siamese Network
