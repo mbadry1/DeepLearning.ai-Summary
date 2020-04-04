@@ -1215,12 +1215,12 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 ### 5) Face Verification and Binary Classification
 
-- Triplet loss is one way to learn the parameters of a conv net for face recognition there's another way to learn these parameters as a straight binary classification problem.
+- Triplet loss is one way to learn the parameters of a conv net for face recognition.  Another way to learn these parameters as a straight binary classification problem.
 - Learning the similarity function another way:
   - ![](Images/36.png)
   - The final layer is a sigmoid layer.
   - `Y' = wi * Sigmoid ( f(x(i)) - f(x(j)) ) + b` where the subtraction is the Manhattan distance between f(x(i)) and f(x(j))
-  - Some other similarities can be Euclidean and Ki square similarity.
+  - Some other similarities can be Euclidean and Chi square similarity.
   - The NN here is Siamese means the top and bottom convs has the same parameters.
 - The paper for this work: [[Taigman et. al., 2014. DeepFace closing the gap to human level performance]](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html)
 - A good performance/deployment trick:
@@ -1232,9 +1232,9 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - [FaceNet](https://github.com/davidsandberg/facenet)
   - [DeepFace](https://github.com/RiweiChen/DeepFace)
 
-### Neural Style Transfer
+## Neural Style Transfer
 
-#### What is neural style transfer?
+### 1) What is neural style transfer?
 
 - Neural style transfer is one of the application of Conv nets.
 - Neural style transfer takes a content image `C` and a style image `S` and generates the content image `G` with the style of style image.
@@ -1242,7 +1242,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - In order to implement this you need to look at the features extracted by the Conv net at the shallower and deeper layers.
 - It uses a previously trained convolutional network like VGG, and builds on top of that. The idea of using a network trained on a different task and applying it to a new task is called transfer learning.
 
-#### What are deep ConvNets learning?
+### 2) What are deep ConvNets learning?
 
 - Visualizing what a deep network is learning:
   - Given this AlexNet like Conv net:
@@ -1251,7 +1251,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - Notice that a hidden unit in layer one will see relatively small portion of NN, so if you plotted it it will match a small image in the shallower layers while it will get larger image in deeper layers.
   - Repeat for other units and layers.
   - It turns out that layer 1 are learning the low level representations like colors and edges.
-- You will find out that each layer are learning more complex representations.
+- You will find out that each layer is learning more complex representations.
   - ![](Images/39.png)
 - The first layer was created using the weights of the first layer. Other images are generated using the receptive field in the image that triggered the neuron to be max.
 - [[Zeiler and Fergus., 2013, Visualizing and understanding convolutional networks]](https://arxiv.org/abs/1311.2901)
@@ -1259,16 +1259,16 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - ![](Images/receptiveField.png)
   - From [A guide to receptive field arithmetic for Convolutional Neural Networks](https://medium.com/@nikasa1889/a-guide-to-receptive-field-arithmetic-for-convolutional-neural-networks-e0f514068807)
 
-#### Cost Function
+### 3) Cost Function
 
 - We will define a cost function for the generated image that measures how good it is.
-- Give a content image C, a style image S, and a generated image G:
+- Given a content image C, a style image S, and a generated image G:
   - `J(G) = alpha * J(C,G) + beta * J(S,G)`
   - `J(C, G)` measures how similar is the generated image to the Content image.
   - `J(S, G)` measures how similar is the generated image to the Style image.
   - alpha and beta are relative weighting to the similarity and these are hyperparameters.
 - Find the generated image G:
-  1. Initiate G randomly
+  1. Initialise G randomly
      - For example G: 100 X 100 X 3
   2. Use gradient descent to minimize `J(G)`
      - `G = G - dG`  We compute the gradient image and use gradient decent to minimize the cost function.
@@ -1278,7 +1278,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - You will go through this:
     - ![](Images/41.png)
 
-#### Content Cost Function
+### 4) Content Cost Function
 
 - In the previous section we showed that we need a cost function for the content image and the style image to measure how similar is them to each other.
 - Say you use hidden layer `l` to compute content cost. 
@@ -1289,7 +1289,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - If `a(c)[l]` and `a(G)[l]` are similar then they will have the same content
   - `J(C, G) at a layer l = 1/2 || a(c)[l] - a(G)[l] ||^2`
 
-#### Style Cost Function
+### 5) Style Cost Function
 
 - Meaning of the ***style*** of an image:
   - Say you are using layer l's activation to measure ***style***.
@@ -1330,7 +1330,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
      - Define the optimizer and the learning rate
   7. Initialize the TensorFlow graph and run it for a large number of iterations, updating the generated image at every step.
 
-#### 1D and 3D Generalizations
+### 6) 1D and 3D Generalizations
 
 - So far we have used the Conv nets for images which are 2D.
 - Conv nets can work with 1D and 3D data as well.
