@@ -1138,9 +1138,10 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 
 > Discover how CNNs can be applied to multiple fields, including art generation and face recognition. Implement your own algorithm to generate art and recognize faces!
 
-### Face Recognition
+# WEEK 4
+## Face Recognition
 
-#### What is face recognition?
+### 1) What is face recognition?
 
 - Face recognition system identifies a person's face. It can work on both images or videos.
 - **<u>Liveness detection</u>** within a video face recognition system prevents the network from identifying a face in an image. It can be learned by supervised deep learning using a dataset for live human and in-live human and sequence learning.
@@ -1156,7 +1157,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - "who is this person?"
 - We can use a face verification system to make a face recognition system. The accuracy of the verification system has to be high (around 99.9% or more) to be use accurately within a recognition system because the recognition system accuracy will be less than the verification system given K persons. 
 
-#### One Shot Learning
+### 2) One Shot Learning
 
 - One of the face recognition challenges is to solve one shot learning problem.
 - One Shot Learning: A recognition system is able to recognize a person, learning from one image.
@@ -1168,7 +1169,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - If d( **img1**, **img2** ) <= 𝜏    Then the faces are the same.
 - Similarity function helps us solving the one shot learning. Also its robust to new inputs.
 
-#### Siamese Network
+### 3) Siamese Network
 
 - We will implement the similarity function using a type of NNs called Siamease Network in which we can pass multiple inputs to the two or more networks with the same architecture and parameters.
 - Siamese network architecture are as the following:
@@ -1178,7 +1179,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - If `X1`, `X2` are the same person, we want d to be low. If they are different persons, we want d to be high.
   - [[Taigman et. al., 2014. DeepFace closing the gap to human level performance]](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html)
 
-#### Triplet Loss
+### 4) Triplet Loss
 
 - Triplet Loss is one of the loss functions we can use to solve the similarity distance in a Siamese network.
 - Our learning objective in the triplet loss function is to get the distance between an **Anchor** image and a **positive** or a **negative** image.
@@ -1212,7 +1213,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Commercial recognition systems are trained on a large datasets like 10/100 million images.
 - There are a lot of pretrained models and parameters online for face recognition.
 
-#### Face Verification and Binary Classification
+### 5) Face Verification and Binary Classification
 
 - Triplet loss is one way to learn the parameters of a conv net for face recognition there's another way to learn these parameters as a straight binary classification problem.
 - Learning the similarity function another way:
