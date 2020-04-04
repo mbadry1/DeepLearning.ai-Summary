@@ -1314,7 +1314,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - Name the reshaped activation F.
   - `G[l] = F * F.T`
 - Finally the cost function will be as following:
-  - `J(S, G) at layer l = (1/ 2 * H * W * C) || G(l)(s) - G(l)(G) ||`
+  - `J(S, G) at layer l = (1/ (2 * H * W * C))^2 || G(l)(s) - G(l)(G) ||^2`
 - And if you have used it from some layers
   - `J(S, G) = Sum (lamda[l]*J(S, G)[l], for all layers)`
 - Steps to be made if you want to create a tensorflow model for neural style transfer:
