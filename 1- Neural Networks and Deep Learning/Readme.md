@@ -182,7 +182,7 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - The actual equations we will implement:
   - `w = w - alpha * d(J(w,b) / dw)`        (how much the function slopes in the w direction)
-  - `b = b - alpha * d(J(w,b) / db)`        (how much the function slopes in the d direction)
+  - `b = b - alpha * d(J(w,b) / db)`        (how much the function slopes in the b direction)
 
 ### Derivatives
 
