@@ -5,74 +5,73 @@ This is the fourth course of the deep learning specialization at [Coursera](http
 ## Table of contents
 
 * [Convolutional Neural Networks](#convolutional-neural-networks)
-   * [Table of contents](#table-of-contents)
-   * [Course summary](#course-summary)
-   * [Foundations of CNNs](#foundations-of-cnns)
-      * [Computer vision](#computer-vision)
-      * [Edge detection example](#edge-detection-example)
-      * [Padding](#padding)
-      * [Strided convolution](#strided-convolution)
-      * [Convolutions over volumes](#convolutions-over-volumes)
-      * [One Layer of a Convolutional Network](#one-layer-of-a-convolutional-network)
-      * [A simple convolution network example](#a-simple-convolution-network-example)
-      * [Pooling layers](#pooling-layers)
-      * [Convolutional neural network example](#convolutional-neural-network-example)
-      * [Why convolutions?](#why-convolutions)
-   * [Deep convolutional models: case studies](#deep-convolutional-models-case-studies)
-      * [Why look at case studies?](#why-look-at-case-studies)
-      * [Classic networks](#classic-networks)
-      * [Residual Networks (ResNets)](#residual-networks-resnets)
-      * [Why ResNets work](#why-resnets-work)
-      * [Network in Network and 1×1 convolutions](#network-in-network-and-1-X-1-convolutions)
-      * [Inception network motivation](#inception-network-motivation)
-      * [Inception network (GoogleNet)](#inception-network-googlenet)
-      * [Using Open-Source Implementation](#using-open-source-implementation)
-      * [Transfer Learning](#transfer-learning)
-      * [Data Augmentation](#data-augmentation)
-      * [State of Computer Vision](#state-of-computer-vision)
-   * [Object detection](#object-detection)
-      * [Object Localization](#object-localization)
-      * [Landmark Detection](#landmark-detection)
-      * [Object Detection](#object-detection-1)
-      * [Convolutional Implementation of Sliding Windows](#convolutional-implementation-of-sliding-windows)
-      * [Bounding Box Predictions](#bounding-box-predictions)
-      * [Intersection Over Union](#intersection-over-union)
-      * [Non-max Suppression](#non-max-suppression)
-      * [Anchor Boxes](#anchor-boxes)
-      * [YOLO Algorithm](#yolo-algorithm)
-      * [Region Proposals (R-CNN)](#region-proposals-r-cnn)
-   * [Special applications: Face recognition &amp; Neural style transfer](#special-applications-face-recognition--neural-style-transfer)
-      * [Face Recognition](#face-recognition)
-         * [What is face recognition?](#what-is-face-recognition)
-         * [One Shot Learning](#one-shot-learning)
-         * [Siamese Network](#siamese-network)
-         * [Triplet Loss](#triplet-loss)
-         * [Face Verification and Binary Classification](#face-verification-and-binary-classification)
-      * [Neural Style Transfer](#neural-style-transfer)
-         * [What is neural style transfer?](#what-is-neural-style-transfer)
-         * [What are deep ConvNets learning?](#what-are-deep-convnets-learning)
-         * [Cost Function](#cost-function)
-         * [Content Cost Function](#content-cost-function)
-         * [Style Cost Function](#style-cost-function)
-         * [1D and 3D Generalizations](#1d-and-3d-generalizations)
-   * [Extras](#extras)
-      * [Keras](#keras)
+  * [Table of contents](#table-of-contents)
+  * [Course summary](#course-summary)
+  * [Foundations of CNNs](#foundations-of-cnns)
+    * [Computer vision](#computer-vision)
+    * [Edge detection example](#edge-detection-example)
+    * [Padding](#padding)
+    * [Strided convolution](#strided-convolution)
+    * [Convolutions over volumes](#convolutions-over-volumes)
+    * [One Layer of a Convolutional Network](#one-layer-of-a-convolutional-network)
+    * [A simple convolution network example](#a-simple-convolution-network-example)
+    * [Pooling layers](#pooling-layers)
+    * [Convolutional neural network example](#convolutional-neural-network-example)
+    * [Why convolutions?](#why-convolutions)
+  * [Deep convolutional models: case studies](#deep-convolutional-models-case-studies)
+    * [Why look at case studies?](#why-look-at-case-studies)
+    * [Classic networks](#classic-networks)
+    * [Residual Networks (ResNets)](#residual-networks-resnets)
+    * [Why ResNets work](#why-resnets-work)
+    * [Network in Network and 1×1 convolutions](#network-in-network-and-1-X-1-convolutions)
+    * [Inception network motivation](#inception-network-motivation)
+    * [Inception network (GoogleNet)](#inception-network-googlenet)
+    * [Using Open-Source Implementation](#using-open-source-implementation)
+    * [Transfer Learning](#transfer-learning)
+    * [Data Augmentation](#data-augmentation)
+    * [State of Computer Vision](#state-of-computer-vision)
+  * [Object detection](#object-detection)
+    * [Object Localization](#object-localization)
+    * [Landmark Detection](#landmark-detection)
+    * [Object Detection](#object-detection-1)
+    * [Convolutional Implementation of Sliding Windows](#convolutional-implementation-of-sliding-windows)
+    * [Bounding Box Predictions](#bounding-box-predictions)
+    * [Intersection Over Union](#intersection-over-union)
+    * [Non-max Suppression](#non-max-suppression)
+    * [Anchor Boxes](#anchor-boxes)
+    * [YOLO Algorithm](#yolo-algorithm)
+    * [Region Proposals (R-CNN)](#region-proposals-r-cnn)
+  * [Special applications: Face recognition &amp; Neural style transfer](#special-applications-face-recognition--neural-style-transfer)
+    * [Face Recognition](#face-recognition)
+      * [What is face recognition?](#what-is-face-recognition)
+      * [One Shot Learning](#one-shot-learning)
+      * [Siamese Network](#siamese-network)
+      * [Triplet Loss](#triplet-loss)
+      * [Face Verification and Binary Classification](#face-verification-and-binary-classification)
+    * [Neural Style Transfer](#neural-style-transfer)
+      * [What is neural style transfer?](#what-is-neural-style-transfer)
+      * [What are deep ConvNets learning?](#what-are-deep-convnets-learning)
+      * [Cost Function](#cost-function)
+      * [Content Cost Function](#content-cost-function)
+      * [Style Cost Function](#style-cost-function)
+      * [1D and 3D Generalizations](#1d-and-3d-generalizations)
+  * [Extras](#extras)
+    * [Keras](#keras)
 
 ## Course summary
 
 Here is the course summary as given on the course [link](https://www.coursera.org/learn/convolutional-neural-networks):
 
 > This course will teach you how to build convolutional neural networks and apply it to image data. Thanks to deep learning, computer vision is working far better than just two years ago, and this is enabling numerous exciting applications ranging from safe autonomous driving, to accurate face recognition, to automatic reading of radiology images. 
->
+> 
 > You will:
+> 
 > - Understand how to build a convolutional neural network, including recent variations such as residual networks.
 > - Know how to apply convolutional networks to visual detection and recognition tasks.
 > - Know to use neural style transfer to generate art.
 > - Be able to apply these algorithms to a variety of image, video, and other 2D or 3D data.
->
+> 
 > This is the fourth course of the Deep Learning Specialization.
-
-
 
 ## Foundations of CNNs
 
@@ -101,38 +100,44 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 ### Edge detection example
 
 - The convolution operation is one of the fundamentals blocks of a CNN. One of the examples about convolution is the image edge detection operation.
+
 - Early layers of CNN might detect edges then the middle layers will detect parts of objects and the later layers will put the these parts together to produce an output.
+
 - In an image we can detect vertical edges, horizontal edges, or full edge detector.
+
 - Vertical edge detection:
+  
   - An example of convolution operation to detect vertical edges:
     - ![](Images/01.png)
   - In the last example a `6x6` matrix convolved with `3x3` filter/kernel gives us a `4x4` matrix.
   - If you make the convolution operation in TensorFlow you will find the function `tf.nn.conv2d`. In keras you will find `Conv2d` function.
   - The vertical edge detection filter will find a `3x3` place in an image where there are a bright region followed by a dark region.
   - If we applied this filter to a white region followed by a dark region, it should find the edges in between the two colors as a positive value. But if we applied the same filter to a dark region followed by a white region it will give us negative values. To solve this we can use the abs function to make it positive.
-- Horizontal edge detection
-  - Filter would be like this
 
+- Horizontal edge detection
+  
+  - Filter would be like this
+    
     ```
-    1	1	1
-    0	0	0
-    -1	-1	-1
+    1    1    1
+    0    0    0
+    -1    -1    -1
     ```
 
 - There are a lot of ways we can put number inside the horizontal or vertical edge detections. For example here are the vertical **Sobel** filter (The idea is taking care of the middle row):
-
+  
   ```
-  1	0	-1
-  2	0	-2
-  1	0	-1
+  1    0    -1
+  2    0    -2
+  1    0    -1
   ```
 
 - Also something called **Scharr** filter (The idea is taking great care of the middle row):
-
+  
   ```
-  3	0	-3
-  10	0	-10
-  3	0	-3
+  3    0    -3
+  10    0    -10
+  3    0    -3
   ```
 
 - What we learned in the deep learning is that we don't need to hand craft these numbers, we can treat them as weights and then learn them. It can learn horizontal, vertical, angled, or any edge type automatically rather than getting them by hand.
@@ -140,19 +145,30 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 ### Padding
 
 - In order to to use deep neural networks we really need to use **paddings**.
+
 - In the last section we saw that a `6x6` matrix convolved with `3x3` filter/kernel gives us a `4x4` matrix.
+
 - To give it a general rule, if a matrix `nxn` is convolved with `fxf` filter/kernel give us `n-f+1,n-f+1` matrix. 
+
 - The convolution operation shrinks the matrix if f>1.
+
 - We want to apply convolution operation multiple times, but if the image shrinks we will lose a lot of data on this process. Also the edges pixels are used less than other pixels in an image.
+
 - So the problems with convolutions are:
+  
   - Shrinks output.
   - throwing away a lot of information that are in the edges.
-- To solve these problems we can pad the input image before convolution by adding some rows and columns to it. We will call the padding amount `P` the number of row/columns that we will insert in top, bottom, left and right of the image.
-- In almost all the cases the padding values are zeros.
-- The general rule now,  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` give us `n+2p-f+1,n+2p-f+1` matrix. 
-- If n = 6, f = 3, and p = 1 Then the output image will have `n+2p-f+1 = 6+2-3+1 = 6`. We maintain the size of the image.
-- Same convolutions is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
 
+- To solve these problems we can pad the input image before convolution by adding some rows and columns to it. We will call the padding amount `P` the number of row/columns that we will insert in top, bottom, left and right of the image.
+
+- In almost all the cases the padding values are zeros.
+
+- The general rule now,  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` give us `n+2p-f+1,n+2p-f+1` matrix. 
+
+- If n = 6, f = 3, and p = 1 Then the output image will have `n+2p-f+1 = 6+2-3+1 = 6`. We maintain the size of the image.
+
+- Same convolutions is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
+  
   ```
   P = (f-1) / 2
   ```
@@ -168,14 +184,15 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - When we are making the convolution operation we used `S` to tell us the number of pixels we will jump when we are convolving filter/kernel. The last examples we described S was 1.
 
 - Now the general rule are:
-  -  if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s + 1,(n+2p-f)/s + 1` matrix. 
+  
+  - if a matrix `nxn` is convolved with `fxf` filter/kernel and padding `p` and stride `s` it give us `(n+2p-f)/s + 1,(n+2p-f)/s + 1` matrix. 
 
 - In case `(n+2p-f)/s + 1` is fraction we can take **floor** of this value.
 
 - In math textbooks the conv operation is filpping the filter before using it. What we were doing is called cross-correlation operation but the state of art of deep learning is using this as conv operation.
 
 - Same convolutions is a convolution with a padding so that output size is the same as the input size. Its given by the equation:
-
+  
   ```
   p = (n*s - n + f - s) / 2
   When s = 1 ==> P = (f-1) / 2
@@ -201,6 +218,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 ### One Layer of a Convolutional Network
 
 - First we convolve some filters to a given input and then add a bias to each filter output and then get RELU of the result. Example:
+  
   - Input image: `6x6x3`         `# a0`
   - 10 Filters: `3x3x3`         `#W1`
   - Result image: `4x4x10`     `#W1a0`
@@ -208,26 +226,29 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - Apply RELU will get us: `4x4x10` image                `#A1 = RELU(W1a0 + b)`
   - In the last result p=0, s=1
   - Hint number of parameters here are: `(3x3x3x10) + 10 = 280`
-- The last example forms a layer in the CNN.
-- Hint: no matter the size of the input, the number of the parameters is same if filter size is same. That makes it less prone to overfitting.
-- Here are some notations we will use. If layer l is a conv layer:
 
+- The last example forms a layer in the CNN.
+
+- Hint: no matter the size of the input, the number of the parameters is same if filter size is same. That makes it less prone to overfitting.
+
+- Here are some notations we will use. If layer l is a conv layer:
+  
   ```
   Hyperparameters
   f[l] = filter size
-  p[l] = padding	# Default is zero
+  p[l] = padding    # Default is zero
   s[l] = stride
   nc[l] = number of filters
-
-  Input:  n[l-1] x n[l-1] x nc[l-1]	Or	 nH[l-1] x nW[l-1] x nc[l-1]
-  Output: n[l] x n[l] x nc[l]	Or	 nH[l] x nW[l] x nc[l]
+  
+  Input:  n[l-1] x n[l-1] x nc[l-1]    Or     nH[l-1] x nW[l-1] x nc[l-1]
+  Output: n[l] x n[l] x nc[l]    Or     nH[l] x nW[l] x nc[l]
   Where n[l] = (n[l-1] + 2p[l] - f[l] / s[l]) + 1
-
+  
   Each filter is: f[l] x f[l] x nc[l-1]
-
+  
   Activations: a[l] is nH[l] x nW[l] x nc[l]
-  		     A[l] is m x nH[l] x nW[l] x nc[l]   # In batch or minbatch training
-  		     
+               A[l] is m x nH[l] x nW[l] x nc[l]   # In batch or minbatch training
+  
   Weights: f[l] * f[l] * nc[l-1] * nc[l]
   bias:  (1, 1, 1, nc[l])
   ```
@@ -257,7 +278,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - `a3 = 7x7x40 = 1960`  as a vector..
 - In the last example you seen that the image are getting smaller after each layer and thats the trend now.
 - Types of layer in a convolutional network:
-  - Convolution. 		`#Conv`
+  - Convolution.         `#Conv`
   - Pooling      `#Pool`
   - Fully connected     `#FC`
 
@@ -313,7 +334,16 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     - Number of neurons is 10 if we need to identify for example the 10 digits.
 - Hint a Conv1 and Pool1 is treated as one layer.
 - Some statistics about the last example:
-  - ![](Images/03.png)
+  - |                  | Activation Shape | Activation Size | # Parameters |
+    | ---------------- | ---------------- | --------------- | ------------ |
+    | Input:           | (32,32,3)        | 3072            | 0            |
+    | CONV1 (f=5,s=1)  | (28,28,8)        | 6272            | 608          |
+    | POOL1            | (14,14,8)        | 1568            | 0            |
+    | CONV2 (f=5, s=1) | (10,10,16)       | 1600            | 3216         |
+    | POOL2            | (5,5,16)         | 400             | 0            |
+    | FC3              | (120,1)          | 120             | 48120        |
+    | FC4              | (84,1)           | 84              | 10164        |
+    | Softmax          | (10,1)           | 10              | 850          |
 - Hyperparameters are a lot. For choosing the value of each you should follow the guideline that we will discuss later or check the literature and takes some ideas and numbers from it.
 - Usually the input size decreases over layers while the number of filters increases.
 - A CNN usually consists of one or more convolution (Not just one as the shown examples) followed by a pooling.
@@ -352,7 +382,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - In this section we will talk about classic networks which are **LeNet-5**, **AlexNet**, and **VGG**.
 
 - **LeNet-5**
-
+  
   - The goal for this model was to identify handwritten digits in a `32x32x1` gray image. Here are the drawing of it:
   - ![](Images/05.png)
   - This model was published in 1998. The last layer wasn't using softmax back then.
@@ -363,36 +393,36 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - [[LeCun et al., 1998. Gradient-based learning applied to document recognition]](http://ieeexplore.ieee.org/document/726791/?reload=true)
 
 - **AlexNet**
-
+  
   - Named after Alex Krizhevsky who was the first author of this paper. The other authors includes Geoffrey Hinton.
-
+  
   - The goal for the model was the ImageNet challenge which classifies images into 1000 classes. Here are the drawing of the model:
-
+  
   - ![](Images/06.png)
-
+  
   - Summary:
-
+    
     - ```
       Conv => Max-pool => Conv => Max-pool => Conv => Conv => Conv => Max-pool ==> Flatten ==> FC ==> FC ==> Softmax
       ```
-
+  
   - Similar to LeNet-5 but bigger.
-
+  
   - Has 60 Million parameter compared to 60k parameter of LeNet-5.
-
+  
   - It used the RELU activation function.
-
+  
   - The original paper contains Multiple GPUs and Local Response normalization (RN).
-
+    
     - Multiple GPUs were used because the GPUs were not so fast back then.
     - Researchers proved that Local Response normalization doesn't help much so for now don't bother yourself for understanding or implementing it. 
-
+  
   - This paper convinced the computer vision researchers that deep learning is so important.
-
+  
   - [[Krizhevsky et al., 2012. ImageNet classification with deep convolutional neural networks]](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
 
 - **VGG-16**
-
+  
   - A modification for AlexNet.
   - Instead of having a lot of hyperparameters lets have some simpler network.
   - Focus on having only these blocks:
@@ -433,42 +463,42 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 ### Why ResNets work
 
 - Lets see some example that illustrates why resNet work.
-
+  
   - We have a big NN as the following:
-
+    
     - `X --> Big NN --> a[l]`
-
+  
   - Lets add two layers to this network as a residual block:
-
+    
     - `X --> Big NN --> a[l] --> Layer1 --> Layer2 --> a[l+2]`
     - And a`[l]` has a direct connection to `a[l+2]`
-
+  
   - Suppose we are using RELU activations.
-
+  
   - Then:
-
+    
     - ```
       a[l+2] = g( z[l+2] + a[l] )
-      	   = g( W[l+2] a[l+1] + b[l+2] + a[l] )
+             = g( W[l+2] a[l+1] + b[l+2] + a[l] )
       ```
-
+  
   - Then if we are using L2 regularization for example, `W[l+2]` will be zero. Lets say that `b[l+2]` will be zero too.
-
+  
   - Then `a[l+2] = g( a[l] ) = a[l]` with no negative values.
-
+  
   - This show that identity function is easy for a residual block to learn. And that why it can train deeper NNs.
-
+  
   - Also that the two layers we added doesn't hurt the performance of big NN we made.
-
+  
   - Hint: dimensions of z[l+2] and a[l] have to be the same in resNets. In case they have different dimensions what we put a matrix parameters (Which can be learned or fixed)
-
+    
     - `a[l+2] = g( z[l+2] + ws * a[l] ) # The added Ws should make the dimensions equal`
     - ws also can be a zero padding.
 
 - Using a skip-connection helps the gradient to backpropagate and thus helps you to train deeper networks
 
 - Lets take a look at ResNet on images.
-
+  
   - Here are the architecture of **ResNet-34**:
   - ![](Images/resNet.jpg)
   - All the 3x3 Conv are same Convs.
@@ -479,12 +509,12 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - The dotted lines is the case when the dimensions are different. To solve then they down-sample the input by 2 and then pad zeros to match the two dimensions. There's another trick which is called bottleneck which we will explore later.
 
 - Useful concept (**Spectrum of Depth**):
-
+  
   - ![](Images/12.png)
   - Taken from [icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf](icml.cc/2016/tutorials/icml2016_tutorial_deep_residual_networks_kaiminghe.pdf)
 
 - Residual blocks types:
-
+  
   - Identity block:
     - ![](Images/16.png)
     - Hint the conv is followed by a batch norm `BN` before `RELU`. Dimensions here are same.
@@ -499,7 +529,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - A 1 x 1 convolution  - We also call it Network in Network- is so useful in many CNN models.
 
 - What does a 1 X 1 convolution do? Isn't it just multiplying by a number?
-
+  
   - Lets first consider an example:
     - Input: `6x6x1`
     - Conv: `1x1x1` one filter.        `# The 1 x 1 Conv`
@@ -514,14 +544,14 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - It has been used in a lot of modern CNN implementations like ResNet and Inception models.
 
 - A 1 x 1 convolution is useful when:
-
+  
   - We want to shrink the number of channels. We also call this feature transformation.
     - In the second discussed example above we have shrinked the input from 32 to 5 channels.
   - We will later see that by shrinking it we can save a lot of computations.
   - If we have specified the number of 1 x 1 Conv filters to be the same as the input number of channels then the output will contain the same number of channels. Then the 1 x 1 Conv will act like a non linearity and will learn non linearity operator. 
 
 - Replace fully connected layers with 1 x 1 convolutions as Yann LeCun believes they are the same.
-
+  
   - > In Convolutional Nets, there is no such thing as "fully-connected layers". There are only convolution layers with 1x1 convolution kernels and a full connection table. [Yann LeCun](https://www.facebook.com/yann.lecun/posts/10152820758292143) 
 
 - [[Lin et al., 2013. Network in network]](https://arxiv.org/abs/1312.4400)
@@ -660,7 +690,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Object detection is one of the areas in which deep learning is doing great in the past two years.
 
 - What are localization and detection?
-
+  
   - **Image Classification**: 
     - Classify an image to a specific class. The whole image represents one class. We don't want to know exactly where are the object. Usually only one object is presented.
     - ![](Images/Classification.jpg)
@@ -683,59 +713,59 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - To make classification with localization we use a Conv Net with a softmax attached to the end of it and a four numbers `bx`, `by`, `bh`, and `bw` to tell you the location of the class in the image. The dataset should contain this four numbers with the class too.
 
 - Defining the target label Y in classification with localization problem: 
-
+  
   - ```
     Y = [
-      		Pc				# Probability of an object is presented
-      		bx				# Bounding box
-      		by				# Bounding box
-      		bh				# Bounding box
-      		bw				# Bounding box
-      		c1				# The classes
-      		c2
-      		...
+              Pc                # Probability of an object is presented
+              bx                # Bounding box
+              by                # Bounding box
+              bh                # Bounding box
+              bw                # Bounding box
+              c1                # The classes
+              c2
+              ...
     ]
     ```
-
+  
   - Example (Object is present):
-
+    
     - ```
       Y = [
-        		1		# Object is present
-        		0
-        		0
-        		100
-        		100
-        		0
-        		1
-        		0
+                1        # Object is present
+                0
+                0
+                100
+                100
+                0
+                1
+                0
       ]
       ```
-
+  
   - Example (When object isn't presented):
-
+    
     - ```
       Y = [
-        		0		# Object isn't presented
-        		?		# ? means we dont care with other values
-        		?
-        		?
-        		?
-        		?
-        		?
-        		?
+                0        # Object isn't presented
+                ?        # ? means we dont care with other values
+                ?
+                ?
+                ?
+                ?
+                ?
+                ?
       ]
       ```
 
 - The loss function for the Y we have created (Example of the square error):
-
+  
   - ```
     L(y',y) = {
-      			(y1'-y1)^2 + (y2'-y2)^2 + ...           if y1 = 1
-      			(y1'-y1)^2						if y1 = 0
-    		}
+                  (y1'-y1)^2 + (y2'-y2)^2 + ...           if y1 = 1
+                  (y1'-y1)^2                        if y1 = 0
+            }
     ```
-
+  
   - In practice we use logistic regression for `pc`, log likely hood loss for classes, and squared error for the bounding box.
 
 ### Landmark Detection
@@ -745,15 +775,15 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - For example, if you are working in a face recognition problem you might want some points on the face like corners of the eyes, corners of the mouth, and corners of the nose and so on. This can help in a lot of application like detecting the pose of the face.
 
 - Y shape for the face recognition problem that needs to output 64 landmarks:
-
+  
   - ```
     Y = [
-      		THereIsAface				# Probability of face is presented 0 or 1
-      		l1x,
-      		l1y,
-      		....,
-      		l64x,
-      		l64y
+              THereIsAface                # Probability of face is presented 0 or 1
+              l1x,
+              l1y,
+              ....,
+              l64x,
+              l64y
     ]
     ```
 
@@ -809,9 +839,8 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - YOLO stands for *you only look once* and was developed back in 2015.
 
 - Yolo Algorithm:
-
+  
   - ![](Images/24.png)
-
   1. Lets say we have an image of 100 X 100
   2. Place a  3 x 3 grid on the image. For more smother results you should use 19 x 19 for the 100 x 100
   3. Apply the classification and localization algorithm we discussed in a previous section to each section of the grid. `bx` and `by` will represent the center point of the object in each grid and will be relative to the box so the range is between 0 and 1 while `bh` and `bw` will represent the height and width of the object which can be greater than 1.0 but still a floating point value.
@@ -883,21 +912,21 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Lets sum up and introduce the whole YOLO algorithm given an example.
 
 - Suppose we need to do object detection for our autonomous driver system.It needs to identify three classes:
-
+  
   1. Pedestrian (Walks on ground).
   2. Car.
   3. Motorcycle.
 
 - We decided to choose two anchor boxes, a taller one and a wide one.
-
+  
   - Like we said in practice they use five or more anchor boxes hand made or generated using k-means.
 
 - Our labeled Y shape will be `[Ny, HeightOfGrid, WidthOfGrid, 16]`, where Ny is number of instances and each row (of size 16) is as follows:
-
+  
   - `[Pc, bx, by, bh, bw, c1, c2, c3, Pc, bx, by, bh, bw, c1, c2, c3]`
 
 - Your dataset could be an image with a multiple labels and a rectangle for each label, we should go to your dataset and make the shape and values of Y like we agreed.
-
+  
   - An example:
     - ![](Images/30.png)
   - We first initialize all of them to zeros and ?, then for each label and rectangle choose its closest grid point then the shape to fill it and then the best anchor point based on the IOU. so that the shape of Y for one image should be `[HeightOfGrid, WidthOfGrid,16]`
@@ -905,7 +934,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Train the labeled images on a Conv net. you should receive an output of `[HeightOfGrid, WidthOfGrid,16]` for our case.
 
 - To make predictions, run the Conv net on an image and run Non-max suppression algorithm for each class you have in our case there are 3 classes.
-
+  
   - You could get something like that:
     - ![](Images/31.png)
     - Total number of generated boxes are grid_width * grid_height * no_of_anchors = 3 x 3 x 2
@@ -917,9 +946,9 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - YOLO are not good at detecting smaller object.
 
 - [YOLO9000 Better, faster, stronger](https://arxiv.org/abs/1612.08242)
-
+  
   - Summary:
-
+  
   - ```
     ________________________________________________________________________________________
     Layer (type)                     Output Shape          Param #     Connected to                
@@ -1082,7 +1111,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
     ```
 
 - You can find implementations for YOLO here:
-
+  
   - https://github.com/allanzelener/YAD2K
   - https://github.com/thtrieu/darkflow
   - https://pjreddie.com/darknet/yolo/
@@ -1092,7 +1121,7 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - R-CNN is an algorithm that also makes an object detection.
 
 - Yolo tells that its faster:
-
+  
   - > Our model has several advantages over classifier-based systems. It looks at the whole image at test time so its predictions are informed by global context in the image. It also makes predictions with a single network evaluation unlike systems like R-CNN which require thousands for a single image. This makes it extremely fast, more than 1000x faster than R-CNN and 100x faster than Fast R-CNN. See our paper for more details on the full system.
 
 - But one of the downsides of YOLO that it process a lot of areas where no objects are present.
@@ -1102,13 +1131,13 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - R-CNN tries to pick a few windows and run a Conv net (your confident classifier) on top of them.
 
 - The algorithm R-CNN uses to pick windows is called a segmentation algorithm. Outputs something like this:
-
+  
   - ![](Images/34.png)
 
 - If for example the segmentation algorithm produces 2000 blob then we should run our classifier/CNN on top of these blobs.
 
 - There has been a lot of work regarding R-CNN tries to make it faster:
-
+  
   - R-CNN:
     - Propose regions. Classify proposed regions one at a time. Output label + bounding box.
     - Downside is that its slow.
@@ -1127,11 +1156,11 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - Andrew Ng thinks that the idea behind YOLO is better than R-CNN because you are able to do all the things in just one time instead of two times.
 
 - Other algorithms that uses one shot to get the output includes **SSD** and **MultiBox**.
-
+  
   - [[Wei Liu, et. al 2015 SSD: Single Shot MultiBox Detector]](https://arxiv.org/abs/1512.02325)
 
 - **R-FCN** is similar to Faster R-CNN but more efficient.
-
+  
   - [[Jifeng Dai, et. al 2016 R-FCN: Object Detection via Region-based Fully Convolutional Networks ]](https://arxiv.org/abs/1605.06409)
 
 ## Special applications: Face recognition & Neural style transfer
@@ -1381,13 +1410,6 @@ Here is the course summary as given on the course [link](https://www.coursera.or
 - To choose the Keras backend you should go to `$HOME/.keras/keras.json` and change the file to the desired backend like Theano or Tensorflow or whatever backend you want.
 - After you create the model you can run it in a tensorflow session without compiling, training, and testing capabilities.
 - You can save your model with `model_save` and load your model using `model_load ` This will save your whole trained model to disk with the trained weights.
-
-
-
-
-
-
-
 
 <br><br>
 <br><br>
