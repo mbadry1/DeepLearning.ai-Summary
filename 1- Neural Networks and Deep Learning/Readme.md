@@ -593,14 +593,14 @@ Here are the course summary as its given on the course [link](https://www.course
 
   ```
   z[l] = W[l]a[l-1] + b[l]
-  a[l] = g[l](a[l])
+  a[l] = g[l](z[l])
   ```
 
 - Forward propagation general rule for `m` inputs:
 
   ```
   Z[l] = W[l]A[l-1] + B[l]
-  A[l] = g[l](A[l])
+  A[l] = g[l](Z[l])
   ```
 
 - We can't compute the whole layers forward propagation without a for loop so its OK to have a for loop here.
