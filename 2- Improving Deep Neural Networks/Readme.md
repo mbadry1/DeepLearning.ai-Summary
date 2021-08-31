@@ -422,7 +422,7 @@ Implications of L2-regularization on:
   1. faster learning:
       - you have the vectorization advantage
       - make progress without waiting to process the entire training set
-  2. doesn't always exactly converge (oscelates in a very small region, but you can reduce learning rate)
+  2. doesn't always exactly converge (oscillate in a very small region, but you can reduce learning rate)
 - Guidelines for choosing mini-batch size:
   1. If small training set (< 2000 examples) - use batch gradient descent.
   2. It has to be a power of 2 (because of the way computer memory is layed out and accessed, sometimes your code runs faster if your mini-batch size is a power of 2):
