@@ -82,7 +82,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - Simple NN graph:
   - ![](Images/Others/01.jpg)
   - Image taken from [tutorialspoint.com](http://www.tutorialspoint.com/)
-- RELU stands for rectified linear unit is the most popular activation function right now that makes deep NNs train faster now.
+- ''' diff - RELU ''' stands for rectified linear unit is the most popular activation function right now that makes deep NNs train faster now.
 - Hidden layers predicts connection between inputs automatically, thats what deep learning is good at.
 - Deep NN consists of more hidden layers (Deeper layers)
   - ![](Images/Others/02.png)
