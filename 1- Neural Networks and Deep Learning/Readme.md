@@ -1,5 +1,11 @@
 # Neural Networks and Deep Learning
 
+- Red: V Imp
+- Yellow: Theory Note
+- Green: Purpose of code
+- Orange: Code
+
+
 This is the first course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
 ## Table of contents
