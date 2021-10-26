@@ -1,5 +1,11 @@
 # Neural Networks and Deep Learning
 
+- Red: V Imp
+- Yellow: Theory Note
+- Green: Purpose of code
+- Orange: Code
+
+
 This is the first course of the deep learning specialization at [Coursera](https://www.coursera.org/specializations/deep-learning) which is moderated by [DeepLearning.ai](http://deeplearning.ai/). The course is taught by Andrew Ng.
 
 ## Table of contents
@@ -161,9 +167,10 @@ Here are the course summary as its given on the course [link](https://www.course
 
 - First loss function would be the square root error:  `L(y',y) = 1/2 (y' - y)^2`
   - But we won't use this notation because it leads us to optimization problem which is non convex, means it contains local optimum points.
-- This is the function that we will use: `L(y',y) = - (y*log(y') + (1-y)*log(1-y'))`
+- This is the loss function that we will use: `L(y',y) = - (y*log(y') + (1-y)*log(1-y'))`
+  - Here `y' = sigmoid(y)`    
 - To explain the last function lets see:
-  - if `y = 1` ==> `L(y',1) = -log(y')`  ==> we want `y'` to be the largest   ==> `y`' biggest value is 1
+  - if `y = 1` ==> `L(y',1) = -log(y')`  ==> we want `y'` to be the largest   ==> `y'` biggest value is 1
   - if `y = 0` ==> `L(y',0) = -log(1-y')` ==> we want `1-y'` to be the largest ==> `y'` to be smaller as possible because it can only has 1 value.
 - Then the Cost function will be: `J(w,b) = (1/m) * Sum(L(y'[i],y[i]))`
 - The loss function computes the error for a single training example; the cost function is the average of the loss functions of the entire training set.
@@ -255,12 +262,12 @@ Here are the course summary as its given on the course [link](https://www.course
   	J = 0; dw1 = 0; dw2 =0; db = 0;                 # Devs.
   	w1 = 0; w2 = 0; b=0;							# Weights
   	for i = 1 to m
-  		# Forward pass
+  		# Forward Propagation
   		z(i) = W1*x1(i) + W2*x2(i) + b
   		a(i) = Sigmoid(z(i))
   		J += (Y(i)*log(a(i)) + (1-Y(i))*log(1-a(i)))
 
-  		# Backward pass
+  		# Backward Propagation
   		dz(i) = a(i) - Y(i)
   		dw1 += dz(i) * x1(i)
   		dw2 += dz(i) * x2(i)
@@ -383,7 +390,7 @@ Here are the course summary as its given on the course [link](https://www.course
 - `a0 = x` (the input layer)
 - `a1` will represent the activation of the hidden neurons.
 - `a2` will represent the output layer.
-- We are talking about 2 layers NN. The input layer isn't counted.
+- When we talk about 2 layers NN. The input layer isn't counted.
 
 ### Computing a Neural Network's Output
 
@@ -391,9 +398,9 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/05.png)
 - Here are some informations about the last image:
   - `noOfHiddenNeurons = 4`
-  - `Nx = 3`
+  - `Nx = 3` number of i/p nodes w/ shape as `(Nx, 1)`
   - Shapes of the variables:
-    - `W1` is the matrix of the first hidden layer, it has a shape of `(noOfHiddenNeurons,nx)`
+    - `W1` is the matrix of the first hidden layer, it has a shape of `(noOfHiddenNeurons,Nx)`
     - `b1` is the matrix of the first hidden layer, it has a shape of `(noOfHiddenNeurons,1)`
     - `z1` is the result of the equation `z1 = W1*X + b`, it has a shape of `(noOfHiddenNeurons,1)`
     - `a1` is the result of the equation `a1 = sigmoid(z1)`, it has a shape of `(noOfHiddenNeurons,1)`
@@ -401,6 +408,7 @@ Here are the course summary as its given on the course [link](https://www.course
     - `b2` is the matrix of the second hidden layer, it has a shape of `(1,1)`
     - `z2` is the result of the equation `z2 = W2*a1 + b`, it has a shape of `(1,1)`
     - `a2` is the result of the equation `a2 = sigmoid(z2)`, it has a shape of `(1,1)`
+  > No. of rows of in `W` translates to the no. of nodes in the next layer  
 
 ### Vectorizing across multiple examples
 
