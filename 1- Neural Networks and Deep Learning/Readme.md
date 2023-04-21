@@ -391,7 +391,7 @@ Here are the course summary as its given on the course [link](https://www.course
   - ![](Images/05.png)
 - Here are some informations about the last image:
   - `noOfHiddenNeurons = 4`
-  - `Nx = 3`
+  - `nx = 3`
   - Shapes of the variables:
     - `W1` is the matrix of the first hidden layer, it has a shape of `(noOfHiddenNeurons,nx)`
     - `b1` is the matrix of the first hidden layer, it has a shape of `(noOfHiddenNeurons,1)`
