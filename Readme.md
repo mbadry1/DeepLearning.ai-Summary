@@ -28,14 +28,6 @@ This is by far the best course series on deep learning that I've taken. Enjoy!
 
 
 
-## Specialization Certificate
-
-At last I've successfully completed the specialization and earned my [certificate](https://coursera.org/verify/specialization/DTTJC9Y5B8U6)!
-
-![](Certificate.png)
-
-
-
 ## Similar Notes
 
 - Beautifully drawn notes by Tess Ferrandez:
@@ -66,7 +58,8 @@ Group description:
 
 > This group is for current, past or future students of Prof Andrew Ng's deeplearning.ai class in Coursera. The purpose is for students to get to know each other, ask questions, and share insights. However, remember the Coursera Honor Code - please do not post any solution in the forum! 
 
-
+## Note Taking (Highlight and stuff)
+1. Highlight ``` <span style="background-color: color_name">Marked text</span> ```
 
 ## Next steps
 
