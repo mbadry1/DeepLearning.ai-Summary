@@ -258,7 +258,7 @@ Here are the course summary as its given on the course [link](https://www.course
   		# Forward pass
   		z(i) = W1*x1(i) + W2*x2(i) + b
   		a(i) = Sigmoid(z(i))
-  		J += (Y(i)*log(a(i)) + (1-Y(i))*log(1-a(i)))
+  		J += -(Y(i)*log(a(i)) + (1-Y(i))*log(1-a(i)))
 
   		# Backward pass
   		dz(i) = a(i) - Y(i)
